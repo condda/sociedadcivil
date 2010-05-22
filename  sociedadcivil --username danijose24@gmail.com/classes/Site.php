@@ -13,6 +13,7 @@
 	
 	
 	$pnlmain->add("content","HOLA");			
+	
 	$pnlmain->show();
 	//include "../db/cerrar_conexion.php";
 ?>

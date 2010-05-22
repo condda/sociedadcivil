@@ -3,35 +3,46 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+-->
+</style>
 </head>
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <p>
-    <label>
-      <select name="ciRif" id="ciRif">
-        <option value="0">Seleccione</option>
-        <option value="1">Cédula</option>
+  <h1>Crear Proveedor
+  </h1>
+  <table width="200" border="0">
+    <tr>
+      <td><select name="ciRif" id="ciRif">
+        <option value="0">Cedula/Rif</option>
+        <option value="1">Cedula</option>
         <option value="2">Rif</option>
-      </select>
-    </label>
-    <input type="text" name="cedRif" id="cedRif" />
-  </p>
-  <p>
-    <label>Nombre
-      <input type="text" name="nombre" id="nombre" />
-    </label>
-  </p>
-  <p>
-    <label>Dirección
-      <input type="text" />
-    </label>
-  </p>
-  <p>
-    <label>Teléfono
-      <input type="text" name="textfield3" id="textfield3" />
-    </label>
-  </p>
+      </select></td>
+      <td><input type="text" name="cedRif" id="cedRif" /></td>
+    </tr>
+    <tr>
+      <td>Nombre</td>
+      <td><input type="text" name="nombre" id="nombre" /></td>
+    </tr>
+    <tr>
+      <td>Direccion</td>
+      <td><input name="direccion" type="text" id="direccion" /></td>
+    </tr>
+    <tr>
+      <td>Telefono</td>
+      <td><input type="text" name="telefono2" id="telefono2" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center" valign="middle"><input type="submit" name="button" id="button" value="Enviar" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
 </form>
 </body>
 </html>

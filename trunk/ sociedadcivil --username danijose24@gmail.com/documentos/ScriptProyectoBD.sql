@@ -278,6 +278,7 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`INSCRIPCION` (
   `estatusInscripcion` INT NOT NULL ,
   `fechaAInscripcion` DATE NULL ,
   `montoInscripcion` INT NULL ,
+  `tipoInscripcion` INT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`idInscripcion`) ,
   CONSTRAINT `fk_INSCRIPCION_PERSONA`
@@ -562,6 +563,7 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`TRASPASO` (
   `cedulaPersona` INT NOT NULL ,
   `idVehiculo` INT NOT NULL ,
   `fechaTraspaso` DATE NOT NULL ,
+  `traspasoLista` INT NULL ,
   PRIMARY KEY (`cedulaPersona`, `idVehiculo`) ,
   CONSTRAINT `fk_SOCIO_has_VEHICULO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )

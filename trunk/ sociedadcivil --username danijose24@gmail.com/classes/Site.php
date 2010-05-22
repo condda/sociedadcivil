@@ -4,8 +4,8 @@
 	require_once ("$pathFix/Panel.php");
 	//include "../db/conexion.php";
 	
-	$pnlmain = new Panel("../html/news.html");
-	$pnlmenu = new Panel("../html/about.html");
+	$pnlmain = new Panel("../html/main.html");
+	$pnlmenu = new Panel("../html/menu.html");
 	
 	$pnlmenu->add("activo",'id="active"');
 	$pnlmain->add("menu",$pnlmenu);

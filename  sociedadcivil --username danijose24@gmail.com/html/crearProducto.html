@@ -3,30 +3,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+-->
+</style>
 </head>
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <p>
-    <label>Nombre
-      <input type="text" name="textfield" id="textfield" />
+  <h1>Crear Producto</h1>
+  <p>Seleccione el Proveedor 
+    <label>
+      <select name="selectProveedor" id="selectProveedor">
+        <option value="0" selected="selected">Seleccione</option>
+      </select>
     </label>
   </p>
-  <p>
-    <label>Codigo
-      <input type="text" name="textfield2" id="textfield2" />
-    </label>
-  </p>
-  <p>
-    <label>Descripcion
-      <input type="text" name="textfield3" id="textfield3" />
-    </label>
-  </p>
-  <p>
-    <label>Precio
-      <input type="text" name="textfield4" id="textfield4" />
-    </label>
-  </p>
+  <table width="232" border="0">
+    <tr>
+      <td>Nombre</td>
+      <td><input type="text" name="textfield4" id="textfield6" /></td>
+    </tr>
+    <tr>
+      <td>Descripcion</td>
+      <td><input type="text" name="textfield2" id="textfield5" /></td>
+    </tr>
+    <tr>
+      <td width="72">Precio</td>
+      <td width="144"><input type="text" name="textfield" id="textfield7" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Aceptar" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
 </form>
 </body>
 </html>

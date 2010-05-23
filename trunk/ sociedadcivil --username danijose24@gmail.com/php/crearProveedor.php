@@ -42,8 +42,7 @@
 			telefonoProveedor,
 			tipoProveedor,
 			nombreProveedor,
-			cedulaProveedor,
-			rifProveedor) values ('$direccion','$telefono','1','$nombre','$cedRif','NULL')");
+			cedulaProveedor) values ('$direccion','$telefono','1','$nombre','$cedRif')");
 			$pnlmenu = new Panel("../html/menu.html");
 			$pnlmenu->add("activo",'id="active"');
 			$pnlmain = new Panel("../html/main.html");
@@ -54,12 +53,11 @@
 			
 		else if ($ciRif==2){
 			mysql_query("insert into Proveedor (
-			'direccionProveedor',
-			'telefonoProveedor',
-			'tipoProveedor',
-			'nombreProveedor',
-			'cedulaProveedor',
-			'rifProveedor') values ('$direccion','$telefono','2','$nombre','NULL',$cedRif')");
+			direccionProveedor,
+			telefonoProveedor,
+			tipoProveedor,
+			nombreProveedor,
+			rifProveedor) values ('$direccion','$telefono','2','$nombre','$cedRif')");
 			$pnlmenu = new Panel("../html/menu.html");
 			$pnlmenu->add("activo",'id="active"');
 			$pnlmain = new Panel("../html/main.html");

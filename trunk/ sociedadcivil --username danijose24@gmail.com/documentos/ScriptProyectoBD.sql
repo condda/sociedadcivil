@@ -2,24 +2,24 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `SociedadCivil` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-USE `SociedadCivil`;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+USE `mydb`;
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PERSONA`
+-- Table `mydb`.`PERSONA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PERSONA` ;
+DROP TABLE IF EXISTS `mydb`.`PERSONA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PERSONA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PERSONA` (
   `cedulaPersona` INT NOT NULL AUTO_INCREMENT ,
   `nombrePersona` VARCHAR(45) NOT NULL ,
   `apellidoPersona` VARCHAR(45) NOT NULL ,
-  `fechaNPersona` VARCHAR(45) NOT NULL ,
+  `fechaNPersona` DATE NOT NULL ,
   `sexoPersona` CHAR NOT NULL ,
   `nacionalidadPersona` VARCHAR(45) NOT NULL ,
   `direccionPersona` VARCHAR(45) NOT NULL ,
   `telefonoPersona` INT NOT NULL ,
-  `fechaLPersona` VARCHAR(45) NOT NULL ,
+  `fechaLPersona` DATE NOT NULL ,
   `estadoCPersona` VARCHAR(45) NOT NULL ,
   `nombreCPersona` VARCHAR(45) NULL ,
   PRIMARY KEY (`cedulaPersona`) )
@@ -27,11 +27,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`VEHICULO`
+-- Table `mydb`.`VEHICULO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`VEHICULO` ;
+DROP TABLE IF EXISTS `mydb`.`VEHICULO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`VEHICULO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`VEHICULO` (
   `idVehiculo` INT NOT NULL AUTO_INCREMENT ,
   `anoVehiculo` YEAR NOT NULL ,
   `estadoVehiculo` VARCHAR(45) NOT NULL ,
@@ -41,11 +41,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`JUNTADIRECTIVA`
+-- Table `mydb`.`JUNTADIRECTIVA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`JUNTADIRECTIVA` ;
+DROP TABLE IF EXISTS `mydb`.`JUNTADIRECTIVA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`JUNTADIRECTIVA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`JUNTADIRECTIVA` (
   `idJuntadirectiva` INT NOT NULL AUTO_INCREMENT ,
   `nombreJuntadirectiva` VARCHAR(45) NOT NULL ,
   `descripcionJuntadirectiva` VARCHAR(45) NOT NULL ,
@@ -54,31 +54,31 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`LUGAR`
+-- Table `mydb`.`LUGAR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`LUGAR` ;
+DROP TABLE IF EXISTS `mydb`.`LUGAR` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`LUGAR` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`LUGAR` (
   `idLugar` INT NOT NULL AUTO_INCREMENT ,
   `nombreLugar` VARCHAR(45) NOT NULL ,
   `padreLugar` INT NULL ,
   PRIMARY KEY (`idLugar`) ,
   CONSTRAINT `fk_LUGAR_LUGAR`
     FOREIGN KEY (`padreLugar` )
-    REFERENCES `SociedadCivil`.`LUGAR` (`idLugar` )
+    REFERENCES `mydb`.`LUGAR` (`idLugar` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_LUGAR_LUGAR ON `SociedadCivil`.`LUGAR` (`padreLugar` ASC) ;
+CREATE INDEX fk_LUGAR_LUGAR ON `mydb`.`LUGAR` (`padreLugar` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`SOCIEDAD`
+-- Table `mydb`.`SOCIEDAD`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`SOCIEDAD` ;
+DROP TABLE IF EXISTS `mydb`.`SOCIEDAD` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SOCIEDAD` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`SOCIEDAD` (
   `idSociedad` INT NOT NULL AUTO_INCREMENT ,
   `telefonoSociedad` INT NOT NULL ,
   `idLugar` INT NOT NULL ,
@@ -86,27 +86,27 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SOCIEDAD` (
   PRIMARY KEY (`idSociedad`) ,
   CONSTRAINT `fk_SUCURSAL_LUGAR`
     FOREIGN KEY (`idLugar` )
-    REFERENCES `SociedadCivil`.`LUGAR` (`idLugar` )
+    REFERENCES `mydb`.`LUGAR` (`idLugar` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SUCURSAL_PERSONA`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`PERSONA` (`cedulaPersona` )
+    REFERENCES `mydb`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_SUCURSAL_LUGAR ON `SociedadCivil`.`SOCIEDAD` (`idLugar` ASC) ;
+CREATE INDEX fk_SUCURSAL_LUGAR ON `mydb`.`SOCIEDAD` (`idLugar` ASC) ;
 
-CREATE INDEX fk_SUCURSAL_PERSONA ON `SociedadCivil`.`SOCIEDAD` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SUCURSAL_PERSONA ON `mydb`.`SOCIEDAD` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`RUTA`
+-- Table `mydb`.`RUTA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`RUTA` ;
+DROP TABLE IF EXISTS `mydb`.`RUTA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`RUTA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`RUTA` (
   `idRuta` INT NOT NULL AUTO_INCREMENT ,
   `descripcionRuta` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idRuta`) )
@@ -114,31 +114,31 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PASAJE`
+-- Table `mydb`.`PASAJE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PASAJE` ;
+DROP TABLE IF EXISTS `mydb`.`PASAJE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PASAJE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PASAJE` (
   `idPasaje` INT NOT NULL AUTO_INCREMENT ,
   `costoPasaje` INT NOT NULL ,
   `idRuta` INT NOT NULL ,
   PRIMARY KEY (`idPasaje`) ,
   CONSTRAINT `fk_PASAJE_RUTA`
     FOREIGN KEY (`idRuta` )
-    REFERENCES `SociedadCivil`.`RUTA` (`idRuta` )
+    REFERENCES `mydb`.`RUTA` (`idRuta` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_PASAJE_RUTA ON `SociedadCivil`.`PASAJE` (`idRuta` ASC) ;
+CREATE INDEX fk_PASAJE_RUTA ON `mydb`.`PASAJE` (`idRuta` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PRODUCTO`
+-- Table `mydb`.`PRODUCTO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PRODUCTO` ;
+DROP TABLE IF EXISTS `mydb`.`PRODUCTO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PRODUCTO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PRODUCTO` (
   `idProducto` INT NOT NULL AUTO_INCREMENT ,
   `nombreProducto` VARCHAR(45) NOT NULL ,
   `descripcionProducto` VARCHAR(45) NOT NULL ,
@@ -147,11 +147,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`REQUISITO`
+-- Table `mydb`.`REQUISITO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`REQUISITO` ;
+DROP TABLE IF EXISTS `mydb`.`REQUISITO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`REQUISITO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`REQUISITO` (
   `idRequisito` INT NOT NULL AUTO_INCREMENT ,
   `descripcionRequisito` VARCHAR(45) NOT NULL ,
   `tipoRequisito` INT NOT NULL ,
@@ -159,20 +159,20 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`REQUISITO` (
   PRIMARY KEY (`idRequisito`) ,
   CONSTRAINT `fk_REQUISITO_SOCIEDAD`
     FOREIGN KEY (`idSociedad` )
-    REFERENCES `SociedadCivil`.`SOCIEDAD` (`idSociedad` )
+    REFERENCES `mydb`.`SOCIEDAD` (`idSociedad` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_REQUISITO_SOCIEDAD ON `SociedadCivil`.`REQUISITO` (`idSociedad` ASC) ;
+CREATE INDEX fk_REQUISITO_SOCIEDAD ON `mydb`.`REQUISITO` (`idSociedad` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`NORMA`
+-- Table `mydb`.`NORMA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`NORMA` ;
+DROP TABLE IF EXISTS `mydb`.`NORMA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`NORMA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`NORMA` (
   `idNorma` INT NOT NULL AUTO_INCREMENT ,
   `descripcionNorma` VARCHAR(45) NOT NULL ,
   `tipoNorma` INT NOT NULL ,
@@ -181,11 +181,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`TRIBUNALD`
+-- Table `mydb`.`TRIBUNALD`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`TRIBUNALD` ;
+DROP TABLE IF EXISTS `mydb`.`TRIBUNALD` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`TRIBUNALD` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`TRIBUNALD` (
   `idTribunald` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idTribunald`) )
@@ -193,11 +193,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`SANCION`
+-- Table `mydb`.`SANCION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`SANCION` ;
+DROP TABLE IF EXISTS `mydb`.`SANCION` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SANCION` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`SANCION` (
   `idSancion` INT NOT NULL AUTO_INCREMENT ,
   `fechaSancion` DATE NOT NULL ,
   `idNorma` INT NOT NULL ,
@@ -205,27 +205,27 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SANCION` (
   PRIMARY KEY (`idSancion`) ,
   CONSTRAINT `fk_SANCION_TRIBUNALD`
     FOREIGN KEY (`idTribunald` )
-    REFERENCES `SociedadCivil`.`TRIBUNALD` (`idTribunald` )
+    REFERENCES `mydb`.`TRIBUNALD` (`idTribunald` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SANCION_NORMA`
     FOREIGN KEY (`idNorma` )
-    REFERENCES `SociedadCivil`.`NORMA` (`idNorma` )
+    REFERENCES `mydb`.`NORMA` (`idNorma` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_SANCION_TRIBUNALD ON `SociedadCivil`.`SANCION` (`idTribunald` ASC) ;
+CREATE INDEX fk_SANCION_TRIBUNALD ON `mydb`.`SANCION` (`idTribunald` ASC) ;
 
-CREATE INDEX fk_SANCION_NORMA ON `SociedadCivil`.`SANCION` (`idNorma` ASC) ;
+CREATE INDEX fk_SANCION_NORMA ON `mydb`.`SANCION` (`idNorma` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`BENIFICIARIO`
+-- Table `mydb`.`BENIFICIARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`BENIFICIARIO` ;
+DROP TABLE IF EXISTS `mydb`.`BENIFICIARIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`BENIFICIARIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`BENIFICIARIO` (
   `cedulaBeneficiario` INT NOT NULL AUTO_INCREMENT ,
   `nombreBeneficiario` VARCHAR(45) NOT NULL ,
   `apellidoBeneficiario` VARCHAR(45) NOT NULL ,
@@ -234,11 +234,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`ASAMBLEA`
+-- Table `mydb`.`ASAMBLEA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`ASAMBLEA` ;
+DROP TABLE IF EXISTS `mydb`.`ASAMBLEA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`ASAMBLEA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`ASAMBLEA` (
   `idAsamblea` INT NOT NULL AUTO_INCREMENT ,
   `tipoAsamblea` INT NOT NULL ,
   `descripcionAsamblea` VARCHAR(45) NOT NULL ,
@@ -247,20 +247,20 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`ASAMBLEA` (
   PRIMARY KEY (`idAsamblea`) ,
   CONSTRAINT `fk_ASAMBLEA_JUNTADIRECTIVA`
     FOREIGN KEY (`idJuntadirectiva` )
-    REFERENCES `SociedadCivil`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
+    REFERENCES `mydb`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_ASAMBLEA_JUNTADIRECTIVA ON `SociedadCivil`.`ASAMBLEA` (`idJuntadirectiva` ASC) ;
+CREATE INDEX fk_ASAMBLEA_JUNTADIRECTIVA ON `mydb`.`ASAMBLEA` (`idJuntadirectiva` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`SUELDO`
+-- Table `mydb`.`SUELDO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`SUELDO` ;
+DROP TABLE IF EXISTS `mydb`.`SUELDO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SUELDO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`SUELDO` (
   `idSueldo` INT NOT NULL AUTO_INCREMENT ,
   `montoSueldo` INT NOT NULL ,
   PRIMARY KEY (`idSueldo`) )
@@ -268,35 +268,34 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`INSCRIPCION`
+-- Table `mydb`.`INSCRIPCION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`INSCRIPCION` ;
+DROP TABLE IF EXISTS `mydb`.`INSCRIPCION` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`INSCRIPCION` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`INSCRIPCION` (
   `idInscripcion` INT NOT NULL AUTO_INCREMENT ,
   `fechaInscripcion` DATE NOT NULL ,
   `estatusInscripcion` INT NOT NULL ,
-  `fechaAInscripcion` DATE NULL ,
-  `montoInscripcion` INT NULL ,
-  `tipoInscripcion` INT NULL ,
+  `fechaAInscripcion` DATE NOT NULL ,
+  `montoInscripcion` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`idInscripcion`) ,
   CONSTRAINT `fk_INSCRIPCION_PERSONA`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`PERSONA` (`cedulaPersona` )
+    REFERENCES `mydb`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_INSCRIPCION_PERSONA ON `SociedadCivil`.`INSCRIPCION` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_INSCRIPCION_PERSONA ON `mydb`.`INSCRIPCION` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`LISTAIE`
+-- Table `mydb`.`LISTAIE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`LISTAIE` ;
+DROP TABLE IF EXISTS `mydb`.`LISTAIE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`LISTAIE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`LISTAIE` (
   `idListaIE` INT NOT NULL AUTO_INCREMENT ,
   `descripcionListaIE` VARCHAR(45) NOT NULL ,
   `tipoListaIE` INT NOT NULL ,
@@ -304,20 +303,20 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`LISTAIE` (
   PRIMARY KEY (`idListaIE`) ,
   CONSTRAINT `fk_LISTAIE_SOCIEDAD`
     FOREIGN KEY (`idSociedad` )
-    REFERENCES `SociedadCivil`.`SOCIEDAD` (`idSociedad` )
+    REFERENCES `mydb`.`SOCIEDAD` (`idSociedad` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_LISTAIE_SOCIEDAD ON `SociedadCivil`.`LISTAIE` (`idSociedad` ASC) ;
+CREATE INDEX fk_LISTAIE_SOCIEDAD ON `mydb`.`LISTAIE` (`idSociedad` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`FONDO`
+-- Table `mydb`.`FONDO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`FONDO` ;
+DROP TABLE IF EXISTS `mydb`.`FONDO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`FONDO` (
   `idFondo` INT NOT NULL AUTO_INCREMENT ,
   `nombreFondo` VARCHAR(45) NOT NULL ,
   `descripcionFondo` VARCHAR(45) NOT NULL ,
@@ -328,57 +327,57 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`MULTA`
+-- Table `mydb`.`MULTA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`MULTA` ;
+DROP TABLE IF EXISTS `mydb`.`MULTA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`MULTA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`MULTA` (
   `idMulta` INT NOT NULL AUTO_INCREMENT ,
   `montoMulta` INT NOT NULL ,
   `idSancion` INT NOT NULL ,
   PRIMARY KEY (`idMulta`) ,
   CONSTRAINT `fk_MULTA_SANCION`
     FOREIGN KEY (`idSancion` )
-    REFERENCES `SociedadCivil`.`SANCION` (`idSancion` )
+    REFERENCES `mydb`.`SANCION` (`idSancion` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_MULTA_SANCION ON `SociedadCivil`.`MULTA` (`idSancion` ASC) ;
+CREATE INDEX fk_MULTA_SANCION ON `mydb`.`MULTA` (`idSancion` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`HIST_PASAJE`
+-- Table `mydb`.`HIST_PASAJE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`HIST_PASAJE` ;
+DROP TABLE IF EXISTS `mydb`.`HIST_PASAJE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`HIST_PASAJE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`HIST_PASAJE` (
   `idPasaje` INT NOT NULL ,
   `idSucursal` INT NOT NULL ,
   `fechaHistPasaje` DATE NOT NULL ,
   PRIMARY KEY (`idPasaje`, `idSucursal`) ,
   CONSTRAINT `fk_PASAJE_has_SUCURSAL_PASAJE`
     FOREIGN KEY (`idPasaje` )
-    REFERENCES `SociedadCivil`.`PASAJE` (`idPasaje` )
+    REFERENCES `mydb`.`PASAJE` (`idPasaje` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PASAJE_has_SUCURSAL_SUCURSAL`
     FOREIGN KEY (`idSucursal` )
-    REFERENCES `SociedadCivil`.`SOCIEDAD` (`idSociedad` )
+    REFERENCES `mydb`.`SOCIEDAD` (`idSociedad` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_PASAJE_has_SUCURSAL_PASAJE ON `SociedadCivil`.`HIST_PASAJE` (`idPasaje` ASC) ;
+CREATE INDEX fk_PASAJE_has_SUCURSAL_PASAJE ON `mydb`.`HIST_PASAJE` (`idPasaje` ASC) ;
 
-CREATE INDEX fk_PASAJE_has_SUCURSAL_SUCURSAL ON `SociedadCivil`.`HIST_PASAJE` (`idSucursal` ASC) ;
+CREATE INDEX fk_PASAJE_has_SUCURSAL_SUCURSAL ON `mydb`.`HIST_PASAJE` (`idSucursal` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PROVEEDOR`
+-- Table `mydb`.`PROVEEDOR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PROVEEDOR` ;
+DROP TABLE IF EXISTS `mydb`.`PROVEEDOR` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PROVEEDOR` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PROVEEDOR` (
   `idProveedor` INT NOT NULL AUTO_INCREMENT ,
   `direccionProveedor` VARCHAR(45) NOT NULL ,
   `telefonoProveedor` INT NOT NULL ,
@@ -391,37 +390,37 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`SUCURSAL_PROV`
+-- Table `mydb`.`SUCURSAL_PROV`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`SUCURSAL_PROV` ;
+DROP TABLE IF EXISTS `mydb`.`SUCURSAL_PROV` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SUCURSAL_PROV` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`SUCURSAL_PROV` (
   `idSucursal` INT NOT NULL ,
   `idLugar` INT NOT NULL ,
   `idProveedor` INT NOT NULL ,
   PRIMARY KEY (`idSucursal`, `idLugar`, `idProveedor`) ,
   CONSTRAINT `fk_SUCURSAL_has_PROVEEDOR_SUCURSAL`
     FOREIGN KEY (`idSucursal` , `idLugar` )
-    REFERENCES `SociedadCivil`.`SOCIEDAD` (`idSociedad` , `idLugar` )
+    REFERENCES `mydb`.`SOCIEDAD` (`idSociedad` , `idLugar` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SUCURSAL_has_PROVEEDOR_PROVEEDOR`
     FOREIGN KEY (`idProveedor` )
-    REFERENCES `SociedadCivil`.`PROVEEDOR` (`idProveedor` )
+    REFERENCES `mydb`.`PROVEEDOR` (`idProveedor` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_SUCURSAL ON `SociedadCivil`.`SUCURSAL_PROV` (`idSucursal` ASC, `idLugar` ASC) ;
+CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_SUCURSAL ON `mydb`.`SUCURSAL_PROV` (`idSucursal` ASC, `idLugar` ASC) ;
 
-CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_PROVEEDOR ON `SociedadCivil`.`SUCURSAL_PROV` (`idProveedor` ASC) ;
+CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_PROVEEDOR ON `mydb`.`SUCURSAL_PROV` (`idProveedor` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PRODUCTO_PROV`
+-- Table `mydb`.`PRODUCTO_PROV`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PRODUCTO_PROV` ;
+DROP TABLE IF EXISTS `mydb`.`PRODUCTO_PROV` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PRODUCTO_PROV` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PRODUCTO_PROV` (
   `idProducto` INT NOT NULL ,
   `idProveedor` INT NOT NULL ,
   `precioProductoProv` INT NOT NULL ,
@@ -429,164 +428,163 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PRODUCTO_PROV` (
   PRIMARY KEY (`idProducto`, `idProveedor`) ,
   CONSTRAINT `fk_PRODUCTO_has_PROVEEDOR_PRODUCTO`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `SociedadCivil`.`PRODUCTO` (`idProducto` )
+    REFERENCES `mydb`.`PRODUCTO` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PRODUCTO_has_PROVEEDOR_PROVEEDOR`
     FOREIGN KEY (`idProveedor` )
-    REFERENCES `SociedadCivil`.`PROVEEDOR` (`idProveedor` )
+    REFERENCES `mydb`.`PROVEEDOR` (`idProveedor` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_PRODUCTO_has_PROVEEDOR_PRODUCTO ON `SociedadCivil`.`PRODUCTO_PROV` (`idProducto` ASC) ;
+CREATE INDEX fk_PRODUCTO_has_PROVEEDOR_PRODUCTO ON `mydb`.`PRODUCTO_PROV` (`idProducto` ASC) ;
 
-CREATE INDEX fk_PRODUCTO_has_PROVEEDOR_PROVEEDOR ON `SociedadCivil`.`PRODUCTO_PROV` (`idProveedor` ASC) ;
+CREATE INDEX fk_PRODUCTO_has_PROVEEDOR_PROVEEDOR ON `mydb`.`PRODUCTO_PROV` (`idProveedor` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`SOCIO`
+-- Table `mydb`.`SOCIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`SOCIO` ;
+DROP TABLE IF EXISTS `mydb`.`SOCIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SOCIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`SOCIO` (
   `cedulaPersona` INT NOT NULL AUTO_INCREMENT ,
   PRIMARY KEY (`cedulaPersona`) ,
   CONSTRAINT `fk_SOCIO_PERSONA`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`PERSONA` (`cedulaPersona` )
+    REFERENCES `mydb`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_SOCIO_PERSONA ON `SociedadCivil`.`SOCIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SOCIO_PERSONA ON `mydb`.`SOCIO` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`AVANCE`
+-- Table `mydb`.`AVANCE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`AVANCE` ;
+DROP TABLE IF EXISTS `mydb`.`AVANCE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`AVANCE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`AVANCE` (
   `cedulaPersona` INT NOT NULL AUTO_INCREMENT ,
   PRIMARY KEY (`cedulaPersona`) ,
   CONSTRAINT `fk_AVANCE_PERSONA`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`PERSONA` (`cedulaPersona` )
+    REFERENCES `mydb`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_AVANCE_PERSONA ON `SociedadCivil`.`AVANCE` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_AVANCE_PERSONA ON `mydb`.`AVANCE` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`SOCIO_BENEFICIARIO`
+-- Table `mydb`.`SOCIO_BENEFICIARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`SOCIO_BENEFICIARIO` ;
+DROP TABLE IF EXISTS `mydb`.`SOCIO_BENEFICIARIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`SOCIO_BENEFICIARIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`SOCIO_BENEFICIARIO` (
   `cedulaPersona` INT NOT NULL ,
   `cedulaBeneficiario` INT NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `cedulaBeneficiario`) ,
   CONSTRAINT `fk_SOCIO_has_BENIFICIARIO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SOCIO_has_BENIFICIARIO_BENIFICIARIO`
     FOREIGN KEY (`cedulaBeneficiario` )
-    REFERENCES `SociedadCivil`.`BENIFICIARIO` (`cedulaBeneficiario` )
+    REFERENCES `mydb`.`BENIFICIARIO` (`cedulaBeneficiario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_SOCIO_has_BENIFICIARIO_SOCIO ON `SociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SOCIO_has_BENIFICIARIO_SOCIO ON `mydb`.`SOCIO_BENEFICIARIO` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_SOCIO_has_BENIFICIARIO_BENIFICIARIO ON `SociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaBeneficiario` ASC) ;
+CREATE INDEX fk_SOCIO_has_BENIFICIARIO_BENIFICIARIO ON `mydb`.`SOCIO_BENEFICIARIO` (`cedulaBeneficiario` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`AVANCE_BENIFICIARIO`
+-- Table `mydb`.`AVANCE_BENIFICIARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`AVANCE_BENIFICIARIO` ;
+DROP TABLE IF EXISTS `mydb`.`AVANCE_BENIFICIARIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`AVANCE_BENIFICIARIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`AVANCE_BENIFICIARIO` (
   `cedulaPersona` INT NOT NULL ,
   `cedulaBeneficiario` INT NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `cedulaBeneficiario`) ,
   CONSTRAINT `fk_AVANCE_has_BENIFICIARIO_AVANCE`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`AVANCE` (`cedulaPersona` )
+    REFERENCES `mydb`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_AVANCE_has_BENIFICIARIO_BENIFICIARIO`
     FOREIGN KEY (`cedulaBeneficiario` )
-    REFERENCES `SociedadCivil`.`BENIFICIARIO` (`cedulaBeneficiario` )
+    REFERENCES `mydb`.`BENIFICIARIO` (`cedulaBeneficiario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_AVANCE_has_BENIFICIARIO_AVANCE ON `SociedadCivil`.`AVANCE_BENIFICIARIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_AVANCE_has_BENIFICIARIO_AVANCE ON `mydb`.`AVANCE_BENIFICIARIO` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_AVANCE_has_BENIFICIARIO_BENIFICIARIO ON `SociedadCivil`.`AVANCE_BENIFICIARIO` (`cedulaBeneficiario` ASC) ;
+CREATE INDEX fk_AVANCE_has_BENIFICIARIO_BENIFICIARIO ON `mydb`.`AVANCE_BENIFICIARIO` (`cedulaBeneficiario` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`VEHICULO_AVANCE`
+-- Table `mydb`.`VEHICULO_AVANCE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`VEHICULO_AVANCE` ;
+DROP TABLE IF EXISTS `mydb`.`VEHICULO_AVANCE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`VEHICULO_AVANCE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`VEHICULO_AVANCE` (
   `idVehiculo` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`idVehiculo`, `cedulaPersona`) ,
   CONSTRAINT `fk_VEHICULO_has_AVANCE_VEHICULO`
     FOREIGN KEY (`idVehiculo` )
-    REFERENCES `SociedadCivil`.`VEHICULO` (`idVehiculo` )
+    REFERENCES `mydb`.`VEHICULO` (`idVehiculo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_VEHICULO_has_AVANCE_AVANCE`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`AVANCE` (`cedulaPersona` )
+    REFERENCES `mydb`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_VEHICULO_has_AVANCE_VEHICULO ON `SociedadCivil`.`VEHICULO_AVANCE` (`idVehiculo` ASC) ;
+CREATE INDEX fk_VEHICULO_has_AVANCE_VEHICULO ON `mydb`.`VEHICULO_AVANCE` (`idVehiculo` ASC) ;
 
-CREATE INDEX fk_VEHICULO_has_AVANCE_AVANCE ON `SociedadCivil`.`VEHICULO_AVANCE` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_VEHICULO_has_AVANCE_AVANCE ON `mydb`.`VEHICULO_AVANCE` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`TRASPASO`
+-- Table `mydb`.`TRASPASO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`TRASPASO` ;
+DROP TABLE IF EXISTS `mydb`.`TRASPASO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`TRASPASO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`TRASPASO` (
   `cedulaPersona` INT NOT NULL ,
   `idVehiculo` INT NOT NULL ,
   `fechaTraspaso` DATE NOT NULL ,
-  `traspasoLista` INT NULL ,
   PRIMARY KEY (`cedulaPersona`, `idVehiculo`) ,
   CONSTRAINT `fk_SOCIO_has_VEHICULO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SOCIO_has_VEHICULO_VEHICULO`
     FOREIGN KEY (`idVehiculo` )
-    REFERENCES `SociedadCivil`.`VEHICULO` (`idVehiculo` )
+    REFERENCES `mydb`.`VEHICULO` (`idVehiculo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_SOCIO_has_VEHICULO_SOCIO ON `SociedadCivil`.`TRASPASO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SOCIO_has_VEHICULO_SOCIO ON `mydb`.`TRASPASO` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_SOCIO_has_VEHICULO_VEHICULO ON `SociedadCivil`.`TRASPASO` (`idVehiculo` ASC) ;
+CREATE INDEX fk_SOCIO_has_VEHICULO_VEHICULO ON `mydb`.`TRASPASO` (`idVehiculo` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`HIST_CARGO`
+-- Table `mydb`.`HIST_CARGO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`HIST_CARGO` ;
+DROP TABLE IF EXISTS `mydb`.`HIST_CARGO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`HIST_CARGO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`HIST_CARGO` (
   `cedulaPersona` INT NOT NULL ,
   `fechaCargo` DATE NOT NULL ,
   `idTribunald` INT NOT NULL ,
@@ -595,66 +593,66 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`HIST_CARGO` (
   PRIMARY KEY (`cedulaPersona`, `idJuntadirectiva`, `idTribunald`) ,
   CONSTRAINT `fk_JUNTADIRECTIVA_has_SOCIO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_HIST_CARGO_TRIBUNALD`
     FOREIGN KEY (`idTribunald` )
-    REFERENCES `SociedadCivil`.`TRIBUNALD` (`idTribunald` )
+    REFERENCES `mydb`.`TRIBUNALD` (`idTribunald` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_HIST_CARGO_JUNTADIRECTIVA`
     FOREIGN KEY (`idJuntadirectiva` )
-    REFERENCES `SociedadCivil`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
+    REFERENCES `mydb`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_HIST_CARGO_JUNTADIRECTIVA1`
     FOREIGN KEY (`idJuntadirectivaOpcional` )
-    REFERENCES `SociedadCivil`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
+    REFERENCES `mydb`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_JUNTADIRECTIVA_has_SOCIO_SOCIO ON `SociedadCivil`.`HIST_CARGO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_JUNTADIRECTIVA_has_SOCIO_SOCIO ON `mydb`.`HIST_CARGO` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_HIST_CARGO_TRIBUNALD ON `SociedadCivil`.`HIST_CARGO` (`idTribunald` ASC) ;
+CREATE INDEX fk_HIST_CARGO_TRIBUNALD ON `mydb`.`HIST_CARGO` (`idTribunald` ASC) ;
 
-CREATE INDEX fk_HIST_CARGO_JUNTADIRECTIVA ON `SociedadCivil`.`HIST_CARGO` (`idJuntadirectiva` ASC) ;
+CREATE INDEX fk_HIST_CARGO_JUNTADIRECTIVA ON `mydb`.`HIST_CARGO` (`idJuntadirectiva` ASC) ;
 
-CREATE INDEX fk_HIST_CARGO_JUNTADIRECTIVA1 ON `SociedadCivil`.`HIST_CARGO` (`idJuntadirectivaOpcional` ASC) ;
+CREATE INDEX fk_HIST_CARGO_JUNTADIRECTIVA1 ON `mydb`.`HIST_CARGO` (`idJuntadirectivaOpcional` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`HIST_SUELDO`
+-- Table `mydb`.`HIST_SUELDO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`HIST_SUELDO` ;
+DROP TABLE IF EXISTS `mydb`.`HIST_SUELDO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`HIST_SUELDO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`HIST_SUELDO` (
   `idJuntadirectiva` INT NOT NULL ,
   `idSueldo` INT NOT NULL ,
   `fechaSueldo` DATE NOT NULL ,
   PRIMARY KEY (`idJuntadirectiva`, `idSueldo`) ,
   CONSTRAINT `fk_JUNTADIRECTIVA_has_SUELDO_JUNTADIRECTIVA`
     FOREIGN KEY (`idJuntadirectiva` )
-    REFERENCES `SociedadCivil`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
+    REFERENCES `mydb`.`JUNTADIRECTIVA` (`idJuntadirectiva` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_JUNTADIRECTIVA_has_SUELDO_SUELDO`
     FOREIGN KEY (`idSueldo` )
-    REFERENCES `SociedadCivil`.`SUELDO` (`idSueldo` )
+    REFERENCES `mydb`.`SUELDO` (`idSueldo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_JUNTADIRECTIVA_has_SUELDO_JUNTADIRECTIVA ON `SociedadCivil`.`HIST_SUELDO` (`idJuntadirectiva` ASC) ;
+CREATE INDEX fk_JUNTADIRECTIVA_has_SUELDO_JUNTADIRECTIVA ON `mydb`.`HIST_SUELDO` (`idJuntadirectiva` ASC) ;
 
-CREATE INDEX fk_JUNTADIRECTIVA_has_SUELDO_SUELDO ON `SociedadCivil`.`HIST_SUELDO` (`idSueldo` ASC) ;
+CREATE INDEX fk_JUNTADIRECTIVA_has_SUELDO_SUELDO ON `mydb`.`HIST_SUELDO` (`idSueldo` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`FONDOINGRESO`
+-- Table `mydb`.`FONDOINGRESO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`FONDOINGRESO` ;
+DROP TABLE IF EXISTS `mydb`.`FONDOINGRESO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDOINGRESO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`FONDOINGRESO` (
   `idFondoIngreso` INT NOT NULL AUTO_INCREMENT ,
   `descripcionFondoIngreso` VARCHAR(45) NOT NULL ,
   `montoFondoIngreso` INT NOT NULL ,
@@ -663,20 +661,20 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDOINGRESO` (
   PRIMARY KEY (`idFondoIngreso`) ,
   CONSTRAINT `fk_INGRESO_FONDO`
     FOREIGN KEY (`idFondo` )
-    REFERENCES `SociedadCivil`.`FONDO` (`idFondo` )
+    REFERENCES `mydb`.`FONDO` (`idFondo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_INGRESO_FONDO ON `SociedadCivil`.`FONDOINGRESO` (`idFondo` ASC) ;
+CREATE INDEX fk_INGRESO_FONDO ON `mydb`.`FONDOINGRESO` (`idFondo` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`FONDOEGRESO`
+-- Table `mydb`.`FONDOEGRESO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`FONDOEGRESO` ;
+DROP TABLE IF EXISTS `mydb`.`FONDOEGRESO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDOEGRESO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`FONDOEGRESO` (
   `idFondoEgreso` INT NOT NULL AUTO_INCREMENT ,
   `descripcionFondoEgreso` VARCHAR(45) NOT NULL ,
   `montoFondoEgreso` INT NOT NULL ,
@@ -685,20 +683,20 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDOEGRESO` (
   PRIMARY KEY (`idFondoEgreso`) ,
   CONSTRAINT `fk_EGRESO_FONDO`
     FOREIGN KEY (`idFondo` )
-    REFERENCES `SociedadCivil`.`FONDO` (`idFondo` )
+    REFERENCES `mydb`.`FONDO` (`idFondo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_EGRESO_FONDO ON `SociedadCivil`.`FONDOEGRESO` (`idFondo` ASC) ;
+CREATE INDEX fk_EGRESO_FONDO ON `mydb`.`FONDOEGRESO` (`idFondo` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`CUOTA`
+-- Table `mydb`.`CUOTA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`CUOTA` ;
+DROP TABLE IF EXISTS `mydb`.`CUOTA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`CUOTA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`CUOTA` (
   `idCuota` INT NOT NULL AUTO_INCREMENT ,
   `tipoCuota` INT NOT NULL ,
   `montoCuota` INT NOT NULL ,
@@ -707,163 +705,163 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`ASAMBLEA_SOCIO`
+-- Table `mydb`.`ASAMBLEA_SOCIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`ASAMBLEA_SOCIO` ;
+DROP TABLE IF EXISTS `mydb`.`ASAMBLEA_SOCIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`ASAMBLEA_SOCIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`ASAMBLEA_SOCIO` (
   `idAsamblea` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `idAsamblea`) ,
   CONSTRAINT `fk_SOCIO_has_ASAMBLEA_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SOCIO_has_ASAMBLEA_ASAMBLEA`
     FOREIGN KEY (`idAsamblea` )
-    REFERENCES `SociedadCivil`.`ASAMBLEA` (`idAsamblea` )
+    REFERENCES `mydb`.`ASAMBLEA` (`idAsamblea` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_SOCIO_has_ASAMBLEA_SOCIO ON `SociedadCivil`.`ASAMBLEA_SOCIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SOCIO_has_ASAMBLEA_SOCIO ON `mydb`.`ASAMBLEA_SOCIO` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_SOCIO_has_ASAMBLEA_ASAMBLEA ON `SociedadCivil`.`ASAMBLEA_SOCIO` (`idAsamblea` ASC) ;
+CREATE INDEX fk_SOCIO_has_ASAMBLEA_ASAMBLEA ON `mydb`.`ASAMBLEA_SOCIO` (`idAsamblea` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`ASAMBLEA_AVANCE`
+-- Table `mydb`.`ASAMBLEA_AVANCE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`ASAMBLEA_AVANCE` ;
+DROP TABLE IF EXISTS `mydb`.`ASAMBLEA_AVANCE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`ASAMBLEA_AVANCE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`ASAMBLEA_AVANCE` (
   `idAsamblea` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`idAsamblea`, `cedulaPersona`) ,
   CONSTRAINT `fk_ASAMBLEA_has_AVANCE_ASAMBLEA`
     FOREIGN KEY (`idAsamblea` )
-    REFERENCES `SociedadCivil`.`ASAMBLEA` (`idAsamblea` )
+    REFERENCES `mydb`.`ASAMBLEA` (`idAsamblea` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_ASAMBLEA_has_AVANCE_AVANCE`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`AVANCE` (`cedulaPersona` )
+    REFERENCES `mydb`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_ASAMBLEA_has_AVANCE_ASAMBLEA ON `SociedadCivil`.`ASAMBLEA_AVANCE` (`idAsamblea` ASC) ;
+CREATE INDEX fk_ASAMBLEA_has_AVANCE_ASAMBLEA ON `mydb`.`ASAMBLEA_AVANCE` (`idAsamblea` ASC) ;
 
-CREATE INDEX fk_ASAMBLEA_has_AVANCE_AVANCE ON `SociedadCivil`.`ASAMBLEA_AVANCE` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_ASAMBLEA_has_AVANCE_AVANCE ON `mydb`.`ASAMBLEA_AVANCE` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`CUOTA_SOCIO`
+-- Table `mydb`.`CUOTA_SOCIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`CUOTA_SOCIO` ;
+DROP TABLE IF EXISTS `mydb`.`CUOTA_SOCIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`CUOTA_SOCIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`CUOTA_SOCIO` (
   `cedulaPersona` INT NOT NULL ,
   `idCuota` INT NOT NULL ,
   `fechaCuota` DATE NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `idCuota`) ,
   CONSTRAINT `fk_SOCIO_has_CUOTA_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SOCIO_has_CUOTA_CUOTA`
     FOREIGN KEY (`idCuota` )
-    REFERENCES `SociedadCivil`.`CUOTA` (`idCuota` )
+    REFERENCES `mydb`.`CUOTA` (`idCuota` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_SOCIO_has_CUOTA_SOCIO ON `SociedadCivil`.`CUOTA_SOCIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SOCIO_has_CUOTA_SOCIO ON `mydb`.`CUOTA_SOCIO` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_SOCIO_has_CUOTA_CUOTA ON `SociedadCivil`.`CUOTA_SOCIO` (`idCuota` ASC) ;
+CREATE INDEX fk_SOCIO_has_CUOTA_CUOTA ON `mydb`.`CUOTA_SOCIO` (`idCuota` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`CUOTA_AVANCE`
+-- Table `mydb`.`CUOTA_AVANCE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`CUOTA_AVANCE` ;
+DROP TABLE IF EXISTS `mydb`.`CUOTA_AVANCE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`CUOTA_AVANCE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`CUOTA_AVANCE` (
   `cedulaPersona` INT NOT NULL ,
   `idCuota` INT NOT NULL ,
   `fechaCuota` DATE NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `idCuota`) ,
   CONSTRAINT `fk_AVANCE_has_CUOTA_AVANCE`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`AVANCE` (`cedulaPersona` )
+    REFERENCES `mydb`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_AVANCE_has_CUOTA_CUOTA`
     FOREIGN KEY (`idCuota` )
-    REFERENCES `SociedadCivil`.`CUOTA` (`idCuota` )
+    REFERENCES `mydb`.`CUOTA` (`idCuota` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_AVANCE_has_CUOTA_AVANCE ON `SociedadCivil`.`CUOTA_AVANCE` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_AVANCE_has_CUOTA_AVANCE ON `mydb`.`CUOTA_AVANCE` (`cedulaPersona` ASC) ;
 
-CREATE INDEX fk_AVANCE_has_CUOTA_CUOTA ON `SociedadCivil`.`CUOTA_AVANCE` (`idCuota` ASC) ;
+CREATE INDEX fk_AVANCE_has_CUOTA_CUOTA ON `mydb`.`CUOTA_AVANCE` (`idCuota` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`FONDO_SOCIO`
+-- Table `mydb`.`FONDO_SOCIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`FONDO_SOCIO` ;
+DROP TABLE IF EXISTS `mydb`.`FONDO_SOCIO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDO_SOCIO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`FONDO_SOCIO` (
   `idFondo` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`idFondo`, `cedulaPersona`) ,
   CONSTRAINT `fk_FONDO_has_SOCIO_FONDO`
     FOREIGN KEY (`idFondo` )
-    REFERENCES `SociedadCivil`.`FONDO` (`idFondo` )
+    REFERENCES `mydb`.`FONDO` (`idFondo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_FONDO_has_SOCIO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_FONDO_has_SOCIO_FONDO ON `SociedadCivil`.`FONDO_SOCIO` (`idFondo` ASC) ;
+CREATE INDEX fk_FONDO_has_SOCIO_FONDO ON `mydb`.`FONDO_SOCIO` (`idFondo` ASC) ;
 
-CREATE INDEX fk_FONDO_has_SOCIO_SOCIO ON `SociedadCivil`.`FONDO_SOCIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_FONDO_has_SOCIO_SOCIO ON `mydb`.`FONDO_SOCIO` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`FONDO_AVANCE`
+-- Table `mydb`.`FONDO_AVANCE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`FONDO_AVANCE` ;
+DROP TABLE IF EXISTS `mydb`.`FONDO_AVANCE` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`FONDO_AVANCE` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`FONDO_AVANCE` (
   `idFondo` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
   PRIMARY KEY (`idFondo`, `cedulaPersona`) ,
   CONSTRAINT `fk_FONDO_has_AVANCE_FONDO`
     FOREIGN KEY (`idFondo` )
-    REFERENCES `SociedadCivil`.`FONDO` (`idFondo` )
+    REFERENCES `mydb`.`FONDO` (`idFondo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_FONDO_has_AVANCE_AVANCE`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`AVANCE` (`cedulaPersona` )
+    REFERENCES `mydb`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_FONDO_has_AVANCE_FONDO ON `SociedadCivil`.`FONDO_AVANCE` (`idFondo` ASC) ;
+CREATE INDEX fk_FONDO_has_AVANCE_FONDO ON `mydb`.`FONDO_AVANCE` (`idFondo` ASC) ;
 
-CREATE INDEX fk_FONDO_has_AVANCE_AVANCE ON `SociedadCivil`.`FONDO_AVANCE` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_FONDO_has_AVANCE_AVANCE ON `mydb`.`FONDO_AVANCE` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PRESTAMO`
+-- Table `mydb`.`PRESTAMO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PRESTAMO` ;
+DROP TABLE IF EXISTS `mydb`.`PRESTAMO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PRESTAMO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PRESTAMO` (
   `idPrestamo` INT NOT NULL ,
   `montoPrestamo` INT NOT NULL ,
   PRIMARY KEY (`idPrestamo`) )
@@ -871,11 +869,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`PRESTAMO_PERSONA`
+-- Table `mydb`.`PRESTAMO_PERSONA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`PRESTAMO_PERSONA` ;
+DROP TABLE IF EXISTS `mydb`.`PRESTAMO_PERSONA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PRESTAMO_PERSONA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`PRESTAMO_PERSONA` (
   `idPrestamo` INT NOT NULL ,
   `tipoPersona` INT NOT NULL ,
   `cedulaPersonaA` INT NULL ,
@@ -883,33 +881,33 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`PRESTAMO_PERSONA` (
   PRIMARY KEY (`idPrestamo`) ,
   CONSTRAINT `fk_AVANCE_has_PRESTAMO_AVANCE`
     FOREIGN KEY (`cedulaPersonaA` )
-    REFERENCES `SociedadCivil`.`AVANCE` (`cedulaPersona` )
+    REFERENCES `mydb`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_AVANCE_has_PRESTAMO_PRESTAMO`
     FOREIGN KEY (`idPrestamo` )
-    REFERENCES `SociedadCivil`.`PRESTAMO` (`idPrestamo` )
+    REFERENCES `mydb`.`PRESTAMO` (`idPrestamo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PRESTAMO_PERSONA_SOCIO`
     FOREIGN KEY (`cedulaPersonaS` )
-    REFERENCES `SociedadCivil`.`SOCIO` (`cedulaPersona` )
+    REFERENCES `mydb`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_AVANCE_has_PRESTAMO_AVANCE ON `SociedadCivil`.`PRESTAMO_PERSONA` (`cedulaPersonaA` ASC) ;
+CREATE INDEX fk_AVANCE_has_PRESTAMO_AVANCE ON `mydb`.`PRESTAMO_PERSONA` (`cedulaPersonaA` ASC) ;
 
-CREATE INDEX fk_AVANCE_has_PRESTAMO_PRESTAMO ON `SociedadCivil`.`PRESTAMO_PERSONA` (`idPrestamo` ASC) ;
+CREATE INDEX fk_AVANCE_has_PRESTAMO_PRESTAMO ON `mydb`.`PRESTAMO_PERSONA` (`idPrestamo` ASC) ;
 
-CREATE INDEX fk_PRESTAMO_PERSONA_SOCIO ON `SociedadCivil`.`PRESTAMO_PERSONA` (`cedulaPersonaS` ASC) ;
+CREATE INDEX fk_PRESTAMO_PERSONA_SOCIO ON `mydb`.`PRESTAMO_PERSONA` (`cedulaPersonaS` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`COMPRA_VENTA`
+-- Table `mydb`.`COMPRA_VENTA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`COMPRA_VENTA` ;
+DROP TABLE IF EXISTS `mydb`.`COMPRA_VENTA` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`COMPRA_VENTA` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`COMPRA_VENTA` (
   `idCompraVenta` INT NOT NULL AUTO_INCREMENT ,
   `tipoCompraVenta` INT NOT NULL ,
   `montoCompraVenta` INT NOT NULL ,
@@ -920,27 +918,27 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`COMPRA_VENTA` (
   PRIMARY KEY (`idCompraVenta`) ,
   CONSTRAINT `fk_COMPRA_VENTA_PRODUCTO_PROV`
     FOREIGN KEY (`idProducto` , `idProveedor` )
-    REFERENCES `SociedadCivil`.`PRODUCTO_PROV` (`idProducto` , `idProveedor` )
+    REFERENCES `mydb`.`PRODUCTO_PROV` (`idProducto` , `idProveedor` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMPRA_VENTA_PERSONA`
     FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `SociedadCivil`.`PERSONA` (`cedulaPersona` )
+    REFERENCES `mydb`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_COMPRA_VENTA_PRODUCTO_PROV ON `SociedadCivil`.`COMPRA_VENTA` (`idProducto` ASC, `idProveedor` ASC) ;
+CREATE INDEX fk_COMPRA_VENTA_PRODUCTO_PROV ON `mydb`.`COMPRA_VENTA` (`idProducto` ASC, `idProveedor` ASC) ;
 
-CREATE INDEX fk_COMPRA_VENTA_PERSONA ON `SociedadCivil`.`COMPRA_VENTA` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_COMPRA_VENTA_PERSONA ON `mydb`.`COMPRA_VENTA` (`cedulaPersona` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`EGRESO`
+-- Table `mydb`.`EGRESO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`EGRESO` ;
+DROP TABLE IF EXISTS `mydb`.`EGRESO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`EGRESO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`EGRESO` (
   `idEgreso` INT NOT NULL AUTO_INCREMENT ,
   `tipoEgreso` INT NOT NULL ,
   `idPrestamo` INT NULL ,
@@ -950,41 +948,41 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`EGRESO` (
   PRIMARY KEY (`idEgreso`) ,
   CONSTRAINT `fk_EGRESO_PRESTAMO`
     FOREIGN KEY (`idPrestamo` )
-    REFERENCES `SociedadCivil`.`PRESTAMO` (`idPrestamo` )
+    REFERENCES `mydb`.`PRESTAMO` (`idPrestamo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_EGRESO_FONDOEGRESO`
     FOREIGN KEY (`idFondoEgreso` )
-    REFERENCES `SociedadCivil`.`FONDOEGRESO` (`idFondoEgreso` )
+    REFERENCES `mydb`.`FONDOEGRESO` (`idFondoEgreso` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_EGRESO_SUELDO`
     FOREIGN KEY (`idSueldo` )
-    REFERENCES `SociedadCivil`.`SUELDO` (`idSueldo` )
+    REFERENCES `mydb`.`SUELDO` (`idSueldo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_EGRESO_COMPRA_VENTA`
     FOREIGN KEY (`idCompraVenta` )
-    REFERENCES `SociedadCivil`.`COMPRA_VENTA` (`idCompraVenta` )
+    REFERENCES `mydb`.`COMPRA_VENTA` (`idCompraVenta` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_EGRESO_PRESTAMO ON `SociedadCivil`.`EGRESO` (`idPrestamo` ASC) ;
+CREATE INDEX fk_EGRESO_PRESTAMO ON `mydb`.`EGRESO` (`idPrestamo` ASC) ;
 
-CREATE INDEX fk_EGRESO_FONDOEGRESO ON `SociedadCivil`.`EGRESO` (`idFondoEgreso` ASC) ;
+CREATE INDEX fk_EGRESO_FONDOEGRESO ON `mydb`.`EGRESO` (`idFondoEgreso` ASC) ;
 
-CREATE INDEX fk_EGRESO_SUELDO ON `SociedadCivil`.`EGRESO` (`idSueldo` ASC) ;
+CREATE INDEX fk_EGRESO_SUELDO ON `mydb`.`EGRESO` (`idSueldo` ASC) ;
 
-CREATE INDEX fk_EGRESO_COMPRA_VENTA ON `SociedadCivil`.`EGRESO` (`idCompraVenta` ASC) ;
+CREATE INDEX fk_EGRESO_COMPRA_VENTA ON `mydb`.`EGRESO` (`idCompraVenta` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `SociedadCivil`.`INGRESO`
+-- Table `mydb`.`INGRESO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SociedadCivil`.`INGRESO` ;
+DROP TABLE IF EXISTS `mydb`.`INGRESO` ;
 
-CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`INGRESO` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`INGRESO` (
   `idINGRESO` INT NOT NULL AUTO_INCREMENT ,
   `tipoIngreso` INT NOT NULL ,
   `idMulta` INT NULL ,
@@ -996,47 +994,47 @@ CREATE  TABLE IF NOT EXISTS `SociedadCivil`.`INGRESO` (
   PRIMARY KEY (`idINGRESO`) ,
   CONSTRAINT `fk_INGRESO_MULTA`
     FOREIGN KEY (`idMulta` )
-    REFERENCES `SociedadCivil`.`MULTA` (`idMulta` )
+    REFERENCES `mydb`.`MULTA` (`idMulta` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_INGRESO_CUOTA_SOCIO`
     FOREIGN KEY (`idCuotaSocio` )
-    REFERENCES `SociedadCivil`.`CUOTA_SOCIO` (`idCuota` )
+    REFERENCES `mydb`.`CUOTA_SOCIO` (`idCuota` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_INGRESO_CUOTA_AVANCE`
     FOREIGN KEY (`idCuotaAvance` )
-    REFERENCES `SociedadCivil`.`CUOTA_AVANCE` (`idCuota` )
+    REFERENCES `mydb`.`CUOTA_AVANCE` (`idCuota` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_INGRESO_INSCRIPCION`
     FOREIGN KEY (`idInscripcion` )
-    REFERENCES `SociedadCivil`.`INSCRIPCION` (`idInscripcion` )
+    REFERENCES `mydb`.`INSCRIPCION` (`idInscripcion` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_INGRESO_COMPRA_VENTA`
     FOREIGN KEY (`idCompraVenta` )
-    REFERENCES `SociedadCivil`.`COMPRA_VENTA` (`idCompraVenta` )
+    REFERENCES `mydb`.`COMPRA_VENTA` (`idCompraVenta` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_INGRESO_FONDOINGRESO`
     FOREIGN KEY (`idFondoIngreso` )
-    REFERENCES `SociedadCivil`.`FONDOINGRESO` (`idFondoIngreso` )
+    REFERENCES `mydb`.`FONDOINGRESO` (`idFondoIngreso` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_INGRESO_MULTA ON `SociedadCivil`.`INGRESO` (`idMulta` ASC) ;
+CREATE INDEX fk_INGRESO_MULTA ON `mydb`.`INGRESO` (`idMulta` ASC) ;
 
-CREATE INDEX fk_INGRESO_CUOTA_SOCIO ON `SociedadCivil`.`INGRESO` (`idCuotaSocio` ASC) ;
+CREATE INDEX fk_INGRESO_CUOTA_SOCIO ON `mydb`.`INGRESO` (`idCuotaSocio` ASC) ;
 
-CREATE INDEX fk_INGRESO_CUOTA_AVANCE ON `SociedadCivil`.`INGRESO` (`idCuotaAvance` ASC) ;
+CREATE INDEX fk_INGRESO_CUOTA_AVANCE ON `mydb`.`INGRESO` (`idCuotaAvance` ASC) ;
 
-CREATE INDEX fk_INGRESO_INSCRIPCION ON `SociedadCivil`.`INGRESO` (`idInscripcion` ASC) ;
+CREATE INDEX fk_INGRESO_INSCRIPCION ON `mydb`.`INGRESO` (`idInscripcion` ASC) ;
 
-CREATE INDEX fk_INGRESO_COMPRA_VENTA ON `SociedadCivil`.`INGRESO` (`idCompraVenta` ASC) ;
+CREATE INDEX fk_INGRESO_COMPRA_VENTA ON `mydb`.`INGRESO` (`idCompraVenta` ASC) ;
 
-CREATE INDEX fk_INGRESO_FONDOINGRESO ON `SociedadCivil`.`INGRESO` (`idFondoIngreso` ASC) ;
+CREATE INDEX fk_INGRESO_FONDOINGRESO ON `mydb`.`INGRESO` (`idFondoIngreso` ASC) ;
 
 
 

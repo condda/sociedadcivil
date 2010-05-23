@@ -8,12 +8,18 @@
 #form1 h1 {
 	color: #6F0;
 }
+#form1 p {
+	color: #000;
+}
+#form1 h2 {
+	color: #690;
+}
 -->
 </style>
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="../php/crearProveedor.php">
   <h1>Crear Proveedor
   </h1>
   <p>&nbsp;</p>
@@ -21,22 +27,22 @@
     <tr>
       <td><select name="ciRif" id="ciRif">
         <option value="0">Seleccione</option>
-        <option>Cedula</option>
-        <option>Rif</option>
+        <option {cedulaS} value="1">Cedula</option>
+        <option {rifS} value="2">Rif</option>
       </select></td>
-      <td><input type="text" name="cedRif" id="cedRif" /></td>
+      <td><input name="cedRif" type="text" id="cedRif" value="{cedRif}" /></td>
     </tr>
     <tr>
       <td>Nombre</td>
-      <td><input type="text" name="nombre" id="nombre" /></td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" /></td>
     </tr>
     <tr>
       <td>Direccion</td>
-      <td><input name="direccion" type="text" id="direccion" /></td>
+      <td><input name="direccion" type="text" id="direccion" value="{direccion}" /></td>
     </tr>
     <tr>
       <td>Telefono</td>
-      <td><input type="text" name="telefono2" id="telefono2" /></td>
+      <td><input name="telefono" type="text" id="telefono" value="{telefono}" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -44,6 +50,7 @@
     </tr>
   </table>
   <p>&nbsp;</p>
+  <p>{mensaje}</p>
 </form>
 </body>
 </html>

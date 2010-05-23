@@ -19,7 +19,7 @@ body {background:#fff url(../imagenes/bg.jpg) repeat-x; font: 11px Verdana, Aria
 }
 #headercontent h2 {
 	font-size: 24px;
-	color: #5B920A;
+	color: #C0EC15;
 }
 #wrap #header #logo .description {
 	display: block;
@@ -28,8 +28,9 @@ body {background:#fff url(../imagenes/bg.jpg) repeat-x; font: 11px Verdana, Aria
 	padding-top: 10px;
 }
 #wrap #header #headercontent p {
-	color: #666666;
+	color: #999;
 	font-size: 14px;
+	text-align: justify;
 }
 #wrap #header #sitecption {
 	margin-right: 380px;

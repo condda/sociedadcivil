@@ -12,7 +12,7 @@
 
 	$pnlcontent = new Panel("../html/plantillaContent.html");
 	
-	
+	$pnlcontent->add("nombre",'Producto');
 	$pnlcontent->add("crear",'<a href="crearProducto.php">Crear Producto</a>');
 	$pnlcontent->add("modificar",'<a href="modificarProducto.php">Modificar Producto</a>');
 	$pnlcontent->add("eliminar",'<a href="eliminarProducto.php">Eliminar Producto</a>');

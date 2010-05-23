@@ -26,24 +26,35 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PERSONA` (
 ENGINE = InnoDB;
 
 
+
+
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`VEHICULO`
 -- -----------------------------------------------------
+
 DROP TABLE IF EXISTS `sociedadCivil`.`VEHICULO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`VEHICULO` (
   `idVehiculo` INT NOT NULL AUTO_INCREMENT ,
   `anoVehiculo` YEAR NOT NULL ,
   `estadoVehiculo` VARCHAR(45) NOT NULL ,
-  `polizaVehiculo` VARCHAR(45) NOT NULL ,
+  `polizaVehiculo` INT(11) NOT NULL ,
   PRIMARY KEY (`idVehiculo`) )
 ENGINE = InnoDB;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`JUNTADIRECTIVA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`JUNTADIRECTIVA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`JUNTADIRECTIVA` (
   `idJuntadirectiva` INT NOT NULL AUTO_INCREMENT ,
@@ -53,10 +64,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`JUNTADIRECTIVA` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`LUGAR`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`LUGAR` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`LUGAR` (
   `idLugar` INT NOT NULL AUTO_INCREMENT ,
@@ -70,13 +85,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`LUGAR` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_LUGAR_LUGAR ON `sociedadCivil`.`LUGAR` (`padreLugar` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SOCIEDAD`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`SOCIEDAD` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIEDAD` (
   `idSociedad` INT NOT NULL AUTO_INCREMENT ,
@@ -96,15 +116,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIEDAD` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_SUCURSAL_LUGAR ON `sociedadCivil`.`SOCIEDAD` (`idLugar` ASC) ;
 
+
 CREATE INDEX fk_SUCURSAL_PERSONA ON `sociedadCivil`.`SOCIEDAD` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`RUTA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`RUTA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`RUTA` (
   `idRuta` INT NOT NULL AUTO_INCREMENT ,
@@ -113,10 +139,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`RUTA` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`PASAJE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`PASAJE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PASAJE` (
   `idPasaje` INT NOT NULL AUTO_INCREMENT ,
@@ -130,13 +160,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PASAJE` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_PASAJE_RUTA ON `sociedadCivil`.`PASAJE` (`idRuta` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`PRODUCTO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`PRODUCTO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRODUCTO` (
   `idProducto` INT NOT NULL AUTO_INCREMENT ,
@@ -146,10 +181,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRODUCTO` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`REQUISITO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`REQUISITO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`REQUISITO` (
   `idRequisito` INT NOT NULL AUTO_INCREMENT ,
@@ -164,13 +203,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`REQUISITO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_REQUISITO_SOCIEDAD ON `sociedadCivil`.`REQUISITO` (`idSociedad` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`NORMA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`NORMA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`NORMA` (
   `idNorma` INT NOT NULL AUTO_INCREMENT ,
@@ -180,10 +224,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`NORMA` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`TRIBUNALD`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`TRIBUNALD` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`TRIBUNALD` (
   `idTribunald` INT NOT NULL AUTO_INCREMENT ,
@@ -192,10 +240,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`TRIBUNALD` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SANCION`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`SANCION` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SANCION` (
   `idSancion` INT NOT NULL AUTO_INCREMENT ,
@@ -215,15 +267,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SANCION` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_SANCION_TRIBUNALD ON `sociedadCivil`.`SANCION` (`idTribunald` ASC) ;
 
+
 CREATE INDEX fk_SANCION_NORMA ON `sociedadCivil`.`SANCION` (`idNorma` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`BENIFICIARIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`BENIFICIARIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`BENIFICIARIO` (
   `cedulaBeneficiario` INT NOT NULL AUTO_INCREMENT ,
@@ -233,10 +291,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`BENIFICIARIO` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`ASAMBLEA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`ASAMBLEA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA` (
   `idAsamblea` INT NOT NULL AUTO_INCREMENT ,
@@ -252,13 +314,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_ASAMBLEA_JUNTADIRECTIVA ON `sociedadCivil`.`ASAMBLEA` (`idJuntadirectiva` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SUELDO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`SUELDO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SUELDO` (
   `idSueldo` INT NOT NULL AUTO_INCREMENT ,
@@ -267,10 +334,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SUELDO` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`INSCRIPCION`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`INSCRIPCION` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INSCRIPCION` (
   `idInscripcion` INT NOT NULL AUTO_INCREMENT ,
@@ -278,22 +349,27 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INSCRIPCION` (
   `estatusInscripcion` INT NOT NULL ,
   `fechaAInscripcion` DATE NOT NULL ,
   `montoInscripcion` INT NOT NULL ,
-  `cedulaPersona` INT NOT NULL ,
+  `tipoInscripcion` INT NOT NULL ,
   PRIMARY KEY (`idInscripcion`) ,
   CONSTRAINT `fk_INSCRIPCION_PERSONA`
-    FOREIGN KEY (`cedulaPersona` )
+    FOREIGN KEY (`tipoInscripcion` )
     REFERENCES `sociedadCivil`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX fk_INSCRIPCION_PERSONA ON `sociedadCivil`.`INSCRIPCION` (`cedulaPersona` ASC) ;
+
+CREATE INDEX fk_INSCRIPCION_PERSONA ON `sociedadCivil`.`INSCRIPCION` (`tipoInscripcion` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`LISTAIE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`LISTAIE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`LISTAIE` (
   `idListaIE` INT NOT NULL AUTO_INCREMENT ,
@@ -308,13 +384,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`LISTAIE` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_LISTAIE_SOCIEDAD ON `sociedadCivil`.`LISTAIE` (`idSociedad` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`FONDO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`FONDO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO` (
   `idFondo` INT NOT NULL AUTO_INCREMENT ,
@@ -326,10 +407,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`MULTA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`MULTA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`MULTA` (
   `idMulta` INT NOT NULL AUTO_INCREMENT ,
@@ -343,13 +428,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`MULTA` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_MULTA_SANCION ON `sociedadCivil`.`MULTA` (`idSancion` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`HIST_PASAJE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`HIST_PASAJE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_PASAJE` (
   `idPasaje` INT NOT NULL ,
@@ -367,15 +457,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_PASAJE` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_PASAJE_has_SUCURSAL_PASAJE ON `sociedadCivil`.`HIST_PASAJE` (`idPasaje` ASC) ;
 
+
 CREATE INDEX fk_PASAJE_has_SUCURSAL_SUCURSAL ON `sociedadCivil`.`HIST_PASAJE` (`idSucursal` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`PROVEEDOR`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`PROVEEDOR` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PROVEEDOR` (
   `idProveedor` INT NOT NULL AUTO_INCREMENT ,
@@ -389,10 +485,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PROVEEDOR` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SUCURSAL_PROV`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`SUCURSAL_PROV` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SUCURSAL_PROV` (
   `idSucursal` INT NOT NULL ,
@@ -410,15 +510,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SUCURSAL_PROV` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_SUCURSAL ON `sociedadCivil`.`SUCURSAL_PROV` (`idSucursal` ASC, `idLugar` ASC) ;
 
+
 CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_PROVEEDOR ON `sociedadCivil`.`SUCURSAL_PROV` (`idProveedor` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`PRODUCTO_PROV`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`PRODUCTO_PROV` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRODUCTO_PROV` (
   `idProducto` INT NOT NULL ,
@@ -437,15 +543,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRODUCTO_PROV` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_PRODUCTO_has_PROVEEDOR_PRODUCTO ON `sociedadCivil`.`PRODUCTO_PROV` (`idProducto` ASC) ;
 
+
 CREATE INDEX fk_PRODUCTO_has_PROVEEDOR_PROVEEDOR ON `sociedadCivil`.`PRODUCTO_PROV` (`idProveedor` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SOCIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`SOCIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIO` (
   `cedulaPersona` INT NOT NULL AUTO_INCREMENT ,
@@ -457,13 +569,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_SOCIO_PERSONA ON `sociedadCivil`.`SOCIO` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`AVANCE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`AVANCE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`AVANCE` (
   `cedulaPersona` INT NOT NULL AUTO_INCREMENT ,
@@ -475,13 +592,17 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`AVANCE` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_AVANCE_PERSONA ON `sociedadCivil`.`AVANCE` (`cedulaPersona` ASC) ;
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SOCIO_BENEFICIARIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`SOCIO_BENEFICIARIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIO_BENEFICIARIO` (
   `cedulaPersona` INT NOT NULL ,
@@ -498,15 +619,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIO_BENEFICIARIO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_SOCIO_has_BENIFICIARIO_SOCIO ON `sociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaPersona` ASC) ;
 
+
 CREATE INDEX fk_SOCIO_has_BENIFICIARIO_BENIFICIARIO ON `sociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaBeneficiario` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`AVANCE_BENIFICIARIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`AVANCE_BENIFICIARIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`AVANCE_BENIFICIARIO` (
   `cedulaPersona` INT NOT NULL ,
@@ -523,15 +650,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`AVANCE_BENIFICIARIO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_AVANCE_has_BENIFICIARIO_AVANCE ON `sociedadCivil`.`AVANCE_BENIFICIARIO` (`cedulaPersona` ASC) ;
 
+
 CREATE INDEX fk_AVANCE_has_BENIFICIARIO_BENIFICIARIO ON `sociedadCivil`.`AVANCE_BENIFICIARIO` (`cedulaBeneficiario` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`VEHICULO_AVANCE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`VEHICULO_AVANCE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`VEHICULO_AVANCE` (
   `idVehiculo` INT NOT NULL ,
@@ -548,15 +681,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`VEHICULO_AVANCE` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_VEHICULO_has_AVANCE_VEHICULO ON `sociedadCivil`.`VEHICULO_AVANCE` (`idVehiculo` ASC) ;
 
+
 CREATE INDEX fk_VEHICULO_has_AVANCE_AVANCE ON `sociedadCivil`.`VEHICULO_AVANCE` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`TRASPASO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`TRASPASO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`TRASPASO` (
   `cedulaPersona` INT NOT NULL ,
@@ -574,15 +713,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`TRASPASO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_SOCIO_has_VEHICULO_SOCIO ON `sociedadCivil`.`TRASPASO` (`cedulaPersona` ASC) ;
 
+
 CREATE INDEX fk_SOCIO_has_VEHICULO_VEHICULO ON `sociedadCivil`.`TRASPASO` (`idVehiculo` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`HIST_CARGO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`HIST_CARGO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_CARGO` (
   `cedulaPersona` INT NOT NULL ,
@@ -612,19 +757,25 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_CARGO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_JUNTADIRECTIVA_has_SOCIO_SOCIO ON `sociedadCivil`.`HIST_CARGO` (`cedulaPersona` ASC) ;
 
+CREATE INDEX fk_JUNTADIRECTIVA_has_SOCIO_SOCIO ON `sociedadCivil`.`HIST_CARGO` (`cedulaPersona` ASC) ;
 CREATE INDEX fk_HIST_CARGO_TRIBUNALD ON `sociedadCivil`.`HIST_CARGO` (`idTribunald` ASC) ;
+
 
 CREATE INDEX fk_HIST_CARGO_JUNTADIRECTIVA ON `sociedadCivil`.`HIST_CARGO` (`idJuntadirectiva` ASC) ;
 
+
 CREATE INDEX fk_HIST_CARGO_JUNTADIRECTIVA1 ON `sociedadCivil`.`HIST_CARGO` (`idJuntadirectivaOpcional` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`HIST_SUELDO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`HIST_SUELDO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_SUELDO` (
   `idJuntadirectiva` INT NOT NULL ,
@@ -642,15 +793,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_SUELDO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_JUNTADIRECTIVA_has_SUELDO_JUNTADIRECTIVA ON `sociedadCivil`.`HIST_SUELDO` (`idJuntadirectiva` ASC) ;
 
+
 CREATE INDEX fk_JUNTADIRECTIVA_has_SUELDO_SUELDO ON `sociedadCivil`.`HIST_SUELDO` (`idSueldo` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`FONDOINGRESO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`FONDOINGRESO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDOINGRESO` (
   `idFondoIngreso` INT NOT NULL AUTO_INCREMENT ,
@@ -666,13 +823,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDOINGRESO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_INGRESO_FONDO ON `sociedadCivil`.`FONDOINGRESO` (`idFondo` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`FONDOEGRESO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`FONDOEGRESO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDOEGRESO` (
   `idFondoEgreso` INT NOT NULL AUTO_INCREMENT ,
@@ -688,13 +850,18 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDOEGRESO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_EGRESO_FONDO ON `sociedadCivil`.`FONDOEGRESO` (`idFondo` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`CUOTA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`CUOTA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA` (
   `idCuota` INT NOT NULL AUTO_INCREMENT ,
@@ -704,10 +871,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`ASAMBLEA_SOCIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`ASAMBLEA_SOCIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA_SOCIO` (
   `idAsamblea` INT NOT NULL ,
@@ -724,15 +895,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA_SOCIO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_SOCIO_has_ASAMBLEA_SOCIO ON `sociedadCivil`.`ASAMBLEA_SOCIO` (`cedulaPersona` ASC) ;
 
+
 CREATE INDEX fk_SOCIO_has_ASAMBLEA_ASAMBLEA ON `sociedadCivil`.`ASAMBLEA_SOCIO` (`idAsamblea` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`ASAMBLEA_AVANCE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`ASAMBLEA_AVANCE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA_AVANCE` (
   `idAsamblea` INT NOT NULL ,
@@ -749,15 +926,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA_AVANCE` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_ASAMBLEA_has_AVANCE_ASAMBLEA ON `sociedadCivil`.`ASAMBLEA_AVANCE` (`idAsamblea` ASC) ;
 
+
 CREATE INDEX fk_ASAMBLEA_has_AVANCE_AVANCE ON `sociedadCivil`.`ASAMBLEA_AVANCE` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`CUOTA_SOCIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`CUOTA_SOCIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA_SOCIO` (
   `cedulaPersona` INT NOT NULL ,
@@ -775,15 +958,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA_SOCIO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_SOCIO_has_CUOTA_SOCIO ON `sociedadCivil`.`CUOTA_SOCIO` (`cedulaPersona` ASC) ;
 
+
 CREATE INDEX fk_SOCIO_has_CUOTA_CUOTA ON `sociedadCivil`.`CUOTA_SOCIO` (`idCuota` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`CUOTA_AVANCE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`CUOTA_AVANCE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA_AVANCE` (
   `cedulaPersona` INT NOT NULL ,
@@ -801,15 +990,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA_AVANCE` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_AVANCE_has_CUOTA_AVANCE ON `sociedadCivil`.`CUOTA_AVANCE` (`cedulaPersona` ASC) ;
 
+
 CREATE INDEX fk_AVANCE_has_CUOTA_CUOTA ON `sociedadCivil`.`CUOTA_AVANCE` (`idCuota` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`FONDO_SOCIO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`FONDO_SOCIO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO_SOCIO` (
   `idFondo` INT NOT NULL ,
@@ -826,15 +1021,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO_SOCIO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_FONDO_has_SOCIO_FONDO ON `sociedadCivil`.`FONDO_SOCIO` (`idFondo` ASC) ;
 
+
 CREATE INDEX fk_FONDO_has_SOCIO_SOCIO ON `sociedadCivil`.`FONDO_SOCIO` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`FONDO_AVANCE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`FONDO_AVANCE` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO_AVANCE` (
   `idFondo` INT NOT NULL ,
@@ -851,15 +1052,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO_AVANCE` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_FONDO_has_AVANCE_FONDO ON `sociedadCivil`.`FONDO_AVANCE` (`idFondo` ASC) ;
 
+
 CREATE INDEX fk_FONDO_has_AVANCE_AVANCE ON `sociedadCivil`.`FONDO_AVANCE` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`PRESTAMO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`PRESTAMO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRESTAMO` (
   `idPrestamo` INT NOT NULL ,
@@ -868,10 +1075,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRESTAMO` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`PRESTAMO_PERSONA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`PRESTAMO_PERSONA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRESTAMO_PERSONA` (
   `idPrestamo` INT NOT NULL ,
@@ -895,17 +1106,24 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRESTAMO_PERSONA` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 CREATE INDEX fk_AVANCE_has_PRESTAMO_AVANCE ON `sociedadCivil`.`PRESTAMO_PERSONA` (`cedulaPersonaA` ASC) ;
+
 
 CREATE INDEX fk_AVANCE_has_PRESTAMO_PRESTAMO ON `sociedadCivil`.`PRESTAMO_PERSONA` (`idPrestamo` ASC) ;
 
+
 CREATE INDEX fk_PRESTAMO_PERSONA_SOCIO ON `sociedadCivil`.`PRESTAMO_PERSONA` (`cedulaPersonaS` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`COMPRA_VENTA`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`COMPRA_VENTA` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`COMPRA_VENTA` (
   `idCompraVenta` INT NOT NULL AUTO_INCREMENT ,
@@ -928,15 +1146,21 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`COMPRA_VENTA` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_COMPRA_VENTA_PRODUCTO_PROV ON `sociedadCivil`.`COMPRA_VENTA` (`idProducto` ASC, `idProveedor` ASC) ;
 
+
 CREATE INDEX fk_COMPRA_VENTA_PERSONA ON `sociedadCivil`.`COMPRA_VENTA` (`cedulaPersona` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`EGRESO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`EGRESO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`EGRESO` (
   `idEgreso` INT NOT NULL AUTO_INCREMENT ,
@@ -968,19 +1192,27 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`EGRESO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_EGRESO_PRESTAMO ON `sociedadCivil`.`EGRESO` (`idPrestamo` ASC) ;
+
 
 CREATE INDEX fk_EGRESO_FONDOEGRESO ON `sociedadCivil`.`EGRESO` (`idFondoEgreso` ASC) ;
 
+
 CREATE INDEX fk_EGRESO_SUELDO ON `sociedadCivil`.`EGRESO` (`idSueldo` ASC) ;
 
+
 CREATE INDEX fk_EGRESO_COMPRA_VENTA ON `sociedadCivil`.`EGRESO` (`idCompraVenta` ASC) ;
+
+
+
 
 
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`INGRESO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `sociedadCivil`.`INGRESO` ;
+
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INGRESO` (
   `idINGRESO` INT NOT NULL AUTO_INCREMENT ,
@@ -1024,20 +1256,29 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INGRESO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX fk_INGRESO_MULTA ON `sociedadCivil`.`INGRESO` (`idMulta` ASC) ;
+
 
 CREATE INDEX fk_INGRESO_CUOTA_SOCIO ON `sociedadCivil`.`INGRESO` (`idCuotaSocio` ASC) ;
 
+
 CREATE INDEX fk_INGRESO_CUOTA_AVANCE ON `sociedadCivil`.`INGRESO` (`idCuotaAvance` ASC) ;
+
 
 CREATE INDEX fk_INGRESO_INSCRIPCION ON `sociedadCivil`.`INGRESO` (`idInscripcion` ASC) ;
 
+
 CREATE INDEX fk_INGRESO_COMPRA_VENTA ON `sociedadCivil`.`INGRESO` (`idCompraVenta` ASC) ;
+
 
 CREATE INDEX fk_INGRESO_FONDOINGRESO ON `sociedadCivil`.`INGRESO` (`idFondoIngreso` ASC) ;
 
 
 
+
 SET SQL_MODE=@OLD_SQL_MODE;
+
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

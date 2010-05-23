@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+
+
 <style type="text/css">
 <!--
 #form1 h1 {
@@ -22,6 +24,7 @@
 <form id="form1" name="form1" method="post" action="../php/crearProveedor.php">
   <h1>Crear Proveedor
   </h1>
+  
   <p>&nbsp;</p>
   <table width="200" border="0">
     <tr>
@@ -30,7 +33,9 @@
         <option {cedulaS} value="1">Cedula</option>
         <option {rifS} value="2">Rif</option>
       </select></td>
-      <td><input name="cedRif" type="text" id="cedRif" value="{cedRif}" /></td>
+      <td><div id = cedulaProveedor>
+        <input name="cedRif" type="text" id="cedRif" value="{cedRif}" onchange="validarCedulaProveedor()" />
+      </div></td>
     </tr>
     <tr>
       <td>Nombre</td>

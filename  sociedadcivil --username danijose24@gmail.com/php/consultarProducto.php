@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require_once ("../classes/Panel.php");
-	//include "../db/conexion.php";
+	include "../db/conexion.php";
 	
 	
 	$pnlmenu = new Panel("../html/menu.html");
@@ -23,5 +23,5 @@
 	$pnlmain->add("menu",$pnlmenu);
 	
 	$pnlmain->show();
-	//include "../db/cerrar_conexion.php";
+	include "../db/cerrar_conexion.php";
 ?>

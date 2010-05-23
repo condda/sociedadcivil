@@ -11,8 +11,8 @@
 	$pnlmain->add("menu",$pnlmenu);
 
 	
-	
-	$pnlmain->add("content","HOLA");			
+	$pnlcontent = new Panel("../html/contentPrincipal.html");
+	$pnlmain->add("content",$pnlcontent);			
 	
 	$pnlmain->show();
 	//include "../db/cerrar_conexion.php";

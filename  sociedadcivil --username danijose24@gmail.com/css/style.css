@@ -18,7 +18,7 @@ body {background:#fff url(../imagenes/bg.jpg) repeat-x; font: 11px Verdana, Aria
 	border-bottom: 1px solid #C6C6C6;
 }
 #headercontent h2 {
-	font-size: 18px;
+	font-size: 24px;
 	color: #5B920A;
 }
 #wrap #header #logo .description {
@@ -29,6 +29,7 @@ body {background:#fff url(../imagenes/bg.jpg) repeat-x; font: 11px Verdana, Aria
 }
 #wrap #header #headercontent p {
 	color: #666666;
+	font-size: 14px;
 }
 #wrap #header #sitecption {
 	margin-right: 380px;

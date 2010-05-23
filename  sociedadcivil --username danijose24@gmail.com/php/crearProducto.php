@@ -13,6 +13,15 @@
 	$pnlcontent = new Panel("../html/crearProducto.html");
 	
 	
+	$result = mysql_query("select * from Proveedor");
+	
+	
+	while ($result1 = mysql_fetch_assoc($result)){
+		
+		$listaProveedores = $listaProveedores.'<option value="'.$result1['idProveedor'].'">'.$result1['nombreProveedor'].'</option>';
+		
+	}
+	$pnlcontent->add("opcion",$listaProveedores);
 	
 	
 	

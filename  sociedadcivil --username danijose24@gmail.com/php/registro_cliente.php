@@ -7,9 +7,9 @@
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
 	
-	
-	/*
 	$pnlmenu->add("activo1",'id="active"');
+	/*
+	
 	$pnlcontent->add("crear","Crear");
 	$pnlcontent->add("modificar","Modificar");
 	$pnlcontent->add("consultar","Consultar");

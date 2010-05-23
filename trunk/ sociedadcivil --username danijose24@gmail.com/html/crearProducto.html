@@ -2,7 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarProveedor.js"></script>
 <style type="text/css">
 <!--
 #form1 h1 {
@@ -15,18 +18,21 @@
 <body>
 <form id="form1" name="form1" method="post" action="">
   <h1>Crear Producto</h1>
-  <p>&nbsp;</p>
+  <p><div id="ejemplo">
+  {ejemplo1}
+  </div> &nbsp;</p>
   <p>Seleccione el Proveedor 
     <label>
-      <select name="selectProveedor" id="selectProveedor">
+      <select name="selectProveedor" id="selectProveedor" onchange="llenadoProveedores()">
         <option value="0" selected="selected">Seleccione</option>
+        {opcion}
       </select>
     </label>
   </p>
   <table width="232" border="0">
     <tr>
       <td>Nombre</td>
-      <td><input type="text" name="nombre" id="textfield6" /></td>
+      <td><input type="text" name="nombre" id="nombre" /></td>
     </tr>
     <tr>
       <td>Descripcion</td>

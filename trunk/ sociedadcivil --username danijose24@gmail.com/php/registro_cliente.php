@@ -6,16 +6,22 @@
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
-	$pnlcontent = new Panel("../html/registro_persona.html");
 	
+	
+	/*
 	$pnlmenu->add("activo1",'id="active"');
-	$pnlmenu->add("opcion1",'<a href="../classes/Site.php">Socio</a>');
-	$pnlmenu->add("opcion2",'<a href="../classes/Site.php">Avance</a>');
+	$pnlcontent->add("crear","Crear");
+	$pnlcontent->add("modificar","Modificar");
+	$pnlcontent->add("consultar","Consultar");
+	$pnlcontent->add("eliminar","Eliminar");*/
 	
-	//$pnlmenu->add("opcion1","Socio");
-	//$pnlmenu->add("opcion2","Avance");
+
+
+	$pnlmenu->add("opcion1",'<a href="../php/socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="../php/avance.php">Avance</a>');
+	
 	$pnlmain->add("menu",$pnlmenu);
-	$pnlmain->add("content",$pnlcontent);
+		
 
 	$pnlmain->show();
 	

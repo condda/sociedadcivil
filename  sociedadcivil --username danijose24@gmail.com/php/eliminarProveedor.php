@@ -10,7 +10,7 @@
 	$pnlmenu->add("opcion1",'<a href="producto.php">Producto</a>');
 	$pnlmenu->add("opcion2",'<a href="proveedor.php">Proveedor</a>');
 	
-	$pnlcontent = new Panel("../html/crearProducto.html");
+	$pnlcontent = new Panel("../html/eliminarProveedor.html");
 	
 	
 	

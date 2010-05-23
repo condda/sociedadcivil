@@ -1,10 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-</head>
+<?php
+	session_start();
+	require_once ("../classes/Panel.php");
+	//include "../db/conexion.php";
+	
+	
+	$pnlmenu = new Panel("../html/menu.html");
+	$pnlmain = new Panel("../html/main.html");
+	$pnlmenu->add("activo2",'id="active"');
+	$pnlmenu->add("opcion1",'<a href="producto.php">Producto</a>');
+	$pnlmenu->add("opcion2",'<a href="proveedor.php">Proveedor</a>');
+	
+	$pnlcontent = new Panel("../html/modificarProducto.html");
+	
+	
+	
+	
+	
 
-<body>
-</body>
-</html>
+
+	
+	$pnlmain->add("content",$pnlcontent);
+	$pnlmain->add("menu",$pnlmenu);
+	
+	$pnlmain->show();
+	//include "../db/cerrar_conexion.php";
+?>

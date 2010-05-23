@@ -12,6 +12,7 @@
 
 	$pnlcontent = new Panel("../html/plantillaContent.html");
 	
+	$pnlcontent->add("nombre",'Proveedor');
 	$pnlcontent->add("crear",'<a href="crearProveedor.php">Crear Proveedor</a>');
 	$pnlcontent->add("modificar",'<a href="modificarProveedor.php">Modificar Proveedor</a>');
 	$pnlcontent->add("eliminar",'<a href="eliminarProveedor.php">Eliminar Proveedor</a>');

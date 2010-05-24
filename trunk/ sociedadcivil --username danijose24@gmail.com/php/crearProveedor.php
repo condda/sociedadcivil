@@ -9,7 +9,6 @@
 	$pnlmenu->add("activo2",'id="active"');
 	$pnlmenu->add("opcion1",'<a href="producto.php">Producto</a>');
 	$pnlmenu->add("opcion2",'<a href="proveedor.php">Proveedor</a>');
-	
 	$pnlcontent = new Panel("../html/crearProveedor.html");
 	
 	$cedRif = $_REQUEST['cedRif'];

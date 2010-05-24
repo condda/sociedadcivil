@@ -30,24 +30,28 @@
 	
 	
 	
-	if(($nombrePersona) && ($apellidoPersona) && ($cedulaPersona) && ($telefonoPersona) && ($direccionPersona) && ($fecha_nacimientoPersona) && ($fecha_licenciaPersona) && ($estado_civilPersona!=0) && ($nacionalidadPersona)&& ($sexoPersona!=0) && 
-	($beneficiario!=0)){
+	if(($nombrePersona) && ($apellidoPersona) && ($cedulaPersona) && ($telefonoPersona) && ($direccionPersona) &&                      ($fecha_nacimientoPersona) && ($fecha_licenciaPersona) && ($estado_civilPersona!=0) && ($nacionalidadPersona)&& ($sexoPersona!=0) && 
+	($beneficiario!=0))
+	{// IF 1
 		
-		if(!($nombre_conyugue)){
-			$nombre_conyugue = NULL; }
+			if(!($nombre_conyugue))
+			{//IF 2
+				$nombre_conyugue = NULL; 
+			}//IF 2
 			
 	
 		$result =  mysql_query ("SELECT cedulaPersona FROM persona WHERE cedulaPersona = '$cedulaPersona'");
 		
-		if ($result1= mysql_fetch_assoc($result)){
+		if ($result1= mysql_fetch_assoc($result))
+		{//IF 3
 			
 			$pnlcontent->add("mensaje",$mensajeError);
 			
 			
 			
-		}
+		}// IF 3
 		else
-		{
+		{// ELSE 1
 			mysql_query ("INSERT INTO persona (
 											   cedulaPersona,
 											   nombrePersona, 
@@ -72,28 +76,22 @@
 								 '$fecha_licenciaPersona',
 								 '$estado_civilPersona',
 								 '$nombre_conyuguePersona'
-								 )");																																																	   	
-		if($beneficiario==1)
-		{
-			$pnlmain = new Panel ("../html/main.html");	
-			$pnlmenu = new Panel("../html/menu.html");
-			$pnlcontent = new Panel ("../html/beneficiario.html");			
-		}
+								 )");		
+		
 			
-		$pnlmain = new Panel ("../html/main.html");	
-		$pnlmain->add("nombre","Socio");	
-		$pnlmain->add("mensaje","El socio se registro con Exito");	
-		}
+	} // ELSE 1
+			
+	
 		
-		
-	}
+}// IF 1
 	
 	
 	
 		
 		
-		$pnlmain->add("menu",$pnlmenu);
+    $pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
+	$pnlcontent->add("mensaje","SIIIIIIIIIIIIIIIII");
 
 	$pnlmain->show();
 	

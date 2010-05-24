@@ -8,6 +8,9 @@
 #form1 h1 {
 	color: #6F0;
 }
+#form1 table tr td {
+	text-align: center;
+}
 -->
 </style>
 </head>
@@ -16,21 +19,29 @@
 <form id="form1" name="form1" method="post" action="">
   <h1>Eliminar Producto</h1>
   <p>&nbsp;</p>
-  <table width="832" border="0">
+  <table width="796" border="0">
     <tr>
-      <td width="180">Nombre</td>
-      <td width="250">Descripcion</td>
-      <td width="180">Proveedor</td>
-      <td width="100">Precio</td>
-      <td width="100">Eliminar</td>
+      <td width="250">Introduzca el nombre a eliminar:</td>
+      <td width="144"><input name="eliminarProducto" type="text" id="eliminarProducto" value="{eliminarProducto}" /></td>
+      <td width="388">{mensaje} </td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td width="200">&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>{eliminar}</td>
+      <td><input type="submit" name="eliminar" id="eliminar" value="Eliminar" /></td>
+      <td width="388">&nbsp;</td>
     </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="1016" border="0">
+    <tr>
+      <td width="60"><h3>Codigo</h3></td>
+      <td width="180"><h3>Nombre</h3></td>
+      <td width="250"><h3>Descripcion</h3></td>
+      <td width="180"><h3>Proveedor</h3></td>
+      <td width="100"><h3>Precio</h3></td>
+      <td width="100">&nbsp;</td>
+    </tr>
+    {eliminarProducto}
   </table>
 </form>
 </body>

@@ -8,21 +8,43 @@
 #form1 h1 {
 	color: #6F0;
 }
+#form1 table tr td {
+	text-align: center;
+}
 -->
 </style>
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="../php/eliminarProveedor.php">
   <h1>Eliminar Proveedor</h1>
+  <p>&nbsp; </p>
+  <table width="913" border="0">
+    <tr>
+      <td width="250">Introduzca la Cedula/Rif a eliminar:</td>
+      <td width="113"><select name="ciRif" id="ciRif">
+        <option value="0">Seleccione</option>
+        <option {cedulaS} value="1">Cedula</option>
+        <option {rifS} value="2">Rif</option>
+      </select></td>
+      <td width="144"><input name="eliminarCedRif" type="text" id="eliminarCedRif" value="{eliminarCedRif}" /></td>
+      <td width="388">{mensaje} </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="eliminar" id="eliminar" value="Eliminar" /></td>
+      <td width="388">&nbsp;</td>
+    </tr>
+  </table>
   <p>&nbsp;</p>
   <table width="912" border="0">
     <tr>
-      <td width="180">Cedula/Rif</td>
-      <td width="180">Nombre</td>
-      <td width="250">Direccion</td>
-      <td width="180">Telefono</td>
-      <td width="100">Eliminar</td>
+      <td width="180"><h3>Cedula/Rif</h3></td>
+      <td width="180"><h3>Nombre</h3></td>
+      <td width="250"><h3>Direccion</h3></td>
+      <td width="180"><h3>Telefono</h3></td>
+      <td width="100">&nbsp;</td>
     </tr>
    {eliminarProveedor}
   </table>

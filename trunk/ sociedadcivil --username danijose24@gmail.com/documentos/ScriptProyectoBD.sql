@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`PERSONA` ;
 
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PERSONA` (
-  `cedulaPersona` INT NOT NULL AUTO_INCREMENT ,
+  `cedulaPersona` INT NOT NULL ,
   `nombrePersona` VARCHAR(45) NOT NULL ,
   `apellidoPersona` VARCHAR(45) NOT NULL ,
   `fechaNPersona` DATE NOT NULL ,
@@ -283,12 +283,12 @@ CREATE INDEX fk_SANCION_NORMA ON `sociedadCivil`.`SANCION` (`idNorma` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `sociedadCivil`.`BENIFICIARIO`
+-- Table `sociedadCivil`.`BENEFICIARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `sociedadCivil`.`BENIFICIARIO` ;
+DROP TABLE IF EXISTS `sociedadCivil`.`BENEFICIARIO` ;
 
 
-CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`BENIFICIARIO` (
+CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`BENEFICIARIO` (
   `cedulaBeneficiario` INT NOT NULL AUTO_INCREMENT ,
   `nombreBeneficiario` VARCHAR(45) NOT NULL ,
   `apellidoBeneficiario` VARCHAR(45) NOT NULL ,
@@ -613,53 +613,53 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIO_BENEFICIARIO` (
   `cedulaPersona` INT NOT NULL ,
   `cedulaBeneficiario` INT NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `cedulaBeneficiario`) ,
-  CONSTRAINT `fk_SOCIO_has_BENIFICIARIO_SOCIO`
+  CONSTRAINT `fk_SOCIO_has_BENEFICIARIO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
     REFERENCES `sociedadCivil`.`SOCIO` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SOCIO_has_BENIFICIARIO_BENIFICIARIO`
+  CONSTRAINT `fk_SOCIO_has_BENEFICIARIO_BENEFICIARIO`
     FOREIGN KEY (`cedulaBeneficiario` )
-    REFERENCES `sociedadCivil`.`BENIFICIARIO` (`cedulaBeneficiario` )
+    REFERENCES `sociedadCivil`.`BENEFICIARIO` (`cedulaBeneficiario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
-CREATE INDEX fk_SOCIO_has_BENIFICIARIO_SOCIO ON `sociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_SOCIO_has_BENEFICIARIO_SOCIO ON `sociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaPersona` ASC) ;
 
 
-CREATE INDEX fk_SOCIO_has_BENIFICIARIO_BENIFICIARIO ON `sociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaBeneficiario` ASC) ;
+CREATE INDEX fk_SOCIO_has_BENEFICIARIO_BENEFICIARIO ON `sociedadCivil`.`SOCIO_BENEFICIARIO` (`cedulaBeneficiario` ASC) ;
 
 
 
 
 
 -- -----------------------------------------------------
--- Table `sociedadCivil`.`AVANCE_BENIFICIARIO`
+-- Table `sociedadCivil`.`AVANCE_BENEFICIARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `sociedadCivil`.`AVANCE_BENIFICIARIO` ;
+DROP TABLE IF EXISTS `sociedadCivil`.`AVANCE_BENEFICIARIO` ;
 
 
-CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`AVANCE_BENIFICIARIO` (
+CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`AVANCE_BENEFICIARIO` (
   `cedulaPersona` INT NOT NULL ,
   `cedulaBeneficiario` INT NOT NULL ,
   PRIMARY KEY (`cedulaPersona`, `cedulaBeneficiario`) ,
-  CONSTRAINT `fk_AVANCE_has_BENIFICIARIO_AVANCE`
+  CONSTRAINT `fk_AVANCE_has_BENEFICIARIO_AVANCE`
     FOREIGN KEY (`cedulaPersona` )
     REFERENCES `sociedadCivil`.`AVANCE` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AVANCE_has_BENIFICIARIO_BENIFICIARIO`
+  CONSTRAINT `fk_AVANCE_has_BENEFICIARIO_BENEFICIARIO`
     FOREIGN KEY (`cedulaBeneficiario` )
-    REFERENCES `sociedadCivil`.`BENIFICIARIO` (`cedulaBeneficiario` )
+    REFERENCES `sociedadCivil`.`BENEFICIARIO` (`cedulaBeneficiario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
-CREATE INDEX fk_AVANCE_has_BENIFICIARIO_AVANCE ON `sociedadCivil`.`AVANCE_BENIFICIARIO` (`cedulaPersona` ASC) ;
+CREATE INDEX fk_AVANCE_has_BENEFICIARIO_AVANCE ON `sociedadCivil`.`AVANCE_BENEFICIARIO` (`cedulaPersona` ASC) ;
 
 
-CREATE INDEX fk_AVANCE_has_BENIFICIARIO_BENIFICIARIO ON `sociedadCivil`.`AVANCE_BENIFICIARIO` (`cedulaBeneficiario` ASC) ;
+CREATE INDEX fk_AVANCE_has_BENEFICIARIO_BENEFICIARIO ON `sociedadCivil`.`AVANCE_BENEFICIARIO` (`cedulaBeneficiario` ASC) ;
 
 
 
@@ -706,7 +706,7 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`TRASPASO` (
   `cedulaPersona` INT NOT NULL ,
   `idVehiculo` INT NOT NULL ,
   `fechaTraspaso` DATE NOT NULL ,
-  PRIMARY KEY (`cedulaPersona`, `idVehiculo`) ,
+ `traspadoLista` INT NOT NULL, PRIMARY KEY (`cedulaPersona`, `idVehiculo`) ,
   CONSTRAINT `fk_SOCIO_has_VEHICULO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
     REFERENCES `sociedadCivil`.`SOCIO` (`cedulaPersona` )

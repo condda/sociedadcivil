@@ -44,6 +44,7 @@
 		if ($result1= mysql_fetch_assoc($result))
 		{//IF 3
 			
+			if($cedulaPersona)
 			$pnlcontent->add("mensaje",$mensajeError);			
 			
 			
@@ -78,9 +79,17 @@
 								 '$nombre_conyuguePersona'
 								 )");
 			
-			if($beneficiario==1)
-						$pnlcontent->add("mensaje","El Socio tiene Beneficiario(s)");	
-			
+		
+												
+						if ($beneficiario==1)
+						{
+							
+							$pnlcontent = new Panel ("../html/beneficiario.html");
+						
+						}
+						
+						
+		
 		
 			
 	} // ELSE 1

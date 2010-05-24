@@ -8,6 +8,7 @@
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlcontent = new Panel ("../html/crearSocio.html");	
 	
+	
 	$mensajeError = "Ya existe un usuario con ese numero de cedula!!!.";
 	$mensajeErrorDatos = "Faltan campos por llenar.";
 	
@@ -30,9 +31,7 @@
 	
 	
 	
-	if(($nombrePersona) && ($apellidoPersona) && ($cedulaPersona) && ($telefonoPersona) && ($direccionPersona) &&                      ($fecha_nacimientoPersona) && ($fecha_licenciaPersona) && ($estado_civilPersona!=0) && ($nacionalidadPersona)&& ($sexoPersona!=0) && 
-	($beneficiario!=0))
-	{// IF 1
+
 		
 			if(!($nombre_conyugue))
 			{//IF 2
@@ -52,7 +51,7 @@
 		else
 		{// ELSE 1
 		
-			$pnlcontent->add("mensaje","INSERTOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!");	
+			
 			mysql_query ("INSERT INTO persona (
 											   cedulaPersona,
 											   nombrePersona, 
@@ -77,14 +76,18 @@
 								 '$fecha_licenciaPersona',
 								 '$estado_civilPersona',
 								 '$nombre_conyuguePersona'
-								 )");		
+								 )");
+			
+			if($beneficiario==1)
+						$pnlcontent->add("mensaje","El Socio tiene Beneficiario(s)");	
+			
 		
 			
 	} // ELSE 1
 			
 	
 		
-}// IF 1
+
 	
 	
 	

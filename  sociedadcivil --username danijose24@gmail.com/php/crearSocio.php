@@ -45,13 +45,14 @@
 		if ($result1= mysql_fetch_assoc($result))
 		{//IF 3
 			
-			$pnlcontent->add("mensaje",$mensajeError);
-			
+			$pnlcontent->add("mensaje",$mensajeError);			
 			
 			
 		}// IF 3
 		else
 		{// ELSE 1
+		
+			$pnlcontent->add("mensaje","INSERTOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!");	
 			mysql_query ("INSERT INTO persona (
 											   cedulaPersona,
 											   nombrePersona, 
@@ -91,7 +92,7 @@
 		
     $pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
-	$pnlcontent->add("mensaje","SIIIIIIIIIIIIIIIII");
+
 
 	$pnlmain->show();
 	

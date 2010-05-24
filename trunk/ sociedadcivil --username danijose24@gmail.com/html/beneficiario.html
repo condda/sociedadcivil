@@ -65,23 +65,13 @@ function MM_goToURL() { //v3.0
       <td><input type="text" name="cedula" id="cedula"></td>
     </tr>
     <tr>
-      <td class="ppppp">Tiene otro beneficiario?</td>
-      <td><label>
-        <select name="beneficiario2" id="beneficiario">
-          <option value="0">seleccione</option>
-          <option value="1">Si</option>
-          <option value="2">No</option>
-        </select>
-      </label></td>
-    </tr>
-    <tr>
       <td colspan="2" class="aaa"><input name="Agregar" type="submit" id="Agregar" onClick="MM_validateForm('nombre','','R','apellido','','R','cedula','','RisNum');return document.MM_returnValue" value="Inscribir Beneficiario">
       <label>
-        <input name="home" type="submit" id="home" onClick="MM_goToURL('parent','../classes/Site.php');return document.MM_returnValue" value="Finalizar Inscripcion">
+        <input name="home" type="button" id="home" onClick="MM_goToURL('parent','../classes/Site.php');return document.MM_returnValue" value="Finalizar Inscripcion">
       </label></td>
     </tr>
   </table>
-  {mensaje}
+  <p>{mensaje} </p>
 </form>
 </body>
 </html>

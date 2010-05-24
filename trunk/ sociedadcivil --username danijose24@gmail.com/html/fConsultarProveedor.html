@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 p {
+	color: #000;
+}
+#form1 h2 {
+	color: #690;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/fModificarProveedor.php">
+  <h1>Consultar Proveedor </h1>
+  <p>&nbsp;</p>
+  <table width="200" border="0">
+    <tr>
+      <td>{tipo}</td>
+      <td><div id = "cedulaProveedor">
+        <input name="cedRif" type="text" id="cedRif" onchange="validarCedulaProveedor()" value="{cedRif}" readonly="readonly" />
+      </div></td>
+    </tr>
+    <tr>
+      <td>Nombre</td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Direccion</td>
+      <td><input name="direccion" type="text" id="direccion" value="{direccion}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Telefono</td>
+      <td><input name="telefono" type="text" id="telefono" value="{telefono}" readonly="readonly" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>{mensaje}</p>
+</form>
+</body>
+</html>

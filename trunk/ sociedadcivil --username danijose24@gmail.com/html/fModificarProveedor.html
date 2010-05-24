@@ -21,10 +21,8 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="../php/crearProveedor.php">
-  <h1>Crear Proveedor
-  </h1>
-  
+<form id="form1" name="form1" method="post" action="../php/fModificarProveedor.php">
+  <h1>Modificar Proveedor </h1>
   <p>&nbsp;</p>
   <table width="200" border="0">
     <tr>
@@ -33,8 +31,8 @@
         <option {cedulaS} value="1">Cedula</option>
         <option {rifS} value="2">Rif</option>
       </select></td>
-      <td><div id = cedulaProveedor>
-        <input name="cedRif" type="text" id="cedRif" value="{cedRif}" onchange="validarCedulaProveedor()" />
+      <td><div id = "cedulaProveedor">
+        <input name="cedRif" type="text" id="cedRif" onchange="validarCedulaProveedor()" value="{cedRif}" />
       </div></td>
     </tr>
     <tr>
@@ -51,7 +49,7 @@
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td align="center" valign="middle"><input type="submit" name="button" id="button" value="Crear" /></td>
+      <td align="center" valign="middle"><input type="submit" name="button" id="button" value="Modificar" /></td>
     </tr>
   </table>
   <p>&nbsp;</p>

@@ -25,13 +25,23 @@
       <td width="184"><input type="text" name="cedula" id="cedula"></td>
     </tr>
     <tr>
-      <td colspan="2" class="aaaa"><input type="submit" name="button" id="button" value="Buscar ">
-        <label>
-          <input type="submit" name="ListarTodos" id="ListarTodos" value="Ver Todos">
-      </label></td>
+      <td colspan="2" class="aaaa"><input type="submit" name="button" id="button" value="Buscar "></td>
     </tr>
   </table>
-  {mensaje}
+  <p>&nbsp;</p>
+  <table width="200" border="0">
+    <tr>
+      <td>Cedula</td>
+      <td>Nombre</td>
+      <td>Apellido</td>
+    </tr>
+    <tr>
+      <td>{cedula}</td>
+      <td>{nombre}</td>
+      <td>{apellido}</td>
+    </tr>
+    {informacion}
+  </table>
 </form>
 </body>
 </html>

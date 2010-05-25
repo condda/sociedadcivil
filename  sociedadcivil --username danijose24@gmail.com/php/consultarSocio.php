@@ -8,6 +8,7 @@
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlcontent = new Panel ("../html/buscarSocio.html");	
 	
+	
 	$pnlmenu->add("activo1",'id="active"');
 	
 	$pnlmain->add("menu",$pnlmenu);

@@ -87,6 +87,10 @@
 							$pnlcontent = new Panel ("../html/beneficiario.html");
 						
 						}
+						else
+						{
+							$pnlcontent = new Panel ("../php/vehiculoSocio.html");
+						}
 						
 						
 		

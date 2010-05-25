@@ -27,7 +27,7 @@
   </h1>
   
   <p>&nbsp;</p>
-  <table width="285" border="0">
+  <table width="293" border="0">
     <tr>
       <td width="99"><select name="ciRif" id="ciRif" onchange="validarCedulaProveedor()">
         <option value="0">Seleccione</option>
@@ -53,10 +53,28 @@
       <td><input name="telefono" type="text" id="telefono" value="{telefono}"/></td>
     </tr>
     <tr>
+      <td colspan="2">Numero de Productos</td>
+     <td><select name="NumeroProducto" id="NumeroProducto" onchange="Productos()">
+        <option value="0">Seleccione</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="3"><div id="productos"></div></td>
+    </tr>
+    <tr>
       <td colspan="3" align="center"><div id="mensajeVal"></div></td>
     </tr>
   </table>
-  <p>&nbsp;</p>
   <p>{mensaje}</p>
 </form>
 </body>

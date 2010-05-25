@@ -16,13 +16,13 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="../php/eliminarProducto.php">
   <h1>Eliminar Producto</h1>
   <p>&nbsp;</p>
   <table width="796" border="0">
     <tr>
-      <td width="250">Introduzca el nombre a eliminar:</td>
-      <td width="144"><input name="eliminarProducto" type="text" id="eliminarProducto" value="{eliminarProducto}" /></td>
+      <td width="250">Introduzca el codigo a eliminar:</td>
+      <td width="144"><input name="eliminarCodigo" type="text" id="eliminarCodigo" value="{eliminarCodigo}" /></td>
       <td width="388">{mensaje} </td>
     </tr>
     <tr>
@@ -32,14 +32,15 @@
     </tr>
   </table>
   <p>&nbsp;</p>
-  <table width="1016" border="0">
+  <table width="790" border="0">
     <tr>
       <td width="60"><h3>Codigo</h3></td>
-      <td width="180"><h3>Nombre</h3></td>
-      <td width="250"><h3>Descripcion</h3></td>
-      <td width="180"><h3>Proveedor</h3></td>
-      <td width="100"><h3>Precio</h3></td>
-      <td width="100">&nbsp;</td>
+      <td width="135"><h3>Nombre</h3></td>
+      <td width="160"><h3>Descripcion</h3></td>
+      <td width="135"><h3>Proveedor</h3></td>
+      <td width="110"><h3>Precio</h3></td>
+      <td width="110"><h3>Cantidad</h3></td>
+      <td width="60">&nbsp;</td>
     </tr>
     {eliminarProducto}
   </table>

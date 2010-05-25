@@ -262,7 +262,17 @@ VALUES
 
 
 
-
+INSERT INTO  `sociedadcivil`.`lugar` (
+`idLugar` ,
+`nombreLugar` ,
+`padreLugar`
+)
+VALUES 
+('1',  'Venezuela', NULL),
+('2',  'Estado Miranda',  '1'),
+('3', 'Caracas', '2'),
+('4', 'Municipio Libertador', '3'),
+('5', 'Av. Urdaneta','4');
 
 
 

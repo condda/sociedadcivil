@@ -11,7 +11,7 @@
 	
 	
 	$pnlmenu->add("activo1",'id="active"');
-	$pnlcontent->add("crear",'<a href="../php/crearSocio.php">Crear Avance</a>');
+	$pnlcontent->add("crear",'<a href="../php/crearAvance.php">Crear Avance</a>');
 	$pnlcontent->add("modificar",'<a href="../php/modificarSocio.php">Modificar Avance</a>');
 	$pnlcontent->add("consultar",'<a href="../php/consultarSocio.php">Consultar Avance</a>');
 	$pnlcontent->add("eliminar",'<a href="../php/eliminarSocio.php">Eliminar Avance</a>');

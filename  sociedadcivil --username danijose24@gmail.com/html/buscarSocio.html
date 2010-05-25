@@ -18,14 +18,17 @@
 </head>
 
 <body>
-<table width="227" border="1">
-  <tr>
-    <td width="66" class="aaa">Cedula</td>
-    <td width="184"><input type="text" name="cedula" id="cedula"></td>
-  </tr>
-  <tr>
-    <td colspan="2" class="aaaa"><input type="submit" name="button" id="button" value="Buscar "></td>
-  </tr>
-</table>
+<form name="form1" method="post" action="..\php\buscarSocio.php">
+  <table width="227" border="1">
+    <tr>
+      <td width="66" class="aaa">Cedula</td>
+      <td width="184"><input type="text" name="cedula" id="cedula"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aaaa"><input type="submit" name="button" id="button" value="Buscar "></td>
+    </tr>
+  </table>
+  {mensaje}
+</form>
 </body>
 </html>

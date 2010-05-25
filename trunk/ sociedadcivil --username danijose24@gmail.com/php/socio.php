@@ -16,7 +16,7 @@
 	
 	$pnlcontent->add("crear",'<a href="../php/crearSocio.php">Crear Socio</a>');
 	$pnlcontent->add("modificar",'<a href="../php/modificarSocio.php">Modificar Socio</a>');
-	$pnlcontent->add("consultar",'<a href="../php/consultarSocio.php">Consultar Socio</a>');
+	$pnlcontent->add("consultar",'<a href="../php/buscarSocio.php">Consultar Socio</a>');
 	$pnlcontent->add("eliminar",'<a href="../php/eliminarSocio.php">Eliminar Socio</a>');
 	
 	$pnlmain->add("content",$pnlcontent);

@@ -13,6 +13,14 @@
 .aaaa {
 	text-align: center;
 }
+#apDiv1 {
+	position:absolute;
+	width:777px;
+	height:40px;
+	z-index:1;
+	left: 499px;
+	top: 352px;
+}
 -->
 </style>
 </head>
@@ -28,7 +36,19 @@
       <td colspan="2" class="aaaa"><input type="submit" name="button" id="button" value="Buscar "></td>
     </tr>
   </table>
-  <p>&nbsp;</p>
+  <div id="apDiv1">
+    <table width="100%" border="0">
+      <tr>
+        <td>Cedula</td>
+        <td>Nombre</td>
+        <td>Apellido</td>
+        <td>Telefono</td>
+        <td>Direccion</td>
+      </tr>
+      {informacion2}
+    </table>
+  </div>
+<p align="center">&nbsp;</p>
   <table width="1013" border="0">
     <tr>
       <td width="87">Cedula</td>

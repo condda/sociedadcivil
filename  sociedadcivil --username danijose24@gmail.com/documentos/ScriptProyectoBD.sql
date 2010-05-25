@@ -179,7 +179,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`PRODUCTO` ;
 
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRODUCTO` (
-  `idProducto` INT NOT NULL AUTO_INCREMENT ,
+  `idProducto` INT NOT NULL ,
   `nombreProducto` VARCHAR(45) NOT NULL ,
   `descripcionProducto` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idProducto`) )

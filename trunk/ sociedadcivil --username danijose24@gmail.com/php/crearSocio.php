@@ -79,6 +79,12 @@
 								 '$nombre_conyuguePersona'
 								 )");
 			
+			mysql_query ("INSERT INTO socio (
+											 cedulaPersona
+											 )
+						 VALUES				 (
+											  '$cedulaPersona'
+											  )");
 		
 												
 						if ($beneficiario==1)
@@ -89,7 +95,7 @@
 						}
 						else
 						{
-							$pnlcontent = new Panel ("../php/vehiculoSocio.html");
+							$pnlcontent = new Panel ("../html/vehiculoSocio.html");
 						}
 						
 						

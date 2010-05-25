@@ -44,6 +44,9 @@ function ValidarTelefono(form){
 	var direccion = $F('direccion');
 	var producto = $F('NumeroProducto');
 	
+	var i = 1;
+	
+	
 	if (!nombre){
 		alert('Debe introducir un Nombre');
 		form.nombre.focus();
@@ -61,19 +64,61 @@ function ValidarTelefono(form){
 		return (false);
 	}
 	else if (producto == '0'){
-		alert('Debe inserar al menos un producto');
+		alert('Debe insertar al menos un producto');
 		form.NumeroProducto.focus();
 		return (false);
+	}else{
+	
+		var productoNombre = $F('NumeroProducto');
+		var productoDescripcion = $F('NumeroProducto');
+		var productoPrecio = $F('NumeroProducto');
+		var productoCantidad = $F('NumeroProducto');
+		
+		while(i<=NumeroProducto){
+			if(!productoNombre+i){
+				alert('Debe insertar el nombre del producto');
+				form.productoNombre+i.focus();
+				return(false);
+				
+			}
+			else if(!productoDescripcion+i){
+				alert('Debe insertar la descripcion');
+				form.productoNombre+i.focus();
+				return(false);
+				
+				
+			}
+			else if(!productoCantidad+i){
+				alert('Debe inserar la cantidad del producto');
+				form.productoCantidad+i.focus();
+				return(false);
+			}
+			
+			if (productoCantidad+i){
+				
+				if (!/^([0-9])*$/.test(productoCantidad+i)){
+
+				alert("El valor s(" + productoCantidad+i + ") no es un número");
+				form.productoCantidad+i.focus();
+				return (false);			
+				}
+		
+				
+			}
+			
+		}
+		
 	}
+
 
 	
 	if (telefono){
 		if (!/^([0-9])*$/.test(telefono)){
-			if (!/^([0-9])*$/.test(telefono)){
+
 			alert("El valor (" + telefono + ") no es un número");
 			form.telefono.focus();
 			return (false);			
-			}
+
 		}
 	}
 		
@@ -84,11 +129,17 @@ function ValidarTelefono(form){
 
 function Productos(){
 	var NumeroProductos = $F('NumeroProducto');
-	
-	if (NumeroProductos != '0')
+	var i = 1;
+	var lista;
+	if (NumeroProductos != '0'){
+		$('nombreProducto').update("<BR><h1>Productos</h1>");
+
 		new Ajax.Updater('productos','../php/insertarProducto.php',{method: 'post',parameters: {phpProducto:NumeroProductos}})
-	else
+	}
+	else{
 		$('productos').update("");
+		$('nombreProducto').update("");
+	}
 	
 	
 }

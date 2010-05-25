@@ -2,7 +2,7 @@
 
 include "../db/conexion.php";
 $ciRifProveedor = $_POST['phpRifCiProveedor'];
-$rifCi =  $_POST['RifCiProveedor'];
+$rifCi =  $_POST['phpRifCi'];
   
   if (($ciRifProveedor) && ($rifCi != 0)){
 	  if ($rifCi==1)
@@ -18,30 +18,15 @@ $rifCi =  $_POST['RifCiProveedor'];
 		
 		$result1 = mysql_fetch_assoc($result);
 		if ($result1['idProveedor']){
-			echo "El proveedor ya se encuentra en nuestra base de datos"
+			echo "El proveedor ya se encuentra en nuestra base de datos";
+			
+		}
+		else{
+			echo "El proveedor puede ser registrado<BR>";
+			echo '<input type="submit" name="button" id="button" value="Crear" />';
 		}
 
   }
-  if ($_POST['phpProveedor'] == 0){
-  echo "es seleccione	 ".$_POST['phpProveedor'];
-  }
-  else{
-	  
-	  echo '<table width="200" border="1">
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>'.$_POST['phpProveedor'];
-  
-  }
-  
+ 
+
 ?>

@@ -21,12 +21,18 @@ if($cedula!=NULL)
 			
 			if ($result2 = mysql_fetch_assoc($result))
 			{	
-				$informacion2 = $informacion2.'<tr>
+				$informacion2 = 	$informacion2.'<tr>
 				<td>'.$result2['cedulaPersona'].'</td>
 				<td>'.$result2['nombrePersona'].'</td>
 				<td>'.$result2['apellidoPersona'].'</td>
 				<td>'.$result2['telefonoPersona'].'</td>
 				<td>'.$result2['direccionPersona'].'</td>
+				<td>'.$result2['nacionalidadPersona'].'</td>
+				<td>'.$result2['sexoPersona'].'</td>
+				<td>'.$result2['fechaNPersona'].'</td>
+				<td>'.$result2['estadoCPersona'].'</td>
+				<td>'.$result2['fechaLPersona'].'</td>
+				<td>'.$result2['nombreCPersona'].'</td>
 				</tr>';	 
 			
 			}

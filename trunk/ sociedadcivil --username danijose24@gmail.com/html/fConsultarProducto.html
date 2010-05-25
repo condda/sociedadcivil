@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 p {
+	color: #000;
+}
+#form1 h2 {
+	color: #690;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/fModificarProveedor.php">
+  <h1>Consultar Producto </h1>
+  <p>&nbsp;</p>
+  <table width="200" border="0">
+    <tr>
+      <td>Codigo</td>
+      <td><div id = "cedulaProveedor">
+        <input name="codigo" type="text" id="codigo" onchange="validarCedulaProveedor()" value="{codigo}" readonly="readonly" />
+      </div></td>
+    </tr>
+    <tr>
+      <td>Nombre</td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Descripcion</td>
+      <td><input name="descripcion" type="text" id="descripcion" value="{descripcion}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Proveedor</td>
+      <td><input name="proveedor" type="text" id="proveedor" value="{proveedor}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Precio</td>
+      <td><input name="precio" type="text" id="precio" value="{precio}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Cantidad</td>
+      <td><input name="cantidad" type="text" id="cantidad" value="{cantidad}" readonly="readonly" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>{mensaje}</p>
+</form>
+</body>
+</html>

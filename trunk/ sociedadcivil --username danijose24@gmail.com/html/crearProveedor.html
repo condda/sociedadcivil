@@ -3,7 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
-
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarHtml.js"></script>
 
 <style type="text/css">
 <!--
@@ -21,37 +22,38 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="../php/crearProveedor.php">
+<form id="form1" name="form1" method="post"  onsubmit="return ValidarTelefono(this)" action="../php/crearProveedor.php">
   <h1>Crear Proveedor
   </h1>
   
   <p>&nbsp;</p>
-  <table width="200" border="0">
+  <table width="285" border="0">
     <tr>
-      <td><select name="ciRif" id="ciRif">
+      <td width="99"><select name="ciRif" id="ciRif" onchange="validarCedulaProveedor()">
         <option value="0">Seleccione</option>
-        <option {cedulaS} value="1">Cedula</option>
-        <option {rifS} value="2">Rif</option>
+        <option {cedulas} value="1">Cedula</option>
+        <option {rifs} value="2">Rif</option>
       </select></td>
-      <td><div id = cedulaProveedor>
+      <td width="28"><div id="rif"></div>
+      </td>
+      <td width="144"><div id = cedulaProveedor>
         <input name="cedRif" type="text" id="cedRif" value="{cedRif}" onchange="validarCedulaProveedor()" />
       </div></td>
     </tr>
     <tr>
-      <td>Nombre</td>
+      <td colspan="2">Nombre</td>
       <td><input name="nombre" type="text" id="nombre" value="{nombre}" /></td>
     </tr>
     <tr>
-      <td>Direccion</td>
+      <td colspan="2">Direccion</td>
       <td><input name="direccion" type="text" id="direccion" value="{direccion}" /></td>
     </tr>
     <tr>
-      <td>Telefono</td>
-      <td><input name="telefono" type="text" id="telefono" value="{telefono}" /></td>
+      <td colspan="2">Telefono</td>
+      <td><input name="telefono" type="text" id="telefono" value="{telefono}"/></td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td align="center" valign="middle"><input type="submit" name="button" id="button" value="Crear" /></td>
+      <td colspan="3" align="center"><div id="mensajeVal"></div></td>
     </tr>
   </table>
   <p>&nbsp;</p>

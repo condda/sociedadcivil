@@ -93,7 +93,7 @@
 							$pnlcontent = new Panel ("../html/beneficiario.html");
 						
 						}
-						else
+						if ($beneficiario==2)
 						{
 							$pnlcontent = new Panel ("../html/vehiculoSocio.html");
 						}
@@ -102,13 +102,7 @@
 		
 		
 			
-	} // ELSE 1
-			
-	
-		
-
-	
-	
+	} // ELSE 1	
 	
 		
 		

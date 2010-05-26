@@ -22,11 +22,11 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post"  onsubmit="return ValidarTelefono(this)" action="../php/crearProveedor.php">
+<form id="form1" name="form1" method="post"  onsubmit="return ValidarCampos(this)" action="../php/crearProveedor.php">
   <h1>Crear Proveedor
   </h1>
   
-  <p>&nbsp;</p>
+  <p><div id= flag></div></p>
   <table width="293" border="0">
     <tr>
       <td width="99"><select name="ciRif" id="ciRif" onchange="validarCedulaProveedor()">
@@ -75,10 +75,9 @@
       <td colspan="3"><div id="productos"></div></td>
     </tr>
     <tr>
-      <td colspan="3" align="center"><div id="mensajeVal"></div></td>
+      <td colspan="3" align="center"><div id="mensajeVal"> <input type="hidden" name="flagProveedor" id="flagProveedor" value= "0" /></div></td>
     </tr>
   </table>
-  <p>{mensaje}</p>
-</form>
+   <p>{mensaje}</p></form>
 </body>
 </html>

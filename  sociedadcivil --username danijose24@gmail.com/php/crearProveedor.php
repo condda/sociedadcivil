@@ -16,6 +16,9 @@
 	$direccion = $_REQUEST['direccion'];
 	$telefono = $_REQUEST['telefono'];
 	$ciRif = $_REQUEST['ciRif'];
+	
+	$numeroProducto = $_REQUEST['NumeroProducto'];
+	
 	if (($cedRif) && ($nombre) && ($direccion) && ($telefono) && ($ciRif!=0)){
 		if ($ciRif==1)
 		{
@@ -42,12 +45,49 @@
 			tipoProveedor,
 			nombreProveedor,
 			cedulaProveedor) values ('$direccion','$telefono','1','$nombre','$cedRif')");
+			
+			
+			$result = mysql_query("select idProveedor from Proveedor where cedulaProveedor = '$cedRif' order by idProveedor desc limit 1");
+			$result1 = mysql_fetch_assoc($result);
+			$idProveedor = $result1['idProveedor'];
+			
+			
+			$i = 1;
+			while ($i<=$numeroProducto){	
+				$idProducto = $_REQUEST['codigoProducto'.$i];
+				$nombreProducto = $_REQUEST['nombreProducto'.$i];
+				$descripcionProducto = $_REQUEST['descripcionProducto'.$i];
+				
+				$cantidadProducto = $_REQUEST['cantidadProducto'.$i];
+				$precioProducto = $_REQUEST['precioProducto'.$i];
+			
+				mysql_query("insert into Producto (
+				idProducto,
+				nombreProducto,
+				descripcionProducto)
+				values ('$idProducto','$nombreProducto','$descripcionProducto')");
+				
+				
+				mysql_query("insert into Producto_Prov (
+				idProducto,
+				idProveedor,
+				precioProductoProv,
+				cantidadProductoProv)
+				values ('$idProducto','$idProveedor','$precioProducto','$cantidadProducto')");
+				
+				$i = $i+1;
+				
+			}
+			
+			
 			$pnlmenu = new Panel("../html/menu.html");
 			$pnlmenu->add("activo",'id="active"');
 			$pnlmain = new Panel("../html/main.html");
 			$pnlmain->add("nombre","Proveedor");
 			$pnlmain->add("mensaje","Fue registrado exitosamente!");
 			$pnlcontent = new Panel("../html/contentPrincipal.html");		
+			
+		
 		}
 			
 		else if ($ciRif==2){

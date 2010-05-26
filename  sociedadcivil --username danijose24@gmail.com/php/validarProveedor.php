@@ -19,11 +19,13 @@ $rifCi =  $_POST['phpRifCi'];
 		$result1 = mysql_fetch_assoc($result);
 		if ($result1['idProveedor']){
 			echo "El proveedor ya se encuentra en nuestra base de datos";
+			echo '<BR><input type="hidden" name="flagProveedor" id="flagProveedor" value= "1" />';
 			
 		}
 		else{
 			echo "El proveedor puede ser registrado<BR>";
 			echo '<input type="submit" name="button" id="button" value="Crear" />';
+			echo '<BR><input type="hidden" name="flagProveedor" id="flagProveedor" value= "0" />';
 		}
 
   }

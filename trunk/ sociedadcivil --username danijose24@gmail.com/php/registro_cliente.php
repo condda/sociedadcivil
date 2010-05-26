@@ -2,7 +2,7 @@
 	
 
 	require_once ("../classes/Panel.php");
-	//include "../db/conexion.php";
+	include "../db/conexion.php";
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");

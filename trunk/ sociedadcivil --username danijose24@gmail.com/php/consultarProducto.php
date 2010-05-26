@@ -32,9 +32,9 @@
 			'<tr><td>'.$result1['idProducto'].'</td>
 			 <td>'.$result1['nombreProducto'].'</td>
 			 <td>'.$result1['descripcionProducto'].'</td>
-			 <td>'."$result1['proveedor']".'</td>
-			 <td>'."$result1['precio']".'</td>
-			 <td>'."$result1['cantidad']".'</td>
+			 <td>'.$result1['proveedor'].'</td>
+			 <td>'.$result1['precio'].'</td>
+			 <td>'.$result1['cantidad'].'</td>
 			 <td><a href="../php/fConsultarProducto.php?idproducto='.$result1['idProducto'].'">Consultar</a></td>
     		 </tr>';
 	}

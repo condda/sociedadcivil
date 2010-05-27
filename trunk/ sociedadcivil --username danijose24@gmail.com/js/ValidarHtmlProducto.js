@@ -13,7 +13,7 @@ function InsertarRemoverProveedor(){
 	//var codigoProducto = $F('codigo');
 	if($F('flagProveedor') == '0'){
 	$('flagProv').update('<input name="flagProveedor" type="hidden" id="flagProveedor" value="1" />');
-	$('proveedor').update('<h1>Proveedor</h1>');	
+	$('proveedor').update('<h1>Crear Proveedor</h1>');	
 	new Ajax.Updater('insertarproveedor','../php/insertarProveedor.php',{method: 'post'})
 	$('accionProveedor').update('<td width="146" style="color:#6F0" ><a href="#" onclick="InsertarRemoverProveedor()">Quitar Proveedor</a></td>');	
 	}

@@ -7,7 +7,8 @@ $i = 1;
 
 while ($i<=$rifCi){
 
-echo '<BR> <table width="300" border="0">
+echo '<BR><h1>Producto '.$i.'</h1>
+	<BR> <table width="300" border="0">
     <tr>
       <td>Codigo</td>
       <td><input name="codigoProducto'.$i.'" type="text" id="codigoProducto'.$i.'" onchange="ValidarCodigoProducto('.$i.')" /></td>
@@ -30,8 +31,7 @@ echo '<BR> <table width="300" border="0">
       <td width="72">Cantidad</td>
       <td width="144"><input name="cantidadProducto'.$i.'" type="text" id="cantidadProducto'.$i.'"/></td>
     </tr>
-	  </table>';
-	  
+	  </table><p style="color:#6F0">--------------------------------------------------------</p>';
 	 
 	 $i = $i+1;
 }

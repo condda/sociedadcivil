@@ -28,13 +28,19 @@
 	$result = mysql_query("select * from Producto");
 		
 	while ($result1 = mysql_fetch_assoc($result)){
+			$idProducto = $result1['idProducto'];
+			$result2 = mysql_query("select Prov.nombreProveedor, Prod.precioProductoProv, Prod.cantidadProductoProv from Producto_prov Prod, Proveedor Prov 
+								   where Prod.idProducto = '$idProducto' AND Prod.idProveedor = Prov.idProveedor");
+			$result3 = mysql_fetch_assoc($result2);
+			
 			$listaProducto = $listaProducto.
 			'<tr><td>'.$result1['idProducto'].'</td>
 			 <td>'.$result1['nombreProducto'].'</td>
 			 <td>'.$result1['descripcionProducto'].'</td>
-			 <td>'.$result1['proveedor'].'</td>
-			 <td>'.$result1['precio'].'</td>
-			 <td>'.$result1['cantidad'].'</td>
+			 
+			 <td>'.$result3['nombreProveedor'].'</td>
+			 <td>'.$result3['precioProductoProv'].'</td>
+			 <td>'.$result3['cantidadProductoProv'].'</td>
 			 <td><a href="../php/fConsultarProducto.php?idproducto='.$result1['idProducto'].'">Consultar</a></td>
     		 </tr>';
 	}

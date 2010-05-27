@@ -13,19 +13,19 @@ INSERT INTO  `sociedadcivil`.`persona` (
 `nombreCPersona`
 )
 VALUES 
-('18213611',  'Daniel',  'Conde',  '1988-07-11',  'M',  'Venezolano',  'Urb Terrazas del Avila',  '2410461',  '2009-05-07',  'Soltero', 'NULL'),
+('18213611',  'Daniel',  'Conde',  '1988-07-11',  'M',  'Venezolano',  'Urb Terrazas del Avila',  '2410461',  '2009-05-07',  'Soltero', ''),
 ('12345345',  'Pedro',  'Perez',  '1972-05-11',  'M',  'Venezolano',  'La Urbina',  '3245567',  '1992-05-12',  'Casado',  'Maria de Perez'),
-('18933251','Lawrence','Cermeño','1989-11-03','M','Venezolano','Capuchinos','3453234','2006-02-10','Soltero','NULL'),
-('19044502','Leonardo','Fraile','1989-01-25','M','Venezolano','El Paraiso','4565678','2004-07-12','Soltero','NULL'),
-('20484534','Daniela','Mesquina','1987-07-27','F','Venezolano','Los Naranjos','4532345','2007-09-23','Soltero','NULL'),
-('15343467','Elio','Conde','1985-05-01','M','Venezolano','Los chorros','4533456','2003-03-14','Soltero','NULL'),
+('18933251','Lawrence','Cermeño','1989-11-03','M','Venezolano','Capuchinos','3453234','2006-02-10','Soltero',''),
+('19044502','Leonardo','Fraile','1989-01-25','M','Venezolano','El Paraiso','4565678','2004-07-12','Soltero',''),
+('20484534','Daniela','Mesquina','1987-07-27','F','Venezolano','Los Naranjos','4532345','2007-09-23','Soltero',''),
+('15343467','Elio','Conde','1985-05-01','M','Venezolano','Los chorros','4533456','2003-03-14','Soltero',''),
 ('15342942','Alberto','Conde','1983-09-19','M','Venezolano','Lomas del Avila','2555467','2001-01-28','Casado','Nailibeth de Conde'),
-('7887976','Jesus','Ramirez','1978-04-12','M','Venezolano','La Yaguara','4457786','2000-03-16','Soltero','NULL'),
-('6557435','Juan','Fermin','1981-02-18','M','Venezolano','Las Adjuntas','6512384','2001-03-15','Soltero','NULL'),
-('9886324','Carla','Acosta','1975-05-18','M','Venezolano','Petare','3426678','1998-10-23','Soltero','NULL'),
-('5667323','Luis','Quintero','1978-03-20','M','Venezolano','Carapita','5487692','2002-02-27','Soltero','NULL'),
-('5631234','Armando','Rodriguez','1982-01-17','M','Venezolano','Carapita','4352278','2001-03-20','Soltero','NULL'),
-('7865332','Pedro','Aponte','1978-03-19','M','Venezolano','Chacao','2358359','2000-08-14','Soltero','NULL');
+('7887976','Jesus','Ramirez','1978-04-12','M','Venezolano','La Yaguara','4457786','2000-03-16','Soltero',''),
+('6557435','Juan','Fermin','1981-02-18','M','Venezolano','Las Adjuntas','6512384','2001-03-15','Soltero',''),
+('9886324','Carla','Acosta','1975-05-18','M','Venezolano','Petare','3426678','1998-10-23','Soltero',''),
+('5667323','Luis','Quintero','1978-03-20','M','Venezolano','Carapita','5487692','2002-02-27','Soltero',''),
+('5631234','Armando','Rodriguez','1982-01-17','M','Venezolano','Carapita','4352278','2001-03-20','Soltero',''),
+('7865332','Pedro','Aponte','1978-03-19','M','Venezolano','Chacao','2358359','2000-08-14','Soltero','');
 
 
 

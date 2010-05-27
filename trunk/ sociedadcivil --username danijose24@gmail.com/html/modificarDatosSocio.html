@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+
+<style type="text/css">
+<!--
+.centrado {
+	text-align: center;
+}
+.a1 {
+	text-align: center;
+}
+.aaa {
+	text-align: center;
+}
+.aaal {
+	text-align: left;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MM_validateForm() { //v4.0
+  if (document.getElementById){
+    var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+    for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=document.getElementById(args[i]);
+      if (val) { nm=val.name; if ((val=val.value)!="") {
+        if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+          if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+        } else if (test!='R') { num = parseFloat(val);
+          if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+          if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+            min=test.substring(8,p); max=test.substring(p+1);
+            if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+    } if (errors) alert('The following error(s) occurred:\n'+errors);
+    document.MM_returnValue = (errors == '');
+} }
+//-->
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="../php/modificarDatosSocio.php">
+  <table width="436" border="0">
+    <tr>
+      <td width="276" class="aaal">Nombre:</td>
+      <td width="144"><input name="nombre" type="text" id="nombre"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Apellido:</td>
+      <td><input type="text" name="apellido" id="apellido"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Cedula:</td>
+      <td>{cedula}</td>
+    </tr>
+    <tr>
+      <td class="aaal">Direccion:</td>
+      <td><input type="text" name="direccion" id="direccion"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Fecha de Nacimiento</td>
+      <td><input type="text" name="fecha_nacimiento" id="direccion"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Telefono:</td>
+      <td><input type="text" name="telefono" id="fecha_nacimiento"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Nacionalidad:</td>
+      <td><input type="text" name="nacionalidad" id="nacionalidad"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Fecha de obtencion de la Licencia:</td>
+      <td><input type="text" name="fecha_licencia" id="fecha_licencia"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Sexo:</td>
+      <td><select name="sexo" id="sexo">
+        <option value="0">Seleccione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td class="aaal">Estado Civil:</td>
+      <td><select name="estado_civil" id="estado_civil">
+        <option value="0">Seleccione</option>
+        <option value="S">Soltero</option>
+        <option value="C">Casado</option>
+        <option value="D">Divorciado</option>
+        <option value="V">Viudo</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td class="aaal">Nombre de Conyugue:</td>
+      <td><input type="text" name="nombre_conyugue" id="nombre_conyugue"></td>
+    </tr>
+    <tr>
+      <td class="aaal">Tiene Beneficiarios?</td>
+      <td class=""><select name="beneficiario" id="beneficiarios">
+        <option value="0">Seleccione</option>
+        <option value="1">Si</option>
+        <option value="2">No</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aaa"><input name="enviar" type="submit" id="enviar" onClick="MM_validateForm('nombre','','R','apellido','','R','cedula','','RisNum','direccion','','R','fecha_nacimiento','','R','nacionalidad','','R','fecha_licencia','','R');return document.MM_returnValue" value="Actualizar"></td>
+    </tr>
+  </table>
+  {mensaje}
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

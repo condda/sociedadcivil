@@ -224,8 +224,7 @@ function Productos(){
 	var i = 1;
 	var lista;
 	if (NumeroProductos != '0'){
-		$('nombreProducto').update("<BR><h1>Productos</h1>");
-
+		
 		new Ajax.Updater('productos','../php/insertarProducto.php',{method: 'post',parameters: {phpProducto:NumeroProductos}})
 	}
 	else{

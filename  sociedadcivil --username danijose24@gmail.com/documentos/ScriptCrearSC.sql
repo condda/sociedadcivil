@@ -1,4 +1,47 @@
 
+
+
+
+INSERT INTO  `sociedadcivil`.`lugar` (
+`idLugar` ,
+`nombreLugar` ,
+`padreLugar`
+)
+VALUES 
+('1',  'Venezuela', NULL),
+('2',  'Estado Miranda',  '1'),
+('3', 'Caracas', '2'),
+('4', 'Municipio Libertador', '3'),
+('5', 'Av. Urdaneta','4');
+
+
+INSERT INTO `sociedadcivil`.`sociedad` (
+`idSociedad`, 
+`telefonoSociedad`, 
+`idLugar`, 
+`descripcionSociedad`)
+ VALUES 
+(NULL, '2324456', '5','La Sociedad Civil Colinas de Bello Monte ha decidido contratar sus servicios para la construcción de
+una Base de Datos y un Sistema de Gestión Administrativa, que satisfaga nuestras necesidades y reglas de
+negocio.
+La Sociedad Civil fue fundada en 1958 y está formada por conductores profesionales de camionetas,
+minibuses y autobuses clasificados “por puesto”, firmantes del Acta Constitutiva de la organización. El objeto
+de la sociedad es mejorar las condiciones de vida de sus afiliados, representarlos ante cualquier organismo
+público o privado, fomentar la fuente principal de trabajo de sus socios, estimular la colaboración mutua y la
+protección social de sus miembros, haciendo uso de todos los medios lícitos a su alcance. El domicilio de la
+Sociedad es la ciudad de Caracas, pero podrá establecer oficinas, sucursales, delegaciones, filiales o
+terminales en otras ciudades del país.
+Para la consecución de sus fines, la Sociedad, además de organizar eficientemente el servicio de
+transporte de personas que prestan sus socios, fomentará y desarrollará otras fuentes de trabajo e ingresos que
+serán de la exclusiva propiedad, responsabilidad y beneficios de sus socios, mediante acuerdos de Asamblea o
+Junta Directiva. La Sociedad no tiene carácter mercantil, pero puede efectuar toda clase de operaciones,
+negociaciones y transacciones comerciales a objeto de cumplir con los fines para la cual fue creada.
+La Sociedad se rige por su Acta Constitutiva y sus Estatutos Sociales para su funcionamiento y para
+todas las gestiones que realice. En todo lo no previsto, se regirá por las Leyes de la República que estén en
+vigencia y le sean aplicables.');
+
+
+
 INSERT INTO  `sociedadcivil`.`persona` (
 `cedulaPersona` ,
 `nombrePersona` ,
@@ -10,22 +53,23 @@ INSERT INTO  `sociedadcivil`.`persona` (
 `telefonoPersona` ,
 `fechaLPersona` ,
 `estadoCPersona` ,
-`nombreCPersona`
+`nombreCPersona`,
+`idSociedad`
 )
 VALUES 
-('18213611',  'Daniel',  'Conde',  '1988-07-11',  'M',  'Venezolano',  'Urb Terrazas del Avila',  '2410461',  '2009-05-07',  'Soltero', ''),
-('12345345',  'Pedro',  'Perez',  '1972-05-11',  'M',  'Venezolano',  'La Urbina',  '3245567',  '1992-05-12',  'Casado',  'Maria de Perez'),
-('18933251','Lawrence','Cermeño','1989-11-03','M','Venezolano','Capuchinos','3453234','2006-02-10','Soltero',''),
-('19044502','Leonardo','Fraile','1989-01-25','M','Venezolano','El Paraiso','4565678','2004-07-12','Soltero',''),
-('20484534','Daniela','Mesquina','1987-07-27','F','Venezolano','Los Naranjos','4532345','2007-09-23','Soltero',''),
-('15343467','Elio','Conde','1985-05-01','M','Venezolano','Los chorros','4533456','2003-03-14','Soltero',''),
-('15342942','Alberto','Conde','1983-09-19','M','Venezolano','Lomas del Avila','2555467','2001-01-28','Casado','Nailibeth de Conde'),
-('7887976','Jesus','Ramirez','1978-04-12','M','Venezolano','La Yaguara','4457786','2000-03-16','Soltero',''),
-('6557435','Juan','Fermin','1981-02-18','M','Venezolano','Las Adjuntas','6512384','2001-03-15','Soltero',''),
-('9886324','Carla','Acosta','1975-05-18','M','Venezolano','Petare','3426678','1998-10-23','Soltero',''),
-('5667323','Luis','Quintero','1978-03-20','M','Venezolano','Carapita','5487692','2002-02-27','Soltero',''),
-('5631234','Armando','Rodriguez','1982-01-17','M','Venezolano','Carapita','4352278','2001-03-20','Soltero',''),
-('7865332','Pedro','Aponte','1978-03-19','M','Venezolano','Chacao','2358359','2000-08-14','Soltero','');
+('18213611',  'Daniel',  'Conde',  '1988-07-11',  'M',  'Venezolano',  'Urb Terrazas del Avila',  '2410461',  '2009-05-07',  'Soltero', '','1'),
+('12345345',  'Pedro',  'Perez',  '1972-05-11',  'M',  'Venezolano',  'La Urbina',  '3245567',  '1992-05-12',  'Casado',  'Maria de Perez','1'),
+('18933251','Lawrence','Cermeño','1989-11-03','M','Venezolano','Capuchinos','3453234','2006-02-10','Soltero','','1'),
+('19044502','Leonardo','Fraile','1989-01-25','M','Venezolano','El Paraiso','4565678','2004-07-12','Soltero','','1'),
+('20484534','Daniela','Mesquina','1987-07-27','F','Venezolano','Los Naranjos','4532345','2007-09-23','Soltero','','1'),
+('15343467','Elio','Conde','1985-05-01','M','Venezolano','Los chorros','4533456','2003-03-14','Soltero','','1'),
+('15342942','Alberto','Conde','1983-09-19','M','Venezolano','Lomas del Avila','2555467','2001-01-28','Casado','Nailibeth de Conde','1'),
+('7887976','Jesus','Ramirez','1978-04-12','M','Venezolano','La Yaguara','4457786','2000-03-16','Soltero','','1'),
+('6557435','Juan','Fermin','1981-02-18','M','Venezolano','Las Adjuntas','6512384','2001-03-15','Soltero','','1'),
+('9886324','Carla','Acosta','1975-05-18','M','Venezolano','Petare','3426678','1998-10-23','Soltero','','1'),
+('5667323','Luis','Quintero','1978-03-20','M','Venezolano','Carapita','5487692','2002-02-27','Soltero','','1'),
+('5631234','Armando','Rodriguez','1982-01-17','M','Venezolano','Carapita','4352278','2001-03-20','Soltero','','1'),
+('7865332','Pedro','Aponte','1978-03-19','M','Venezolano','Chacao','2358359','2000-08-14','Soltero','','1');
 
 
 
@@ -83,7 +127,7 @@ VALUES
 ('5631234');
 
 
-INSERT INTO  `sociedadcivil`.`benificiario` (
+INSERT INTO  `sociedadcivil`.`beneficiario` (
 `cedulaBeneficiario` ,
 `nombreBeneficiario` ,
 `apellidoBeneficiario`
@@ -108,11 +152,11 @@ INSERT INTO  `sociedadcivil`.`socio_beneficiario` (
 `cedulaBeneficiario`
 )
 VALUES 
-('13456542',  '18213611'),
-('19345234',  '12345345'),
-('12345323',  '18933251'),
-('17889091',  '19044502'),
-('15667897',  '20484534');
+('18213611','13456542'),
+('12345345','19345234'),
+('18933251','12345323'),
+('19044502','17889091'),
+('20484534','15667897');
 
 
 
@@ -226,11 +270,11 @@ INSERT INTO  `sociedadcivil`.`producto` (
 `descripcionProducto`
 )
 VALUES 
-(NULL ,  'Camisa',  'Camisa de uniforme estandar'),
-(NULL ,  'Pantalon',  'pantalon del uniforme'),
-(NULL, 'Carnet', 'carnet de socios y avances'),
-(NULL, 'Aceite', ' aceite de motor'),
-(NULL, 'Cauchos firestone', ' Cauchos de 17"');
+('1' , 'Camisa',  'Camisa de uniforme estandar'),
+('2' , 'Pantalon',  'pantalon del uniforme'),
+('3', 'Carnet', 'carnet de socios y avances'),
+('4', 'Aceite', ' aceite de motor'),
+('5', 'Cauchos firestone', ' Cauchos de 17"');
 
 
 
@@ -260,19 +304,6 @@ VALUES
 
 
 
-
-
-INSERT INTO  `sociedadcivil`.`lugar` (
-`idLugar` ,
-`nombreLugar` ,
-`padreLugar`
-)
-VALUES 
-('1',  'Venezuela', NULL),
-('2',  'Estado Miranda',  '1'),
-('3', 'Caracas', '2'),
-('4', 'Municipio Libertador', '3'),
-('5', 'Av. Urdaneta','4');
 
 
 

@@ -27,7 +27,11 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PERSONA` (
   `fechaLPersona` DATE NOT NULL ,
   `estadoCPersona` VARCHAR(45) NOT NULL ,
   `nombreCPersona` VARCHAR(45) NULL ,
-  PRIMARY KEY (`cedulaPersona`) )
+ `idSociedad` INT NOT NULL, PRIMARY KEY (`cedulaPersona`),  CONSTRAINT `fk_SOCIEDAD_PERSONA`
+    FOREIGN KEY (`idSociedad` )
+    REFERENCES `sociedadCivil`.`SOCIEDAD` (`idSociedad` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION )
 ENGINE = InnoDB;
 
 
@@ -107,16 +111,11 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIEDAD` (
   `idSociedad` INT NOT NULL AUTO_INCREMENT ,
   `telefonoSociedad` INT NOT NULL ,
   `idLugar` INT NOT NULL ,
-  `cedulaPersona` INT NOT NULL ,
+  `descripcionSociedad` LONGTEXT(45) NOT NULL ,
   PRIMARY KEY (`idSociedad`) ,
   CONSTRAINT `fk_SUCURSAL_LUGAR`
     FOREIGN KEY (`idLugar` )
     REFERENCES `sociedadCivil`.`LUGAR` (`idLugar` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SUCURSAL_PERSONA`
-    FOREIGN KEY (`cedulaPersona` )
-    REFERENCES `sociedadCivil`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -124,8 +123,6 @@ ENGINE = InnoDB;
 
 CREATE INDEX fk_SUCURSAL_LUGAR ON `sociedadCivil`.`SOCIEDAD` (`idLugar` ASC) ;
 
-
-CREATE INDEX fk_SUCURSAL_PERSONA ON `sociedadCivil`.`SOCIEDAD` (`cedulaPersona` ASC) ;
 
 
 
@@ -354,17 +351,17 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INSCRIPCION` (
   `estatusInscripcion` INT NOT NULL ,
   `fechaAInscripcion` DATE NOT NULL ,
   `montoInscripcion` INT NOT NULL ,
-  `tipoInscripcion` INT NOT NULL ,
+  `tipoInscripcion` INT NOT NULL , `cedulaPersona` INT NOT NULL,
   PRIMARY KEY (`idInscripcion`) ,
   CONSTRAINT `fk_INSCRIPCION_PERSONA`
-    FOREIGN KEY (`tipoInscripcion` )
+    FOREIGN KEY (`cedulaPersona` )
     REFERENCES `sociedadCivil`.`PERSONA` (`cedulaPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
-CREATE INDEX fk_INSCRIPCION_PERSONA ON `sociedadCivil`.`INSCRIPCION` (`tipoInscripcion` ASC) ;
+CREATE INDEX fk_INSCRIPCION_PERSONA ON `sociedadCivil`.`INSCRIPCION` (`cedulaPersona` ASC) ;
 
 
 
@@ -706,7 +703,7 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`TRASPASO` (
   `cedulaPersona` INT NOT NULL ,
   `idVehiculo` INT NOT NULL ,
   `fechaTraspaso` DATE NOT NULL ,
- `traspadoLista` INT NOT NULL, PRIMARY KEY (`cedulaPersona`, `idVehiculo`) ,
+ `listaTraspaso` INT NOT NULL, PRIMARY KEY (`cedulaPersona`, `idVehiculo`) ,
   CONSTRAINT `fk_SOCIO_has_VEHICULO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
     REFERENCES `sociedadCivil`.`SOCIO` (`cedulaPersona` )

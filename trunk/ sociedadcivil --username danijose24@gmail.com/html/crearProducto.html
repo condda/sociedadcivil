@@ -5,32 +5,51 @@
 
 <title>Documento sin título</title>
 <script type="text/javascript" src="../js/prototype.js"></script>
-<script type="text/javascript" src="../js/validarHtml.js"></script>
+<script type="text/javascript" src="../js/validarHtmlProducto.js"></script>
 <style type="text/css">
 <!--
 #form1 h1 {
 	color: #6F0;
+}
+#form1 
+#form1 p {
+	color: #6F0;
+}
+#form1 p {
+	color: #000;
 }
 -->
 </style>
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" onsubmit="return ValidarCampos(this)" action="../php/crearProducto.php">
   <h1>Crear Producto</h1>
   <p>&nbsp; </p>
-  <p>Seleccione el Proveedor 
-    <label>
-      <select name="selectProveedor" id="selectProveedor" onchange="llenadoProveedores()">
-        <option value="0" selected="selected">Seleccione</option>
+  <table width="422" border="0">
+  <tr>
+    <td width="163">Seleccione el Proveedor</td>
+    <td width="99"><div id="listaProveedor"><select name="selectProveedor"  onchange="actualizarProveedor(1)" id="selectProveedor">
+      <option value="0" selected="selected">Seleccione</option>
+      
+      
+      
+        
         {opcion}
-      </select>
-    </label>
-  </p>
+      
+     
+    
+    
+    </select></div></td>
+    
+      <td width="146" style="color:#6F0" ><div id="accionProveedor"><a href="#" onclick="InsertarRemoverProveedor()">Crear Proveedor</a></div></td>
+  </tr>
+</table>
+  <p>&nbsp;</p>
   <table width="232" border="0">
     <tr>
       <td>Codigo</td>
-      <td><input name="codigo" type="text" id="codigo" value="{codigo}" /></td>
+      <td><input name="codigo" type="text" id="codigo" value="{codigo}"  onchange="ValidarCodigoProducto()"/></td>
     </tr>
     <tr>
       <td>Nombre</td>
@@ -38,20 +57,29 @@
     </tr>
     <tr>
       <td>Descripcion</td>
-      <td><input name="descripcion" type="text" id="textfield5" value="{descripcion}" /></td>
+      <td><input name="descripcion" type="text" id="descripcion" value="{descripcion}" /></td>
     </tr>
     <tr>
       <td>Precio</td>
-      <td><input name="precio" type="text" id="textfield7" value="{precio}" /></td>
+      <td><input name="precio" type="text" id="precio" value="{precio}"/></td>
     </tr>
     <tr>
       <td width="72">Cantidad</td>
-      <td width="144"><input name="cantidad" type="text" id="textfield" value="{cantidad}" /></td>
+      <td width="144"><input name="cantidad" type="text" id="cantidad" value="{cantidad}" /></td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Crear" /></td>
+      <td colspan="2" align="center"><div id="proveedor"></div></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><div id="insertarproveedor"></div></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center"><div id="mensajeVal"></div></td>
     </tr>
   </table>
+  <p><a href="#" onclick="InsertarRemoverProveedor()">
+    <div id="flagProv"><input name="flagProveedor" type="hidden" id="flagProveedor" value="0" /></div>
+  </a></p>
   <p>{mensaje}</p>
 </form>
 </body>

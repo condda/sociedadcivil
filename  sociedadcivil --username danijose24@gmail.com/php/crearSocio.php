@@ -6,23 +6,37 @@
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
-	$pnlcontent = new Panel ("../html/crearSocio.html");	
 	
+	
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	
+	$pnlcontent = new Panel ("../html/crearSocio.html");	
+	$tipo = 1;
+
+	$pnlcontent->add("tipo",$tipo);
 	
 	$mensajeError = "Ya existe un usuario con ese numero de cedula!!!.";
 	$mensajeErrorDatos = "Faltan campos por llenar.";
 	
+	$cedulaPersona = $_REQUEST['cedula'];
 	$nombrePersona = $_REQUEST['nombre'];
 	$apellidoPersona = $_REQUEST['apellido'];
-	$cedulaPersona = $_REQUEST['cedula'];
-	$nombre_conyuguePersona = $_REQUEST['nombre_conyugue'];
-	$direccionPersona = $_REQUEST['direccion'];
-	$nacionalidadPersona = $_REQUEST['nacionalidad'];
-	$telefonoPersona = $_REQUEST['telefono'];
-	$estado_civilPersona = $_REQUEST['estado_civil'];
-	$fecha_licenciaPersona = $_REQUEST['fecha_licencia'];
 	$fecha_nacimientoPersona = $_REQUEST['fecha_nacimiento'];
 	$sexoPersona = $_REQUEST['sexo'];
+	$nacionalidadPersona = $_REQUEST['nacionalidad'];
+	$direccionPersona = $_REQUEST['direccion'];
+	$telefonoPersona = $_REQUEST['telefono'];
+	$fecha_licenciaPersona = $_REQUEST['fecha_licencia'];
+	$estado_civilPersona = $_REQUEST['estado_civil'];
+	$nombre_conyuguePersona = $_REQUEST['nombre_conyugue'];
+	
+	
+	
+	
+	
+	
+	
 	$beneficiario = $_REQUEST['beneficiario'];
 	
 	
@@ -51,8 +65,10 @@
 		}// IF 3
 		else
 		{// ELSE 1
-		
-			
+
+	
+	
+						 
 			mysql_query ("INSERT INTO persona (
 											   cedulaPersona,
 											   nombrePersona, 
@@ -63,8 +79,9 @@
 											   direccionPersona, 
 											   telefonoPersona, 
 											   fechaLpersona, 
-											   estadoCpersona, 
-											   nombreCpersona )
+											   estadoCPersona, 
+											   nombreCPersona,
+											   idSociedad)
 						 VALUES (
 								 '$cedulaPersona',
 								 '$nombrePersona', 				 
@@ -76,8 +93,8 @@
 								 '$telefonoPersona',
 								 '$fecha_licenciaPersona',
 								 '$estado_civilPersona',
-								 '$nombre_conyuguePersona'
-								 )");
+								 '$nombre_conyuguePersona',
+								 '1')");
 			
 			mysql_query ("INSERT INTO socio (
 											 cedulaPersona
@@ -91,6 +108,7 @@
 						{
 							
 							$pnlcontent = new Panel ("../html/beneficiario.html");
+							$pnlcontent->add("campoOcultoCedulaPersona",$cedulaPersona);
 						
 						}
 						if ($beneficiario==2)

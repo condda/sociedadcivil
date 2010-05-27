@@ -6,6 +6,9 @@
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	
 	$pnlcontent = new Panel ("../html/buscarSocio.html");
 	$pnlmenu->add("activo1",'id="active"');
 	
@@ -17,7 +20,7 @@ if($cedula!=NULL)
 	{
 			
 			
-			$result =  mysql_query ("SELECT * FROM persona WHERE cedulaPersona = '$cedula' ");
+			$result =  mysql_query ("SELECT * FROM persona P, socio S WHERE S.cedulaPersona = '$cedula' AND S.cedulaPersona = P.cedulaPersona ");
 			
 			if ($result2 = mysql_fetch_assoc($result))
 			{	
@@ -43,7 +46,7 @@ if($cedula!=NULL)
 	}
 	
 	
-	$result =  mysql_query ("SELECT * FROM persona");
+	$result =  mysql_query ("SELECT * FROM persona P, socio S WHERE S.cedulaPersona = P.cedulaPersona ",$conexion);
 	
 	while ($result1 = mysql_fetch_assoc($result))
 	{//while

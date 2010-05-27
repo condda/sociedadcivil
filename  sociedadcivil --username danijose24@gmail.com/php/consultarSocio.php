@@ -6,6 +6,9 @@
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	
 	$pnlcontent = new Panel ("../html/buscarSocio.html");	
 	
 	

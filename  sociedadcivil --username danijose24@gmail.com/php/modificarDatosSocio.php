@@ -50,16 +50,16 @@
 //apellidoPersona =  'salcedo' WHERE cedulaPersona =  '18933251'
 			
 			mysql_query ("UPDATE persona SET  											  
-											   (nombrePersona = '$nombrePersona', 
+											   nombrePersona = '$nombrePersona', 
 											   apellidoPersona = '$apellidoPersona', 
 											   fechaNPersona = '$fecha_nacimientoPersona', 
 											   sexoPersona = '$sexoPersona', 
 											   nacionalidadPersona = '$nacionalidadPersona', 
 											   direccionPersona = '$direccionPersona', 
 											   telefonoPersona = '$telefonoPersona', 
-											   fechaLpersona = '$fecha_licenciaPersona', 
-											   estadoCpersona = '$estado_civilPersona', 
-											   nombreCpersona = '$nombre_conyuguePersona')
+											   fechaLPersona = '$fecha_licenciaPersona', 
+											   estadoCPersona = '$estado_civilPersona', 
+											   nombreCPersona = '$nombre_conyuguePersona'
 											   WHERE (cedulaPersona = '$cedulaPersona')");		
 		
 												

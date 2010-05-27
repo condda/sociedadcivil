@@ -6,7 +6,11 @@
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	
 	$pnlcontent = new Panel ("../html/beneficiario.html");
+	
 	
 	
 	$pnlcontent->add("mensaje",$mensajeError);	
@@ -28,7 +32,7 @@
 if($cedulaBeneficiario)
 {		
 					
-			$result =  mysql_query ("SELECT cedulaBeneficiario FROM benificiario WHERE cedulaBeneficiario = '$cedulaBeneficiario'");
+			$result =  mysql_query ("SELECT cedulaBeneficiario FROM beneficiario WHERE cedulaBeneficiario = '$cedulaBeneficiario'");
 
 
 		if ($result1 = mysql_fetch_assoc($result))
@@ -43,7 +47,7 @@ if($cedulaBeneficiario)
 		else
 		{// else 1			
 	
-			mysql_query (" INSERT INTO benificiario (
+			mysql_query (" INSERT INTO beneficiario (
 													 cedulaBeneficiario,
 													 nombreBeneficiario,
 													 apellidoBeneficiario
@@ -55,10 +59,13 @@ if($cedulaBeneficiario)
 								 )");
 			
 				mysql_query (" INSERT INTO socio_beneficiario (
-													 cedulaBeneficiario													 
+													 cedulaBeneficiario,
+													 cedulaPersona,
+													 
 													 )
 						 VALUES (
-								 '$cedulaBeneficiario'
+								 '$cedulaBeneficiario',
+								 '$cedulaPersona'
 								 )");
 		
 			

@@ -18,20 +18,20 @@ echo '<table width="293" border="0">
       <td width="28"><div id="rif"></div>
       </td>
       <td width="144"><div id = cedulaProveedor>
-        <input name="cedRif" type="text" id="cedRif" onchange="actualizarProveedor(2)" />
+        <input name="cedRif" type="text" id="cedRif" onchange="actualizarProveedor(2)"  maxlength="9" />
       </div></td>
     </tr>
     <tr>
       <td colspan="2">Nombre</td>
-      <td><input name="nombreProveedor" type="text" id="nombreProveedor"/></td>
+      <td><input name="nombreProveedor" type="text" id="nombreProveedor" maxlength="20"/></td>
     </tr>
     <tr>
       <td colspan="2">Direccion</td>
-      <td><input name="direccion" type="text" id="direccion"/></td>
+      <td><input name="direccion" type="text" id="direccion" maxlength="40"/></td>
     </tr>
     <tr>
       <td colspan="2">Telefono</td>
-      <td><input name="telefono" type="text" id="telefono"/></td>
+      <td><input name="telefono" type="text" id="telefono" maxlength="10"/></td>
     </tr></table>';
 	
 	

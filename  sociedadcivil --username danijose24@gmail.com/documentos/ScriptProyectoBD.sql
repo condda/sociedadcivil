@@ -1220,7 +1220,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`INGRESO` ;
 
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INGRESO` (
-  `idINGRESO` INT NOT NULL AUTO_INCREMENT ,
+  `idIngreso` INT NOT NULL AUTO_INCREMENT ,
   `tipoIngreso` INT NOT NULL ,
   `idMulta` INT NULL ,
   `idCuotaSocio` INT NULL ,

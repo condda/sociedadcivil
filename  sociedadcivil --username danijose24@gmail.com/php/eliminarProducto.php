@@ -11,13 +11,13 @@
 	
 	$pnlcontent = new Panel("../html/eliminarProducto.html");
 	
-	$eliminarProducto = $_REQUEST['eliminarProducto'];
-	if ($eliminarProducto){
-		$result = mysql_query("select idProducto from Producto where nombreProducto = '$eliminarProducto'");
+	$eliminarCodigo = $_REQUEST['eliminarCodigo'];
+	if ($eliminarCodigo){
+		$result = mysql_query("select idProducto from Producto where idProducto = '$eliminarCodigo'");
 		$result1 = mysql_fetch_assoc($result);
 		if (!$result1['idProducto']){
 			$pnlcontent->add("mensaje","Este Producto no existe dentro de la Sociedad!");
-			$pnlcontent->add("eliminarProducto",$eliminarProducto);					
+			$pnlcontent->add("eliminarCodigo",$eliminarCodigo);					
 		}
 		else{
 			mysql_query("DELETE FROM Producto where idProducto = '$result1[idProducto]'");
@@ -31,11 +31,11 @@
 	}
 	else{
 		$pnlcontent->add("mensaje","Todos los campos son obligatorios!");
-		$pnlcontent->add("eliminarProducto",$eliminarCedRif);					
+		$pnlcontent->add("eliminarCodigo",$eliminarCodigo);					
 	}
-
-	if ($_REQUEST['idProducto']){
-		$idProducto = $_REQUEST['idProducto'];
+	
+	if ($_REQUEST['idproducto']){
+		$idProducto= $_REQUEST['idproducto'];
 		mysql_query("DELETE FROM Producto where idProducto = '$idProducto'");
 		$pnlmain->add("nombre","Producto");
 		$pnlmain->add("mensaje","Fue eliminado exitosamente!");
@@ -44,14 +44,18 @@
 	$result = mysql_query("select * from Producto");
 		
 	while ($result1 = mysql_fetch_assoc($result)){
-			$listaProducto = $listaProducto.'<tr>
-			    <td>'.$result1['idProducto'].'</td>
-			    <td>'.$result1['nombreProducto'].'</td>
-      			<td>'.$result1['descripcionProducto'].'</td>
-      			<td>'.$result1['descripcionProducto'].'</td>
-      			<td>'.$result1['descripcionProducto'].'</td>
-      			<td><a href="../php/eliminarProducto.php?idproveedor='.$result1['idProducto'].'">Eliminar</a></td>
-    			</tr>';
+		$result2 = mysql_query("select * from Producto_Prov where idProducto='$result1[idProducto]'");
+		$result3 = mysql_fetch_assoc($result2);
+		$result4 = mysql_query("select * from Proveedor where idProveedor='$result3[idProveedor]'");
+		$result5 = mysql_fetch_assoc($result4);
+		$listaProducto = $listaProducto.
+		'<tr><td>'.$result1['idProducto'].'</td>
+		<td>'.$result1['nombreProducto'].'</td>
+		<td>'.$result1['descripcionProducto'].'</td>
+		<td>'.$result5['nombreProveedor'].'</td>
+		<td>'.$result3['precioProductoProv'].'</td>
+		<td>'.$result3['cantidadProductoProv'].'</td>
+		<td><a href="../php/eliminarProducto.php?idproducto='.$result1['idProducto'].'">Eliminar</a></td></tr>';
 	}
 	$pnlcontent->add("eliminarProducto",$listaProducto);
 	

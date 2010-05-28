@@ -11,7 +11,9 @@
 	$mensajeError = "No existe un vehiculo con ese numero de placa registrado en la sociedad!!!.";
 	$pnlmenu->add("activo1",'id="active"');
     $pnlmain->add("menu",$pnlmenu);
-	
+	$tipo = 2;
+
+	$pnlcontent->add("tipo",$tipo);
 		
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');

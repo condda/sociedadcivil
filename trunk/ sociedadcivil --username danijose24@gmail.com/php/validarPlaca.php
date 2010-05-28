@@ -13,7 +13,7 @@ if ($placa){
 	
 	 
 		$result1 = mysql_fetch_assoc($result);
-		if ($tipo != 2){
+		if ($tipo ==1){
 			if ($result1['idVehiculo']){
 							
 				echo "El vehiculo ya se encuentra en nuestra base de datos";

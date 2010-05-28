@@ -27,6 +27,9 @@
 	$cedulaPersona = $_REQUEST['cedulaPersona'];
 	$pnlcontent->add("campoOcultoCedulaPersona",$cedulaPersona);	
 	
+	$tipo = 1;
+
+	$pnlcontent->add("tipo",$tipo);
 	//	$pnlcontent->add("mensaje","Click en Finalizar Inscripcion para salir, para ingresar nuevo beneficiario Click en Inscribir Beneficiario.");
 if($cedulaBeneficiario)
 {		

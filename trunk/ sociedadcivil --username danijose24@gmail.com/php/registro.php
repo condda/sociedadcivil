@@ -8,8 +8,9 @@
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu->add("activo1",'id="active"');
-	$pnlmenu->add("opcion1",'<a href="../classes/Site.php">Socio</a>');
-	$pnlmenu->add("opcion2","Avance");
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 
 	
 	
@@ -17,7 +18,6 @@
 
 	
 	
-	$pnlmain->add("content","HOLA");			
 	$pnlmain->show();
 	//include "../db/cerrar_conexion.php";
 ?>

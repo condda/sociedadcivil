@@ -1,33 +1,24 @@
 <?php
-	
-
+	session_start();
+	$pathFix = dirname(__FILE__);
 	require_once ("../classes/Panel.php");
-	include "../db/conexion.php";
+	//include "../db/conexion.php";
 	
-	$pnlmain = new Panel("../html/main.html");
+	
 	$pnlmenu = new Panel("../html/menu.html");
-	
+	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu->add("activo1",'id="active"');
-	/*
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
+
 	
-	$pnlcontent->add("crear","Crear");
-	$pnlcontent->add("modificar","Modificar");
-	$pnlcontent->add("consultar","Consultar");
-	$pnlcontent->add("eliminar","Eliminar");*/
-	
-$pnlcontent = new Panel("../html/contentPrincipal.html");
-	$result = mysql_query ("Select * from Sociedad");
-	$result1 = mysql_fetch_assoc($result);
-	
-	$pnlcontent->add("historiaSociedad",$result1['descripcionSociedad']);
-	$pnlmain->add("content",$pnlcontent);
-	$pnlmenu->add("opcion1",'<a href="../php/socio.php">Socio</a>');
-	$pnlmenu->add("opcion2",'<a href="../php/avance.php">Avance</a>');
 	
 	$pnlmain->add("menu",$pnlmenu);
-		
 
+	
+	
 	$pnlmain->show();
-	
-	
+	//include "../db/cerrar_conexion.php";
 ?>
+	

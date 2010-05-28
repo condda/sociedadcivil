@@ -163,8 +163,8 @@ VALUES
 
 
 INSERT INTO  `sociedadcivil`.`avance_beneficiario` (
-`cedulaPersona` ,
-`cedulaBeneficiario`
+`cedulaBeneficiario`,
+`cedulaPersona` 
 )
 VALUES 
 ('13456234',  '15343467'),

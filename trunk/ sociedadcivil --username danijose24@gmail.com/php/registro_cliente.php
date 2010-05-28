@@ -15,8 +15,12 @@
 	$pnlcontent->add("consultar","Consultar");
 	$pnlcontent->add("eliminar","Eliminar");*/
 	
-
-
+$pnlcontent = new Panel("../html/contentPrincipal.html");
+	$result = mysql_query ("Select * from Sociedad");
+	$result1 = mysql_fetch_assoc($result);
+	
+	$pnlcontent->add("historiaSociedad",$result1['descripcionSociedad']);
+	$pnlmain->add("content",$pnlcontent);
 	$pnlmenu->add("opcion1",'<a href="../php/socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="../php/avance.php">Avance</a>');
 	

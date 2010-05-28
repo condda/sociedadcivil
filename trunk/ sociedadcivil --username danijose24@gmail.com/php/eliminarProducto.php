@@ -21,6 +21,7 @@
 		}
 		else{
 			mysql_query("DELETE FROM Producto where idProducto = '$result1[idProducto]'");
+			mysql_query("DELETE FROM Producto_Prov where idProducto = '$result1[idProducto]'");
 			$pnlmenu = new Panel("../html/menu.html");
 			$pnlmenu->add("activo",'id="active"');
 			$pnlmain = new Panel("../html/main.html");

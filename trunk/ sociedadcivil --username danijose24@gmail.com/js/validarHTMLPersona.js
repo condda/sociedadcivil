@@ -199,7 +199,7 @@ function validarBeneficiario(){
 	
 	
 	
-	alert (cedulaPersona);
+
 	 if (cedulaBeneficiario){
 	 	if (!/^([0-9])*$/.test(cedulaBeneficiario)){
 

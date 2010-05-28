@@ -35,72 +35,54 @@
 		$pnlcontent->add("direccion",$result1['direccionProveedor']);
 		$pnlcontent->add("telefono",$result1['telefonoProveedor']);
 		}
-		else if (($ciRif != 0) && ($modificarCedRif)){
-			if ($ciRif == 1)
-				$result = mysql_query("select * from Proveedor where cedulaProveedor = '$modificarCedRif'");		
-			else
-				$result = mysql_query("select * from Proveedor where rifProveedor = '$modificarCedRif'");
-			$result1 = mysql_fetch_assoc($result);
-			if ($result1['cedulaProveedor']){
-				$pnlcontent->add("cedulaS",'selected="selected"');
-				$pnlcontent->add("cedRif",$result1['cedulaProveedor']);
-			}
-			else{
-				$pnlcontent->add("rifS",'selected="selected"');
-				$pnlcontent->add("cedRif",$result1['rifProveedor']);
-			}
-			$pnlcontent->add("nombre",$result1['nombreProveedor']);					
-			$pnlcontent->add("direccion",$result1['direccionProveedor']);
-			$pnlcontent->add("telefono",$result1['telefonoProveedor']);	
+	else if (($ciRif != 0) && ($modificarCedRif)){
+		if ($ciRif == 1)
+			$result = mysql_query("select * from Proveedor where cedulaProveedor = '$modificarCedRif'");		
+		else
+			$result = mysql_query("select * from Proveedor where rifProveedor = '$modificarCedRif'");
+		$result1 = mysql_fetch_assoc($result);
+		if ($result1['cedulaProveedor']){
+			$pnlcontent->add("cedulaS",'selected="selected"');
+			$pnlcontent->add("cedRif",$result1['cedulaProveedor']);
 		}
-		else if (($cedRif) && ($nombre) && ($direccion) && ($telefono) && ($ciRif!=0)){
-			if ($ciRif==1)
-			{
-				$result = mysql_query("select idProveedor from Proveedor where cedulaProveedor = '$cedRif'");
-				$pnlcontent->add("cedulaS",'selected="selected"');
-			}
-			else if ($ciRif==2)
-			{
-				$result = mysql_query("select idProveedor from Proveedor where rifProveedor = '$cedRif'");
-				$pnlcontent->add("rifS",'selected="selected"');
-			}
-			$result1 = mysql_fetch_assoc($result);
-			if ($result1['idProveedor']){
-				$pnlcontent->add("mensaje","Este Proveedor ya existe dentro de la Sociedad!");
-				$pnlcontent->add("nombre",$nombre);					
-				$pnlcontent->add("direccion",$direccion);
-				$pnlcontent->add("telefono",$telefono);
-				$pnlcontent->add("cedRif",$cedRif);
-			}
-			else if ($ciRif==1){
-				mysql_query("update Proveedor set
-				direccionProveedor='$direccion',
-				telefonoProveedor='$telefono',
-				tipoProveedor='1',
-				nombreProveedor='$nombre',
-				cedulaProveedor='$cedRif',
-				rifProveedor=NULL");
-				$pnlmenu = new Panel("../html/menu.html");
-				$pnlmenu->add("activo",'id="active"');
-				$pnlmain = new Panel("../html/main.html");
-				$pnlmain->add("nombre","Proveedor");
-				$pnlmain->add("mensaje","Fue modificado exitosamente!");
-				$pnlcontent = new Panel("../html/contentPrincipal.html");		
-			}
-			else if ($ciRif==2){
-				mysql_query("update Proveedor set
-				direccionProveedor='$direccion',
-				telefonoProveedor='$telefono',
-				tipoProveedor='2',
-				nombreProveedor='$nombre',
-				rifProveedor='$cedRif',
-				cedulaProveedor=NULL");
-				$pnlmenu = new Panel("../html/menu.html");
-				$pnlmenu->add("activo",'id="active"');
-				$pnlmain = new Panel("../html/main.html");
-				$pnlmain->add("nombre","Proveedor");
-				$pnlmain->add("mensaje","Fue modificado exitosamente!");
-				$pnlcontent = new Panel("../html/contentPrincipal.html");		
+		else{
+			$pnlcontent->add("rifS",'selected="selected"');
+			$pnlcontent->add("cedRif",$result1['rifProveedor']);
+		}
+		$pnlcontent->add("nombre",$result1['nombreProveedor']);					
+		$pnlcontent->add("direccion",$result1['direccionProveedor']);
+		$pnlcontent->add("telefono",$result1['telefonoProveedor']);	
+	}
+	else if (($nombre) && ($direccion) && ($telefono) && ($ciRif!=0)){
+		if ($ciRif==1){
+			mysql_query("update Proveedor set
+			direccionProveedor='$direccion',
+			telefonoProveedor='$telefono',
+			tipoProveedor='1',
+			nombreProveedor='$nombre',
+			cedulaProveedor='$cedRif',
+			rifProveedor=NULL where cedulaProveedor='$cedRif'");
+			$pnlmenu = new Panel("../html/menu.html");
+			$pnlmenu->add("activo",'id="active"');
+			$pnlmain = new Panel("../html/main.html");
+			$pnlmain->add("nombre","Proveedor");
+			$pnlmain->add("mensaje","Fue modificado exitosamente!");
+			$pnlcontent = new Panel("../html/contentPrincipal.html");		
+		}
+		else if ($ciRif==2){
+			mysql_query("update Proveedor set
+			direccionProveedor='$direccion',
+			telefonoProveedor='$telefono',
+			tipoProveedor='2',
+			nombreProveedor='$nombre',
+			rifProveedor='$cedRif',
+			cedulaProveedor=NULL where rifProveedor='$cedRif'");
+			$pnlmenu = new Panel("../html/menu.html");
+			$pnlmenu->add("activo",'id="active"');
+			$pnlmain = new Panel("../html/main.html");
+			$pnlmain->add("nombre","Proveedor");
+			$pnlmain->add("mensaje","Fue modificado exitosamente!");
+			$pnlcontent = new Panel("../html/contentPrincipal.html");		
 		}
 	}
 	else{

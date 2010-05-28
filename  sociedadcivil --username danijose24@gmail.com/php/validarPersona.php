@@ -4,7 +4,7 @@ include "../db/conexion.php";
 $cedulaPersona = $_POST['phpCedulaPersona'];
 $cedulaBeneficiario = $_POST['phpCedulaBeneficiario'];
 $tipo = $_POST['phpTipo'];
-
+$tipoBeneficiario = $_POST['phpTipoBeneficiario'];
  
   if (($cedulaPersona)&&(!$cedulaBeneficiario)){
 	 
@@ -47,11 +47,19 @@ $tipo = $_POST['phpTipo'];
   
   if (($cedulaPersona) && ($cedulaBeneficiario) && ($tipo == 3)){
 	   
+	   if (!$tipoBeneficiario)
 		 $result = mysql_query("select * from socio_beneficiario where cedulaBeneficiario = '$cedulaBeneficiario' AND cedulaPersona = '$cedulaPersona'");
+		 
+		else
+		$result = mysql_query("select * from avance_beneficiario where cedulaBeneficiario = '$cedulaBeneficiario' AND cedulaPersona = '$cedulaPersona'");
+		
+		
 	 	 $result1 = mysql_fetch_assoc($result);
 			if ($result1){
 				
-				
+				if ($tipoBeneficiario)
+				echo "El beneficiario ya esta asociado con el Avance";
+				else
 				echo "El beneficiario ya esta asociado con el socio";
 				echo '<input name="flagBeneficiario" type="hidden" id="flagBeneficiario" value="1">';
 			}
@@ -64,7 +72,7 @@ $tipo = $_POST['phpTipo'];
     				<td width="172"><input name="nombre" type="text" id="nombre" maxlength="15" value="'.$result1['nombreBeneficiario'].'" readonly></td>
     				
     			 	 <td class="ppppp">Apellido</td>
-     				 <td><input name="apellido" type="text" id="apellido" maxlength="15" value="'.$result1['nombreBeneficiario'].'" readonly></td>
+     				 <td><input name="apellido" type="text" id="apellido" maxlength="15" value="'.$result1['apellidoBeneficiario'].'" readonly></td>
   					</tr>';
 					 
 				 }

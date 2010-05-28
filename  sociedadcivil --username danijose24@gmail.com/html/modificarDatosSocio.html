@@ -47,11 +47,11 @@ function MM_validateForm() { //v4.0
   <table width="436" border="0">
     <tr>
       <td width="276" class="aaal">Nombre:</td>
-      <td width="144"><input name="nombre" type="text" id="nombre"></td>
+      <td width="144"><input name="nombre" type="text" id="nombre" value="{nombre}"></td>
     </tr>
     <tr>
       <td class="aaal">Apellido:</td>
-      <td><input type="text" name="apellido" id="apellido"></td>
+      <td><input name="apellido" type="text" id="apellido" value="{apellido}"></td>
     </tr>
     <tr>
       <td class="aaal">Cedula:</td>
@@ -59,52 +59,52 @@ function MM_validateForm() { //v4.0
     </tr>
     <tr>
       <td class="aaal">Direccion:</td>
-      <td><input type="text" name="direccion" id="direccion"></td>
+      <td><input name="direccion" type="text" id="direccion" value="{direccion}"></td>
     </tr>
     <tr>
       <td class="aaal">Fecha de Nacimiento</td>
-      <td><input type="text" name="fecha_nacimiento" id="direccion"></td>
+      <td><input name="fecha_nacimiento" type="text" id="direccion" value="{fecha_nacimiento}"></td>
     </tr>
     <tr>
       <td class="aaal">Telefono:</td>
-      <td><input type="text" name="telefono" id="fecha_nacimiento"></td>
+      <td><input name="telefono" type="text" id="fecha_nacimiento" value="{telefono}"></td>
     </tr>
     <tr>
       <td class="aaal">Nacionalidad:</td>
-      <td><input type="text" name="nacionalidad" id="nacionalidad"></td>
+      <td><input name="nacionalidad" type="text" id="nacionalidad" value="{nacionalidad}"></td>
     </tr>
     <tr>
       <td class="aaal">Fecha de obtencion de la Licencia:</td>
-      <td><input type="text" name="fecha_licencia" id="fecha_licencia"></td>
+      <td><input name="fecha_licencia" type="text" id="fecha_licencia" value="{fecha_licencia}"></td>
     </tr>
     <tr>
       <td class="aaal">Sexo:</td>
       <td><select name="sexo" id="sexo">
-        <option value="0">Seleccione</option>
-        <option value="M">Masculino</option>
-        <option value="F">Femenino</option>
+        <option value="0" {selectS}>Seleccione</option>
+        <option value="M" {selectMasculino}>Masculino</option>
+        <option value="F" {selectFemenino}>Femenino</option>
       </select></td>
     </tr>
     <tr>
       <td class="aaal">Estado Civil:</td>
       <td><select name="estado_civil" id="estado_civil">
-        <option value="0">Seleccione</option>
-        <option value="S">Soltero</option>
-        <option value="C">Casado</option>
-        <option value="D">Divorciado</option>
-        <option value="V">Viudo</option>
+        <option value="0" {selectS}>Seleccione</option>
+        <option value="Soltero" {selectSoltero}>Soltero</option>
+        <option value="Casado" {selectCasado}>Casado</option>
+        <option value="Divorciado" {selectDivorciado}>Divorciado</option>
+        <option value="Viudo" {selectViudo}>Viudo</option>
       </select></td>
     </tr>
     <tr>
       <td class="aaal">Nombre de Conyugue:</td>
-      <td><input type="text" name="nombre_conyugue" id="nombre_conyugue"></td>
+      <td><input name="nombre_conyugue" type="text" id="nombre_conyugue" value="{nombre_conyugue}"></td>
     </tr>
     <tr>
       <td class="aaal">Tiene Beneficiarios?</td>
       <td class=""><select name="beneficiario" id="beneficiarios">
         <option value="0">Seleccione</option>
-        <option value="1">Si</option>
-        <option value="2">No</option>
+        <option value="1" {selectSi}>Si</option>
+        <option value="2" {selectNo}>No</option>
       </select></td>
     </tr>
     <tr>

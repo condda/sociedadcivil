@@ -215,24 +215,25 @@ VALUES
 
 INSERT INTO  `sociedadcivil`.`vehiculo` (
 `idVehiculo` ,
+`placaVehiculo` ,
 `anoVehiculo` ,
 `estadoVehiculo` ,
 `polizaVehiculo`
 )
 VALUES 
-(NULL ,  '1987',  'Vehiculo en buen estado',  '23424'),
-(NULL,  '1994',  'Vehiculo perfectas condiciones', '21345'),
-(NULL,  '1999',  'El vehiculo esta en condiciones ideales', '24556'),
-(NULL,  '2003',  'Este vehiculo se encuentra en buenas condiciones', '22334'),
-(NULL,  '1988', 'transporte chevrolet de 50 puestos en buen estado', '19778'),
-(NULL,  '1997', 'mercedes benz de 100 puestos excelente condiciones', '19778'),
-(NULL,  '1989', 'alkon apto para trabajar', '19778'),
-(NULL,  '1999', 'vehiculo chevrolet en buen estado', '19778'),
-(NULL,  '2000', 'en buen estado', '19778'),
-(NULL,  '2001', 'condiciones aceptables para transportar', '19778'),
-(NULL,  '1995', 'chocado pero puede trabajar', '19778'),
-(NULL,  '1992', 'transporte en buenas condiciones mecanicas', '19778'),
-(NULL,  '1991', 'vehiculo en condiciones ideales', '19778');
+(NULL ,'12143'  ,'1987',  'Vehiculo en buen estado',  '23424'),
+(NULL, '14536' ,'1994',  'Vehiculo perfectas condiciones', '21345'),
+(NULL, '11232' ,'1999',  'El vehiculo esta en condiciones ideales', '24556'),
+(NULL, '11622' ,'2003',  'Este vehiculo se encuentra en buenas condiciones', '22334'),
+(NULL, '45323' ,'1988', 'transporte chevrolet de 50 puestos en buen estado', '19778'),
+(NULL, '12143' ,'1997', 'mercedes benz de 100 puestos excelente condiciones', '19778'),
+(NULL, '76856' ,'1989', 'alkon apto para trabajar', '19778'),
+(NULL, '87953' ,'1999', 'vehiculo chevrolet en buen estado', '19778'),
+(NULL, '98345' ,'2000', 'en buen estado', '19778'),
+(NULL, '76898' ,'2001', 'condiciones aceptables para transportar', '19778'),
+(NULL, '10989' ,'1995', 'chocado pero puede trabajar', '19778'),
+(NULL, '89786' ,'1992', 'transporte en buenas condiciones mecanicas', '19778'),
+(NULL, '45457' ,'1991', 'vehiculo en condiciones ideales', '19778');
 
 
 

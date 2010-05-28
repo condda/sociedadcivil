@@ -170,7 +170,7 @@ function validarCamposHTML(form){
 function ValidarCamposBeneficiario(form){
 	var flagBeneficiario = $F('flagBeneficiario');
 	var cedulaPersona = $F('cedulaPersona');
-	
+	var tipo = $F('tipo');
 	
 	if (flagBeneficiario == '1'){
 		alert("Existe uno o mas errores en el formulario");
@@ -178,8 +178,10 @@ function ValidarCamposBeneficiario(form){
 		
 	}
 	
-
-	MM_goToURL('parent','../php/vehiculoSocio.php?id='+cedulaPersona+'');
+	if (tipo)
+		MM_goToURL('parent','../php/vehiculoAvance.php?id='+cedulaPersona+'');
+	else
+		MM_goToURL('parent','../php/vehiculoSocio.php?id='+cedulaPersona+'');
 }
 	
 
@@ -193,6 +195,7 @@ function validarBeneficiario(){
 	
 	var cedulaBeneficiario = $F('cedula');
 	var cedulaPersona = $F('cedulaPersona');
+	var tipoBeneficiario = $F('tipo');
 	
 	
 	
@@ -207,19 +210,13 @@ function validarBeneficiario(){
 		else{
 			$('mensajeVal').update("Cargando...");	
 			var tipo = 3;
-			new Ajax.Updater('mensajeVal','../php/validarPersona.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpCedulaBeneficiario:cedulaBeneficiario, phpTipo:tipo}})
+			new Ajax.Updater('mensajeVal','../php/validarPersona.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpCedulaBeneficiario:cedulaBeneficiario, phpTipo:tipo, phpTipoBeneficiario:tipoBeneficiario}})
 		
 		
 		}	
 	 }
 		
 }
-	
-	
-	
-	
-	
-	
 	
 function validarPlaca(){
 	
@@ -232,7 +229,7 @@ function validarPlaca(){
 }
 
 
-function VerificarInsertoVehiculo(){
+function VerificarInsertoVehiculo(form){
 	var cuentaVehiculo = $F('cuentaVehiculo');
 	
 	if (!cuentaVehiculo){
@@ -257,7 +254,15 @@ function ValidarCamposVehiculo(form){
 		return (false);		
 		
 	}
-	
-	
+		
+}
+
+
+function validarPlacaAvance(){
+	var cedulaPersona = $F('cedulaPersona');
+	var vehiculoPlaca = $F('placa');
+	$('mensajeVal').update("Cargando...");
+	new Ajax.Updater('mensajeVal','../php/validarPlaca.php',{method: 'post',parameters: {phpPlaca:vehiculoPlaca, phpTipo:2, phpCedulaPersona:cedulaPersona}})
+		
 	
 }

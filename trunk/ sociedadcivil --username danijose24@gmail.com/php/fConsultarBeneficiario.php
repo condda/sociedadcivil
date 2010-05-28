@@ -23,7 +23,7 @@
 		$pnlcontent->add("cedula",$result1['cedulaBeneficiario']);					
 		$pnlcontent->add("nombre",$result1['nombreBeneficiario']);					
 		$pnlcontent->add("apellido",$result1['apellidoBeneficiario']);
-		$pnlcontent->add("soAv",$result3['nombrePersona'].' '.$result3['apellidoPersona']);					
+		$pnlcontent->add("soAv",'<option>'.$result3['nombrePersona'].' '.$result3['apellidoPersona'].'</option>');					
 		$result = mysql_query("select * from Socio_Beneficiario where cedulaBeneficiario = '$cedulabeneficiario'");
 		$result1 = mysql_fetch_assoc($result);	
 		if($result1)
@@ -31,21 +31,33 @@
 		else
 			$pnlcontent->add("tipo","Avance");					
 	}		
-	/* else if ($consultarCedula){
-		$result = mysql_query("select * from Producto where idProducto = '$consultarCodigo'");
-		$result1 = mysql_fetch_assoc($result);
-		$result2 = mysql_query("select * from Producto_Prov where idProducto='$result1[idProducto]'");
-		$result3 = mysql_fetch_assoc($result2);
-		$result4 = mysql_query("select * from Proveedor where idProveedor='$result3[idProveedor]'");
-		$result5 = mysql_fetch_assoc($result4);
-		$pnlcontent->add("codigo",$result1['idProducto']);					
-		$pnlcontent->add("nombre",$result1['nombreProducto']);					
-		$pnlcontent->add("descripcion",$result1['descripcionProducto']);
-		$pnlcontent->add("proveedor",$result5['nombreProveedor']);					
-		$pnlcontent->add("precio",$result3['precioProductoProv']);					
-		$pnlcontent->add("cantidad",$result3['cantidadProductoProv']);		
-		FAAAAAAAAAAAAAALTAAAAAAAAAAAAAAA ESTOOOOOOOOOOOOOOOOOOOO
-	}*/
+	 else if ($consultarCedula){
+		$result = mysql_query("select * from Beneficiario where cedulaBeneficiario = '$consultarCedula'");
+		$result1 = mysql_fetch_assoc($result);	
+		$result2 = mysql_query("select distinct 
+							   Persona.nombrePersona,
+							   Persona.apellidoPersona
+							   from Beneficiario,Socio_Beneficiario,Avance_Beneficiario,Persona 
+							   where ((Socio_Beneficiario.cedulaBeneficiario='$consultarCedula' and
+									   Socio_Beneficiario.cedulaPersona=Persona.cedulaPersona) or  
+									  (Avance_Beneficiario.cedulaBeneficiario='$consultarCedula' and
+									   Avance_Beneficiario.cedulaPersona=Persona.cedulaPersona)) order by Persona.cedulaPersona asc");
+		$pnlcontent->add("cedula",$result1['cedulaBeneficiario']);					
+		$pnlcontent->add("nombre",$result1['nombreBeneficiario']);					
+		$pnlcontent->add("apellido",$result1['apellidoBeneficiario']);
+		$listaPersonas="";
+		while($result3 = mysql_fetch_assoc($result2)){
+			extract($result3);
+			$listaPersonas = $listaPersonas.'<option>'.$result3['nombrePersona'].' '.$result3['apellidoPersona'].'</option>';
+		}
+		$pnlcontent->add("soAv",$listaPersonas);					
+		$result = mysql_query("select * from Socio_Beneficiario where cedulaBeneficiario = '$consultarCedula'");
+		$result1 = mysql_fetch_assoc($result);	
+		if($result1)
+			$pnlcontent->add("tipo","Socio");					
+		else
+			$pnlcontent->add("tipo","Avance");					
+	}
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
 	$pnlmain->show();

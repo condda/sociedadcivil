@@ -23,6 +23,8 @@
 }
 -->
 </style>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarHTMLPersona.js"></script>
 <script type="text/javascript">
 <!--
 function MM_validateForm() { //v4.0
@@ -37,8 +39,8 @@ function MM_validateForm() { //v4.0
           if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
             min=test.substring(8,p); max=test.substring(p+1);
             if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
-      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
-    } if (errors) alert('The following error(s) occurred:\n'+errors);
+      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is necesario.\n'; }
+    } if (errors) alert('Han ocurrido los siguientes errores:\n'+errors);
     document.MM_returnValue = (errors == '');
 } }
 function MM_goToURL() { //v3.0
@@ -50,27 +52,38 @@ function MM_goToURL() { //v3.0
 </head>
 
 <body>
-<form name="form1" method="post" action="../php/beneficiario.php">
+<form name="form1" method="post" onSubmit="return ValidarCamposBeneficiario()" action="../php/beneficiario.php">
   <table width="328" border="0">
     <tr>
-      <td width="146" class="ppppp">Nombre</td>
-      <td width="172"><input type="text" name="nombre" id="nombre"></td>
-    </tr>
-    <tr>
-      <td class="ppppp">Apellido</td>
-      <td><input type="text" name="apellido" id="apellido"></td>
-    </tr>
-    <tr>
-      <td class="ppppp">Cedula</td>
-      <td><input type="text" name="cedula" id="cedula"></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="aaa"><input name="Agregar" type="submit" id="Agregar" onClick="MM_validateForm('nombre','','R','apellido','','R','cedula','','RisNum');return document.MM_returnValue" value="Inscribir Beneficiario">
-      <label>
-        <input name="home" type="button" id="home" onClick="MM_goToURL('parent','../php/vehiculoSocio.php');return document.MM_returnValue" value="Continuar Inscripcion">
+      <td width="146" class="ppppp"><span class="aaa">Cedula</span></td>
+      <td width="172" align="left"><label>
+        <input type="text" name="cedula" id="cedula" onChange="validarBeneficiario()">
       </label></td>
     </tr>
+    <tr>
+      
+    </tr>
   </table>
+  <table width="328" border="0">
+  <div id="datosBeneficiario">
+  </div>
+  </table>
+  
+  <table width="328" border="0">
+    <td width="323" colspan="2" class="aaa"><div id="mensajeVal"> <input name="flagBeneficiario" type="hidden" id="flagBeneficiario" value="0"></div></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aaa"><div id="botonesVal"><input name="Agregar" type="submit" id="Agregar" onClick="MM_validateForm('nombre','','R','apellido','','R','cedula','','RisNum');return document.MM_returnValue" value="Inscribir Beneficiario">
+        <label>
+          <input name="home" type="button" id="home" onClick="return ValidarCamposBeneficiario(this)" value="Continuar Inscripcion">
+        </label>
+      </div></td>
+  </table>
+  <p>&nbsp;</p>
+  <p>
+    <input name="cedulaPersona" type="hidden" id="cedulaPersona" value="{campoOcultoCedulaPersona}">
+   
+  </p>
   <p>{mensaje} </p>
 </form>
 </body>

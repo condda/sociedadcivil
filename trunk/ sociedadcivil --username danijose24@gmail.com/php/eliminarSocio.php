@@ -21,7 +21,15 @@
 	
 	if ($eliminarId){
 		
-		mysql_query("DELETE from  ");
+		mysql_query("DELETE from  socio where cedulaPersona = '$eliminarId'");
+		$result =  mysql_query ("select idVehiculo from traspaso where cedulaPersona = '$eliminarId' AND listaTraspaso = '0'");
+		while ($result1 = mysql_fetch_assoc($result)){
+		$idVehiculo = $result1['idVehiculo'];
+		mysql_query("delete from traspaso where cedulaPersona = '$eliminarId' AND idVehiculo='$idVehiculo' AND listaTraspaso = '0'");
+		mysql_query("delete from Vehiculo where idVehiculo = '$idVehiculo'");
+		
+		
+		}
 	}
 	if($cedula!=NULL)
 	{
@@ -43,7 +51,7 @@
 				<td align="center">'.$result2['estadoCPersona'].'</td>
 				<td align="center">'.$result2['fechaLPersona'].'</td>
 				<td align="center">'.$result2['nombreCPersona'].'</td>
-				<td align="center"><a href="../php/eliminarProducto.php?id='.$result2['cedulaPersona'].'">Eliminar</a></td>
+				<td align="center"><a href="../php/eliminarSocio.php?id='.$result2['cedulaPersona'].'">Eliminar</a></td>
 				</tr>';	 
 			
 			}
@@ -70,7 +78,7 @@
 				<td align="center">'.$result1['estadoCPersona'].'</td>
 				<td align="center">'.$result1['fechaLPersona'].'</td>
 				<td align="center">'.$result1['nombreCPersona'].'</td>
-				<td align="center"><a href="../php/eliminarProducto.php?id='.$result1['cedulaPersona'].'">Eliminar</a></td>
+				<td align="center"><a href="../php/eliminarSocio.php?id='.$result1['cedulaPersona'].'">Eliminar</a></td>
 				</tr>';
 				
 	}//while

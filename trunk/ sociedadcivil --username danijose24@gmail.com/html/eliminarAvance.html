@@ -1,0 +1,88 @@
+
+<html>
+<head>
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+.aaa {
+	text-align: center;
+}
+#button {
+	text-align: center;
+}
+.aaaa {
+	text-align: center;
+}
+#apDiv1 {
+	position:absolute;
+	width:1162px;
+	height:40px;
+	z-index:1;
+	left: 248px;
+	top: 403px;
+}
+.aa {
+	font-weight: bold;
+}
+.aaaaa {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<form name="form1" method="post" action="../php/eliminarAvance.php">
+  <table width="199" border="0">
+    <tr>
+      <td width="43" class="aaa">Cedula</td>
+      <td width="144"><input type="text" name="cedula" id="cedula" maxlength="8"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aaaa"><p>
+        <input type="submit" name="button" id="button" value="Buscar ">
+      </p>
+      <p>{mensaje}</td>
+    </tr>
+  </table>
+  <div id="apDiv1">
+    <table width="933" border="0">
+      <tr>
+        <td width="75" align="center"><strong>Cedula</strong></td>
+        <td width="60" align="center"><strong>Nombre</strong></td>
+        <td width="60" align="center"><strong>Apellido</strong></td>
+        <td width="64" align="center"><strong>Telefono</strong></td>
+        <td width="71" align="center"><strong>Direccion</strong></td>
+        <td width="91" align="center"><strong>Nacionalidad</strong></td>
+        <td width="47" align="center"><strong>Sexo</strong></td>
+        <td width="88" align="center"><strong>Fecha de Nacimiento</strong></td>
+        <td width="79" align="center"><strong>Estado Civil</strong></td>
+        <td width="93" align="center"><strong>Fecha de Licencia </strong></td>
+        <td width="73" align="center"><strong>Conyugue</strong></td>
+        <td width="82" align="center"><strong>Eliminar</strong></td>
+      </tr>
+      {informacion2}
+    </table>
+  </div>
+<p align="center" class="aa">&nbsp;</p>
+  <table width="928" border="0">
+    <tr class="aaaaa">
+      <td width="63" align="center">Cedula</td>
+      <td width="69" align="center">Nombre</td>
+      <td width="70" align="center">Apellido</td>
+      <td width="80" align="center">Telefono</td>
+      <td width="68" align="center">Direccion</td>
+      <td width="98" align="center">Nacionalidad</td>
+      <td width="37" align="center">Sexo</td>
+      <td width="94" align="center">Fecha de Nacimiento</td>
+      <td width="70" align="center">Estado Civil</td>
+      <td width="75" align="center">Fecha de Licencia </td>
+      <td width="79" align="center">Conyugue</td>
+      <td width="75" align="center">Eliminar</td>
+    </tr>
+    {informacion}
+  </table>
+</form>
+</body>
+
+</html>

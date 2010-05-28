@@ -1,0 +1,82 @@
+
+<html>
+<head>
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+.aaa {
+	text-align: center;
+}
+#button {
+	text-align: center;
+}
+.aaaa {
+	text-align: center;
+}
+#apDiv1 {
+	position:absolute;
+	width:1162px;
+	height:40px;
+	z-index:1;
+	left: 386px;
+	top: 371px;
+}
+.aa {
+	font-weight: bold;
+}
+.aaaaa {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<form name="form1" method="post" action="..\php\buscarAvance.php">
+  <table width="199" border="0">
+    <tr>
+      <td width="43" class="aaa">Cedula</td>
+      <td width="144"><input type="text" name="cedula" id="cedula" maxlength="8"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aaaa"><input type="submit" name="button" id="button" value="Buscar "></td>
+    </tr>
+  </table>
+  <div id="apDiv1">
+    <table width="718" border="0">
+      <tr>
+        <td width="52"><strong>Cedula</strong></td>
+        <td width="56"><strong>Nombre</strong></td>
+        <td width="58"><strong>Apellido</strong></td>
+        <td width="59"><strong>Telefono</strong></td>
+        <td width="64"><strong>Direccion</strong></td>
+        <td width="87"><strong>Nacionalidad</strong></td>
+        <td width="33"><strong>Sexo</strong></td>
+        <td width="76"><strong>Fecha de Nacimiento</strong></td>
+        <td width="50"><strong>Estado Civil</strong></td>
+        <td width="70"><strong>Fecha de Licencia </strong></td>
+        <td width="67"><strong>Conyugue</strong></td>
+      </tr>
+      {informacion2}
+    </table>
+  </div>
+<p align="center" class="aa">&nbsp;</p>
+  <table width="875" border="0">
+    <tr class="aaaaa">
+      <td width="76">Cedula</td>
+      <td width="78">Nombre</td>
+      <td width="78">Apellido</td>
+      <td width="78">Telefono</td>
+      <td width="79">Direccion</td>
+      <td width="85">Nacionalidad</td>
+      <td width="37">Sexo</td>
+      <td width="84">Fecha de Nacimiento</td>
+      <td width="71">Estado Civil</td>
+      <td width="99">Fecha de Licencia </td>
+      <td width="64">Conyugue</td>
+    </tr>
+    {informacion}
+  </table>
+</form>
+</body>
+</html>

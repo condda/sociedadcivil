@@ -111,7 +111,7 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SOCIEDAD` (
   `idSociedad` INT NOT NULL AUTO_INCREMENT ,
   `telefonoSociedad` INT NOT NULL ,
   `idLugar` INT NOT NULL ,
-  `descripcionSociedad` LONGTEXT(45) NOT NULL ,
+  `descripcionSociedad` LONGTEXT NOT NULL ,
   PRIMARY KEY (`idSociedad`) ,
   CONSTRAINT `fk_SUCURSAL_LUGAR`
     FOREIGN KEY (`idLugar` )

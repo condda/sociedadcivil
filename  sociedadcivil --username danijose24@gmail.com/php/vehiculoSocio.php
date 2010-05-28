@@ -2,23 +2,42 @@
 	
     require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
+	include "date.php";
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlcontent = new Panel ("../html/vehiculoSocio.html");
+	
 	$mensajeError = "Ya existe un vehiculo con ese numero de placa!!!.";
 	$pnlmenu->add("activo1",'id="active"');
+	
+	
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	
+	
     $pnlmain->add("menu",$pnlmenu);
 	
+	if (!$cedulaPersona){
+	$cedulaPersona = $_REQUEST['id'];
+	$pnlcontent->add("campoOcultoCedulaPersona",$cedulaPersona);
+	}
+	else{
+	$cedulaPersona = $_REQUEST['cedulaPersona'];
+	$pnlcontent->add("campoOcultoCedulaPersona",$cedulaPersona);
+	}
+	
+	$cuentaVehiculo = $_REQUEST['cuentaVehiculo'];
+	echo $cuentaVehiculo;
 	$placa = $_REQUEST['placa'];
-	$año = $_REQUEST['año'];
+	$ano = $_REQUEST['ano'];
 	$estado = $_REQUEST['estado'];
 	$poliza = $_REQUEST['poliza'];
 	
 	if($placa)
 	{//if 1
 		
-		$result =  mysql_query ("SELECT idVehiculo FROM vehiculo WHERE idVehiculo = '$placa'");
+		$result =  mysql_query ("SELECT idVehiculo FROM vehiculo WHERE placaVehiculo = '$placa'");
 		
 		if ($result1 = mysql_fetch_assoc($result))
 		{//if 2
@@ -26,18 +45,37 @@
 		}//if 2
 		else
 		{//else 1
-		
+		$pnlcontent->add("cuenta",1);
 			mysql_query (" INSERT INTO vehiculo (
 												 idVehiculo,
 												 anoVehiculo,
 												 estadoVehiculo,
-												 polizaVehiculo
+												 polizaVehiculo,
+												 placaVehiculo
 												 )
 						 VALUES					 (
-												  '$placa',
-												  '$año',
+												  'NULL',
+												  '$ano',
 												  '$estado',
-												  '$poliza'
+												  '$poliza',
+												  '$placa'
+												  )");
+			
+			$result =  mysql_query ("SELECT idVehiculo FROM vehiculo WHERE placaVehiculo = '$placa' order by idVehiculo desc limit 1");
+			$result1 = mysql_fetch_assoc($result);
+			
+			$idVehiculo = $result1['idVehiculo'];
+			
+			mysql_query (" INSERT INTO traspaso (
+												 cedulaPersona,
+												 idVehiculo,
+												 fechaTraspaso,
+												 listaTraspaso)
+						 VALUES					 (
+												  '$cedulaPersona',
+												  '$idVehiculo',
+												  '$date1',
+												  '0'
 												  )");
 			
 		

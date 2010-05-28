@@ -4,10 +4,14 @@
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
 	
-	$pnlmain = new Panel("../html/main.html");
+	/*$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
-	$pnlcontent = new Panel ("../html/crearSocio.html");	
+		$pnlmenu->add("activo1",'id="active"');
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	
+	$pnlcontent = new Panel ("../html/crearSocio.html");	
+	*/
 	
 	$mensajeError = "Ya existe un usuario con ese numero de cedula!!!.";
 	$mensajeErrorDatos = "Faltan campos por llenar.";
@@ -27,7 +31,7 @@
 	
 	
 	
-	$pnlmenu->add("activo1",'id="active"');
+
 	
 	
 	
@@ -63,7 +67,7 @@
 											   WHERE (cedulaPersona = '$cedulaPersona')");		
 		
 												
-						if ($beneficiario==1)
+				/*		if ($beneficiario==1)
 						{
 							
 							$pnlcontent = new Panel ("../html/beneficiario.html");
@@ -73,7 +77,7 @@
 						{
 							$pnlcontent = new Panel ("../html/vehiculoSocio.html");
 						}
-						
+						*/
 						
 		
 		
@@ -81,12 +85,12 @@
 	 // ELSE 1	
 	
 		
-		
-    $pnlmain->add("menu",$pnlmenu);
+		header ("Location: ../classes/Site.php");
+  /*  $pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
 
 
 	$pnlmain->show();
-	
+	*/
 	
 ?>

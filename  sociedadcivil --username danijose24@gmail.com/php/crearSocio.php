@@ -3,6 +3,7 @@
 
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
+	include "date.php";
 	
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
@@ -30,6 +31,8 @@
 	$fecha_licenciaPersona = $_REQUEST['fecha_licencia'];
 	$estado_civilPersona = $_REQUEST['estado_civil'];
 	$nombre_conyuguePersona = $_REQUEST['nombre_conyugue'];
+	
+	$monto = $_REQUEST['monto'];
 	
 	
 	
@@ -102,6 +105,40 @@
 						 VALUES				 (
 											  '$cedulaPersona'
 											  )");
+			
+			
+			mysql_query ("INSERT INTO inscripcion (
+											 idInscripcion,
+											 fechaInscripcion,
+											 estatusInscripcion,
+											 fechaAInscripcion,
+											 montoInscripcion,
+											 tipoInscripcion,
+											 cedulaPersona											
+											 )
+						 VALUES				 (
+											  'NULL',
+											  '$date1',
+											  '4',
+											  '0000-00-00',
+											  '$monto',
+											  '1',
+											  '$cedulaPersona'
+											  )");
+			
+			
+		$result =  mysql_query ("SELECT idInscripcion FROM inscripcion WHERE cedulaPersona = '$cedulaPersona' order by idInscripcion desc limit 1");
+		$result1= mysql_fetch_assoc($result);
+		$idInscripcion = $result1['idInscripcion'];
+				mysql_query ("INSERT INTO ingreso (	
+											 tipoIngreso, 
+											 idInscripcion
+											 )
+						 VALUES				 (
+											
+											  '4',
+											  '$idInscripcion'
+											  )");
 		
 												
 						if ($beneficiario==1)
@@ -114,6 +151,7 @@
 						if ($beneficiario==2)
 						{
 							$pnlcontent = new Panel ("../html/vehiculoSocio.html");
+							$pnlcontent->add("campoOcultoCedulaPersona",$cedulaPersona);
 						}
 						
 						
@@ -122,6 +160,7 @@
 			
 	} // ELSE 1	
 	
+		
 		
 		
     $pnlmain->add("menu",$pnlmenu);

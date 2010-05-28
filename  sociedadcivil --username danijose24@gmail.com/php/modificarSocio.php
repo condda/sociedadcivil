@@ -12,6 +12,9 @@
 	$pnlcontent = new Panel ("../html/modificarSocio.html");
 	$pnlmenu->add("activo1",'id="active"');
 	
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	
 	$cedula = $_REQUEST['cedula'];
 	$modificar = $_REQUEST['modificacion'];
 	

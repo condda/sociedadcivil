@@ -9,6 +9,8 @@
 }
 -->
 </style>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarHTMLPersona.js"></script>
 <script type="text/javascript">
 <!--
 function MM_validateForm() { //v4.0
@@ -36,21 +38,28 @@ function MM_goToURL() { //v3.0
 </head>
 
 <body>
-<form name="form1" method="post" action="..\php\vehiculoAvance.php">
+<form name="form1" method="post" onSubmit="return ValidarCamposVehiculo(this)" action="..\php\vehiculoAvance.php">
   <table width="399" border="0">
     <tr>
       <td width="212">Placa del Vehiculo</td>
       <td width="177"><label>
-        <input type="text" name="placa" id="placa">
+        <input type="text" name="placa" id="placa" onChange="validarPlacaAvance()">
       </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aa"><div id="mensajeVal"><input type="hidden" name="flagPlaca" id="flagPlaca" value= "0" /></div></td>
     </tr>
     <tr>
       <td colspan="2" class="aa"><label>
         <input name="continuar" type="submit" id="continuar" onClick="MM_validateForm('placa','','R');return document.MM_returnValue" value="Registrar Vehiculo">
-        <input name="finalizar" type="submit" id="finalizar" onClick="MM_goToURL('parent','../classes/Site.php');return document.MM_returnValue" value="Finalizar">
+        <input name="home" type="button" id="home" onClick="return VerificarInsertoVehiculo(this)" value="Finalizar Inscripcion">
       </label></td>
     </tr>
   </table>
+  <p>
+    <input name="cuentaVehiculo" type="hidden" id="cuentaVehiculo" value="{cuenta}">
+    <input name="cedulaPersona" type="hidden" id="cedulaPersona" value="{campoOcultoCedulaPersona}">
+  </p>
   <p>{mensaje}</p>
 </form>
 </body>

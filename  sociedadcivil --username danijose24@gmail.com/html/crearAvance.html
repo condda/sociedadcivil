@@ -3,7 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
 
-
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarHTMLPersona.js"></script>
 <style type="text/css">
 <!--
 .centrado {
@@ -30,12 +31,12 @@ function MM_validateForm() { //v4.0
         if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
           if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
         } else if (test!='R') { num = parseFloat(val);
-          if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+          if (isNaN(val)) errors+='- '+nm+' debe contener un numero.\n';
           if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
             min=test.substring(8,p); max=test.substring(p+1);
             if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
-      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
-    } if (errors) alert('The following error(s) occurred:\n'+errors);
+      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' es necesario.\n'; }
+    } if (errors) alert('Han ocurrido los siguientes errores:\n'+errors);
     document.MM_returnValue = (errors == '');
 } }
 //-->
@@ -43,7 +44,7 @@ function MM_validateForm() { //v4.0
 </head>
 
 <body>
-<form name="form1" method="post" action="../php/crearAvance.php">
+<form name="form1" method="post" onSubmit="return validarCamposHTML(this)" action="../php/crearAvance.php">
   <table width="436" border="0">
     <tr>
       <td width="276" class="aaal">Nombre:</td>
@@ -55,19 +56,19 @@ function MM_validateForm() { //v4.0
     </tr>
     <tr>
       <td class="aaal">Cedula:</td>
-      <td><input type="text" name="cedula" id="cedula" maxlength="8"></td>
+      <td><input name="cedula" type="text" id="cedula" maxlength="8" onChange="validarCedula()"></td>
     </tr>
     <tr>
       <td class="aaal">Direccion:</td>
-      <td><input type="text" name="direccion" id="cedula2"></td>
+      <td><input name="direccion" type="text" id="direccion" maxlength="45"></td>
     </tr>
     <tr>
       <td class="aaal">Fecha de Nacimiento</td>
-      <td><input type="text" name="fecha_nacimiento" id="direccion"></td>
+      <td><input type="text" name="fecha_nacimiento" id="fecha_nacimiento"></td>
     </tr>
     <tr>
       <td class="aaal">Telefono:</td>
-      <td><input type="text" name="telefono" id="fecha_nacimiento"></td>
+      <td><input type="text" name="telefono" id="telefono" maxlength="10"></td>
     </tr>
     <tr>
       <td class="aaal">Nacionalidad:</td>
@@ -87,31 +88,47 @@ function MM_validateForm() { //v4.0
     </tr>
     <tr>
       <td class="aaal">Estado Civil:</td>
-      <td><select name="estado_civil" id="estado_civil">
+      <td><select name="estado_civil" id="estado_civil" onChange="insertarEliminarConyugue()">
         <option value="0">Seleccione</option>
-        <option value="S">Soltero</option>
-        <option value="C">Casado</option>
-        <option value="D">Divorciado</option>
-        <option value="V">Viudo</option>
+        <option value="Soltero">Soltero</option>
+        <option value="Casado">Casado</option>
+        <option value="Divorciado">Divorciado</option>
+        <option value="Viudo">Viudo</option>
       </select></td>
     </tr>
+  
     <tr>
-      <td class="aaal">Nombre de Conyugue:</td>
-      <td><input type="text" name="nombre_conyugue" id="nombre_conyugue"></td>
+      <td  class="aaal"> <div id="campoNombreConyugue"></div></td>
+      <td> <div id="campoNombreConyugue1"></div></td>
     </tr>
     <tr>
       <td class="aaal">Tiene Beneficiarios?</td>
-      <td class=""><select name="beneficiario" id="beneficiarios">
+      <td class=""><select name="beneficiario" id="beneficiario">
         <option value="0">Seleccione</option>
         <option value="1">Si</option>
         <option value="2">No</option>
       </select></td>
     </tr>
     <tr>
-      <td colspan="2" class="aaa"><input name="enviar" type="submit" id="enviar" onClick="MM_validateForm('nombre','','R','apellido','','R','cedula','','RisNum','direccion','','R','fecha_nacimiento','','R','nacionalidad','','R','fecha_licencia','','R');return document.MM_returnValue" value="Continuar Inscripcion"></td>
+      <td class="aaal">Monto de Inscripcion</td>
+      <td class=""><label>
+        <input type="text" name="monto" id="monto">
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div id="insertarBeneficiarios"></div></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aaa"><div id="mensajeVal">
+        
+      </div></td>
     </tr>
   </table>
-  {mensaje}
+  <p>
+    <input name="tipo" type="hidden" id="tipo" value="{tipo}">
+  </p>
+  <p>{mensaje} </p>
+  <p>&nbsp;</p>
 </form>
 <p>&nbsp;</p>
 </body>

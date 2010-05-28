@@ -36,13 +36,13 @@
       </select></td>
       <td width="28"><div id="rif"></div>
       </td>
-      <td width="144"><div id = cedulaProveedor>
-        <input name="cedRif" type="text" id="cedRif" value="{cedRif}" onchange="validarCedulaProveedor()" />
+      <td width="144"><div id = "cedulaProveedor">
+        <input name="cedRif" type="text" id="cedRif" value="{cedRif}" onchange="validarCedulaProveedor()"  maxlength="9"/>
       </div></td>
     </tr>
     <tr>
       <td colspan="2">Nombre</td>
-      <td><input name="nombre" type="text" id="nombre" value="{nombre}" /></td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="25" /></td>
     </tr>
     <tr>
       <td colspan="2">Direccion</td>
@@ -50,7 +50,7 @@
     </tr>
     <tr>
       <td colspan="2">Telefono</td>
-      <td><input name="telefono" type="text" id="telefono" value="{telefono}"/></td>
+      <td><input name="telefono" type="text" id="telefono" value="{telefono}"  maxlength="10"/></td>
     </tr>
     <tr>
       <td colspan="2">Numero de Productos</td>

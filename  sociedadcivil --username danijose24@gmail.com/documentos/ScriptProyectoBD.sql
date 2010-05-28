@@ -671,7 +671,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`VEHICULO_AVANCE` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`VEHICULO_AVANCE` (
   `idVehiculo` INT NOT NULL ,
   `cedulaPersona` INT NOT NULL ,
-  PRIMARY KEY (`idVehiculo`, `cedulaPersona`) ,
+ `fechaVehiculoAvance` DATE NOT NULL  , PRIMARY KEY (`idVehiculo`, `cedulaPersona`) ,
   CONSTRAINT `fk_VEHICULO_has_AVANCE_VEHICULO`
     FOREIGN KEY (`idVehiculo` )
     REFERENCES `sociedadCivil`.`VEHICULO` (`idVehiculo` )

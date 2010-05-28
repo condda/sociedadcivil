@@ -11,7 +11,7 @@
 	$pnlcontent = new Panel ("../html/crearVehiculo.html");	
 	$pnlmenu->add("activo3",'id="active"');
 	
-	$cedula = $_REQUEST['cedula'];
+	$cedula = $_REQUEST['lista'];
 	$placa = $_REQUEST['placa'];
 	$anio = $_REQUEST['anio'];
 	$estado = $_REQUEST['estado'];
@@ -66,6 +66,7 @@ if($cedula)
 							'$date1',
 							0
 							)");
+		$pnlcontent->add("mensaje","Vehiculo Registrado Exitosamente!!!");
 		
 	
 	}
@@ -76,12 +77,12 @@ if($cedula)
 	}
 	else while($result3)
 		{
-			$datos = $datos.'<tr>
-			<td>'.$result3['cedulaPersona'].'</td>
-			<td>'.$result3['nombrePersona'].'</td>
-			<td>'.$result3['apellidoPersona'].'</td>
-			</tr>';
+
 			
+			$datos = $datos.'<option value="'.$result3['cedulaPersona'].'">'.$result3['nombrePersona'].' '
+			.$result3['apellidoPersona'].'</option>';
+			
+					
 			$result3= mysql_fetch_assoc($resultInfo);			
 		}
 
@@ -90,7 +91,7 @@ if($cedula)
 		
 	/************FINAL*****************/	
 	
-	$pnlcontent->add("informacion",$datos);
+	$pnlcontent->add("listaSocios",$datos);
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
 

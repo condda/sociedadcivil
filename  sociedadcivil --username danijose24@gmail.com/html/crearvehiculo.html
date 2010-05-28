@@ -38,6 +38,10 @@ function MM_validateForm() { //v4.0
     } if (errors) alert('The following error(s) occurred:\n'+errors);
     document.MM_returnValue = (errors == '');
 } }
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
 //-->
 </script>
 </head>
@@ -47,8 +51,11 @@ function MM_validateForm() { //v4.0
   <p class="www">Crear Vehiculo</p>
   <table width="400" border="0">
     <tr>
-      <td>Cedula del Socio</td>
-      <td><input type="text" name="cedula" id="cedula"></td>
+      <td>Socio</td>
+      <td><select name="lista" id="lista">
+      <option value="0">Seleccione</option>
+      {listaSocios}
+      </select></td>
     </tr>
     <tr>
       <td>Placa</td>
@@ -67,18 +74,11 @@ function MM_validateForm() { //v4.0
       <td><input type="text" name="poliza" id="poliza"></td>
     </tr>
     <tr>
-      <td colspan="2" class="aaa"><input name="enviar" type="submit" id="enviar" onClick="MM_validateForm('cedula','','RisNum','placa','','R','anio','','NinRange1990:2010','estado','','R','poliza','','RisNum');return document.MM_returnValue" value="Enviar"></td>
+      <td colspan="2" class="aaa"><input name="enviar" type="submit" id="enviar" onClick="MM_validateForm('cedula','','RisNum','placa','','R','anio','','NinRange1990:2010','estado','','R','poliza','','RisNum');return document.MM_returnValue" value="Registrar Vehiculo">
+      <input name="finalizar" type="submit" id="finalizar" onClick="MM_goToURL('parent','../classes/Site.php');return document.MM_returnValue" value="Finalizar"></td>
     </tr>
   </table>
   <p>{mensaje}</p>
-  <table width="400" border="0">
-    <tr class="negrita">
-      <td>Cedula</td>
-      <td>Nombre</td>
-      <td>Apellido</td>
-    </tr>
-    {informacion}
-  </table>
   <p>&nbsp;</p>
 </form>
 </body>

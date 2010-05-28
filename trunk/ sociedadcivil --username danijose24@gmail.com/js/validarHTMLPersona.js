@@ -179,11 +179,11 @@ function ValidarCamposBeneficiario(form){
 	}
 	if (tipo == '1')
 		MM_goToURL('parent','../php/vehiculoSocio.php?id='+cedulaPersona+'');
-}
+
 	if (tipo == '2')
 		MM_goToURL('parent','../php/vehiculoAvance.php?id='+cedulaPersona+'');
 	
-	
+}
 
 
 

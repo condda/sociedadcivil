@@ -13,6 +13,8 @@
 	$pnlmenu->add("activo1",'id="active"');
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
+	$pnlcontent->add("nombre","Avance");
 	
 	$pnlcontent->add("crear",'<a href="../php/crearAvance.php">Crear Avance</a>');
 	$pnlcontent->add("modificar",'<a href="../php/modificarAvance.php">Modificar Avance</a>');

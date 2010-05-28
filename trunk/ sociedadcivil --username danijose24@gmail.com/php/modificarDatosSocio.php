@@ -4,14 +4,15 @@
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
 	
-	/*$pnlmain = new Panel("../html/main.html");
+	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo1",'id="active"');
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
-	
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
+
 	$pnlcontent = new Panel ("../html/crearSocio.html");	
-	*/
+	
 	
 	$mensajeError = "Ya existe un usuario con ese numero de cedula!!!.";
 	$mensajeErrorDatos = "Faltan campos por llenar.";

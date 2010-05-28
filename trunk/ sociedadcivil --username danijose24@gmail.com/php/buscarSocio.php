@@ -8,9 +8,10 @@
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
-	
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlcontent = new Panel ("../html/buscarSocio.html");
 	$pnlmenu->add("activo1",'id="active"');
+	
 	
 	$cedula = $_REQUEST['cedula'];
 	

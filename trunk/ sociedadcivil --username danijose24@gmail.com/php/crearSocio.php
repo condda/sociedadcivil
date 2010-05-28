@@ -31,15 +31,7 @@
 	$fecha_licenciaPersona = $_REQUEST['fecha_licencia'];
 	$estado_civilPersona = $_REQUEST['estado_civil'];
 	$nombre_conyuguePersona = $_REQUEST['nombre_conyugue'];
-	
 	$monto = $_REQUEST['monto'];
-	
-	
-	
-	
-	
-	
-	
 	$beneficiario = $_REQUEST['beneficiario'];
 	
 	
@@ -130,6 +122,8 @@
 		$result =  mysql_query ("SELECT idInscripcion FROM inscripcion WHERE cedulaPersona = '$cedulaPersona' order by idInscripcion desc limit 1");
 		$result1= mysql_fetch_assoc($result);
 		$idInscripcion = $result1['idInscripcion'];
+				
+				
 				mysql_query ("INSERT INTO ingreso (	
 											 tipoIngreso, 
 											 idInscripcion

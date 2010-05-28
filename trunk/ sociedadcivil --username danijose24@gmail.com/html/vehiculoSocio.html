@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarHtmlPersona.js"></script>
 <style type="text/css">
 <!--
 .aa {
@@ -9,6 +11,7 @@
 }
 -->
 </style>
+
 <script type="text/javascript">
 <!--
 function MM_validateForm() { //v4.0
@@ -23,8 +26,8 @@ function MM_validateForm() { //v4.0
           if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
             min=test.substring(8,p); max=test.substring(p+1);
             if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
-      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
-    } if (errors) alert('The following error(s) occurred:\n'+errors);
+      } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' es necerario.\n'; }
+    } if (errors) alert('Han ocurrido los siguientes errores:\n'+errors);
     document.MM_returnValue = (errors == '');
 } }
 function MM_goToURL() { //v3.0
@@ -36,39 +39,48 @@ function MM_goToURL() { //v3.0
 </head>
 
 <body>
-<form name="form1" method="post" action="..\php\vehiculoSocio.php">
+<form name="form1" method="post" onSubmit="return ValidarCamposVehiculo(this)" action="..\php\vehiculoSocio.php">
   <table width="399" border="0">
     <tr>
       <td width="212">Placa del Vehiculo</td>
       <td width="177"><label>
-        <input type="text" name="placa" id="placa">
+        <input type="text" name="placa" id="placa" onChange="validarPlaca()" maxlength="7">
       </label></td>
     </tr>
     <tr>
       <td>Año del Vehiculo</td>
       <td><label>
-        <input type="text" name="año" id="año">
+        <input type="text" name="ano" id="ano" maxlength="4">
       </label></td>
     </tr>
     <tr>
       <td>Descripcion estado del Vehiculo</td>
       <td><label>
-        <input type="text" name="estado" id="estado">
+        <input type="text" name="estado" id="estado" maxlength="40">
       </label></td>
     </tr>
     <tr>
       <td>Numero de Poliza de Seguro</td>
       <td><label>
-        <input type="text" name="poliza" id="poliza">
+        <input type="text" name="poliza" id="poliza" maxlength="10">
       </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="aa"><div id="mensajeVal">
+        <input name="flagPlaca" type="hidden" id="flagPlaca" value="0">
+      </div></td>
     </tr>
     <tr>
       <td colspan="2" class="aa"><label>
         <input name="registrar" type="submit" id="registrar" onClick="MM_validateForm('placa','','RisNum','año','','R','estado','','R','poliza','','RisNum');return document.MM_returnValue" value="Registrar Siguiente Vehiculo">
-        <input name="continuar" type="submit" id="continuar" onClick="MM_goToURL('parent','../classes/Site.php');return document.MM_returnValue" value="Finalizar Inscripcion">
+        <input name="home" type="button" id="home" onClick="return VerificarInsertoVehiculo(this)" value="Finalizar Inscripcion">
       </label></td>
     </tr>
   </table>
+  <p>
+    <input name="cedulaPersona" type="hidden" id="cedulaPersona" value="{campoOcultoCedulaPersona}">
+    <input name="cuentaVehiculo" type="hidden" id="cuentaVehiculo" value="{cuenta}">
+  </p>
   <p>{mensaje}</p>
 </form>
 </body>

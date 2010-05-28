@@ -18,8 +18,8 @@
 	width:1162px;
 	height:40px;
 	z-index:1;
-	left: 386px;
-	top: 371px;
+	left: 425px;
+	top: 389px;
 }
 .aa {
 	font-weight: bold;
@@ -53,33 +53,33 @@ function MM_validateForm() { //v4.0
 
 <body>
 <form name="form1" method="post" action="..\php\modificarSocio.php">
-  <table width="244" border="0">
+  <table width="297" border="0">
     <tr>
       <td width="43" class="aaa">Cedula</td>
-      <td width="43" class="aaa"><input type="text" name="cedula" id="cedula"></td>
-      <td width="144"><select name="modificacion" id="modificacion">
+      <td width="144" class="aaa"><input type="text" name="cedula" id="cedula" maxlength="9"></td>
+      <td width="99"><select name="modificacion" id="modificacion">
         <option value="0">Seleccione</option>
         <option value="1">Si</option>
         <option value="2">No</option>
       </select></td>
     </tr>
     <tr>
-      <td colspan="3" class="aaaa"><input name="button" type="submit" id="button" onClick="MM_validateForm('cedula','','RisNum');return document.MM_returnValue" value="Buscar "></td>
+      <td colspan="3" align="left" class="aaaa"><input name="button" type="submit" id="button" onClick="MM_validateForm('cedula','','RisNum');return document.MM_returnValue" value="Buscar "></td>
     </tr>
   </table>
   <div id="apDiv1">
-    <table width="718" border="0">
+    <table width="749" border="0">
       <tr>
-        <td width="52"><strong>Cedula</strong></td>
-        <td width="56"><strong>Nombre</strong></td>
-        <td width="58"><strong>Apellido</strong></td>
+        <td width="72"><strong>Cedula</strong></td>
+        <td width="54"><strong>Nombre</strong></td>
+        <td width="55"><strong>Apellido</strong></td>
         <td width="59"><strong>Telefono</strong></td>
         <td width="64"><strong>Direccion</strong></td>
         <td width="87"><strong>Nacionalidad</strong></td>
         <td width="33"><strong>Sexo</strong></td>
-        <td width="76"><strong>Fecha de Nacimiento</strong></td>
+        <td width="90"><strong>Fecha de Nacimiento</strong></td>
         <td width="50"><strong>Estado Civil</strong></td>
-        <td width="70"><strong>Fecha de Licencia </strong></td>
+        <td width="72"><strong>Fecha de Licencia </strong></td>
         <td width="67"><strong>Conyugue</strong></td>
       </tr>
       {informacion2}

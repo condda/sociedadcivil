@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`VEHICULO` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`VEHICULO` (
   `idVehiculo` INT NOT NULL AUTO_INCREMENT ,
- `placaVehiculo` VARCHAR(45) NOT NULL , `anoVehiculo` YEAR NOT NULL ,
+ `placaVehiculo` VARCHAR(45) NOT NULL , `anoVehiculo` INT NOT NULL ,
   `estadoVehiculo` VARCHAR(45) NOT NULL ,
   `polizaVehiculo` INT(11) NOT NULL ,
   PRIMARY KEY (`idVehiculo`) )

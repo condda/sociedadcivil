@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarProveedor.js"></script>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/crearBeneficiario.php">
+  <h1>Crear Beneficiario  </h1>
+  <p>&nbsp;</p>
+  <table width="232" border="0">
+    <tr>
+      <td>{tipo}</td>
+      <td><select name="listaSoAv2" id="listaSoAv2" onchange="llenadoProveedores()">
+        <option value="0" "selected="selected">Seleccione</option>
+        
+      
+      
+        {opcion}
+      
+    
+    
+      </select></td>
+    </tr>
+    <tr>
+      <td width="72">Cedula</td>
+      <td width="144"><input name="cedula" type="text" id="cedula" value="{cedula}" /></td>
+    </tr>
+    <tr>
+      <td>Nombre</td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" /></td>
+    </tr>
+    <tr>
+      <td>Apellido</td>
+      <td><input name="apellido" type="text" id="textfield5" value="{apellido}" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Crear" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>{mensaje}</p>
+</form>
+</body>
+</html>

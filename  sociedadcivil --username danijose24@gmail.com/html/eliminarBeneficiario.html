@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 table tr td {
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/eliminarBeneficiario.php">
+  <h1>Eliminar Beneficiario</h1>
+  <p>&nbsp;</p>
+  <table width="840" border="0">
+    <tr>
+      <td width="300">Introduzca la cedula  del beneficiario eliminar:</td>
+      <td width="144"><input name="eliminarCedula" type="text" id="eliminarCedula" value="{eliminarCedula}" /></td>
+      <td width="388">{mensaje} </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="eliminar" id="eliminar" value="Eliminar" /></td>
+      <td width="388">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="840" border="0">
+    <tr>
+      <td width="80" align="center" valign="middle"><h3>&nbsp;</h3></td>
+      <td width="150"><h3>Beneficiario</h3></td>
+      <td width="150">&nbsp;</td>
+      <td width="80" align="center" valign="middle"><h3>&nbsp;</h3></td>
+      <td width="150"><h3>Socio/Avance</h3></td>
+      <td width="150">&nbsp;</td>
+      <td width="80">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="80" align="center" valign="middle"><h3>Cedula</h3></td>
+      <td width="180"><h3>Nombre</h3></td>
+      <td width="180"><h3>Apellido</h3></td>
+      <td width="80" align="center" valign="middle"><h3>Cedula</h3></td>
+      <td width="180"><h3>Nombre</h3></td>
+      <td width="180"><h3>Apellido</h3></td>
+      <td width="80">&nbsp;</td>
+    </tr>
+    {eliminarBeneficiario}
+  </table>
+</form>
+</body>
+</html>

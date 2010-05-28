@@ -1,6 +1,5 @@
 <?php
 	
-
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
 	include "date.php";

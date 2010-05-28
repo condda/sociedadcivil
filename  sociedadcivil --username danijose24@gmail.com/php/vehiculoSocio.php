@@ -10,7 +10,9 @@
 	
 	$mensajeError = "Ya existe un vehiculo con ese numero de placa!!!.";
 	$pnlmenu->add("activo1",'id="active"');
-	
+	$tipo = 1;
+
+	$pnlcontent->add("tipo",$tipo);
 	
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');

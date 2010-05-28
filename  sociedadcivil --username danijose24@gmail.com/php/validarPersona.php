@@ -47,7 +47,7 @@ $tipoBeneficiario = $_POST['phpTipoBeneficiario'];
   
   if (($cedulaPersona) && ($cedulaBeneficiario) && ($tipo == 3)){
 	   
-	   if (!$tipoBeneficiario)
+	   if ($tipoBeneficiario == 1)
 		 $result = mysql_query("select * from socio_beneficiario where cedulaBeneficiario = '$cedulaBeneficiario' AND cedulaPersona = '$cedulaPersona'");
 		 
 		else

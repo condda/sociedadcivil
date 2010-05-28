@@ -221,10 +221,11 @@ function validarBeneficiario(){
 function validarPlaca(){
 	
 	var vehiculoPlaca = $F('placa');
+	var cedulaPersona = $F('cedulaPersona');
 	
 	if (vehiculoPlaca){
 		$('mensajeVal').update("Cargando...");
-		new Ajax.Updater('mensajeVal','../php/validarPlaca.php',{method: 'post',parameters: {phpPlaca:vehiculoPlaca}})
+		new Ajax.Updater('mensajeVal','../php/validarPlaca.php',{method: 'post',parameters: {phpPlaca:vehiculoPlaca, phpTipo:1, phpCedulaPersona:cedulaPersona}})
 	}
 }
 

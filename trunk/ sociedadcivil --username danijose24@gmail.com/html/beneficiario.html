@@ -52,12 +52,12 @@ function MM_goToURL() { //v3.0
 </head>
 
 <body>
-<form name="form1" method="post" onSubmit="return ValidarCamposBeneficiario()" action="../php/beneficiario.php">
+<form name="form1" method="post" onSubmit="return ValidarCamposBeneficiario()" action="../php/beneficiarioSocio.php">
   <table width="328" border="0">
     <tr>
       <td width="146" class="ppppp"><span class="aaa">Cedula</span></td>
       <td width="172" align="left"><label>
-        <input type="text" name="cedula" id="cedula" onChange="validarBeneficiario()">
+        <input type="text" name="cedula" id="cedula" onChange="validarBeneficiario()"  maxlength="8">
       </label></td>
     </tr>
     <tr>
@@ -82,6 +82,7 @@ function MM_goToURL() { //v3.0
   <p>&nbsp;</p>
   <p>
     <input name="cedulaPersona" type="hidden" id="cedulaPersona" value="{campoOcultoCedulaPersona}">
+    <input name="tipo" type="hidden" id="tipo" value="1">
   </p>
   <p>{mensaje} </p>
 </form>

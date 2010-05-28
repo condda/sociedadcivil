@@ -49,23 +49,23 @@
   <table width="232" border="0">
     <tr>
       <td>Codigo</td>
-      <td><input name="codigo" type="text" id="codigo" value="{codigo}"  onchange="ValidarCodigoProducto()"/></td>
+      <td><input name="codigo" type="text" id="codigo"  onchange="ValidarCodigoProducto()" value="{codigo}" maxlength="10"/></td>
     </tr>
     <tr>
       <td>Nombre</td>
-      <td><input name="nombre" type="text" id="nombre" value="{nombre}" /></td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="15" /></td>
     </tr>
     <tr>
       <td>Descripcion</td>
-      <td><input name="descripcion" type="text" id="descripcion" value="{descripcion}" /></td>
+      <td><input name="descripcion" type="text" id="descripcion" value="{descripcion}" maxlength="45" /></td>
     </tr>
     <tr>
       <td>Precio</td>
-      <td><input name="precio" type="text" id="precio" value="{precio}"/></td>
+      <td><input name="precio" type="text" id="precio" value="{precio}" maxlength="8"/></td>
     </tr>
     <tr>
       <td width="72">Cantidad</td>
-      <td width="144"><input name="cantidad" type="text" id="cantidad" value="{cantidad}" /></td>
+      <td width="144"><input name="cantidad" type="text" id="cantidad" value="{cantidad}" maxlength="8" /></td>
     </tr>
     <tr>
       <td colspan="2" align="center"><div id="proveedor"></div></td>

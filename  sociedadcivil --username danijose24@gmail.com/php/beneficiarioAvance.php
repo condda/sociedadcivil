@@ -9,6 +9,8 @@
 	$pnlcontent = new Panel ("../html/beneficiarioAvance.html");
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
+
 	
 	
 	$pnlcontent->add("mensaje",$mensajeError);	

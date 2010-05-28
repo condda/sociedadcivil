@@ -69,21 +69,21 @@ $tipoBeneficiario = $_POST['phpTipoBeneficiario'];
 				 if ($result1 = mysql_fetch_assoc($result)){
 					 echo '<tr>
    					<td width="146" class="ppppp">Nombre</td>
-    				<td width="172"><input name="nombre" type="text" id="nombre" maxlength="15" value="'.$result1['nombreBeneficiario'].'" readonly></td>
+    				<td width="172"><input name="nombre" type="text" id="nombre" maxlength="30" value="'.$result1['nombreBeneficiario'].'" readonly></td>
     				
     			 	 <td class="ppppp">Apellido</td>
-     				 <td><input name="apellido" type="text" id="apellido" maxlength="15" value="'.$result1['apellidoBeneficiario'].'" readonly></td>
+     				 <td><input name="apellido" type="text" id="apellido" maxlength="30" value="'.$result1['apellidoBeneficiario'].'" readonly></td>
   					</tr>';
 					 
 				 }
 				 else{
 					 
 					 echo '<td width="146" class="ppppp">Nombre</td>
-    				<td width="172"><input name="nombre" type="text" id="nombre" maxlength="15"></td>
+    				<td width="172"><input name="nombre" type="text" id="nombre" maxlength="30"></td>
     				</tr>
     				<tr>
     			 	 <td class="ppppp">Apellido</td>
-     				 <td><input name="apellido" type="text" id="apellido" maxlength="15"></td>
+     				 <td><input name="apellido" type="text" id="apellido" maxlength="30"></td>
   					</tr>';
 				 }
 				 

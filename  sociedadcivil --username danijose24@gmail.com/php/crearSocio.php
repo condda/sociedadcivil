@@ -11,10 +11,12 @@
 	
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
+
 	
 	$pnlcontent = new Panel ("../html/crearSocio.html");	
 	$tipo = 1;
-
+	$pnlcontent->add("nombre","Beneficiario");
 	$pnlcontent->add("tipo",$tipo);
 	
 	$mensajeError = "Ya existe un usuario con ese numero de cedula!!!.";

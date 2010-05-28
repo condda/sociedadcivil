@@ -21,18 +21,14 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="../php/fModificarProveedor.php">
-  <h1>Modificar Proveedor </h1>
+<form id="form1" name="form1" method="post" action="../php/fModificarProducto.php">
+  <h1>Modificar Producto </h1>
   <p>&nbsp;</p>
   <table width="200" border="0">
     <tr>
-      <td><select name="ciRif" id="ciRif">
-        <option value="0">Seleccione</option>
-        <option {cedulaS} value="1">Cedula</option>
-        <option {rifS} value="2">Rif</option>
-      </select></td>
+      <td>Codigo</td>
       <td><div id = "cedulaProveedor">
-        <input name="cedRif" type="text" id="cedRif" onchange="validarCedulaProveedor()" value="{cedRif}" readonly="readonly" />
+        <input name="codigo" type="text" id="codigo" onchange="validarCedulaProveedor()" value="{codigo}" readonly="readonly" />
       </div></td>
     </tr>
     <tr>
@@ -40,12 +36,20 @@
       <td><input name="nombre" type="text" id="nombre" value="{nombre}" /></td>
     </tr>
     <tr>
-      <td>Direccion</td>
-      <td><input name="direccion" type="text" id="direccion" value="{direccion}" /></td>
+      <td>Descripcion</td>
+      <td><input name="descripcion" type="text" id="descripcion" value="{descripcion}" /></td>
     </tr>
     <tr>
-      <td>Telefono</td>
-      <td><input name="telefono" type="text" id="telefono" value="{telefono}" /></td>
+      <td>Proveedor</td>
+      <td><input name="proveedor" type="text" id="proveedor" value="{proveedor}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Precio</td>
+      <td><input name="precio" type="text" id="precio" value="{precio}" /></td>
+    </tr>
+    <tr>
+      <td>Cantidad</td>
+      <td><input name="cantidad" type="text" id="cantidad" value="{cantidad}" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

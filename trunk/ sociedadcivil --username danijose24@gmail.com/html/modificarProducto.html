@@ -8,29 +8,41 @@
 #form1 h1 {
 	color: #6F0;
 }
+#form1 table tr td {
+	text-align: center;
+}
 -->
 </style>
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="../php/fModificarProducto.php">
   <h1>Modificar Producto</h1>
   <p>&nbsp;</p>
-  <table width="832" border="0">
+  <table width="796" border="0">
     <tr>
-      <td width="180">Nombre</td>
-      <td width="250">Descripcion</td>
-      <td width="180">Proveedor</td>
-      <td width="100">Precio</td>
-      <td width="100">Modificar</td>
+      <td width="250">Introduzca el codigo a modificar:</td>
+      <td width="144"><input name="modificarCodigo" type="text" id="modificarCodigo" value="{modificarCodigo}" /></td>
+      <td width="388">{mensaje} </td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td width="200">&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>{modificar}</td>
+      <td><input type="submit" name="modificar" id="modificar" value="Modificar" /></td>
+      <td width="388">&nbsp;</td>
     </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="790" border="0">
+    <tr>
+      <td width="60"><h3>Codigo</h3></td>
+      <td width="135"><h3>Nombre</h3></td>
+      <td width="160"><h3>Descripcion</h3></td>
+      <td width="135"><h3>Proveedor</h3></td>
+      <td width="110"><h3>Precio</h3></td>
+      <td width="110"><h3>Cantidad</h3></td>
+      <td width="60">&nbsp;</td>
+    </tr>
+    {modificarProducto}
   </table>
 </form>
 </body>

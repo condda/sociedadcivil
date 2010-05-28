@@ -61,7 +61,7 @@ VALUES
 ('12345345',  'Pedro',  'Perez',  '1972-05-11',  'M',  'Venezolano',  'La Urbina',  '3245567',  '1992-05-12',  'Casado',  'Maria de Perez','1'),
 ('18933251','Lawrence','Cermeño','1989-11-03','M','Venezolano','Capuchinos','3453234','2006-02-10','Soltero','','1'),
 ('19044502','Leonardo','Fraile','1989-01-25','M','Venezolano','El Paraiso','4565678','2004-07-12','Soltero','','1'),
-('20484534','Daniela','Mesquina','1987-07-27','F','Venezolano','Los Naranjos','4532345','2007-09-23','Soltero','','1'),
+('20484534','Daniela','Mesquita','1987-07-27','F','Venezolano','Los Naranjos','4532345','2007-09-23','Soltero','','1'),
 ('15343467','Elio','Conde','1985-05-01','M','Venezolano','Los chorros','4533456','2003-03-14','Soltero','','1'),
 ('15342942','Alberto','Conde','1983-09-19','M','Venezolano','Lomas del Avila','2555467','2001-01-28','Casado','Nailibeth de Conde','1'),
 ('7887976','Jesus','Ramirez','1978-04-12','M','Venezolano','La Yaguara','4457786','2000-03-16','Soltero','','1'),

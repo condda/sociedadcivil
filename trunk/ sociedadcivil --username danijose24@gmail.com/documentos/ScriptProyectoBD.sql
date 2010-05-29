@@ -245,28 +245,57 @@ ENGINE = InnoDB;
 
 
 
+
+
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`SANCION`
 -- -----------------------------------------------------
+
 DROP TABLE IF EXISTS `sociedadCivil`.`SANCION` ;
 
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SANCION` (
   `idSancion` INT NOT NULL AUTO_INCREMENT ,
-  `fechaSancion` DATE NOT NULL ,
+ 
+ `fechaSancion` DATE NOT NULL ,
+
   `idNorma` INT NOT NULL ,
-  `idTribunald` INT NOT NULL ,
-  PRIMARY KEY (`idSancion`) ,
-  CONSTRAINT `fk_SANCION_TRIBUNALD`
+ 
+ `idTribunald` INT NOT NULL ,
+ 
+ `cedulaPersonaS` INT  ,
+ 
+ `cedulaPersonaA` INT,
+ 
+ PRIMARY KEY (`idSancion`) ,
+
+ CONSTRAINT `fk_SANCION_TRIBUNALD`
     FOREIGN KEY (`idTribunald` )
     REFERENCES `sociedadCivil`.`TRIBUNALD` (`idTribunald` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
+
   CONSTRAINT `fk_SANCION_NORMA`
     FOREIGN KEY (`idNorma` )
     REFERENCES `sociedadCivil`.`NORMA` (`idNorma` )
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+
+  CONSTRAINT `fk_SANCION_SOCIO`
+    FOREIGN KEY (`cedulaPersonaS` )
+    REFERENCES `sociedadCivil`.`SOCIO` (`cedulaPersona` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+ 
+ CONSTRAINT `fk_SANCION_AVANCE`
+    FOREIGN KEY (`cedulaPersonaA` )
+    REFERENCES `sociedadCivil`.`AVANCE` (`cedulaPersona` )
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+
 ENGINE = InnoDB;
 
 
@@ -276,7 +305,10 @@ CREATE INDEX fk_SANCION_TRIBUNALD ON `sociedadCivil`.`SANCION` (`idTribunald` AS
 CREATE INDEX fk_SANCION_NORMA ON `sociedadCivil`.`SANCION` (`idNorma` ASC) ;
 
 
+CREATE INDEX fk_SANCION_SOCIO ON `sociedadCivil`.`SANCION` (`cedulaPersonaS` ASC) ;
 
+
+CREATE INDEX fk_SANCION_AVANCE ON `sociedadCivil`.`SANCION` (`cedulaPersonaA` ASC) ;
 
 
 -- -----------------------------------------------------

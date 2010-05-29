@@ -435,7 +435,7 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO` (
   `idFondo` INT NOT NULL AUTO_INCREMENT ,
   `nombreFondo` VARCHAR(45) NOT NULL ,
   `descripcionFondo` VARCHAR(45) NOT NULL ,
-  `montoFonro` INT NOT NULL ,
+  `montoFondo` INT NOT NULL ,
   `tipoFondo` INT NOT NULL ,
   PRIMARY KEY (`idFondo`) )
 ENGINE = InnoDB;

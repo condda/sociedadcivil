@@ -44,7 +44,7 @@
 			}
 			else
 			{
-				$pnlcontent->add("mensaje","NOOOOOOOOOOOO");
+				//$pnlcontent->add("mensaje","NOOOOOOOOOOOO");
 			}
 		}
 		else

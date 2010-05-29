@@ -103,6 +103,38 @@ VALUES
 
 
 
+
+
+
+
+INSERT INTO  `sociedadcivil`.`ingreso` (
+`idIngreso` ,
+`idInscripcion`
+)
+VALUES
+('NULL',   '1'),
+('NULL',   '2'),
+('NULL',   '3'),
+('NULL',   '4'),
+('NULL',   '5'),
+('NULL',   '6'),
+('NULL',   '7'),
+('NULL',   '8'),
+('NULL',   '9'),
+('NULL',   '10'),
+('NULL',   '11'),
+('NULL',   '12'),
+('NULL',   '13');
+
+
+
+
+
+
+
+
+
+
 INSERT INTO  `sociedadcivil`.`socio` (
 `cedulaPersona`
 )
@@ -292,12 +324,188 @@ INSERT INTO  `sociedadcivil`.`producto_prov` (
 `cantidadProductoProv`
 )
 VALUES 
-('4',  '5',  '160',  '30'),
-('3',  '4',  '80',  '40'),
-('5','7','30','60'),
-('6','3','80','25'),
-('7','6','1200','15');
+('1',  '5',  '160',  '30'),
+('2',  '4',  '80',  '40'),
+('3','3','30','60'),
+('4','2','80','25'),
+('5','1','1200','15');
 
+
+
+
+
+INSERT INTO  `sociedadcivil`.`ruta` (
+`idRuta` ,
+`descripcionRuta`
+)
+VALUES 
+('1',  'Av Urdaneta hasta la pastora'),
+('2',  'Av romulo gallegos, desde la urbina hasta los dos caminos'),
+('3',  'Desde metro de chacaito hasta plaza venezuela'),
+('4',  'desde altamira hasta chacao'),
+('5',  'metro los dos caminos los chorros');
+
+
+
+
+
+INSERT INTO  `sociedadcivil`.`sucursal_prov` (
+`idSucursal` ,
+`idProveedor`
+)
+VALUES
+('1',  '1'),
+('1',  '2'),
+('1',  '3'),
+('1',  '4'),
+('1',  '5');
+
+
+
+
+INSERT INTO  `sociedadcivil`.`pasaje` (
+
+`idPasaje` ,
+`costoPasaje` ,
+`idRuta`
+)
+VALUES 
+('1',  '1,50',  '1'),
+('2',  '2,50',  '2'),
+('3',  '1',     '3'),
+('4',  '3,50',  '4'),
+('5',  '2',     '5');
+
+
+
+
+
+INSERT INTO  `sociedadcivil`.`hist_pasaje` (
+`idPasaje` ,
+`idSucursal` ,
+`fechaHistPasaje`
+)
+VALUES 
+('1',  '1',  '2009-05-03'),
+('2',  '1',  '2008-04-13'),
+('3',  '1',  '2008-11-21'),
+('4',  '1',  '2010-08-16'),
+('5',  '1',  '2010-07-20');
+
+
+
+
+
+INSERT INTO  `sociedadcivil`.`listaie` (
+`idListaIE` ,
+`descripcionListaIE` ,
+`tipoListaIE` ,
+`idSociedad`
+)
+VALUES 
+('1',  'Las cuotas ordinarias que deben cancelar los socios mensualmente (conocidas como finanzas).',  '1',  '1'),
+('2',  'Cuotas extraordinarias que pueden ser mensuales (ejemplos: retiros de socios, ayudas por accidentes, vidrios, choques, enfermedad, etc.).',  '1',  '1'),
+('3',  'Multas de las cuotas ordinarias.(pagos retrasados ).',  '1',  '1'),
+('4',  'Venta de uniformes, avisos, calcomanías.',  '1',  '1'),
+('5',  'Venta de repuestos para las unidades de transporte (aceite, motores, etc.).',  '1',  '1'),
+('6',  'Pago de sueldo a la Junta Directiva.',  '2',  '1'),
+('7',  'Pago de servicios básicos (luz, agua, teléfono, aseo).',  '2',  '1'),
+('8',  'Compra de productos de limpieza y otros artículos (café, azúcar, agua mineral, etc.)',  '2',  '1'),
+('9',  'Pago a los proveedores de repuestos.',  '2',  '1'),
+('10',  'Otros gastos que puedan presentarse.',  '2',  '1');
+
+
+
+
+
+
+
+
+INSERT INTO  `sociedadcivil`.`norma` (
+`idNorma` ,
+`descripcionNorma` ,
+`tipoNorma`
+)
+VALUES 
+('1',  'Dejar de pagar dos (2) cuotas ordinarias consecutivas.',  '2'),
+('2',  'Contravenir alguna disposición emanada de la Asamblea.',  '2'),
+('3',  'Tener acumuladas tres (3) sanciones consecutivas en un lapso no mayor de sesenta (60) días.',  '2'),
+('4',  'Organizar actos contrarios a los fines de la sociedad.',  '2'),
+('5',  'Desacreditar públicamente a la sociedad o irrespetar a los miembros de los organismos directivos.',  '2'),
+('6',  'Malversar los fondos económicos de la sociedad.',  '2'),
+('7',  'Ausentarse de la sociedad sin causa justificada.',  '2'),
+('8',  'Cometer desfalcos o apropiaciones indebidas.',  '2'),
+('9',  'Al no cancelar las finanzas mensuales ordinarias en el mes subsiguiente, no podrá trabajar el vehículo o el conductor según el caso.',  '1'),
+('10',  'Las finanzas deben ser canceladas los primeros veinte (20) días del mes, pasado los vente días se debe cancelar una multa de 5 BsF. Al llegar al mes siguiente debe pagar una multa de 10 BsF.',  '1');
+
+
+
+
+
+
+
+
+INSERT INTO  `sociedadcivil`.`juntadirectiva` (
+`idJuntadirectiva` ,
+`nombreJuntadirectiva` ,
+`descripcionJuntadirectiva`
+)
+VALUES 
+('1',  'Presidente',  'Representa legalmente la sociedad civil ante los socios y autoridades del estado.'),
+('2',  'Secretario de Organización',  'Coordina todas las actividades de administración y organización de los servicios de la sociedad. Ejerce la vigilancia sobre los libros, documentos y bienes de la sociedad.'),
+('3',  'Secretario de Finanzas',  'Recibe todos los ingresos y bienes de la Sociedad, los cuales debe depositar a nombre de la misma en un banco de la localidad. Movilizar los fondos económicos, llevar los libros necesarios.'),
+('4',  'Secretario de Tránsito y Reclamo',  'Recibe todos los reclamos de los socios e iniciar la tramitación de los mismos ante la JD.'),
+('5',  'Secretario de Actas',  'Debe transcribir en actas, todo lo que se dice (discusiones, acuerdos, etc.) en las reuniones semanales de junta directiva y asambleas.'),
+('6',  'Secretario de Cultura y Propaganda',  'Vigila el buen estado de las unidades de transporte (Ejemplo: buen estado de la tapicería, cauchos, pintura, limpieza, avisos de ruta en buen estado, identificación de la ruta, etc.); también de los conductores (Ejemplo: Aseo personal, uniforme, calzado, etc.).'),
+('7',  'Secretario de Bienestar Social',  'Visita a nombre de la sociedad a todos aquellos socios que se encuentren imposibilitados de asistir al trabajo por motivos de enfermedad.');
+
+
+
+
+
+
+
+
+
+
+INSERT INTO  `sociedadcivil`.`requisito` (
+`idRequisito` ,
+`descripcionRequisito` ,
+`tipoRequisito` ,
+`idSociedad`
+)
+VALUES 
+('1',  'Ser venezolano o residente con más de cinco (5) años en el país.',  '1',  '1'),
+('2',  'Ser conductor profesional (poseer licencia de 5º Grado).',  '1',  '1'),
+('3',  'Ser propietario del vehículo a inscribir y tenerlo en buenas condiciones de seguridad, funcionamiento y estado de conservación interior / exterior, para cumplir a cabalidad con el servicio.',  '1',  '1'),
+('4',  'Documento de propiedad del vehículo. (original y dos copias)',  '1',  '1'),
+('5',  'Carta de buena conducta y certificado de residencia (original y dos copias).',  '1',  '1'),
+('6',  'Licencia de conducir de 5º grado, vigente (original y dos copias).',  '1',  '1'),
+('7',  'Carta de buena conducta del último trabajo (original y dos copias).',  '1',  '1'),
+('8',  'Certificado médico de conducir, vigente (original y dos copias).',  '1',  '1'),
+('9',  'Cédula de Identidad, vigente (original y dos copias).',  '1',  '1'),
+('10',  'Cuatro (4) fotos tipo carnet.',  '1',  '1'),
+('11',  'Examen antidoping negativo.',  '1',  '1'),
+('12',  'No padecer ningún impedimento físico o mental.',  '1',  '1'),
+('13',  'Cancelar en efectivo y al contado su inscripción, la cual pasará íntegramente a beneficio de la organización.',  '1',  '1'),
+('14',  'Examen antidoping negativo.',  '1',  '1'),
+('15',  'Prestar sus servicios por un período de prueba no menor a treinta(30) días a partir de la fecha de inscripción; quedando dichos aspirantes, sujetos a la aprobación por la Asamblea de Socios o de la Junta Directiva. De no ser aprobado como socio no tendrá derecho a ningún reintegro de dinero.',  '1',  '1'),
+('16',  'Tener por los menos un (1) año de afiliación activa.',  '3',  '1'),
+('17',  'Examen antidoping negativo.',  '3',  '1'),
+('18',  'Estar solventes con sus obligaciones gremiales.',  '3',  '1'),
+('19',  'Ser venezolano o residente con más de cinco (5) años en el país.',  '2',  '1'),
+('20',  'Ser conductor profesional (poseer licencia de 5º Grado)',  '2',  '1'),
+('21',  'Poseer vehiculo propio prestando servicio dentro de la organización',  '3',  '1'),
+('22',  'Ser presentado por un Socio solvente y trabajará bajo la única responsabilidad de éste.',  '2',  '1'),
+('23',  'Carta de buena conducta y certificado de residencia (original y dos copias).',  '2',  '1'),
+('24',  'Licencia de conducir de 5º grado, vigente (original y dos copias).',  '2',  '1'),
+('25',  'Carta de buena conducta del último trabajo (original y dos copias).',  '2',  '1'),
+('26',  'Certificado médico de conducir, vigente (original y dos copias).',  '2',  '1'),
+('27',  'Cédula de Identidad, vigente (original y dos copias).',  '2',  '1'),
+('28',  'Cuatro (4) fotos tipo carnet.',  '2',  '1'),
+('29',  'Examen antidoping negativo (original y dos copias).',  '2',  '1'),
+('30',  'No padecer ningún impedimento físico o mental.',  '2',  '1'),
+('31',  'Cancelar su cuota de inscripción, que pasará a fondos de la organización y en ningún caso será reintegrada.',  '2',  '1');
 
 
 

@@ -604,5 +604,19 @@ VALUES
 
 
 
+INSERT INTO  `sociedadcivil`.`tribunald` (
+`idTribunald` ,
+`nombre`
+)
+VALUES 
+('1',  'Presidente'),
+('2',  'Vice-Presidente'),
+('3',  'Gerente'),
+('4',  'Tesorero'),
+('5',  'Secretario');
+
+
+
+
 
 

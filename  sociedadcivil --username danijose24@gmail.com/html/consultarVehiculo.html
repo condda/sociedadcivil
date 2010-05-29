@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+.negrita {
+	font-weight: bold;
+	font-size: 36px;
+	color: #6F0;
+}
+.centrado {
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <p class="negrita">Consultar Vehiculo</p>
+  <table width="400" border="0">
+    <tr>
+      <td>Placa de Vehiculo</td>
+      <td><select name="lista" id="lista">
+        <option value="0">Seleccione</option>
+        {listaVehiculos}
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="centrado"><input type="submit" name="consultar" id="consultar" value="consultar"></td>
+    </tr>
+  </table>
+  <p>{mensaje}</p>
+  <table width="400" border="0">
+    <tr>
+      <td>Socio</td>
+      <td>Anio</td>
+      <td>Estado</td>
+      <td>Poliza</td>
+    </tr>
+    {lista}
+  </table>
+  <p class="negrita">&nbsp;</p>
+  <p class="negrita">&nbsp;</p>
+<p>&nbsp;</p>
+</form>
+</body>
+</html>

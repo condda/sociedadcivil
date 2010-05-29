@@ -15,9 +15,9 @@
 	
 	
 	$pnlcontent->add("crear",'<a href="../php/crearVehiculo.php">Crear Vehiculo</a>');
-	$pnlcontent->add("modificar",'<a href="../php/modificarSocio.php">Modificar Vehiculo</a>');
-	$pnlcontent->add("consultar",'<a href="../php/buscarSocio.php">Consultar Vehiculo</a>');
-	$pnlcontent->add("eliminar",'<a href="../php/eliminarSocio.php">Eliminar Vehiculo</a>');
+	$pnlcontent->add("modificar",'<a href="../php/modificarVehiculo.php">Modificar Vehiculo</a>');
+	$pnlcontent->add("consultar",'<a href="../php/consultarVehiculo.php">Consultar Vehiculo</a>');
+	$pnlcontent->add("eliminar",'<a href="../php/eliminarVehiculo.php">Eliminar Vehiculo</a>');
 	
 	$pnlmain->add("content",$pnlcontent);
 	

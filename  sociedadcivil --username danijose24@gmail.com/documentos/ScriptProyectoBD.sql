@@ -68,7 +68,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`JUNTADIRECTIVA` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`JUNTADIRECTIVA` (
   `idJuntadirectiva` INT NOT NULL AUTO_INCREMENT ,
   `nombreJuntadirectiva` VARCHAR(45) NOT NULL ,
-  `descripcionJuntadirectiva` VARCHAR(45) NOT NULL ,
+  `descripcionJuntadirectiva` LONGTEXT NOT NULL ,
   PRIMARY KEY (`idJuntadirectiva`) )
 ENGINE = InnoDB;
 
@@ -152,7 +152,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`PASAJE` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PASAJE` (
   `idPasaje` INT NOT NULL AUTO_INCREMENT ,
-  `costoPasaje` INT NOT NULL ,
+  `costoPasaje` FLOAT NOT NULL ,
   `idRuta` INT NOT NULL ,
   PRIMARY KEY (`idPasaje`) ,
   CONSTRAINT `fk_PASAJE_RUTA`
@@ -407,7 +407,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`LISTAIE` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`LISTAIE` (
   `idListaIE` INT NOT NULL AUTO_INCREMENT ,
-  `descripcionListaIE` VARCHAR(45) NOT NULL ,
+  `descripcionListaIE` LONGTEXT NOT NULL ,
   `tipoListaIE` INT NOT NULL ,
   `idSociedad` INT NOT NULL ,
   PRIMARY KEY (`idListaIE`) ,
@@ -530,12 +530,11 @@ DROP TABLE IF EXISTS `sociedadCivil`.`SUCURSAL_PROV` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SUCURSAL_PROV` (
   `idSucursal` INT NOT NULL ,
-  `idLugar` INT NOT NULL ,
-  `idProveedor` INT NOT NULL ,
-  PRIMARY KEY (`idSucursal`, `idLugar`, `idProveedor`) ,
+   `idProveedor` INT NOT NULL ,
+  PRIMARY KEY (`idSucursal`, `idProveedor`) ,
   CONSTRAINT `fk_SUCURSAL_has_PROVEEDOR_SUCURSAL`
-    FOREIGN KEY (`idSucursal` , `idLugar` )
-    REFERENCES `sociedadCivil`.`SOCIEDAD` (`idSociedad` , `idLugar` )
+    FOREIGN KEY (`idSucursal`)
+    REFERENCES `sociedadCivil`.`SOCIEDAD` (`idSociedad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SUCURSAL_has_PROVEEDOR_PROVEEDOR`
@@ -545,7 +544,7 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SUCURSAL_PROV` (
     ON UPDATE NO ACTION);
 
 
-CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_SUCURSAL ON `sociedadCivil`.`SUCURSAL_PROV` (`idSucursal` ASC, `idLugar` ASC) ;
+CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_SUCURSAL ON `sociedadCivil`.`SUCURSAL_PROV` (`idSucursal` ASC) ;
 
 
 CREATE INDEX fk_SUCURSAL_has_PROVEEDOR_PROVEEDOR ON `sociedadCivil`.`SUCURSAL_PROV` (`idProveedor` ASC) ;

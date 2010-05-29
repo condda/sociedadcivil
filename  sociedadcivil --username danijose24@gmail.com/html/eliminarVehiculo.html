@@ -13,6 +13,14 @@
 }
 -->
 </style>
+<script type="text/javascript">
+<!--
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
 </head>
 
 <body>
@@ -32,7 +40,10 @@
       </select></td>
     </tr>
     <tr>
-      <td colspan="3" class="centrado"><input type="submit" name="consultar" id="consultar" value="Eliminar"></td>
+      <td colspan="3" class="centrado"><input name="consultar" type="submit" id="consultar" value="Eliminar">
+      <label>
+        <input name="actualizar" type="submit" id="actualizar" onClick="MM_goToURL('parent','../php/eliminarVehiculo.php');return document.MM_returnValue" value="Actualizar">
+      </label></td>
     </tr>
   </table>
   <p>{mensaje}</p>

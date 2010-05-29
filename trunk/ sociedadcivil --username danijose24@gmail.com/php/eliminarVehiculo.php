@@ -42,7 +42,7 @@
 			}
 			else
 			{
-				$pnlcontent->add("mensaje","NOOOOOOOOOOOO");
+			//	$pnlcontent->add("mensaje","NOOOOOOOOOOOO");
 			}
 			
 			if($opcion == '1')
@@ -56,6 +56,10 @@
 				mysql_query (" DELETE FROM traspaso WHERE idVehiculo = '$idV' and listaTraspaso = '0' ");
 				
 				mysql_query (" DELETE FROM vehiculo WHERE idVehiculo = '$idV'");
+				
+				
+		
+					
 			}
 		}
 	

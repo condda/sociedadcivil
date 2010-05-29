@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 table tr td {
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/fModificarInscripcion.php">
+  <h1>Modificar Inscripcion</h1>
+  <p>&nbsp;</p>
+  <table width="796" border="0">
+    <tr>
+      <td width="250">Introduzca el codigo a modificar:</td>
+      <td width="144"><input name="modificarCodigo" type="text" id="modificarCodigo" value="{modificarCodigo}" maxlength="10" /></td>
+      <td width="388">{mensaje} </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="modificar" id="modificar" value="Modificar" /></td>
+      <td width="388">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="790" border="0">
+    <tr>
+       <table width="795" border="0">
+    <tr>
+      <td align="center"><h3>Fecha</h3></td>
+      <td align="center"><h3>Codigo</h3></td>
+      <td align="center"><h3>Tipo</h3></td>
+      <td align="center"><h3>Nombre Persona</h3></td>
+      <td align="center"><h3>Estado</h3></td>
+      <td align="center"><h3>Fecha Admision</h3></td>
+      <td align="center"><h3>Monto</h3></td>
+      {consultaInscripcion}
+  </table>
+</form>
+</body>
+</html>

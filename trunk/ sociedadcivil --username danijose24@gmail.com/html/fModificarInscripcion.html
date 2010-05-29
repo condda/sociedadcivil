@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 p {
+	color: #000;
+}
+#form1 h2 {
+	color: #690;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/fModificarInscripcion.php">
+  <h1>Modificar Producto </h1>
+  <p>&nbsp;</p>
+  <table width="324" border="0">
+    <tr>
+      <td width="130">Codigo</td>
+      <td width="184"><div id = "cedulaProveedor">
+        <input name="codigo" type="text" id="codigo" onchange="validarCedulaProveedor()" value="{codigo}" maxlength="10" readonly="readonly" />
+      </div></td>
+    </tr>
+    <tr>
+      <td>Fecha</td>
+      <td><input name="fecha" type="text" id="fecha" value="{fecha}" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>Tipo</td>
+      <td><label>
+        {selectTipo}
+      </label>
+      </td>
+    </tr>
+    <tr>
+      <td>Nombre Persona</td>
+      <td><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="30" readonly="readonly"/></td>
+    </tr>
+    <tr>
+      <td>Estatus</td>
+      <td>{estatus}
+      
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td>{fechaAdmision}</td>
+      <td><label>
+        {fechaAdmision1}
+      </label></td>
+    </tr>
+    <tr>
+      <td>Monto</td>
+      <td align="left" valign="middle"><input name="monto" type="text" id="monto" value="{monto}" maxlength="8" readonly="readonly"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center" valign="middle">{botonModificar}</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>{mensaje}</p>
+</form>
+</body>
+</html>

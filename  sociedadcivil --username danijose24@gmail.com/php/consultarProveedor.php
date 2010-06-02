@@ -32,7 +32,7 @@
 		
 	while ($result1 = mysql_fetch_assoc($result)){
 		
-		if ($result1['cedulaProveedor'] != NULL){
+		if (($result1['cedulaProveedor'] != 0)){
 			$listaProveedores = $listaProveedores.'<tr>
 			    <td>'.$result1['cedulaProveedor'].'</td>
 			    <td>'.$result1['nombreProveedor'].'</td>
@@ -41,7 +41,7 @@
       			<td><a href="../php/fConsultarProveedor.php?idproveedor='.$result1['idProveedor'].'">Consultar</a></td>
     			</tr>';
 		}
-		else if ($result1['rifProveedor'] != NULL){
+		else if (($result1['rifProveedor'])){
 			$listaProveedores = $listaProveedores.'<tr>
       			<td>'.$result1['rifProveedor'].'</td>
       			<td>'.$result1['nombreProveedor'].'</td>

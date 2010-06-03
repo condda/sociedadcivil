@@ -43,7 +43,7 @@
 	
 	
 	
-
+if ($cedulaPersona){
 		
 			if(!($nombre_conyugue))
 			{//IF 2
@@ -53,19 +53,10 @@
 	
 		$result =  mysql_query ("SELECT cedulaPersona FROM persona WHERE cedulaPersona = '$cedulaPersona'");
 		
-		if ($result1= mysql_fetch_assoc($result))
+		if (!$result1= mysql_fetch_assoc($result))
 		{//IF 3
 			
-			if($cedulaPersona)
-			$pnlcontent->add("mensaje",$mensajeError);			
-			
-			
-		}// IF 3
-		else
-		{// ELSE 1
-		
-
-			mysql_query ("INSERT INTO persona (
+				mysql_query ("INSERT INTO persona (
 											   cedulaPersona,
 											   nombrePersona, 
 											   apellidoPersona, 
@@ -100,8 +91,29 @@
 											  )");
 			
 			
+		}// IF 3
+		else
+		{// ELSE 1
+		
+
+		
+			mysql_query ("INSERT INTO avance (
+											 cedulaPersona
+											 )
+						 VALUES				 (
+											  '$cedulaPersona'
+											  )");
 			
-			mysql_query ("INSERT INTO inscripcion (
+						
+		
+		
+			
+		}// ELSE 1
+			
+	
+		
+
+	mysql_query ("INSERT INTO inscripcion (
 											 idInscripcion,
 											 fechaInscripcion,
 											 estatusInscripcion,
@@ -150,19 +162,9 @@
 							$pnlcontent = new Panel ("../html/vehiculoAvance.html");
 						}
 						
-						
-		
-		
-			
-	} // ELSE 1
-			
-	
-		
-
 	
 	
-	
-		
+}
 		
     $pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);

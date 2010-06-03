@@ -41,7 +41,7 @@
 	
 	
 	
-
+if ($cedulaPersona){
 		
 			if(!($nombre_conyugue))
 			{//IF 2
@@ -51,20 +51,9 @@
 	
 		$result =  mysql_query ("SELECT cedulaPersona FROM persona WHERE cedulaPersona = '$cedulaPersona'");
 		
-		if ($result1= mysql_fetch_assoc($result))
+		if (!$result1= mysql_fetch_assoc($result))
 		{//IF 3
 			
-			if($cedulaPersona)
-			$pnlcontent->add("mensaje",$mensajeError);			
-			
-			
-		}// IF 3
-		else
-		{// ELSE 1
-
-	
-	
-						 
 			mysql_query ("INSERT INTO persona (
 											   cedulaPersona,
 											   nombrePersona, 
@@ -91,7 +80,6 @@
 								 '$estado_civilPersona',
 								 '$nombre_conyuguePersona',
 								 '1')");
-			
 			mysql_query ("INSERT INTO socio (
 											 cedulaPersona
 											 )
@@ -100,7 +88,23 @@
 											  )");
 			
 			
-			mysql_query ("INSERT INTO inscripcion (
+		}// IF 3
+		else
+		{// ELSE 1
+		
+			
+			mysql_query ("INSERT INTO socio (
+											 cedulaPersona
+											 )
+						 VALUES				 (
+											  '$cedulaPersona'
+											  )");
+	
+			
+		}// ELSE 1	
+	
+	
+	mysql_query ("INSERT INTO inscripcion (
 											 idInscripcion,
 											 fechaInscripcion,
 											 estatusInscripcion,
@@ -152,12 +156,7 @@
 						
 		
 		
-			
-	} // ELSE 1	
-	
-		
-		
-		
+}
     $pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
 

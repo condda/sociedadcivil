@@ -54,7 +54,7 @@
 		
 	while ($result1 = mysql_fetch_assoc($result)){
 		
-		if ($result1['cedulaProveedor'] != NULL){
+		if ($result1['cedulaProveedor'] != 0){
 			$listaProveedores = $listaProveedores.'<tr>
 			    <td>'.$result1['cedulaProveedor'].'</td>
 			    <td>'.$result1['nombreProveedor'].'</td>

@@ -42,7 +42,7 @@
 			descripcionProducto) values ('$codigo','$nombre','$descripcion')");
 			
 			if ($flagProveedor == 1){
-				
+		
 				if ($ciRif == 1)
 					mysql_query("insert into Proveedor (
 					direccionProveedor,
@@ -78,16 +78,12 @@
 				
 			}
 			else{
-				$result = mysql_query("select idProveedor from Proveedor where nombreProveedor = '$selectProveedor' order by idProveedor desc limit 1");
-				$result1 = mysql_fetch_assoc($result);
-				$idProveedor = $result1['idProveedor'];
 			
-							
 				mysql_query("insert into Producto_Prov (
 				idProducto,
 				idProveedor,
 				precioProductoProv,
-				cantidadProductoProv) values ('$codigo','$idProveedor','$precio','$cantidad')");
+				cantidadProductoProv) values ('$codigo','$selectProveedor','$precio','$cantidad')");
 				$pnlmenu = new Panel("../html/menu.html");
 				$pnlmenu->add("activo",'id="active"');
 				$pnlmain = new Panel("../html/main.html");

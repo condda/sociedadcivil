@@ -136,7 +136,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`RUTA` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`RUTA` (
   `idRuta` INT NOT NULL AUTO_INCREMENT ,
-  `descripcionRuta` VARCHAR(45) NOT NULL ,
+  `descripcionRuta` LONGTEXT NOT NULL ,
   PRIMARY KEY (`idRuta`) )
 ENGINE = InnoDB;
 
@@ -194,7 +194,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`REQUISITO` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`REQUISITO` (
   `idRequisito` INT NOT NULL AUTO_INCREMENT ,
-  `descripcionRequisito` VARCHAR(45) NOT NULL ,
+  `descripcionRequisito` LONGTEXT NOT NULL ,
   `tipoRequisito` INT NOT NULL ,
   `idSociedad` INT NOT NULL ,
   PRIMARY KEY (`idRequisito`) ,
@@ -220,7 +220,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`NORMA` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`NORMA` (
   `idNorma` INT NOT NULL AUTO_INCREMENT ,
-  `descripcionNorma` VARCHAR(45) NOT NULL ,
+  `descripcionNorma` LONGTEXT NOT NULL ,
   `tipoNorma` INT NOT NULL ,
   PRIMARY KEY (`idNorma`) )
 ENGINE = InnoDB;
@@ -337,7 +337,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`ASAMBLEA` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`ASAMBLEA` (
   `idAsamblea` INT NOT NULL AUTO_INCREMENT ,
   `tipoAsamblea` INT NOT NULL ,
-  `descripcionAsamblea` VARCHAR(45) NOT NULL ,
+  `descripcionAsamblea` LONGTEXT NOT NULL ,
   `fechaAsamblea` DATE NOT NULL ,
   `idJuntadirectiva` INT NOT NULL ,
   PRIMARY KEY (`idAsamblea`) ,
@@ -408,13 +408,12 @@ DROP TABLE IF EXISTS `sociedadCivil`.`LISTAIE` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`LISTAIE` (
   `idListaIE` INT NOT NULL AUTO_INCREMENT ,
   `descripcionListaIE` LONGTEXT NOT NULL ,
-  `tipoListaIE` INT NOT NULL ,
+  `tipoListaIE` INT NOT NULL,
   `idSociedad` INT NOT NULL ,
-  PRIMARY KEY (`idListaIE`) ,
-  CONSTRAINT `fk_LISTAIE_SOCIEDAD`
+  PRIMARY KEY (`idListaIE`) , CONSTRAINT `CHECK_LISTAIE`
+ CHECK (`tipoListaIE` BETWEEN 1 and 2), CONSTRAINT `fk_LISTAIE_SOCIEDAD`
     FOREIGN KEY (`idSociedad` )
-    REFERENCES `sociedadCivil`.`SOCIEDAD` (`idSociedad` )
-    ON DELETE NO ACTION
+    REFERENCES `sociedadCivil`.`SOCIEDAD` (`idSociedad` )  ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -434,7 +433,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`FONDO` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO` (
   `idFondo` INT NOT NULL AUTO_INCREMENT ,
   `nombreFondo` VARCHAR(45) NOT NULL ,
-  `descripcionFondo` VARCHAR(45) NOT NULL ,
+  `descripcionFondo` LONGTEXT NOT NULL ,
   `montoFondo` INT NOT NULL ,
   `tipoFondo` INT NOT NULL ,
   PRIMARY KEY (`idFondo`) )
@@ -844,7 +843,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`FONDOINGRESO` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDOINGRESO` (
   `idFondoIngreso` INT NOT NULL AUTO_INCREMENT ,
-  `descripcionFondoIngreso` VARCHAR(45) NOT NULL ,
+  `descripcionFondoIngreso` LONGTEXT NOT NULL ,
   `montoFondoIngreso` INT NOT NULL ,
   `fechaFondoIngreso` DATE NOT NULL ,
   `idFondo` INT NOT NULL ,
@@ -871,7 +870,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`FONDOEGRESO` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDOEGRESO` (
   `idFondoEgreso` INT NOT NULL AUTO_INCREMENT ,
-  `descripcionFondoEgreso` VARCHAR(45) NOT NULL ,
+  `descripcionFondoEgreso` LONGTEXT NOT NULL ,
   `montoFondoEgreso` INT NOT NULL ,
   `fechaFondoEgreso` DATE NOT NULL ,
   `idFondo` INT NOT NULL ,
@@ -1166,10 +1165,14 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`COMPRA_VENTA` (
   `idProducto` INT NOT NULL ,
   `idProveedor` INT NULL ,
   `cedulaPersona` INT NULL ,
-  PRIMARY KEY (`idCompraVenta`) ,
-  CONSTRAINT `fk_COMPRA_VENTA_PRODUCTO_PROV`
-    FOREIGN KEY (`idProducto` , `idProveedor` )
-    REFERENCES `sociedadCivil`.`PRODUCTO_PROV` (`idProducto` , `idProveedor` )
+  PRIMARY KEY (`idCompraVenta`) , CONSTRAINT `fk_COMPRA_VENTA_PROVEEDOR`
+    FOREIGN KEY (`idProveedor`)
+    REFERENCES `sociedadCivil`.`PROVEEDOR` (`idProveedor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_COMPRA_VENTA_PRODUCTO`
+    FOREIGN KEY (`idProducto`)
+    REFERENCES `sociedadCivil`.`PRODUCTO` (`idProducto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMPRA_VENTA_PERSONA`
@@ -1180,8 +1183,10 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`COMPRA_VENTA` (
 ENGINE = InnoDB;
 
 
-CREATE INDEX fk_COMPRA_VENTA_PRODUCTO_PROV ON `sociedadCivil`.`COMPRA_VENTA` (`idProducto` ASC, `idProveedor` ASC) ;
+CREATE INDEX fk_COMPRA_VENTA_PRODUCTO ON `sociedadCivil`.`COMPRA_VENTA` (`idProducto` ASC) ;
 
+
+CREATE INDEX fk_COMPRA_VENTA_PROVEEDOR ON `sociedadCivil`.`COMPRA_VENTA` (`idProveedor` ASC) ;
 
 CREATE INDEX fk_COMPRA_VENTA_PERSONA ON `sociedadCivil`.`COMPRA_VENTA` (`cedulaPersona` ASC) ;
 

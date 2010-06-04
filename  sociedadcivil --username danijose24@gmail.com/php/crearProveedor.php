@@ -75,6 +75,21 @@
 				cantidadProductoProv)
 				values ('$idProducto','$idProveedor','$precioProducto','$cantidadProducto')");
 				
+				mysql_query("insert into compra_venta (
+				tipoCompraVenta,
+				montoCompraVenta,
+				cantidadCompraVenta,
+				idProducto,
+				idProveedor) values ('1','$precioProducto','$cantidadProducto','$idProducto','$idProveedor')");
+				
+				$result = mysql_query("select idCompraVenta from compra_venta where idProducto = '$idProducto' AND idProveedor ='$idProveedor' order by idCompraVenta desc limit 1");
+				$result1 = mysql_fetch_assoc($result);
+				$idCompraVenta = $result1['idCompraVenta'];
+	
+				mysql_query("insert into egreso (
+				tipoEgreso,			
+				idCompraVenta) values ('5','$idCompraVenta')");		
+				
 				$i = $i+1;
 				
 			}

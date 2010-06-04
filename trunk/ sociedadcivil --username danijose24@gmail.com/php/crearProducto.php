@@ -76,6 +76,22 @@
 				$pnlcontent = new Panel("../html/contentPrincipal.html");	
 				
 				
+				mysql_query("insert into compra_venta (
+				tipoCompraVenta,
+				montoCompraVenta,
+				cantidadCompraVenta,
+				idProducto,
+				idProveedor) values ('1','$precio','$cantidad','$codigo','$idProveedor')");
+				
+				$result = mysql_query("select idCompraVenta from compra_venta where idProducto = '$codigo' AND idProveedor ='$idProveedor' order by idCompraVenta desc limit 1");
+				$result1 = mysql_fetch_assoc($result);
+				$idCompraVenta = $result1['idCompraVenta'];
+	
+				mysql_query("insert into egreso (
+				tipoEgreso,			
+				idCompraVenta) values ('5','$idCompraVenta')");		
+				
+				
 			}
 			else{
 			
@@ -84,6 +100,24 @@
 				idProveedor,
 				precioProductoProv,
 				cantidadProductoProv) values ('$codigo','$selectProveedor','$precio','$cantidad')");
+				
+				
+					mysql_query("insert into compra_venta (
+				tipoCompraVenta,
+				montoCompraVenta,
+				cantidadCompraVenta,
+				idProducto,
+				idProveedor) values ('1','$precio','$cantidad','$codigo','$selectProveedor')");
+				
+				$result = mysql_query("select idCompraVenta from compra_venta where idProducto = '$codigo' AND idProveedor ='$selectProveedor' order by idCompraVenta desc limit 1");
+				$result1 = mysql_fetch_assoc($result);
+				 $idCompraVenta = $result1['idCompraVenta'];
+				
+				mysql_query("insert into egreso (
+				tipoEgreso,			
+				idCompraVenta) values ('5','$idCompraVenta')");
+						
+				
 				$pnlmenu = new Panel("../html/menu.html");
 				$pnlmenu->add("activo",'id="active"');
 				$pnlmain = new Panel("../html/main.html");

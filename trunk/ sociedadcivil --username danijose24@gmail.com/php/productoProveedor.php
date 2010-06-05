@@ -8,6 +8,7 @@
 	$pnlmenu->add("activo2",'id="active"');
 	$pnlmenu->add("opcion1",'<a href="producto.php">Producto</a>');
 	$pnlmenu->add("opcion2",'<a href="proveedor.php">Proveedor</a>');
+	$pnlmenu->add("opcion3",'<a href="Comprar.php">Comprar</a>');
 	
 	$result = mysql_query ("Select * from Sociedad");
 	$result1 = mysql_fetch_assoc($result);

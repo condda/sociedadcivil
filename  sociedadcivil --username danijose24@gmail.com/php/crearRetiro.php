@@ -10,11 +10,19 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
-	$pnlcontent = new Panel("../html/crearBeneficiario.html");
+	$pnlcontent = new Panel("../html/crearRetiro.html");
 
 	extract ($_POST);
+	if($razon==1)
+		$pnlcontent->add("razon",'Crear Retiro por fallecimiento');
+	else
+		$pnlcontent->add("razon",'Crear Retiro voluntario');
+	
+	$pnlcontent->add("razonR",'$razon');
+	
 	if ($listaSoAv1==1){
 		$pnlcontent->add("tipo",'Socio');
+		$pnlcontent->add("soAv",'1');
 		$result = mysql_query("select Socio.cedulaPersona, 
 							  Persona.nombrePersona, 
 							  Persona.apellidoPersona from Socio,Persona 
@@ -27,6 +35,7 @@
 	}
 	else if ($listaSoAv1==2){
 		$pnlcontent->add("tipo",'Avance');
+		$pnlcontent->add("soAv",'2');
 		$result = mysql_query("select Avance.cedulaPersona, 
 							  Persona.nombrePersona, 
 							  Persona.apellidoPersona from Avance,Persona 
@@ -38,26 +47,7 @@
 		$pnlcontent->add("opcion",$listaPersonas);					
 	}
 
-	if (($cedula) && ($nombre) && ($apellido) && ($listaSoAv2!=0)){
-		mysql_query("insert into Beneficiario (
-		cedulaBeneficiario,
-		nombreBeneficiario,
-		apellidoBeneficiario) values ('$cedula','$nombre','$apellido')");
-		if ($listaSoAv1==1)
-			mysql_query("insert into Socio_Beneficiario (
-			cedulaPersona,
-			cedulaBeneficiario) values ('$listaSoAv2','$cedula')");
-		else
-			mysql_query("insert into Avance_Beneficiario (
-			cedulaPersona,
-			cedulaBeneficiario) values ('$listaSoAv2','$cedula')");
-		$pnlmenu = new Panel("../html/menu.html");
-		$pnlmenu->add("activo",'id="active"');
-		$pnlmain = new Panel("../html/main.html");
-		$pnlmain->add("nombre","Beneficiario");
-		$pnlmain->add("mensaje","Fue registrado exitosamente!");
-		$pnlcontent = new Panel("../html/contentPrincipal.html");		
-	}
+	
 		
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);

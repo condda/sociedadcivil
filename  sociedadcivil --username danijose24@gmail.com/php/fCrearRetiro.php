@@ -11,7 +11,7 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
-	$pnlcontent = new Panel("../html/fCrearBeneficiario.html");
+	$pnlcontent = new Panel("../html/fCrearRetiro.html");
 
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);

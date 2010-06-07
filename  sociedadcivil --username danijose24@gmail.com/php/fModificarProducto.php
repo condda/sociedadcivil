@@ -26,7 +26,7 @@
 		$pnlcontent->add("nombre",$result1['nombreProducto']);					
 		$pnlcontent->add("descripcion",$result1['descripcionProducto']);
 		$pnlcontent->add("proveedor",$result5['nombreProveedor']);			
-		$codigoProv = $result5['idProveedor'];
+		$pnlcontent->add("codigoProv",$result5['idProveedor']);			
 		$pnlcontent->add("precio",$result3['precioProductoProv']);					
 		$pnlcontent->add("cantidad",$result3['cantidadProductoProv']);		
 	}
@@ -41,7 +41,7 @@
 		$pnlcontent->add("nombre",$result1['nombreProducto']);					
 		$pnlcontent->add("descripcion",$result1['descripcionProducto']);
 		$pnlcontent->add("proveedor",$result5['nombreProveedor']);					
-		$codigoProv = $result5['idProveedor'];
+		$pnlcontent->add("codigoProv",$result5['idProveedor']);			
 		$pnlcontent->add("precio",$result3['precioProductoProv']);					
 		$pnlcontent->add("cantidad",$result3['cantidadProductoProv']);					
 	}

@@ -10,9 +10,12 @@
 	$pnlmenu->add("activo3",'id="active"');
 	
 	
-
+		$cedula = $_REQUEST['listaB'];
+		$placaB  = $_REQUEST['placa'];
+		$estado = $_REQUEST['socio'];
+		$poliza   = $_REQUEST['poliza'];
 	
-	
+if ((!cedula) && ($placaB) && ($estado) && ($poliza)){
 	$pnlcontent = new Panel ("../html/modificarVehiculo.html");	
 	//LLENA LA PESTAÑA DE PLACAS
 	
@@ -50,6 +53,11 @@
 				
 				//SOLO SI LEYO PLACA
 		
+			}
+			$pnlcontent->add("listaVehiculos",$datos);
+}
+	else{
+			
 				if($placa)
 				{
 					
@@ -77,10 +85,7 @@
 					
 					//REQUEST
 					
-					$cedula = $_REQUEST['listaB'];
-					$placaB  = $_REQUEST['placa'];
-					$estado = $_REQUEST['socio'];
-					$poliza   = $_REQUEST['poliza'];
+					
 					
 					//Extraigo ID del VEHICULO
 					
@@ -139,7 +144,6 @@
 	
 	
 	
-	$pnlcontent->add("listaVehiculos",$datos);
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
 

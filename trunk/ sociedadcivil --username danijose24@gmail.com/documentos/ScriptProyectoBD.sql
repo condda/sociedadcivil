@@ -246,6 +246,46 @@ ENGINE = InnoDB;
 
 
 
+-- -----------------------------------------------------
+-- Table `sociedadCivil`.`CUOTA`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sociedadCivil`.`CUOTA` ;
+
+
+CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA` (
+  `idCuota` INT NOT NULL AUTO_INCREMENT ,
+  `tipoCuota` INT NOT NULL ,
+  `montoCuota` INT NOT NULL ,
+ `idRecargo` INT , PRIMARY KEY (`idCuota`), CONSTRAINT `fk_CUOTA_has_RECARGO_CUOTA`
+    FOREIGN KEY (`idRecargo` )
+    REFERENCES `sociedadCivil`.`RECARGO` (`idRecargo` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION )
+ENGINE = InnoDB;
+
+
+
+
+CREATE INDEX fk_RECARGO_CUOTA ON `sociedadCivil`.`CUOTA` (`idRecargo` ASC) ;
+
+
+
+-- -----------------------------------------------------
+-- Table `sociedadCivil`.`RECARGO`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sociedadCivil`.`RECARGO` ;
+
+
+CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`RECARGO` (
+  `idRecargo` INT NOT NULL AUTO_INCREMENT ,
+  `tipoRecargo` INT NOT NULL ,
+  `montoRecargo` INT NOT NULL ,
+ `descripcionRecargo` LONGTEXT NOT NULL , PRIMARY KEY (`idRecargo`) )
+ENGINE = InnoDB;
+
+
+
+
 
 
 
@@ -266,6 +306,7 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SANCION` (
  
  `idTribunald` INT NOT NULL ,
  
+ `idCuota` INT NULL ,
  `cedulaPersonaS` INT  ,
  
  `cedulaPersonaA` INT,
@@ -278,6 +319,11 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`SANCION` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
 
+ CONSTRAINT `fk_SANCION_CUOTA`
+    FOREIGN KEY (`idCuota` )
+    REFERENCES `sociedadCivil`.`CUOTA` (`idCuota` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_SANCION_NORMA`
     FOREIGN KEY (`idNorma` )
     REFERENCES `sociedadCivil`.`NORMA` (`idNorma` )
@@ -300,6 +346,9 @@ ENGINE = InnoDB;
 
 
 CREATE INDEX fk_SANCION_TRIBUNALD ON `sociedadCivil`.`SANCION` (`idTribunald` ASC) ;
+
+
+CREATE INDEX fk_SANCION_CUOTA ON `sociedadCivil`.`SANCION` (`idCuota` ASC) ;
 
 
 CREATE INDEX fk_SANCION_NORMA ON `sociedadCivil`.`SANCION` (`idNorma` ASC) ;
@@ -432,9 +481,9 @@ DROP TABLE IF EXISTS `sociedadCivil`.`FONDO` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO` (
   `idFondo` INT NOT NULL AUTO_INCREMENT ,
-  `nombreFondo` VARCHAR(45) NOT NULL ,
+  `nombreFondo` LONGTEXT NOT NULL ,
   `descripcionFondo` LONGTEXT NOT NULL ,
-  `montoFondo` INT NOT NULL ,
+  `montoFondo` INT ,
   `tipoFondo` INT NOT NULL ,
   PRIMARY KEY (`idFondo`) )
 ENGINE = InnoDB;
@@ -888,24 +937,6 @@ CREATE INDEX fk_EGRESO_FONDO ON `sociedadCivil`.`FONDOEGRESO` (`idFondo` ASC) ;
 
 
 
-
--- -----------------------------------------------------
--- Table `sociedadCivil`.`CUOTA`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `sociedadCivil`.`CUOTA` ;
-
-
-CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA` (
-  `idCuota` INT NOT NULL AUTO_INCREMENT ,
-  `tipoCuota` INT NOT NULL ,
-  `montoCuota` INT NOT NULL ,
-  PRIMARY KEY (`idCuota`) )
-ENGINE = InnoDB;
-
-
-
-
-
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`ASAMBLEA_SOCIO`
 -- -----------------------------------------------------
@@ -1040,8 +1071,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`FONDO_SOCIO` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO_SOCIO` (
   `idFondo` INT NOT NULL ,
-  `cedulaPersona` INT NOT NULL ,
-  PRIMARY KEY (`idFondo`, `cedulaPersona`) ,
+  `cedulaPersona` INT NOT NULL , `montoFondoSocio` INT NOT NULL, `fechaFondoSocio` DATE NOT NULL,  PRIMARY KEY (`idFondo`, `cedulaPersona`) ,
   CONSTRAINT `fk_FONDO_has_SOCIO_FONDO`
     FOREIGN KEY (`idFondo` )
     REFERENCES `sociedadCivil`.`FONDO` (`idFondo` )
@@ -1071,8 +1101,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`FONDO_AVANCE` ;
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO_AVANCE` (
   `idFondo` INT NOT NULL ,
-  `cedulaPersona` INT NOT NULL ,
-  PRIMARY KEY (`idFondo`, `cedulaPersona`) ,
+  `cedulaPersona` INT NOT NULL , `montoFondo` INT NOT NULL,   PRIMARY KEY (`idFondo`, `cedulaPersona`) ,
   CONSTRAINT `fk_FONDO_has_AVANCE_FONDO`
     FOREIGN KEY (`idFondo` )
     REFERENCES `sociedadCivil`.`FONDO` (`idFondo` )

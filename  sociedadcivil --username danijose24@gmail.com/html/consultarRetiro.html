@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 table tr td {
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/consultarRetiro.php">
+  <h1>Consultar Retiro</h1>
+  <p>&nbsp;</p>
+  <table width="796" border="0">
+    <tr>
+      <td width="250">Introduzca el codigo a consultar:</td>
+      <td width="144"><input name="consultarCodigo" type="text" id="consultarCodigo" value="{consultarCodigo}" maxlength="10" /></td>
+      <td width="388">{mensaje} </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="consultar" id="consultar" value="Consultar" /></td>
+      <td width="388">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="790" border="0">
+    <tr>
+      <td width="60"><h3>Codigo</h3></td>
+      <td width="135"><h3>Nombre</h3></td>
+      <td width="160"><h3>Descripcion</h3></td>
+      <td width="135"><h3>Proveedor</h3></td>
+      <td width="110"><h3>Precio</h3></td>
+      <td width="110"><h3>Cantidad</h3></td>
+      <td width="60">&nbsp;</td>
+    </tr>
+    {consultarProducto}
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/Cuotas.js"></script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action=""><div id="contenidoDatos">
+  <table width="626" border="0
+  ">
+    <tr>
+      <td valign="bottom"><p>Tipo de Persona</p></td>
+      <td align="left" valign="top"><label>
+        <input type="radio" name="tipoPersona" value="1" id="tipoPersona_0"  onchange="buscarPersona()"/>
+        Socio</label>
+        <label>
+          <input type="radio" name="tipoPersona" value="2" id="tipoPersona_1" onchange="buscarPersona()" />
+      Avance</label></td>
+    </tr>
+    <tr>
+      <td width="139">Introduzca la cedula</td>
+      <td width="477" align="left"><label>
+        <input type="text" name="cedulaPersona" id="cedulaPersona" onchange="buscarPersona()" />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left"><div id="infoPersona"></div></td>
+    </tr>
+  </table>
+  <p><br />
+  </p></div>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

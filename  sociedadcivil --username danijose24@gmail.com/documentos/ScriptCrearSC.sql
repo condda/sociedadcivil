@@ -370,10 +370,10 @@ INSERT INTO  `sociedadcivil`.`pasaje` (
 `idRuta`
 )
 VALUES 
-('1',  '1,50',  '1'),
-('2',  '2,50',  '2'),
-('3',  '1',     '3'),
-('4',  '3,50',  '4'),
+('1',  '3',  '1'),
+('2',  '2.50',  '2'),
+('3',  '2',     '3'),
+('4',  '3.50',  '4'),
 ('5',  '2',     '5');
 
 
@@ -616,6 +616,23 @@ VALUES
 ('5',  'Secretario');
 
 
+
+
+
+INSERT INTO  `sociedadcivil`.`fondo` (
+`idFondo` ,
+`nombreFondo` ,
+`descripcionFondo` ,
+`montoFondo` ,
+`tipoFondo`
+)
+VALUES 
+(NULL ,  'Fondo de Inversión',  'está formado por los bienes presentes y los que en un futuro ingresen a la sociedad por cualquier titulo. Para la fecha cuentan con la oficina sede ubicada en la ciudad de caracas.',  '3000',  '1'),
+(NULL ,  'Fondo de Cirugía y Hospitalización',  'Formado por aportes mensuales que hacen los socios y avances, para mantener un monto que pueda cubrir las ayudas que sean solicitadas por sus afiliados. El monto tope será discutido en la Asamblea de Socios o por la Junta Directiva. Se conceden dos (2) veces al año.',  '8000',  '1'),
+(NULL ,  'Fondo de Prevención Social Por Fallecimiento del Socio',  'La asociación cancelará por cada socio activo, cien (100) pasajes mínimos a (l) (los) beneficiario(s) que aparezca(n) registrado (s) en los libros de vida del Socio.',  'NULL',  '1'),
+(NULL ,  'Fondo de Prevención Social Por retiro voluntario',  'La Asociación concederá un pago de diez (10) pasajes mínimos por año de servicio interrumpido por cada Socio activo. Dicha bonificación se debe cancelar junto a la cuota ordinaria. Los socios pueden recibir esta bonificación después de un (1) año de servicio.',  'NULL',  '1'),
+(NULL ,  'Fondo de Accidentes o Choques, Robo e Incendio',  'El monto máximo de cobertura de este fondo lo establece la Asamblea de socios y aplica una (1) vez al año',  '2000',  '1'),
+(NULL ,  'Fondo de Préstamos',  'El monto máximo de préstamo lo establece la asamblea de socios. Todos pueden solicitar préstamos, tienen sesenta (60) días para iniciar el proceso de pago. Las cuotas de los pagos serán establecidas por la JD.',  'NULL',  '1');
 
 
 

@@ -5,7 +5,7 @@
 
 <title>Documento sin título</title>
 <script type="text/javascript" src="../js/prototype.js"></script>
-<script type="text/javascript" src="../js/validarProveedor.js"></script>
+<script type="text/javascript" src="../js/ValidarRetiro.js"></script>
 <style type="text/css">
 <!--
 #form1 h1 {
@@ -21,21 +21,11 @@
   <p>&nbsp;</p>
   <table width="232" border="0">
     <tr>
-      <td>{tipo}</td>
-      <td><select name="listaSoAv2" id="listaSoAv2" onchange="llenadoProveedores()">
-        <option value="0" "selected="selected">Seleccione</option>
-        
-      
-      
+      <td width="72">{tipo}</td>
+      <td width="144"><select name="listaSoAv2" id="listaSoAv2" onchange="validarLista()">
+          <option value="0" selected="selected">Seleccione</option>
         {opcion}
-      
-    
-    
       </select></td>
-    </tr>
-    <tr>
-      <td width="72">Cedula</td>
-      <td width="144"><input name="cedula" type="text" id="cedula" value="{cedula}" maxlength="8" /></td>
     </tr>
     <tr>
       <td>Nombre</td>
@@ -46,11 +36,13 @@
       <td><input name="apellido" type="text" id="textfield5" value="{apellido}" maxlength="30" /></td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Crear" /></td>
+      <td>Cedula</td>
+      <td><input name="cedula" type="text" id="cedula" onchange="validarCedula()" value="{cedula}" maxlength="8" /></td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center"><div id="mensaje"></div></td>
     </tr>
   </table>
-  <p>&nbsp;</p>
-  <p>{mensaje}</p>
 </form>
 </body>
 </html>

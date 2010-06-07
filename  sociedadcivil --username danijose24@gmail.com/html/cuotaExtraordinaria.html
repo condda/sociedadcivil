@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/CuotasE.js"></script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="467" border="0
+  ">
+    <tr>
+      <td width="154">Seleccione Fondo</td>
+      <td width="303" align="left"><label>
+        <select name="fondo" id="fondo" onchange="CampoCedula()">
+          <option value="0" selected="selected">Seleccione</option>
+          {listaFondo}
+</select>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div id="campoDatos">
+      </div></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div id="mensajeVal"></div></td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

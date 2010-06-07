@@ -4,7 +4,11 @@
 <title>Documento sin título</title>
 
 <script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/dhtmlgoodies_calendar.js"></script>
 <script type="text/javascript" src="../js/validarHTMLPersona.js"></script>
+<link href="../css/dhtmlgoodies_calendar.css" rel="stylesheet" type="text/css" />
+ 
+
 <style type="text/css">
 <!--
 .centrado {
@@ -64,7 +68,8 @@ function MM_validateForm() { //v4.0
     </tr>
     <tr>
       <td class="aaal">Fecha de Nacimiento</td>
-      <td><input type="text" name="fecha_nacimiento" id="fecha_nacimiento"></td>
+      <td><input type="text" name="fecha_nacimiento" id="fecha_nacimiento" disabled>
+      <a href="#" onClick="displayCalendar(document.forms[0].fecha_nacimiento,'yyyy/mm/dd',this)">Calendario</a></td>
     </tr>
     <tr>
       <td class="aaal">Telefono:</td>

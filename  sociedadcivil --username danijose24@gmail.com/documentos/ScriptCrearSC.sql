@@ -424,19 +424,21 @@ VALUES
 INSERT INTO  `sociedadcivil`.`norma` (
 `idNorma` ,
 `descripcionNorma` ,
-`tipoNorma`
+`tipoNorma`,
+`montoNorma`
 )
 VALUES 
-('1',  'Dejar de pagar dos (2) cuotas ordinarias consecutivas.',  '2'),
-('2',  'Contravenir alguna disposición emanada de la Asamblea.',  '2'),
-('3',  'Tener acumuladas tres (3) sanciones consecutivas en un lapso no mayor de sesenta (60) días.',  '2'),
-('4',  'Organizar actos contrarios a los fines de la sociedad.',  '2'),
-('5',  'Desacreditar públicamente a la sociedad o irrespetar a los miembros de los organismos directivos.',  '2'),
-('6',  'Malversar los fondos económicos de la sociedad.',  '2'),
-('7',  'Ausentarse de la sociedad sin causa justificada.',  '2'),
-('8',  'Cometer desfalcos o apropiaciones indebidas.',  '2'),
-('9',  'Al no cancelar las finanzas mensuales ordinarias en el mes subsiguiente, no podrá trabajar el vehículo o el conductor según el caso.',  '1'),
-('10',  'Las finanzas deben ser canceladas los primeros veinte (20) días del mes, pasado los vente días se debe cancelar una multa de 5 BsF. Al llegar al mes siguiente debe pagar una multa de 10 BsF.',  '1');
+('1',  'Dejar de pagar dos (2) cuotas ordinarias consecutivas.',  '2','NULL'),
+('2',  'Contravenir alguna disposición emanada de la Asamblea.',  '2','NULL'),
+('3',  'Tener acumuladas tres (3) sanciones consecutivas en un lapso no mayor de sesenta (60) días.',  '2','NULL'),
+('4',  'Organizar actos contrarios a los fines de la sociedad.',  '2','NULL'),
+('5',  'Desacreditar públicamente a la sociedad o irrespetar a los miembros de los organismos directivos.',  '2','NULL'),
+('6',  'Malversar los fondos económicos de la sociedad.',  '2','NULL'),
+('7',  'Ausentarse de la sociedad sin causa justificada.',  '2','NULL'),
+('8',  'Cometer desfalcos o apropiaciones indebidas.',  '2','NULL'),
+('9',  'Al no cancelar las finanzas mensuales ordinarias en el mes subsiguiente, no podrá trabajar el vehículo o el conductor según el caso.',  '1','NULL'),
+('10',  'Las finanzas deben ser canceladas los primeros veinte (20) días del mes, pasado los vente días se debe cancelar una multa de 5 BsF.',  '1','5'),
+('11',  'Las finanzas deben ser canceladas los primeros veinte (20) días del mes. Al llegar al mes siguiente debe pagar una multa de 10 BsF.',  '1','10');
 
 
 
@@ -516,19 +518,34 @@ VALUES
 INSERT INTO  `sociedadcivil`.`cuota` (
 `idCuota` ,
 `tipoCuota` ,
-`montoCuota`
+`montoCuota`,
+`mesCuota`
 )
 VALUES 
-('1',  '1',  '80'),
-('2',  '1',  '60'),
-('3',  '2',  '75'),
-('4',  '2',  '70'),
-('5',  '1',  '80'),
-('6',  '1',  '90'),
-('7',  '2',  '100'),
-('8',  '2',  '95'),
-('9',  '1',  '65'),
-('10',  '2',  '80');
+('1',  '1',  '80','Enero'),
+('2',  '1',  '60','Febrero'),
+('3',  '1',  '75','Marzo'),
+('4',  '1',  '70','Abril'),
+('5',  '1',  '80','Mayo'),
+('6',  '1',  '90','Junio'),
+('7',  '1',  '100','Julio'),
+('8',  '1',  '95','Agosto'),
+('9',  '1',  '65','Septiembre'),
+('10',  '1',  '80','Octubre'),
+('11',  '1',  '50','Noviembre'),
+('12',  '1',  '30','Diciembre'),
+('13',  '2',  '70','Enero'),
+('14',  '2',  '90','Febrero'),
+('15',  '2',  '100','Marzo'),
+('16',  '2',  '30','Abril'),
+('17',  '2',  '40','Mayo'),
+('18',  '2',  '90','Junio'),
+('19',  '2',  '10','Julio'),
+('20',  '2',  '30','Agosto'),
+('21',  '2',  '10','Septiembre'),
+('22',  '2',  '60','Octubre'),
+('23',  '2',  '70','Noviembre'),
+('24',  '2',  '90','Diciembre');
 
 
 
@@ -537,14 +554,15 @@ VALUES
 INSERT INTO  `sociedadcivil`.`cuota_avance` (
 `cedulaPersona` ,
 `idCuota` ,
-`fechaCuota`
+`fechaCuota`,
+`montoCuotaAvance`
 )
 VALUES
-('15343467',  '3',  '2010-05-03'),
-('15342942',  '4',  '2010-05-05'),
-('7887976',  '7',  '2010-05-10'),
-('6557435',  '8',  '2010-04-30'),
-('5631234',  '10',  '2010-05-01');
+('15343467',  '3',  '2010-05-03','80'),
+('15342942',  '4',  '2010-05-05','80'),
+('7887976',  '7',  '2010-05-10','80'),
+('6557435',  '8',  '2010-04-30','70'),
+('5631234',  '10',  '2010-05-01','80');
 
 
 
@@ -554,14 +572,15 @@ VALUES
 INSERT INTO  `sociedadcivil`.`cuota_socio` (
 `cedulaPersona` ,
 `idCuota` ,
-`fechaCuota`
+`fechaCuota`,
+`montoCuotaSocio`
 )
 VALUES
-('18213611',  '1',  '2010-05-03'),
-('12345345',  '2',  '2010-05-05'),
-('18933251',  '5',  '2010-05-10'),
-('19044502',  '6',  '2010-04-30'),
-('20484534',  '9',  '2010-05-01');
+('18213611',  '1',  '2010-05-03','80'),
+('12345345',  '2',  '2010-05-05','80'),
+('18933251',  '5',  '2010-05-10','80'),
+('19044502',  '6',  '2010-04-30','70'),
+('20484534',  '9',  '2010-05-01','80');
 
 
 

@@ -51,8 +51,8 @@
     			</tr>';
 		}
 	}
-	$pnlcontent->add("modificarProveedor",$listaProveedores);
 	
+	$pnlcontent->add("modificarProveedor",$listaProveedores);
 	$pnlmain->add("content",$pnlcontent);
 	$pnlmain->add("menu",$pnlmenu);
 	

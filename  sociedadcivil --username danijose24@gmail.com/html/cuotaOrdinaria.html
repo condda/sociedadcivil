@@ -21,6 +21,16 @@
       Avance</label></td>
     </tr>
     <tr>
+    <td align="left">Tipo de Cuota</td>
+    <td align="left"><label>
+      <select name="tipoCuota" id="tipoCuota" onchange="funcionTipoCuota()">
+        <option value="0">Seleccione</option>
+        <option value="1">Ordinaria</option>
+        <option value="2">Extraordinaria</option>
+      </select>
+    </label></td>
+    </tr>
+    <tr>
       <td width="139">Introduzca la cedula</td>
       <td width="477" align="left"><label>
         <input type="text" name="cedulaPersona" id="cedulaPersona" onchange="buscarPersona()" />
@@ -29,9 +39,12 @@
     <tr>
       <td colspan="2" align="left"><div id="infoPersona"></div></td>
     </tr>
+    <tr>
+    <td colspan="2" align="left"><div id="mensajeFinal"></div></td>
+    </tr>
   </table>
   <p><br />
-  </p></div>
+  </div>
 </form>
 <p>&nbsp;</p>
 </body>

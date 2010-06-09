@@ -136,7 +136,7 @@ if ($cedulaPersona){
 											 )
 						 VALUES				 (
 											
-											  '4',
+											  '3',
 											  '$idInscripcion'
 											  )");
 		

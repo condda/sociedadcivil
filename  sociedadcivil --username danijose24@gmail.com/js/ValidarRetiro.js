@@ -66,6 +66,7 @@ function validarCedula(){
 	var apellido = $F('apellido');
 	var activarB=1;
 	var lista = $F('listaSoAv2');
+	
 	if (!/^([0-9])*$/.test(cedulaB)){
 			alert("El valor (" + cedulaB + ") no es un numero");
 			return (false);			

@@ -1,0 +1,2 @@
+Al hacer commit el vinculo hacia prestamo se salio del espacio y no puedo acomodarlo :S
+hice modificacion en la tabla prestamo agregue el campo cuotaPrestamo int(11) not null

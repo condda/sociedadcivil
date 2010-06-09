@@ -15,7 +15,10 @@
 	
 	
 	$pnlcontent->add("crear",'<a href="../php/crearVehiculo.php">Crear Vehiculo</a>');
-	$pnlcontent->add("modificar","Modificar Vehiculo");
+
+	$pnlcontent->add("modificar",'<a href="../php/xmodificarVehiculo.php">Modificar Vehiculo</a>');
+
+
 	$pnlcontent->add("consultar",'<a href="../php/consultarVehiculo.php">Consultar Vehiculo</a>');
 	$pnlcontent->add("eliminar",'<a href="../php/eliminarVehiculo.php">Eliminar Vehiculo</a>');
 	

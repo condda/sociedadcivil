@@ -255,7 +255,7 @@ DROP TABLE IF EXISTS `sociedadCivil`.`CUOTA` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`CUOTA` (
   `idCuota` INT NOT NULL AUTO_INCREMENT ,
   `tipoCuota` INT NOT NULL ,
-  `montoCuota` INT NOT NULL , `mesCuota` VARCHAR(45) NOT NULL , PRIMARY KEY (`idCuota`) )
+  `montoCuota` INT NOT NULL , `mesCuota` VARCHAR(45) NOT NULL , `numeroMesCuota` INT NOT NULL , PRIMARY KEY (`idCuota`) )
 ENGINE = InnoDB;
 
 
@@ -462,37 +462,6 @@ CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`FONDO` (
   `tipoFondo` INT NOT NULL ,
   PRIMARY KEY (`idFondo`) )
 ENGINE = InnoDB;
-
-
-
-
-
--- -----------------------------------------------------
--- Table `sociedadCivil`.`MULTA`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `sociedadCivil`.`MULTA` ;
-
-
-CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`MULTA` (
-  `idMulta` INT NOT NULL AUTO_INCREMENT ,
-  `montoMulta` INT NOT NULL ,
-  `idSancion` INT , `idNorma` INT ,
-  PRIMARY KEY (`idMulta`) ,
-  CONSTRAINT `fk_MULTA_SANCION`
-    FOREIGN KEY (`idSancion` )
-    REFERENCES `sociedadCivil`.`SANCION` (`idSancion` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION , CONSTRAINT `fk_MULTA_NORMA`
-    FOREIGN KEY (`idSancion` )
-    REFERENCES `sociedadCivil`.`NORMA` (`idNorma` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION )
-ENGINE = InnoDB;
-
-
-CREATE INDEX fk_MULTA_SANCION ON `sociedadCivil`.`MULTA` (`idSancion` ASC) ;
-
-CREATE INDEX fk_MULTA_NORMA ON `sociedadCivil`.`NORMA` (`idNorma` ASC) ;
 
 
 
@@ -1255,6 +1224,63 @@ CREATE INDEX fk_EGRESO_COMPRA_VENTA ON `sociedadCivil`.`EGRESO` (`idCompraVenta`
 
 
 
+CREATE TABLE  `ingreso` (
+ `idIngreso` INT NOT NULL AUTO_INCREMENT ,
+ `tipoIngreso` INT NOT NULL ,
+ `idMulta` INT NULL ,
+ `cedulaSocio` INT NULL ,
+ `cedulaAvance` INT NULL ,
+ `idInscripcion` INT NULL ,
+ `idCompraVenta` INT NULL ,
+ `idFondoIngreso` INT NULL ,
+PRIMARY KEY (  `idIngreso` )
+) ENGINE = INNODB;
+
+
+
+CREATE TABLE  `multa` (
+ `idMulta` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+ `montoMulta` INT( 11 ) NOT NULL ,
+ `fechaMulta` DATE NOT NULL ,
+ `idSancion` INT( 11 ) NULL ,
+ `idNorma` INT( 11 ) NULL ,
+ `cedulaPersonaS` INT( 11 ) NULL ,
+ `cedulaPersonaA` INT( 11 ) NULL
+) ENGINE = INNODB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- -----------------------------------------------------
 -- Table `sociedadCivil`.`INGRESO`
 -- -----------------------------------------------------
@@ -1262,58 +1288,72 @@ DROP TABLE IF EXISTS `sociedadCivil`.`INGRESO` ;
 
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`INGRESO` (
-  `idIngreso` INT NOT NULL AUTO_INCREMENT ,
-  `tipoIngreso` INT NOT NULL ,
-  `idMulta` INT NULL ,
-  `idCuotaSocio` INT NULL ,
-  `idCuotaAvance` INT NULL ,
-  `idInscripcion` INT NULL ,
-  `idCompraVenta` INT NULL ,
-  `idFondoIngreso` INT NULL ,
-  PRIMARY KEY (`idINGRESO`) ,
-  CONSTRAINT `fk_INGRESO_MULTA`
-    FOREIGN KEY (`idMulta` )
-    REFERENCES `sociedadCivil`.`MULTA` (`idMulta` )
-    ON DELETE NO ACTION
+ 
+ `idIngreso` INT NOT NULL AUTO_INCREMENT ,
+
+ `tipoIngreso` INT NOT NULL ,
+
+ `idMulta` INT ,
+  
+ `cedulaSocio` INT ,
+ 
+ `cedulaAvance` INT  ,
+ 
+ `idInscripcion` INT ,
+ 
+ `idCompraVenta` INT  ,
+ 
+ `idFondoIngreso` INT  ,
+ 
+ PRIMARY KEY (`idINGRESO`) ,
+ 
+ CONSTRAINT `fk_INGRESO_MULTA`
+          FOREIGN KEY (`idMulta` )
+          REFERENCES `sociedadCivil`.`MULTA`        (`idMulta` )
+         ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_INGRESO_CUOTA_SOCIO`
-    FOREIGN KEY (`idCuotaSocio` )
-    REFERENCES `sociedadCivil`.`CUOTA_SOCIO` (`idCuota` )
-    ON DELETE NO ACTION
+
+ CONSTRAINT `fk_INGRESO_CUOTA_SOCIO1`
+    FOREIGN KEY (`cedulaSocio` )
+     REFERENCES `sociedadCivil`.`CUOTA_SOCIO`  (`cedulaPersona` )
+   ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_INGRESO_CUOTA_AVANCE`
-    FOREIGN KEY (`idCuotaAvance` )
-    REFERENCES `sociedadCivil`.`CUOTA_AVANCE` (`idCuota` )
-    ON DELETE NO ACTION
+
+ CONSTRAINT `fk_INGRESO_CUOTA_AVANCE1`
+   FOREIGN KEY (`cedulaAvance` )
+    REFERENCES `sociedadCivil`.`CUOTA_AVANCE` (`cedulaPersona` )
+   ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_INGRESO_INSCRIPCION`
+
+ CONSTRAINT `fk_INGRESO_INSCRIPCION`
     FOREIGN KEY (`idInscripcion` )
-    REFERENCES `sociedadCivil`.`INSCRIPCION` (`idInscripcion` )
-    ON DELETE NO ACTION
+    REFERENCES `sociedadCivil`.`INSCRIPCION`  (`idInscripcion` )
+   ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_INGRESO_COMPRA_VENTA`
-    FOREIGN KEY (`idCompraVenta` )
+
+ CONSTRAINT `fk_INGRESO_COMPRA_VENTA`
+   FOREIGN KEY (`idCompraVenta` )
     REFERENCES `sociedadCivil`.`COMPRA_VENTA` (`idCompraVenta` )
-    ON DELETE NO ACTION
+   ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_INGRESO_FONDOINGRESO`
-    FOREIGN KEY (`idFondoIngreso` )
-    REFERENCES `sociedadCivil`.`FONDOINGRESO` (`idFondoIngreso` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+
+ CONSTRAINT `fk_INGRESO_FONDOINGRESO`
+   FOREIGN KEY (`idFondoIngreso` )
+   REFERENCES `sociedadCivil`.`FONDOINGRESO` (`idFondoIngreso` )
+  ON DELETE NO ACTION
+    ON UPDATE NO ACTION) ENGINE = InnoDB;
 
 
-CREATE INDEX fk_INGRESO_MULTA ON `sociedadCivil`.`INGRESO` (`idMulta` ASC) ;
+
+CREATE INDEX fk_INGRESO_MULTA        ON `sociedadCivil`.`INGRESO` (`idMulta` ASC) ;
+CREATE INDEX fk_INGRESO_CUOTA_SOCIO1  ON `sociedadCivil`.`INGRESO` (`cedulaSocio` ASC) ;
 
 
-CREATE INDEX fk_INGRESO_CUOTA_SOCIO ON `sociedadCivil`.`INGRESO` (`idCuotaSocio` ASC) ;
+CREATE INDEX fk_INGRESO_CUOTA_AVANCE1 ON `sociedadCivil`.`INGRESO` (`cedulaAvance` ASC) ;
 
 
-CREATE INDEX fk_INGRESO_CUOTA_AVANCE ON `sociedadCivil`.`INGRESO` (`idCuotaAvance` ASC) ;
 
-
-CREATE INDEX fk_INGRESO_INSCRIPCION ON `sociedadCivil`.`INGRESO` (`idInscripcion` ASC) ;
+CREATE INDEX fk_INGRESO_INSCRIPCION  ON `sociedadCivil`.`INGRESO` (`idInscripcion` ASC) ;
 
 
 CREATE INDEX fk_INGRESO_COMPRA_VENTA ON `sociedadCivil`.`INGRESO` (`idCompraVenta` ASC) ;
@@ -1324,8 +1364,58 @@ CREATE INDEX fk_INGRESO_FONDOINGRESO ON `sociedadCivil`.`INGRESO` (`idFondoIngre
 
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
 
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `sociedadCivil`.`MULTA`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sociedadCivil`.`MULTA` ;
+
+
+CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`MULTA` (
+`idMulta` INT NOT NULL AUTO_INCREMENT ,
+`montoMulta` INT NOT NULL ,
+`fechaMulta` DATE NOT NULL  , 
+`idSancion` INT ,
+`idNorma` INT , 
+`cedulaPersonaS` INT , 
+`cedulaPersonaA` INT ,
+
+  PRIMARY KEY (`idMulta`) ,
+ CONSTRAINT `fk_MULTA_CUOTA_SOCIO`
+    FOREIGN KEY (`cedulaPersonaS` )
+    REFERENCES `sociedadCivil`.`CUOTA_SOCIO` (`cedulaPersona` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+ 
+ CONSTRAINT `fk_MULTA_CUOTA_AVANCE`
+    FOREIGN KEY (`cedulaPersonaA` )
+    REFERENCES `sociedadCivil`.`CUOTA_AVANCE` (`cedulaPersonaA` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,  CONSTRAINT `fk_MULTA_SANCION`
+    FOREIGN KEY (`idSancion` )
+    REFERENCES `sociedadCivil`.`SANCION` (`idSancion` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION , CONSTRAINT `fk_MULTA_NORMA`
+    FOREIGN KEY (`idSancion` )
+    REFERENCES `sociedadCivil`.`NORMA` (`idNorma` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION )
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_MULTA_SANCION ON `sociedadCivil`.`MULTA` (`idSancion` ASC) ;
+
+CREATE INDEX fk_MULTA_NORMA ON `sociedadCivil`.`MULTA` (`idNorma` ASC) ;
+CREATE INDEX fk_MULTA_CUOTA_SOCIO ON `sociedadCivil`.`MULTA` (`cedulaPersonaS` ASC) ;
+
+
+CREATE INDEX fk_MULTA_CUOTA_AVANCE ON `sociedadCivil`.`MULTA` (`cedulaPersonaA` ASC) ;
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+</script>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/ValidarRetiro.js"></script>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+#form1 table tr td {
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <h1>Consultar Retiro de Avance</h1>
+  <p>&nbsp;</p>
+  <table width="404" border="0">
+    <tr>
+      <td width="250">Introduzca el codigo a consultar:</td>
+      <td width="144"><input name="consultarCodigo2" type="text" id="consultarCodigo2" value="{consultarCodigo2}" maxlength="10" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="button" name="consultar" id="consultar" value="Consultar" onclick="llenarDatosRetiro2()"/></td>
+    </tr>
+    <tr>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="0"><div id="datos">
+      </div></td>
+      <td height="0">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="900" border="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td colspan="3" bgcolor="#99FF66"><h3>Avance</h3></td>
+      <td colspan="3" bgcolor="#99CC66"><h3>Beneficiario</h3></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="60"><h3>Codigo</h3></td>
+      <td width="100"><h3>Retiro</h3></td>
+      <td width="80"><h3>Cedula</h3></td>
+      <td width="95"><h3>Nombre</h3></td>
+      <td width="95"><h3>Apellido</h3></td>
+      <td width="80"><h3>Cedula</h3></td>
+      <td width="95"><h3>Nombre</h3></td>
+      <td width="95"><h3>Apellido</h3></td>
+      <td width="60"><h3>Monto</h3></td>
+      <td width="80"><h3>Fecha</h3></td>
+      <td width="60">&nbsp;</td>
+    </tr>
+    {consultarRetiro}
+  </table>
+</form>
+</body>
+</html>

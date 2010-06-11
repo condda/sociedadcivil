@@ -1081,6 +1081,10 @@ DROP TABLE IF EXISTS `sociedadCivil`.`PRESTAMO` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRESTAMO` (
   `idPrestamo` INT NOT NULL ,
   `montoPrestamo` INT NOT NULL ,
+ `cuotaPrestamo` INT NOT NULL ,
+ `fechaPrestamo` INT  ,
+
+
   PRIMARY KEY (`idPrestamo`) )
 ENGINE = InnoDB;
 
@@ -1097,8 +1101,9 @@ DROP TABLE IF EXISTS `sociedadCivil`.`PRESTAMO_PERSONA` ;
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`PRESTAMO_PERSONA` (
   `idPrestamo` INT NOT NULL ,
   `tipoPersona` INT NOT NULL ,
-  `cedulaPersonaA` INT NULL ,
-  `cedulaPersonaS` INT NULL ,
+  `cedulaPersonaA` INT ,
+  `cedulaPersonaS` INT ,
+  `estadoPrestamo` INT NOT NULL,
   PRIMARY KEY (`idPrestamo`) ,
   CONSTRAINT `fk_AVANCE_has_PRESTAMO_AVANCE`
     FOREIGN KEY (`cedulaPersonaA` )

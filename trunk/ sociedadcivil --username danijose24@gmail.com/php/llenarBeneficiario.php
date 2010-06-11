@@ -2,6 +2,7 @@
 	session_start();
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
+	include "date.php";
 	
 	$cedulaPersona = $_REQUEST['phpcedulaPersona'];
 	$linkSoAv = $_REQUEST['phplinkSoAv'];
@@ -82,9 +83,16 @@
 
 	if($cedulaRetiro){
 		$mayor=0;
-		//AQUIIIIIIIIIIIIIIIIIII BUSCOOOOO SI LA FECHA ES MAYOR A 1 A;O	EN EL QUERYYYYYYYYYYY
+		$result = mysql_query("SELECT fechaAInscripcion FROM inscripcion WHERE cedulaPersona='$cedulaRetiro' and estatusInscripcion='1'");
+		$result1 = mysql_fetch_assoc($result);
+		$fecha = $result1['fechaAInscripcion']; 
+		$diferencia = abs((strtotime($date1) - strtotime($fecha))/86400);  
+		if($diferencia>=365)
+			$mayor=1;
+		else
+			$mayor=0;
 		if($mayor){
-			/*$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
+			$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
 									SELECT h1.idPasaje
 									FROM hist_pasaje h1
 									WHERE h1.fechaHistPasaje
@@ -92,13 +100,30 @@
 									FROM hist_pasaje h2))");
 			$result1 = mysql_fetch_assoc($result);
 			extract($result1);
-			$montoTotal=$costoPasaje*10;*/
-			echo '<input name="monto" type="text" id="monto" value="$montoTotal" size="11" readonly="readonly" />Bsf.';
-			echo '<input name="flagBoton" type="hidden" id="flagBoton" value="11" />';
+			$montoTotal=$costoPasaje*10;
+			
+		  echo'<table width="370" border="0">
+				<tr>
+				  <td width="120">Monto Total</td>
+				  <td width="250"><input name="monto" type="text" id="monto" value="'.$montoTotal.'" size="11" readonly="readonly" />Bsf.</td>
+				</tr>
+				<tr>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				</tr>
+				<tr>
+				  <td>&nbsp;</td>
+				  <td><input type="submit" name="button" id="button" value="Crear"/></td>
+				</tr>
+			  </table>';
+	  		echo '<input name="flagInsertar" type="hidden" id="flagInsertar" value="11" />';
+
+			//echo '<p><input name="monto" type="text" id="monto" value="'.$montoTotal.'" size="11" readonly="readonly" />Bsf.</p>';
+			//echo '<p><input type="submit" name="button" id="button" value="Crear"/></p>';	
 		}
 		else{
 			echo "Debe tener mas de un a7o de servicio para poder retirarse de la sociedad...";
-			echo '<input name="flagBoton" type="hidden" id="flagBoton" value="10" />';
+	  		echo '<input name="flagInsertar" type="hidden" id="flagInsertar" value="10" />';			
 		}
 	}
 	

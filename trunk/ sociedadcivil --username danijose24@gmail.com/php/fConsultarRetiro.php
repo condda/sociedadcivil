@@ -11,23 +11,10 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlcontent = new Panel("../html/fConsultarRetiro.html");
 
-	$pnlcontent = new Panel("../html/Comprar.html");
-	
-	$pnlcontent->add("nombre",'Retirar Socio/Avance');
-	$pnlcontent->add("crear",'<a href="fCrearRetiro.php">Crear Retiro</a>');
-	$pnlcontent->add("consultar",'<a href="fConsultarRetiro.php">Consultar Retiro</a>');
-
-	
-	$pnlmain->add("content",$pnlcontent);
-	
-	
-
-	$pnlmain->add("content",$pnlcontent);
 	$pnlmain->add("menu",$pnlmenu);
-
-	
-	
+	$pnlmain->add("content",$pnlcontent);
 	$pnlmain->show();
 	include "../db/cerrar_conexion.php";
 ?>

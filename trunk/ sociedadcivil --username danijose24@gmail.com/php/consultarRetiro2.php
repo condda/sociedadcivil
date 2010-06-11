@@ -10,22 +10,22 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
-	$pnlcontent = new Panel("../html/consultarRetiro.html");	
+	$pnlcontent = new Panel("../html/consultarRetiro2.html");	
 	
-	$result = mysql_query("SELECT fs.idFondoSocio, fs.idFondo, p.cedulaPersona, p.nombrePersona, p.apellidoPersona, fs.montoFondoSocio, fs.fechaFondoSocio, b.cedulaBeneficiario, b.nombreBeneficiario, b.apellidoBeneficiario
-FROM persona p, fondo_socio fs, beneficiario b, socio s, socio_beneficiario sb
+	$result = mysql_query("SELECT fa.idFondoAvance, fa.idFondo, p.cedulaPersona, p.nombrePersona, p.apellidoPersona, fa.montoFondoAvance, fa.fechaFondoAvance, b.cedulaBeneficiario, b.nombreBeneficiario, b.apellidoBeneficiario
+FROM persona p, fondo_avance fa, beneficiario b, avance a, avance_beneficiario ab
 WHERE (
-fs.idFondo =  '3'
-AND fs.cedulaPersona = s.cedulaPersona
-AND s.cedulaPersona = p.cedulaPersona
-AND s.cedulaPersona = sb.cedulaPersona
-AND sb.cedulaBeneficiario = b.cedulaBeneficiario
+fa.idFondo =  '3'
+AND fa.cedulaPersona = a.cedulaPersona
+AND a.cedulaPersona = p.cedulaPersona
+AND a.cedulaPersona = ab.cedulaPersona
+AND ab.cedulaBeneficiario = b.cedulaBeneficiario
 )");
 	while ($result1 = mysql_fetch_assoc($result)){
 		extract($result1);
 		$listaRetiro = $listaRetiro.
 		'<tr>
-      	<td>'.$idFondoSocio.'</td>
+      	<td>'.$idFondoAvance.'</td>
 		  <td>Fallecimiento</td>
 		  <td>'.$cedulaPersona.'</td>
 		  <td>'.$nombrePersona.'</td>
@@ -33,26 +33,26 @@ AND sb.cedulaBeneficiario = b.cedulaBeneficiario
 		  <td>'.$cedulaBeneficiario.'</td>
 		  <td>'.$nombreBeneficiario.'</td>
 		  <td>'.$apellidoBeneficiario.'</td>
-		  <td>'.$montoFondoSocio.'</td>
-		  <td>'.$fechaFondoSocio.'</td>  
+		  <td>'.$montoFondoAvance.'</td>
+		  <td>'.$fechaFondoAvance.'</td>  
 		</tr>';
-	}	/*<td><a href="../php/consultarRetiro.php?idFondoSocio='.$idFondoSocio.
+	}	/*<td><a href="../php/consultarRetiro.php?idFondoAvance='.$idFondoAvance.
 		  '&cedulaPersona='.$cedulaPersona.'&cedulaBeneficiario='.$cedulaBeneficiario.'">Consultar</a></td>*/
 	
-	$result = mysql_query("SELECT fs.idFondoSocio, fs.idFondo, p.cedulaPersona, p.nombrePersona, p.apellidoPersona, fs.montoFondoSocio, fs.fechaFondoSocio, b.cedulaBeneficiario, b.nombreBeneficiario, b.apellidoBeneficiario
-FROM persona p, fondo_socio fs, beneficiario b, socio s, socio_beneficiario sb
+	$result = mysql_query("SELECT fa.idFondoAvance, fa.idFondo, p.cedulaPersona, p.nombrePersona, p.apellidoPersona, fa.montoFondoAvance, fa.fechaFondoAvance, b.cedulaBeneficiario, b.nombreBeneficiario, b.apellidoBeneficiario
+FROM persona p, fondo_avance fa, beneficiario b, avance a, avance_beneficiario ab
 WHERE (
-fs.idFondo =  '4'
-AND fs.cedulaPersona = s.cedulaPersona
-AND s.cedulaPersona = p.cedulaPersona
-AND s.cedulaPersona = sb.cedulaPersona
-AND sb.cedulaBeneficiario = b.cedulaBeneficiario
+fa.idFondo =  '4'
+AND fa.cedulaPersona = a.cedulaPersona
+AND a.cedulaPersona = p.cedulaPersona
+AND a.cedulaPersona = ab.cedulaPersona
+AND ab.cedulaBeneficiario = b.cedulaBeneficiario
 )");
 	while ($result1 = mysql_fetch_assoc($result)){
 		extract($result1);
 		$listaRetiro = $listaRetiro.
 		'<tr>
-      	<td>'.$idFondoSocio.'</td>
+      	<td>'.$idFondoAvance.'</td>
 		  <td>Voluntario</td>
 		  <td>'.$cedulaPersona.'</td>
 		  <td>'.$nombrePersona.'</td>
@@ -60,10 +60,10 @@ AND sb.cedulaBeneficiario = b.cedulaBeneficiario
 		  <td>----------</td>
 		  <td>----------</td>
 		  <td>----------</td>
-		  <td>'.$montoFondoSocio.'</td>
-		  <td>'.$fechaFondoSocio.'</td>	  
+		  <td>'.$montoFondoAvance.'</td>
+		  <td>'.$fechaFondoAvance.'</td>	  
 		</tr>';
-		/*<td><a href="../php/consultarRetiro.php?idFondoSocio='.$idFondoSocio.
+		/*<td><a href="../php/consultarRetiro.php?idFondoAvance='.$idFondoAvance.
 		  '&cedulaPersona='.$cedulaPersona.'&cedulaBeneficiario='.$cedulaBeneficiario.'">Consultar</a></td>*/
 	}
 	$pnlcontent->add("consultarRetiro",$listaRetiro);

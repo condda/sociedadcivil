@@ -11,7 +11,7 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
-	$pnlcontent = new Panel("../html/crearRetiro.html");
+	$pnlcontent = new Panel("../html/crearRetiro2.html");
 
 	extract ($_POST);
 	if ($listaSoAv1==1){
@@ -26,19 +26,6 @@
 			$listaPersonas = $listaPersonas.'<option value="'.$cedulaPersona.'">'.$apellidoPersona.', '.$nombrePersona.'</option>';
 		}
 		$pnlcontent->add("opcion",$listaPersonas);	
-		
-		$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
-								SELECT h1.idPasaje
-								FROM hist_pasaje h1
-								WHERE h1.fechaHistPasaje
-								IN (
-								
-								SELECT MAX( h2.fechaHistPasaje ) 
-								FROM hist_pasaje h2
-								))");
-		$result1 = mysql_fetch_assoc($result);
-		extract($result1);
-		$pnlcontent->add("monto",$costoPasaje*100);	
 	}
 	else if ($listaSoAv1==2){
 		$pnlcontent->add("tipo",'Avance');
@@ -51,23 +38,10 @@
 			extract($result1);
 			$listaPersonas = $listaPersonas.'<option value="'.$cedulaPersona.'">'.$apellidoPersona.', '.$nombrePersona.'</option>';
 		}
-		$pnlcontent->add("opcion",$listaPersonas);	
-		
-		$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
-								SELECT h1.idPasaje
-								FROM hist_pasaje h1
-								WHERE h1.fechaHistPasaje
-								IN (
-								
-								SELECT MAX( h2.fechaHistPasaje ) 
-								FROM hist_pasaje h2
-								))");
-		$result1 = mysql_fetch_assoc($result);
-		extract($result1);
-		$pnlcontent->add("monto",$costoPasaje*100);	
+		$pnlcontent->add("opcion",$listaPersonas);		
 	}
 	
-	if($flagInsertar==11){
+	/*if($flagBoton==11){
 		$result = mysql_query("insert into fondoegreso (idFondoEgreso,
 														descripcionFondoEgreso,
 														 montoFondoEgreso,
@@ -77,7 +51,7 @@
 														 '$descripcion',
 														 '$monto',
 														 '$date1',
-														 '3')");
+														 '4')");
 		
 		$ultimoId = mysql_insert_id(); 
 		mysql_query("insert into egreso (tipoEgreso,
@@ -87,50 +61,42 @@
 
 		if($soAv==1){
 				mysql_query("UPDATE persona SET estatusPersona = '0' WHERE cedulaPersona = '$listaSoAv2'");				
-					for ($i=1;$i<=$cont;$i=$i+1)
-					{
-						if (${'b'.$i})
-							mysql_query("insert into fondo_socio (idFondoSocio,
-																   idFondo,
-																   cedulaPersona,
-																   montoFondoSocio,
-																   fechaFondoSocio,
-																   cedulaBeneficiario) values 
-																	(NULL,
-																	 '3',
-																	 '$listaSoAv2',
-																	 '$flagMonto',
-																	 '$date1',
-																	 '${'b'.$i}')");															
-					}		
+						mysql_query("insert into fondo_socio (idFondoSocio,
+															   idFondo,
+															   cedulaPersona,
+															   montoFondoSocio,
+															   fechaFondoSocio,
+															   cedulaBeneficiario) values 
+																(NULL,
+																 '4',
+																 '$listaSoAv2',
+																 '$monto',
+																 '$date1',
+																 NULL)");															
 		}
 		else if($soAv==2){
 				mysql_query("UPDATE persona SET estatusPersona = '0' WHERE cedulaPersona = '$listaSoAv2'");				
-					for ($i=1;$i<=$cont;$i=$i+1)
-					{
-						if (${'b'.$i})
-							mysql_query("insert into fondo_avance (idFondoAvance,
-																   idFondo,
-																   cedulaPersona,
-																   montoFondoAvance,
-																   fechaFondoAvance,
-																   cedulaBeneficiario) values 
-																	(NULL,
-																	 '3',
-																	 '$listaSoAv2',
-																	 '$flagMonto',
-																	 '$date1',
-																	 '${'b'.$i}')");								
-					}		
+						mysql_query("insert into fondo_avance (idFondoAvance,
+															   idFondo,
+															   cedulaPersona,
+															   montoFondoAvance,
+															   fechaFondoAvance,
+															   cedulaBeneficiario) values 
+																(NULL,
+																 '4',
+																 '$listaSoAv2',
+																 '$monto',
+																 '$date1',
+																 NULL)");								
 		}
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo",'id="active"');
 		$pnlmain = new Panel("../html/main.html");
-		$pnlmain->add("nombre","Retiro por fallecimiento");
+		$pnlmain->add("nombre","Retiro voluntario");
 		$pnlmain->add("mensaje","Fue registrado exitosamente!");
-		$pnlcontent = new Panel("../html/contentPrincipal.html");		
+		$pnlcontent = new Panel("../html/contentPrincipal.html");	
 
-	}
+	}*/
 	
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);

@@ -3,7 +3,6 @@
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
 	
-	
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlmain = new Panel("../html/main.html");
 	$pnlmenu->add("activo2",'id="active"');

@@ -82,7 +82,7 @@
 		$ultimoId = mysql_insert_id(); 
 		mysql_query("insert into egreso (tipoEgreso,
 										idFondoEgreso) values
-										('6',
+										('5',
 										'$ultimoId')");
 
 		if($soAv==1){

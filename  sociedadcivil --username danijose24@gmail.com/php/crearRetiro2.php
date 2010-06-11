@@ -41,7 +41,7 @@
 		$pnlcontent->add("opcion",$listaPersonas);		
 	}
 	
-	/*if($flagBoton==11){
+	if($flagInsertar==11){
 		$result = mysql_query("insert into fondoegreso (idFondoEgreso,
 														descripcionFondoEgreso,
 														 montoFondoEgreso,
@@ -96,7 +96,7 @@
 		$pnlmain->add("mensaje","Fue registrado exitosamente!");
 		$pnlcontent = new Panel("../html/contentPrincipal.html");	
 
-	}*/
+	}
 	
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);

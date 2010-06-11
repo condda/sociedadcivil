@@ -36,17 +36,21 @@
 		if($solicitante)
 		{
 			
-			$revisionBD = mysql_query("SELECT * FROM prestamo WHERE idPrestamo = '$solicitante'");
+			$revisionBD = mysql_query("SELECT * FROM prestamo_persona WHERE cedulaPersona = '$solicitante'");
 			
 			if($revision = mysql_fetch_assoc($revisionBD))
 			{
 				//Se Actualiza
 				
+				$debilBD  = mysql_query("SELECT idPrestamo FROM prestamo_persona WHERE cedulaPersona='$solicitante'");
+				$debil = mysql_fetch_assoc($debilBD);
+				$idDebil =  $debil['idPrestamo'];
+				
 				mysql_query("UPDATE prestamo SET 
-													cuotaPrestamo = '$cuota',
-													montoPrestamo = '$montoMaximo'
+														cuotaPrestamo = '$cuota',
+														montoPrestamo = '$montoMaximo'
 													
-							WHERE idPrestamo = '$solicitante'");						
+							WHERE idPrestamo = '$idDebil'");						
 				
 			}
 			else
@@ -54,15 +58,24 @@
 					//Se crea el registro de PRESTAMO
 					
 					mysql_query("INSERT INTO prestamo (
-													   idPrestamo,
 													   montoPrestamo,
 													   cuotaPrestamo
 													   )
 								VALUES				  (
-													   '$solicitante',
 													   '$montoMaximo',
 													   '$cuota'
 													   )");	
+					
+					mysql_query("INSERT INTO prestamo_persona(
+															  cedulaPersona,
+															  estadoPrestamo
+															  )
+								VALUES
+															  (
+															   '$solicitante',
+															   0
+															   )");
+																 
 					
 			}
 		}

@@ -10,7 +10,9 @@
 		
 		//Consulta a Base de datos
 		
-		$personasBD = mysql_query("SELECT * FROM persona, prestamo WHERE persona.cedulaPersona = prestamo.idPrestamo");
+		$personasBD = mysql_query("SELECT * FROM persona, prestamo_persona, prestamo 
+								  WHERE persona.cedulaPersona =	prestamo_persona.cedulaPersona AND 
+								  prestamo_persona.idPrestamo = prestamo.idPrestamo");
 		
 		//Traduccion de Datos
 		
@@ -26,7 +28,7 @@
 			<td>'.$personas['apellidoPersona'].'</td>
 			<td>'.$personas['montoPrestamo'].'</td>
 			<td>'.$personas['cuotaPrestamo'].'</td>
-			<td><a href="../php/xsolicitarPrestamo.php?idPrestamo='.$personas['cedulaPersona'].'">Solicitar Prestamo</a></td>
+			<td><a href="../php/xsolicitarPrestamo.php?cedula='.$personas['cedulaPersona'].'">Solicitar Prestamo</a></td>
 			</tr>';			
 			$personas = mysql_fetch_assoc($personasBD);
 		}

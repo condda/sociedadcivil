@@ -3,6 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+</script>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/ValidarRetiro.js"></script>
 <style type="text/css">
 <!--
 #form1 h1 {
@@ -16,33 +19,52 @@
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="../php/consultarRetiro.php">
-  <h1>Consultar Retiro</h1>
+<form id="form1" name="form1" method="post" action="">
+  <h1>Consultar Retiro de Socio</h1>
   <p>&nbsp;</p>
-  <table width="796" border="0">
+  <table width="404" border="0">
     <tr>
       <td width="250">Introduzca el codigo a consultar:</td>
       <td width="144"><input name="consultarCodigo" type="text" id="consultarCodigo" value="{consultarCodigo}" maxlength="10" /></td>
-      <td width="388">{mensaje} </td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td><input type="submit" name="consultar" id="consultar" value="Consultar" /></td>
-      <td width="388">&nbsp;</td>
+      <td><input type="button" name="consultar" id="consultar" value="Consultar" onclick="llenarDatosRetiro()"/></td>
+    </tr>
+    <tr>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="0"><div id="datos">
+      </div></td>
+      <td height="0">&nbsp;</td>
     </tr>
   </table>
   <p>&nbsp;</p>
-  <table width="790" border="0">
+  <table width="900" border="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td colspan="3" bgcolor="#99FF66"><h3>Socio</h3></td>
+      <td colspan="3" bgcolor="#99CC66"><h3>Beneficiario</h3></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
     <tr>
       <td width="60"><h3>Codigo</h3></td>
-      <td width="135"><h3>Nombre</h3></td>
-      <td width="160"><h3>Descripcion</h3></td>
-      <td width="135"><h3>Proveedor</h3></td>
-      <td width="110"><h3>Precio</h3></td>
-      <td width="110"><h3>Cantidad</h3></td>
+      <td width="100"><h3>Retiro</h3></td>
+      <td width="80"><h3>Cedula</h3></td>
+      <td width="95"><h3>Nombre</h3></td>
+      <td width="95"><h3>Apellido</h3></td>
+      <td width="80"><h3>Cedula</h3></td>
+      <td width="95"><h3>Nombre</h3></td>
+      <td width="95"><h3>Apellido</h3></td>
+      <td width="60"><h3>Monto</h3></td>
+      <td width="80"><h3>Fecha</h3></td>
       <td width="60">&nbsp;</td>
     </tr>
-    {consultarProducto}
+    {consultarRetiro}
   </table>
 </form>
 </body>

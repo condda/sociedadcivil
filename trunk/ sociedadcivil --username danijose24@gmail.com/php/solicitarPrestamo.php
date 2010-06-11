@@ -7,7 +7,8 @@
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlcontent = new Panel("../html/solicitarPrestamo.html");
 		$pnlmenu->add("activo6",'id="active"');		//Coloca en Verde el link de Prestamo
-		
+		$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
+		$pnlmenu->add("opcion2",'<a href="condicionesPrestamo.php">Junta Directiva - Condiciones de Prestamo</a>');
 		//Consulta a Base de datos
 		
 		$personasBD = mysql_query("SELECT * FROM persona, prestamo_persona, prestamo 

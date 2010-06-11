@@ -58,7 +58,7 @@
 			{
 					//Se crea el registro de PRESTAMO
 					
-					echo "INSERTOOOO";
+					//echo "INSERTOOOO";
 					
 					mysql_query("INSERT INTO prestamo (
 													   montoPrestamo,

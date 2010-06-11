@@ -17,6 +17,14 @@
 }
 -->
 </style>
+<script type="text/javascript">
+<!--
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
 </head>
 
 <body>
@@ -54,7 +62,8 @@
     </tr>
     <tr>
       <td colspan="2" class="ccccas"><label>
-          <input type="submit" name="enviar" id="enviar" value="Enviar">
+          <input type="submit" name="enviar" id="enviar" value="Listo">
+          <input name="regresar" type="submit" id="regresar" onClick="MM_goToURL('parent','../classes/Site.php');return document.MM_returnValue" value="Regresar">
       </label></td>
     </tr>
   </table>

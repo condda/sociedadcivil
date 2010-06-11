@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script> 
+function alertaChecked(){ 
+   	alert(document.form1.beneficiario.checked) 
+} 
+</script>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/ValidarRetiro.js"></script>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #6F0;
+}
+-->
+</style>
+</head>
+
+<body>
+<form action="../php/crearRetiro2.php" method="post" name="form1" id="form1">
+  <h1>Crear Retiro voluntario</h1>
+  <p>&nbsp;</p>
+  <table width="370" border="0">
+    <tr>
+      <td width="120">{tipo}</td>
+      <td width="250" height="30">
+      <select name="listaSoAv2" id="listaSoAv2" onchange="validarInscripcion()">
+        <option value="0" selected="selected">Seleccione</option>
+              
+        {opcion}
+      
+      </select></td>
+    </tr>
+    <tr>
+      <td><div id="nombreMonto"></div></td>
+      <td height="0"><div id="montoRetiro"></div></td>
+    </tr>
+    <tr>
+      <td height="0">Descripcion</td>
+      <td height="30"><input name="descripcion" type="text" id="descripcion" value="" size="40" maxlength="40" /></td>
+    </tr>
+    <tr>
+      <td height="30" colspan="2" align="center"><div id="botonCrear"></div></td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center"><div id="mensaje"></td>
+    </tr>
+  </table>
+  <p>
+    <input name="soAv" type="hidden" id="soAv" value="{soAv}" />
+    </p>
+</form>
+</body>
+</html>

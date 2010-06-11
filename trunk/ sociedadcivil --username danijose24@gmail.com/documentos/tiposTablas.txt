@@ -1,0 +1,80 @@
+inscripcion:
+status:
+1-aprobado
+2-rechazado
+3-espera
+4-prueba
+5-expulsado
+
+
+tipoincripcion
+1-socio
+2-avance
+
+
+requisito
+1-socio
+2-avance
+3-junta directiva
+4-
+
+
+ingreso/egreso
+1-multa
+2-cuotasocio/avance
+
+3-inscripcion
+4-compraventa
+5-fondoingreso/fondoEgreso
+
+
+
+
+NOMBRES 30
+CEDULAS 8
+CEDULAS/RIF 9
+TELEFONOS 9
+DESCRIPCINO 45
+MONTO 6
+PRECIO 8
+CANTIDAD 8
+CODIGOPROD 10
+NACIONALIDAD 15
+CONYUGUE 30
+PLACA VEHICULO 10
+POLIZA 10
+
+
+ListaIE
+1 ingreso
+2 egreso
+
+
+
+
+tipos Norma
+
+1 sancion (multa)
+2 expulsion
+
+
+
+tipoCuota
+1-ordinaria
+2-extraordinaria
+
+tipoCompraVenta
+1- compra
+2- venta
+
+
+
+
+
+DROP TABLE  `hola`
+CREATE TABLE HOLA (ID INT(11) AUTO_INCREMENT, NOMBRE VARCHAR(45)) CONSTRAINT PK PRIMARY KEY(ID)
+
+INSERT INTO PERSONA
+DATE  `sociedadcivil`.`listaie` SET 
+ `descripcionListaIE` =  'Las cuotas ordinarias que
+ deben cancelar los socios mensualmente (conocidas como finanzas)' WHERE  `listaie`.`idListaIE` =1 LIMIT 1 ;

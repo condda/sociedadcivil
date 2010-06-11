@@ -54,7 +54,7 @@
 		
 		}
 		else
-			echo "No se encuentra la persona en nuestra base de datos";
+			echo "No se encuentra la persona en nuestra base de datos como socio";
 		
 		
 		
@@ -75,10 +75,11 @@
 			
 			echo '<strong>Nombre: </strong>'.$nombrePersona.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<strong>Apellido: </strong>'.$apellidoPersona.'<br>';
 			
-			$result = mysql_query("select CA.fechaCuota, C.montoCuota, C.idRecargo, CA.idCuota  FROM  persona P,avance A, cuota C, cuota_avance CA where P.cedulaPersona = '$cedulaPersona' AND P.cedulaPersona = A.cedulaPersona AND A.cedulaPersona = CA.cedulaPersona AND CA.idCuota = C.idCuota AND C.tipoCuota = '1' ORDER BY CA.idCuota DESC LIMIT 1");
+			$result = mysql_query("select CA.fechaCuota as fechaCuotaA, CA.montoCuotaAvance, CA.idCuota  FROM  persona P,avance A, cuota C, cuota_avance CA where P.cedulaPersona = '$cedulaPersona' AND P.cedulaPersona = A.cedulaPersona AND A.cedulaPersona = CA.cedulaPersona AND CA.idCuota = C.idCuota order by CA.fechaCuota desc limit 1");
+			
 			if ($result1 = mysql_fetch_assoc($result)){
-				$fechaCuota = $result1['fechaCuota'];
-				$montoCuota = $result1['montoCuota'];
+				$fechaCuota = $result1['fechaCuotaA'];
+				$montoCuota = $result1['montoCuotaAvance'];
 				$idRecargo = $result1['idRecargo'];
 				$idCuota = $result1['idCuota'];
 				
@@ -108,7 +109,7 @@
 		
 		}
 		else
-			echo "No se encuentra la persona en nuestra base de datos";
+			echo "No se encuentra la persona en nuestra base de datos como avance";
 		
 		
 	

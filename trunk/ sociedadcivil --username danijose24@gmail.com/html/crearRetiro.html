@@ -20,14 +20,15 @@ function alertaChecked(){
 </head>
 
 <body>
-<form id="form1" name="form1" action="">
-  <h1>{razon}</h1>
+<form action="../php/crearRetiro.php" method="post" name="form1" id="form1">
+  <h1>Crear Retiro por fallecimiento</h1>
   <p>&nbsp;</p>
-  <table width="300" border="0">
+  <table width="370" border="0">
     <tr>
-      <td width="60">{tipo}</td>
-      <td width="144" height="30"><select name="listaSoAv2" id="listaSoAv2" onchange="llenarBeneficiario()">
-        <option value="0" "selected="selected">Seleccione</option>
+      <td width="120">{tipo}</td>
+      <td width="250" height="30">
+      <select name="listaSoAv2" id="listaSoAv2" onchange="llenarBeneficiario()">
+        <option value="0" selected="selected">Seleccione</option>
               
         {opcion}
       
@@ -37,21 +38,30 @@ function alertaChecked(){
       <td><div id="nombre"></div></td>
       <td height="0"><div id="listaB"></div></td>
     </tr>
-    <tr></tr>
     <tr>
-      <td>Monto</td>
-      <td height="30"><input name="monto" type="text" id="monto" value="{monto}" maxlength="30" /></td>
+      <td>Monto Total</td>
+      <td height="30"><input name="monto" type="text" id="monto" value="{monto}" size="11" readonly="readonly" />
+      Bsf.</td>
     </tr>
     <tr>
-      <td height="0" colspan="2" align="center"><div id="prueba"></div></td>
+      <td>Descripcion</td>
+      <td height="30"><input name="descripcion" type="text" id="descripcion" value="" size="40" maxlength="40" /></td>
     </tr>
     <tr>
-      <td height="30" colspan="2" align="center"><input type="submit" name="button" onclick="alertaChecked()" id="button" value="Crear" /></td>
+      <td height="30" colspan="2" align="center"><div id="botonContinuar"></div></td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center"> <div id="flagI"></div></td>
+    </tr>
+    <tr>
+      <td height="30" colspan="2" align="center"><div id="botonCrear"></div></td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center"><div id="mensaje"></td>
     </tr>
   </table>
   <p>
     <input name="soAv" type="hidden" id="soAv" value="{soAv}" />
-    <input name="razonR" type="hidden" id="razonR" value="{razonR}" />
   </p>
 </form>
 </body>

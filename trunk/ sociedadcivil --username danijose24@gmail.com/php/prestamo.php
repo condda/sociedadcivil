@@ -12,6 +12,7 @@
 		
 		$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
 		$pnlmenu->add("opcion2",'<a href="condicionesPrestamo.php">Junta Directiva - Condiciones de Prestamo</a>');
+		$pnlmenu->add("opcion3",'<a href="listaFactura.php">Consultar Factura de Prestamos</a>');
 		
 		$pnlmain->add("content",$pnlcontent);
 		$pnlmain->add("menu",$pnlmenu);

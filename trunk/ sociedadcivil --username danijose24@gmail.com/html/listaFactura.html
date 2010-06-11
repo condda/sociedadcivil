@@ -1,0 +1,40 @@
+
+<html >
+<head>
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+.centra {
+	text-align: center;
+	color: #6F0;
+	font-size: 36px;
+	font-weight: bold;
+}
+.negra {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <p>&nbsp;</p>
+  <p class="centra">Lista de Solicitantes </p>
+  <p class="centra">&nbsp;</p>
+  <table width="100%" border="0">
+    <tr>
+      <td class="negra">Cedula</td>
+      <td class="negra">Nombre</td>
+      <td class="negra">Apellido</td>
+      <td class="negra">Monto Solicitado</td>
+      <td class="negra">Cuotas</td>
+      <td>&nbsp;</td>
+    </tr>
+    {listaSolicitantes}
+  </table>
+  <p class="centra">&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
+</body>
+</html>

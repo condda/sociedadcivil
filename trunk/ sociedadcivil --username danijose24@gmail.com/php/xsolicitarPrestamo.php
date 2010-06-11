@@ -33,7 +33,6 @@
 		$pnlcontent->add("solicitante",$solicitante['nombrePersona'].' '.$solicitante['apellidoPersona']);
 		$pnlcontent->add("cuota",$prestamo['cuotaPrestamo']);
 		$pnlcontent->add("montoMaximo",$prestamo['montoPrestamo']);
-		
 		//REQUEST
 		
 		$montoSolicitado = $_REQUEST['montoSolicitado'];
@@ -48,7 +47,7 @@
 		{
 			$pnlcontent->add("mensaje","El monto solicitado excede su monto permitido.");
 		}
-		
+	
 		
 		$pnlmain->add("content",$pnlcontent);
 		$pnlmain->add("menu",$pnlmenu);

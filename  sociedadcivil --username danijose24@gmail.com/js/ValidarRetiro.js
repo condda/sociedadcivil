@@ -123,20 +123,14 @@ function validarCheckbox(){
 function validarInscripcion(){
 	var cedulaRetiro = $F('listaSoAv2');
 	if(cedulaRetiro!=0){
+		var activarCrear=1;		
 		$('mensaje').update("");	
-		var activarCrear=1;
-		$('nombreMonto').update("Monto Total");	
 		$('montoRetiro').update("Cargando...");	
 		new Ajax.Updater('montoRetiro','../php/llenarBeneficiario.php',{method: 'post',parameters: {phpcedulaRetiro:cedulaRetiro}})
-		var flag = $F('flagBoton');
-		if(flag==11)
-			new Ajax.Updater('botonCrear','../php/llenarBeneficiario.php',{method: 'post',parameters: {phpactivarCrear:activarCrear}})
 	}
 	else
 	{
 		$('mensaje').update("Seleccione la persona a retirar...");	
-		$('botonCrear').update("");	
-		$('nombreMonto').update("");	
 		$('montoRetiro').update("");	
 	}
 }

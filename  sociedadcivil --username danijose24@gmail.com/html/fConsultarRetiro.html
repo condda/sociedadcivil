@@ -20,30 +20,22 @@
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <h1>Crear Retiro  </h1>
+  <h1>Consultar Retiro  </h1>
   <p>&nbsp;</p>
   <table width="423" border="0">
     <tr>
-      <td height="35">Seleccione el tipo de persona que se va a retirar:
-        <select name="listaSoAv1" id="listaSoAv1" onchange="anadirBoton()">
+      <td width="417" height="35">Seleccione el  tipo de persona:
+        <select name="listaSoAv1" id="listaSoAv1" onchange="anadirLink()">
           <option value="0" selected="selected">Seleccione</option>
           <option {socios} value="1">Socio</option>
           <option {avances} value="2">Avance</option>
         </select></td>
     </tr>
     <tr>
-      <td height="35">Razon del retiro:
-        <select name="razon" id="razon" onchange="anadirBoton()">
-          <option value="0" selected="selected">Seleccione</option>
-          <option value="1">Por Fallecimiento</option>
-          <option value="2">Voluntario</option>
-      </select></td>
-    </tr>
-    <tr>
       <td height="0" align="center" ><div id="mensaje"></div></td>
     </tr>
     <tr>
-      <td width="417" height="35" align="center" ><div id="boton"></div></td>
+      <td height="35" align="center" ><div id="boton"></div></td>
     </tr>
   </table>
 </form>

@@ -66,6 +66,7 @@ body {background:#fff url(../imagenes/bg.jpg) repeat-x; font: 11px Verdana, Aria
 }
 #submenu li {
 	display: inline;
+
 }
 #submenu a {
 	background: url(../imagenes/submenudevider.png) no-repeat left;

@@ -17,7 +17,6 @@
 	}
 	$pnlcontent->add("opcion",$listaProveedores);					
 
-	
 	extract ($_POST);
 	
 	if (($codigo) && ($descripcion) && ($nombre) && ($precio) && ($cantidad)){

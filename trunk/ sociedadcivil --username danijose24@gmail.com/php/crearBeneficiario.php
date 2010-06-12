@@ -51,6 +51,7 @@
 			mysql_query("insert into Avance_Beneficiario (
 			cedulaPersona,
 			cedulaBeneficiario) values ('$listaSoAv2','$cedula')");
+		//MANDA A LA PAGINAAAAAAAAAA PRINCIPAL
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo",'id="active"');
 		$pnlmain = new Panel("../html/main.html");

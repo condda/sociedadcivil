@@ -1,0 +1,78 @@
+<html">
+<head>
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+.sssss {
+	text-align: center;
+}
+.nnnn {
+	font-weight: bold;
+}
+.tttt {
+	text-align: center;
+	font-weight: bold;
+	color: #6f0;
+	font-size: 36px;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <p>&nbsp;</p>
+  <p class="tttt">Factura de Venta</p>
+  <table width="400" border="0">
+    <tr>
+      <td height="42" class="nnnn">ID - Venta</td>
+      <td>{idVenta}</td>
+    </tr>
+    <tr>
+      <td height="37" class="nnnn">Producto</td>
+      <td>{producto}</td>
+    </tr>
+    <tr>
+      <td height="35" class="nnnn">Descripcion del Producto</td>
+      <td>{descripcion}</td>
+    </tr>
+    <tr>
+      <td height="41" class="nnnn">Cantidad Vendida</td>
+      <td>{cantidad}</td>
+    </tr>
+    <tr>
+      <td height="38" class="nnnn">Monto de Venta</td>
+      <td>{monto}</td>
+    </tr>
+    <tr>
+      <td height="38" class="nnnn">Cedula de Cliente</td>
+      <td>{cedula}</td>
+    </tr>
+    <tr>
+      <td height="44" class="nnnn">Cliente</td>
+      <td>{nombre} {apellido}</td>
+    </tr>
+    <tr>
+      <td height="36" class="nnnn">Telefono de Cliente</td>
+      <td>{telefono}</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sssss"><label>
+        <input name="enviar" type="submit" id="enviar" onClick="MM_goToURL('parent','../php/consultarVenta.php');return document.MM_returnValue" value="Regresar">
+      </label></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
+</body>
+</html>

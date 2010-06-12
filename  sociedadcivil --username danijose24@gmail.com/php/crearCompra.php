@@ -20,13 +20,8 @@
 		$listaProveedor = $listaProveedor.'<option value="'.$result1['idProveedor'].'">'.$result1['nombreProveedor'].'</option>';
 	}
 	
-	echo 'cantidad'.$cantidadProducto;
-	echo ' precio'.$precio;
-	echo ' producto'.$producto;
-	echo ' proveedor'.$proveedor;
-	
-	if(flagValidacion==11){
-		/*$result = mysql_query ("select cantidadProductoProv from producto_prov where 
+	if($producto){
+		$result = mysql_query ("select cantidadProductoProv from producto_prov where 
 							   idProducto='$producto' and
 							   idProveedor='$proveedor' and
 							   precioProductoProv='$precio'");
@@ -48,10 +43,11 @@
 														  '$proveedor',
 														  '$producto')");
 		$ultimoId = mysql_insert_id(); 
-		mysql_query ("insert into egreso (tipoIngreso,
+		mysql_query ("insert into egreso (tipoEgreso,
 										 idCompraVenta) values
 										 ('4',
-										  '$ultimoId'");*/
+										  '$ultimoId')");										 
+										 
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo",'id="active"');
 		$pnlmain = new Panel("../html/main.html");
@@ -67,14 +63,17 @@
 		$pdf=new FPDF();
 		$pdf->AddPage();
 		$pdf->SetFont('Arial','B',16);
-		$pdf->Cell(40,10,'Sociedad Civil Colinas de Bello Monte');
+		$pdf->Image('../imagenes/autobus3.gif',10,10,10);
+		$pdf->Cell(40,30,'Sociedad Civil Colinas de Bello Monte');
+		$pdf->Ln(20);
+		$pdf->Cell(40,10,'-----------------------------------------------------------------------------------------------');
 		$pdf->Ln();
 		$pdf->SetFont('Arial','',10);
 		$pdf->Cell(40,10,'Fecha: '.$date1.'');
 		$pdf->Ln();
 		$pdf->Cell(40,10,'Proveedor: '.$result1['nombreProveedor'].'');
 		$pdf->Ln();
-		$pdf->Cell(40,10,'Producto: '.$result2['nombreProducto'].'');
+		$pdf->Cell(40,10,'Producto: '.$result3['nombreProducto'].'');
 		$pdf->Ln();
 		$pdf->Cell(40,10,'Cantidad: '.$cantidadProducto.' unidades');
 		$pdf->Ln();

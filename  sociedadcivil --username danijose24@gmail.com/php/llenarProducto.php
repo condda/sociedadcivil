@@ -55,7 +55,7 @@
 		<tr><td>Total: '.$result1['montoCompraVenta'].' Bsf.</td></tr>
 		</table>';
 	}
-	else if($consulta)
+	else if(!$consulta)
 		echo "Este codigo no existe dentro de la base de datos...";
 	
 	include "../db/cerrar_conexion.php";

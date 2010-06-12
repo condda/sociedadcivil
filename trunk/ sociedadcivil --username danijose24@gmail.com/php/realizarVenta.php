@@ -2,7 +2,8 @@
 	session_start();
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
-	
+	require('../fpdf16/fpdf.php');
+	include "date.php";
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlmain = new Panel("../html/main.html");
 	$pnlcontent = new Panel ("../html/realizarVenta.html");
@@ -87,6 +88,43 @@
 											 4,
 											 '$ultimoID'
 											 )");
+		
+	$ventaBD = mysql_query("SELECT * FROM compra_venta cv, producto p, producto_prov prov, persona
+						   WHERE cv.tipoCompraVenta = 2 AND cv.idCompraVenta = '$ultimoID' AND
+						   cv.idProducto = p.idProducto AND cv.idProducto = prov.idProducto
+						   AND cv.cedulaPersona = persona.cedulaPersona");
+	//Traduccion de Datos
+	
+	$venta = mysql_fetch_assoc($ventaBD);
+		
+		$pdf=new FPDF();
+		$pdf->AddPage();
+		$pdf->SetFont('Arial','B',16);
+		$pdf->Image('../imagenes/autobus3.gif',10,10,10);
+		$pdf->Cell(40,30,'Sociedad Civil Colinas de Bello Monte');
+		$pdf->Ln(20);
+		$pdf->Cell(40,10,'-----------------------------------------------------------------------------------------------');
+		$pdf->Ln();
+		$pdf->SetFont('Arial','',10);
+		$pdf->Cell(40,10,'Fecha: '.$date1.'');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'ID - Venta: '.$venta['idCompraVenta'].'');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Producto: '.$venta['nombreProducto'].'');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Cantidad: '.$venta['cantidadProductoProv'].' unidades');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Precio Unitario: '.$venta['precioProductoProv'].' Bsf.');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Cedula: '.$venta['cedulaPersona'].' ');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Cliente: '.$venta['nombrePersona'].' '.$venta['apellidoPersona'].'');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Telefono: '.$venta['telefonoPersona'].'');
+		$pdf->Ln();
+		$pdf->Cell(40,10,'Total a Pagar: '.$venta['montoCompraVenta'].' Bsf.');
+		$pdf->Output();
+		
 	}
 	else if(!($cedula))
 	{

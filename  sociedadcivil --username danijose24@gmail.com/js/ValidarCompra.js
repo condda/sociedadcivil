@@ -41,23 +41,17 @@ function precioProducto(){
 
 
 function anadirBoton(){
-	
-	var cantidadProducto = $F('cantidadProducto');
-	
-	$('totalCompra').update("Cargando...");
 	$('boton').update("Cargando...");
-	$('totalCompra').update(cantidadProducto);
-	
-	
+	$('totalCompra').update("Cargando...");
+	var idProducto = $F('producto');
+	var idProveedor = $F('proveedor');
+	var cantidadProducto = $F('cantidadProducto');
 	if (cantidadProducto != 0){
-	new Ajax.Updater('boton','../php/llenarProducto.php',{method: 'post',parameters: {phpCantidadProducto:cantidadProducto}})	
-	new Ajax.Updater('boton','../php/llenarProducto.php',{method: 'post',parameters: {phpCantidadProducto:cantidadProducto}})	
-	
+		new Ajax.Updater('boton','../php/llenarProducto.php',{method: 'post',parameters: {phpcantidadProducto:cantidadProducto}})	
+		new Ajax.Updater('totalCompra','../php/llenarProducto.php',{method: 'post',parameters: {phpidProducto:idProducto,phpidProveedor:idProveedor,phpcant:cantidadProducto}})	
 	}
 	else{
-	$('totalCompra').update("");
-	$('boton').update("");
-	
+		$('totalCompra').update("");
+		$('boton').update("");
 	}
-	
 }

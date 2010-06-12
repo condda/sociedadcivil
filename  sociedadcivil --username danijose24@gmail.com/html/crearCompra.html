@@ -5,14 +5,29 @@
 <title>Documento sin título</title>
 <script type="text/javascript" src="../js/prototype.js"></script>
 <script type="text/javascript" src="../js/ValidarCompra.js"></script>
+<style type="text/css">
+<!--
+#form1 p {
+	color: #6F0;
+}
+#form1 h1 {
+	color: #6F0;
+}
+#form1 table tr td {
+	text-align: center;
+}
+-->
+</style>
 </head>
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <table width="280" border="0">
+  <h1>Crear Compra</h1>
+  <p>&nbsp;</p>
+  <table width="370" border="0">
     <tr>
-      <td width="64">Proveedor</td>
-      <td width="144"><select name="proveedor" id="proveedor" onchange="llenarProducto()">
+      <td width="60">Proveedor</td>
+      <td width="250"><select name="proveedor" id="proveedor" onchange="llenarProducto()">
         <option value="0">Seleccione</option>
         
         
@@ -20,26 +35,26 @@
       
       
       </select></td>
-      <td width="58">&nbsp;</td>
+      <td width="60">&nbsp;</td>
     </tr>
     <tr>
-    <td><div id="nombreSelect"></div></td>
+    <td width="0"><div id="nombreSelect"></div></td>
       <td><div id="listaProducto"></div></td>
     </tr>
     <tr>
-      <td>Cantidad</td>
+      <td width="0">Cantidad</td>
       <td><label>
         <input type="text" name="cantidadProducto" id="cantidadProducto"  onchange="anadirBoton()" />
       </label></td>
       <td>Unidades</td>
     </tr>
     <tr>
-      <td>Precio</td>
+      <td width="0">Precio</td>
       <td><div id="precio"></div></td>
       <td>Bs.F.</td>
     </tr>
     <tr>
-      <td align="center">Total:</td>
+      <td width="0" align="center">Total:</td>
       <td align="left"> <div id="totalCompra"></div></td>
       <td align="left">Bs.F.</td>
     </tr>
@@ -47,14 +62,14 @@
       <td colspan="3" align="center"><div id="mensajeVal"></div></td>
     </tr>
     <tr>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
       <td colspan="3"><div id="boton">
       </div></td>
     </tr>
   </table>
-  <p>
-    <input name="flagValidacion" type="hidden" id="flagValidacion" value="0" />
-  </p>
+  <p><input name="flagValidacion" type="hidden" id="flagValidacion" value="0" /></p>
 </form>
-<p>&nbsp;</p>
 </body>
 </html>

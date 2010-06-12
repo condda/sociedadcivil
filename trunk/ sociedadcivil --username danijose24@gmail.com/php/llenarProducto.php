@@ -32,10 +32,8 @@
 		echo $mul;
 	}
 	
-	if ($cantidadProducto){
-		echo '<input name="flagValidacion" type="hidden" id="flagValidacion" value="11" />';
-		echo '<input type="submit" name="button" id="button" value="Comprar" />';
-	}
+	if ($cantidadProducto)
+		echo '<input type="submit" name="button" id="button" onclick="windows.open()" value="Comprar" />';
 	
 	include "../db/cerrar_conexion.php";
 ?>

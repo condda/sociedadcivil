@@ -55,3 +55,16 @@ function anadirBoton(){
 		$('boton').update("");
 	}
 }
+
+function llenarDatosCompra(){
+	var consultarCodigo = $F('consultarCodigo');
+	if (!/^([0-9])*$/.test(consultarCodigo)){
+		$('datos').update("");			
+		alert("El valor (" + consultarCodigo + ") no es un numero");
+		return (false);	
+	}
+	else{
+		new Ajax.Updater('datos','../php/llenarProducto.php',{method: 'post',parameters: {phpconsultarCodigo:consultarCodigo}})
+		$('datos').update("Cargando...");	
+	}
+}

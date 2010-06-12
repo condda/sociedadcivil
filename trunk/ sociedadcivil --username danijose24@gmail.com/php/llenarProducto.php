@@ -8,6 +8,7 @@
 	$cant = $_REQUEST['phpcant'];
 	$cantidadProducto = $_REQUEST['phpcantidadProducto'];
 	$consultarCodigo = $_REQUEST['phpconsultarCodigo'];
+	$consulta = $_REQUEST['phpconsulta'];
 
 	if (($idProveedor) & !($idProducto)){
 		$result = mysql_query("select * from producto_prov ProdProv, producto Prod where ProdProv.idProveedor = '$idProveedor' AND ProdProv.idProducto = Prod.idProducto");
@@ -36,7 +37,7 @@
 	if ($cantidadProducto)
 		echo '<input type="submit" name="button" id="button" onclick="windows.open()" value="Comprar" />';
 		
-	if($consultarCodigo)
+	if(($consultarCodigo)&($consulta))
 	{
 		$result = mysql_query("SELECT cp.* , p.nombreProducto, pr.nombreProveedor
 								FROM compra_venta cp, producto p, proveedor pr
@@ -54,7 +55,7 @@
 		<tr><td>Total: '.$result1['montoCompraVenta'].' Bsf.</td></tr>
 		</table>';
 	}
-	else
+	else if($consulta)
 		echo "Este codigo no existe dentro de la base de datos...";
 	
 	include "../db/cerrar_conexion.php";

@@ -1,8 +1,8 @@
  <?php
-
 		require_once("../classes/Panel.php");
+		require('../fpdf16/fpdf.php');
 		include "../db/conexion.php";
-		
+		include "date.php";
 		$pnlmain = new Panel("../html/main.html");
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlcontent = new Panel("../html/xsolicitarPrestamo.html");
@@ -41,6 +41,8 @@
 		{
 			mysql_query ("UPDATE prestamo SET montoPrestamo = '$montoSolicitado' WHERE idPrestamo='$id'");
 			mysql_query ("UPDATE prestamo_persona SET estadoPrestamo = 1 WHERE idPrestamo='$id'");
+					
+	
 						
 		}
 		else if ($montoSolicitado > $prestamo['montoPrestamo'])
@@ -52,5 +54,4 @@
 		$pnlmain->add("content",$pnlcontent);
 		$pnlmain->add("menu",$pnlmenu);
 		$pnlmain->show();
-		
 ?>

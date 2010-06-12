@@ -92,7 +92,8 @@
 	{
 		$pnlcontent->add("mensaje","Debe seleccionar un cliente");
 	}
-	
+	if($pedido > $cliente['cantidadProductoProv'] ) 
+	$pnlcontent->add("mensaje","La cantidad solicitada excede a la disponibilidad");
 		
 	$pnlcontent->add("listaProducto",$lista);	
 	$pnlmain->add("content",$pnlcontent);

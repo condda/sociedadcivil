@@ -64,8 +64,7 @@ function llenarDatosCompra(){
 		return (false);	
 	}
 	else{
-		var consulta = 1;
-		new Ajax.Updater('datos','../php/llenarProducto.php',{method: 'post',parameters: {phpconsultarCodigo:consultarCodigo,phpconsulta:consulta}})
+		new Ajax.Updater('datos','../php/llenarProducto2.php',{method: 'post',parameters: {phpconsultarCodigo:consultarCodigo}})
 		$('datos').update("Cargando...");	
 	}
 }

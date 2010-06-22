@@ -39,7 +39,7 @@
 														  idProducto,
 														  idProveedor) values
 							   							 ('1',
-														  '$multi',
+														  '$precio',
 														  '$cantidadProducto',
 														  '$proveedor',
 														  '$producto')");

@@ -22,8 +22,14 @@
 			$pnlcontent->add("eliminarCodigo",$eliminarCodigo);					
 		}
 		else{
-			mysql_query("DELETE FROM Producto where idProducto = '$result1[idProducto]'");
-			mysql_query("DELETE FROM Producto_Prov where idProducto = '$result1[idProducto]'");
+			$idProd=$result1[idProducto];
+			$result = mysql_query("SELECT idCompraVenta FROM `compra_venta` WHERE idProducto='$idProd'");
+			while ($result1 = mysql_fetch_assoc($result))
+				mysql_query("DELETE FROM egreso where idCompraVenta = '$result1[idCompraVenta]'");
+			mysql_query("DELETE FROM compra_venta where idProducto = '$idProd'");
+			mysql_query("DELETE FROM Producto_Prov where idProducto = '$idProd'");
+			mysql_query("DELETE FROM Producto where idProducto = '$idProd'");
+			
 			$pnlmenu = new Panel("../html/menu.html");
 			$pnlmenu->add("activo",'id="active"');
 			$pnlmain = new Panel("../html/main.html");
@@ -39,7 +45,14 @@
 	
 	if ($_REQUEST['idproducto']){
 		$idProducto= $_REQUEST['idproducto'];
+
+		$result = mysql_query("SELECT idCompraVenta FROM `compra_venta` WHERE idProducto='$idProducto'");
+		while ($result1 = mysql_fetch_assoc($result))
+			mysql_query("DELETE FROM egreso where idCompraVenta = '$result1[idCompraVenta]'");
+		mysql_query("DELETE FROM compra_venta where idProducto = '$idProducto'");
+		mysql_query("DELETE FROM Producto_Prov where idProducto = '$idProducto'");
 		mysql_query("DELETE FROM Producto where idProducto = '$idProducto'");
+				
 		$pnlmain->add("nombre","Producto");
 		$pnlmain->add("mensaje","Fue eliminado exitosamente!");
 		}

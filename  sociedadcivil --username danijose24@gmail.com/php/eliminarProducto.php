@@ -24,8 +24,10 @@
 		else{
 			$idProd=$result1[idProducto];
 			$result = mysql_query("SELECT idCompraVenta FROM `compra_venta` WHERE idProducto='$idProd'");
-			while ($result1 = mysql_fetch_assoc($result))
+			while ($result1 = mysql_fetch_assoc($result)){
 				mysql_query("DELETE FROM egreso where idCompraVenta = '$result1[idCompraVenta]'");
+				mysql_query("DELETE FROM ingreso where idCompraVenta = '$result1[idCompraVenta]'");
+			}
 			mysql_query("DELETE FROM compra_venta where idProducto = '$idProd'");
 			mysql_query("DELETE FROM Producto_Prov where idProducto = '$idProd'");
 			mysql_query("DELETE FROM Producto where idProducto = '$idProd'");
@@ -47,8 +49,10 @@
 		$idProducto= $_REQUEST['idproducto'];
 
 		$result = mysql_query("SELECT idCompraVenta FROM `compra_venta` WHERE idProducto='$idProducto'");
-		while ($result1 = mysql_fetch_assoc($result))
+		while ($result1 = mysql_fetch_assoc($result)){
 			mysql_query("DELETE FROM egreso where idCompraVenta = '$result1[idCompraVenta]'");
+			mysql_query("DELETE FROM ingreso where idCompraVenta = '$result1[idCompraVenta]'");
+		}
 		mysql_query("DELETE FROM compra_venta where idProducto = '$idProducto'");
 		mysql_query("DELETE FROM Producto_Prov where idProducto = '$idProducto'");
 		mysql_query("DELETE FROM Producto where idProducto = '$idProducto'");

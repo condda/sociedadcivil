@@ -15,6 +15,9 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlmenu->add("opcion5",'<a href="Inscripcion.php">Inscripcion</a>');
+	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
+	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 	$pnlcontent->add("nombre","Avance");
 	
 	$pnlcontent->add("crear",'<a href="../php/crearAvance.php">Crear Avance</a>');

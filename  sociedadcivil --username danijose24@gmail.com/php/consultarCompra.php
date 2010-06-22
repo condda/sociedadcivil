@@ -29,8 +29,8 @@
 			  <td>'.$nombreProveedor.'</td>
 			  <td>'.$nombreProducto.'</td>
 			  <td>'.$cantidadCompraVenta.' Unid.</td>
-			  <td>'.$montoCompraVenta/$cantidadCompraVenta.' Bsf.</td>
 			  <td>'.$montoCompraVenta.' Bsf.</td>
+			  <td>'.$montoCompraVenta*$cantidadCompraVenta.' Bsf.</td>
 			</tr>';
 	}
 	$pnlcontent->add("consultarCompra",$listaCompra);

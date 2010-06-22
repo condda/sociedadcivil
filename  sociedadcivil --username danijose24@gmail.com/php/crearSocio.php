@@ -8,10 +8,14 @@
 	$pnlmenu = new Panel("../html/menu.html");
 	
 	
+	$pnlmenu->add("activo1",'id="active"');
 	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlmenu->add("opcion5",'<a href="Inscripcion.php">Inscripcion</a>');
+	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
+	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 
 	
 	$pnlcontent = new Panel ("../html/crearSocio.html");	
@@ -25,23 +29,16 @@
 	$cedulaPersona = $_REQUEST['cedula'];
 	$nombrePersona = $_REQUEST['nombre'];
 	$apellidoPersona = $_REQUEST['apellido'];
-	
-	$fecha_nacimientoPersona = $_REQUEST['fecha_nacimiento'];
+	$fecha_nacimientoPersona = $_REQUEST['fecha_nacimientoPersona'];
 	$sexoPersona = $_REQUEST['sexo'];
 	$nacionalidadPersona = $_REQUEST['nacionalidad'];
 	$direccionPersona = $_REQUEST['direccion'];
 	$telefonoPersona = $_REQUEST['telefono'];
-	$fecha_licenciaPersona = $_REQUEST['fecha_licencia'];
+	$fecha_licenciaPersona = $_REQUEST['fecha_licenciaPersona'];
 	$estado_civilPersona = $_REQUEST['estado_civil'];
 	$nombre_conyuguePersona = $_REQUEST['nombre_conyugue'];
 	$monto = $_REQUEST['monto'];
 	$beneficiario = $_REQUEST['beneficiario'];
-	
-	
-	
-	$pnlmenu->add("activo1",'id="active"');
-	
-	
 	
 if ($cedulaPersona){
 		

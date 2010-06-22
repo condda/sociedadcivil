@@ -8,26 +8,28 @@
 	$pnlmenu = new Panel("../html/menu.html");
 
 	$pnlcontent = new Panel ("../html/buscarInscripcion.html");
-	$pnlmenu->add("activo4",'id="active"');
+	$pnlmenu->add("activo1",'id="active"');
+	$pnlmenu->add("opcion1",'<a href="socio.php">Socio</a>');
+	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
+	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
+	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlmenu->add("opcion5",'<a href="Inscripcion.php">Inscripcion</a>');
+	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
+	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 	
+	$consultarCodigo = $_REQUEST['consultarCodigo'];
 	
 
-	$fechaI = $_REQUEST['fechaI'];
-	$fechaF = $_REQUEST['fechaF'];
 	
-
-	
-if(($fechaI!=NULL) && ($fechaF!=NULL))
+if($consultarCodigo!=NULL)
 	{
 
 			
-			$result = mysql_query ("select  I.fechaInscripcion as fechaInscripcion, I.idInscripcion as idInscripcion, I.tipoInscripcion as tipoInscripcion, I.estatusInscripcion as estatusInscripcion,I.fechaAInscripcion as fechaAInscripcion,I.montoInscripcion as montoInscripcion,P.nombrePersona as nombrePersona  , P.apellidoPersona as apellidoPersona FROM persona P, Inscripcion I  where I.fechaInscripcion between '$fechaI' and '$fechaF' and I.cedulaPersona = P.cedulaPersona order by I.fechaInscripcion ");
-	
-			$flag = 0;
-			while ($result2 = mysql_fetch_assoc($result))
+			$result =  mysql_query ("SELECT I.fechaInscripcion as fechaInscripcion, I.idInscripcion as idInscripcion, I.tipoInscripcion as tipoInscripcion, I.estatusInscripcion as estatusInscripcion,I.fechaAInscripcion as fechaAInscripcion,I.montoInscripcion as montoInscripcion,P.nombrePersona as nombrePersona  , P.apellidoPersona as apellidoPersona FROM persona P, Inscripcion I  WHERE I.idInscripcion = '$consultarCodigo' AND I.cedulaPersona = P.cedulaPersona ");
+			
+			if ($result2 = mysql_fetch_assoc($result))
 			{	
 
-			$flag = 1;
 			if ($result2['tipoInscripcion'] == '1')
 				$tipoInscripcion = "Socio";
 				
@@ -55,7 +57,7 @@ if(($fechaI!=NULL) && ($fechaF!=NULL))
 				<td align="center">'.$result2['fechaInscripcion'].'</td>
 				<td align="center">'.$result2['idInscripcion'].'</td>
 				<td align="center">'.$tipoInscripcion.'</td>
-				<td align="center">'.$result2['nombrePersona'].' '.$result1['apellidoPersona'].'</td>
+				<td align="center">'.$result2['nombrePersona'].' '.$result2['apellidoPersona'].'</td>
 				<td align="center">'.$estatusInscripcion .'</td>
 				<td align="center">'.$fechaAInscripcion.'</td>
 				<td align="center">'.$result2['montoInscripcion'].'</td>
@@ -63,15 +65,14 @@ if(($fechaI!=NULL) && ($fechaF!=NULL))
 			
 			
 			}
-			if (($flag == 0) && (!$result2)){
-				
-				$pnlcontent->add("mensaje","No se encuentran inscripciones entre esas fechas");								
+			else
+			{	
+					$pnlcontent->add("mensaje","No ha sido registrado un socio con esa cedula.");	
 			}
-			
 	}
 	
 	
-	$result =  mysql_query ("SELECT I.fechaInscripcion as fechaInscripcion, I.idInscripcion as idInscripcion, I.tipoInscripcion as tipoInscripcion, I.estatusInscripcion as estatusInscripcion,I.fechaAInscripcion as fechaAInscripcion,I.montoInscripcion as montoInscripcion,P.nombrePersona as nombrePersona  , P.apellidoPersona as apellidoPersona FROM persona P, Inscripcion I WHERE I.cedulaPersona= P.cedulaPersona order by I.fechaInscripcion");
+	$result =  mysql_query ("SELECT I.fechaInscripcion as fechaInscripcion, I.idInscripcion as idInscripcion, I.tipoInscripcion as tipoInscripcion, I.estatusInscripcion as estatusInscripcion,I.fechaAInscripcion as fechaAInscripcion,I.montoInscripcion as montoInscripcion,P.nombrePersona as nombrePersona  , P.apellidoPersona as apellidoPersona FROM persona P, Inscripcion I WHERE I.cedulaPersona= P.cedulaPersona ");
 	
 	while ($result1 = mysql_fetch_assoc($result))
 	{//while

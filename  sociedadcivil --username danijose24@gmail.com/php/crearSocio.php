@@ -25,6 +25,7 @@
 	$cedulaPersona = $_REQUEST['cedula'];
 	$nombrePersona = $_REQUEST['nombre'];
 	$apellidoPersona = $_REQUEST['apellido'];
+	
 	$fecha_nacimientoPersona = $_REQUEST['fecha_nacimiento'];
 	$sexoPersona = $_REQUEST['sexo'];
 	$nacionalidadPersona = $_REQUEST['nacionalidad'];

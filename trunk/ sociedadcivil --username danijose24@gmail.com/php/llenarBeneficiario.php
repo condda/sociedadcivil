@@ -81,7 +81,7 @@
 			echo '<input type="submit" name="button" id="button" value="Crear" />';	
 	}
 
-	if($cedulaRetiro){
+	if(($cedulaRetiro)&&($tipo)){
 		$mayor=0;
 		$result = mysql_query("SELECT fechaAInscripcion FROM inscripcion WHERE cedulaPersona='$cedulaRetiro' and estatusInscripcion='1'");
 		$result1 = mysql_fetch_assoc($result);
@@ -101,6 +101,19 @@
 			$result1 = mysql_fetch_assoc($result);
 			extract($result1);
 			$montoTotal=$costoPasaje*10;
+			
+			if($tipo==1){
+				$result = mysql_query("select count(p.cedulaPersona) as count from socio s, persona p where s.cedulaPersona=p.cedulaPersona and p.estatusPersona is NULL");
+				$result1 = mysql_fetch_assoc($result);
+				extract($result1);
+			}
+			else if($tipo==2){
+				$result = mysql_query("select count(p.cedulaPersona) as count from avance a, persona p where a.cedulaPersona=p.cedulaPersona and p.estatusPersona is NULL");
+				$result1 = mysql_fetch_assoc($result);
+				extract($result1);
+			}
+			$montoTotal=$montoTotal*$count;
+
 			
 		  echo'<table width="370" border="0">
 				<tr>

@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<script type="text/javascript" src="../js/dhtmlgoodies_calendar.js"></script>
+<link href="../css/dhtmlgoodies_calendar.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 <!--
 h1 {
@@ -16,16 +18,23 @@ h1 {
 <form id="form1" name="form1" method="post" action="../php/buscarInscripcion.php">
   <h1>Consultar Inscripcion</h1>
   <p>&nbsp;</p>
-  <table width="796" border="0">
+  <table width="969" border="0">
     <tr>
-      <td width="250">Introduzca el codigo a consultar:</td>
-      <td width="144"><input name="consultarCodigo" type="text" id="consultarCodigo" value="{consultarCodigo}" maxlength="10" /></td>
-      <td width="388">{mensaje} </td>
+      <td width="250">Fechas a Consultar:</td>
+      <td width="169"><p>Desde:
+        <input name="fechaI" type="text" id="fechaI" value="{fechaI}" maxlength="10" readonly="readonly"/>
+      </p>
+      <p> <a href="#" onclick="displayCalendar(document.forms[0].fechaI,'yyyy-mm-dd',this)">Calendario</a></p></td>
+      <td width="169"><p>Hasta:
+          <input name="fechaF" type="text" id="fechaF" value="{fechaF}" maxlength="10" readonly="readonly" />
+      </p>
+      <p> <a href="#" onclick="displayCalendar(document.forms[0].fechaF,'yyyy-mm-dd',this)">Calendario</a></p></td>
+      <td width="363">{mensaje} </td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td><input type="submit" name="consultar" id="consultar" value="Consultar" /></td>
-      <td width="388">&nbsp;</td>
+      <td colspan="2" align="center"><input type="submit" name="consultar" id="consultar" value="Consultar" /></td>
+      <td width="363">&nbsp;</td>
     </tr>
   </table>
   <p>&nbsp;</p>

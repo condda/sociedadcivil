@@ -122,11 +122,12 @@ function validarCheckbox(){
 
 function validarInscripcion(){
 	var cedulaRetiro = $F('listaSoAv2');
+	var tipo = $F('soAv');
 	if(cedulaRetiro!=0){
 		var activarCrear=1;		
 		$('mensaje').update("");	
 		$('montoRetiro').update("Cargando...");	
-		new Ajax.Updater('montoRetiro','../php/llenarBeneficiario.php',{method: 'post',parameters: {phpcedulaRetiro:cedulaRetiro}})
+		new Ajax.Updater('montoRetiro','../php/llenarBeneficiario.php',{method: 'post',parameters: {phpcedulaRetiro:cedulaRetiro,phptipo:tipo}})
 	}
 	else
 	{

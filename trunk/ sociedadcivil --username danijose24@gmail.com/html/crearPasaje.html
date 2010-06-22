@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 {
+	color: #093;
+}
+#form1 h1 {
+	color: #6f0;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/crearPasaje.php">
+  <h1>Crear Pasaje</h1>
+  <p>&nbsp;</p>
+  <table width="600" border="0">
+    <tr>
+      <td width="50" height="30">Ruta</td>
+      <td width="550"><label>
+        <select name="listaRuta" id="listaRuta">
+          <option value="0">Seleccione</option>
+          {opcion}
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td height="30">Monto</td>
+      <td><input name="costo" type="text" id="costo" value="{costo}"/>
+        Bsf.</td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center">{mensaje}</td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="0" colspan="2" align="center"><label>
+        <input type="submit" name="button" id="button" value="Crear" />
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

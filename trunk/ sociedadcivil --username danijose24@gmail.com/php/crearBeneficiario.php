@@ -10,6 +10,9 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlmenu->add("opcion5",'<a href="Inscripcion.php">Inscripcion</a>');
+	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
+	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 	$pnlcontent = new Panel("../html/crearBeneficiario.html");
 
 	extract ($_POST);
@@ -18,7 +21,7 @@
 		$result = mysql_query("select Socio.cedulaPersona, 
 							  Persona.nombrePersona, 
 							  Persona.apellidoPersona from Socio,Persona 
-							  where Socio.cedulaPersona = Persona.cedulaPersona order by Persona.apellidoPersona asc;");
+							  where Socio.cedulaPersona = Persona.cedulaPersona order by Persona.apellidoPersona asc");
 		while($result1 = mysql_fetch_assoc($result)){
 			extract($result1);
 			$listaPersonas = $listaPersonas.'<option value="'.$cedulaPersona.'">'.$apellidoPersona.', '.$nombrePersona.'</option>';
@@ -30,7 +33,7 @@
 		$result = mysql_query("select Avance.cedulaPersona, 
 							  Persona.nombrePersona, 
 							  Persona.apellidoPersona from Avance,Persona 
-							  where Avance.cedulaPersona = Persona.cedulaPersona order by Persona.apellidoPersona asc;");
+							  where Avance.cedulaPersona = Persona.cedulaPersona order by Persona.apellidoPersona asc");
 		while($result1 = mysql_fetch_assoc($result)){
 			extract($result1);
 			$listaPersonas = $listaPersonas.'<option value="'.$cedulaPersona.'">'.$apellidoPersona.', '.$nombrePersona.'</option>';
@@ -43,14 +46,16 @@
 		cedulaBeneficiario,
 		nombreBeneficiario,
 		apellidoBeneficiario) values ('$cedula','$nombre','$apellido')");
-		if ($listaSoAv1==1)
+		if ($listaSoAv1==1){
 			mysql_query("insert into Socio_Beneficiario (
 			cedulaPersona,
 			cedulaBeneficiario) values ('$listaSoAv2','$cedula')");
-		else
+		}
+		else{
 			mysql_query("insert into Avance_Beneficiario (
 			cedulaPersona,
 			cedulaBeneficiario) values ('$listaSoAv2','$cedula')");
+		}
 		//MANDA A LA PAGINAAAAAAAAAA PRINCIPAL
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo",'id="active"');

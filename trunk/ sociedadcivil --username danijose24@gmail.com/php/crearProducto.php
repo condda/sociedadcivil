@@ -89,7 +89,7 @@
 	
 				mysql_query("insert into egreso (
 				tipoEgreso,			
-				idCompraVenta) values ('5','$idCompraVenta')");		
+				idCompraVenta) values ('4','$idCompraVenta')");		
 				
 				
 			}
@@ -115,7 +115,7 @@
 				
 				mysql_query("insert into egreso (
 				tipoEgreso,			
-				idCompraVenta) values ('5','$idCompraVenta')");
+				idCompraVenta) values ('4','$idCompraVenta')");
 						
 				
 				$pnlmenu = new Panel("../html/menu.html");

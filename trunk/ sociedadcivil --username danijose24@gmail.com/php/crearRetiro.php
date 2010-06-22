@@ -11,6 +11,9 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlmenu->add("opcion5",'<a href="Inscripcion.php">Inscripcion</a>');
+	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
+	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 	$pnlcontent = new Panel("../html/crearRetiro.html");
 
 	extract ($_POST);
@@ -38,7 +41,15 @@
 								))");
 		$result1 = mysql_fetch_assoc($result);
 		extract($result1);
-		$pnlcontent->add("monto",$costoPasaje*100);	
+		
+		$montoCalcu=$costoPasaje*100;
+		
+		$result = mysql_query("select count(p.cedulaPersona) as count from socio s, persona p where s.cedulaPersona=p.cedulaPersona and p.estatusPersona is NULL;");
+		$result1 = mysql_fetch_assoc($result);
+		extract($result1);
+		
+		$montoCalcu=$montoCalcu*$count;
+		$pnlcontent->add("monto",$montoCalcu);	
 	}
 	else if ($listaSoAv1==2){
 		$pnlcontent->add("tipo",'Avance');
@@ -64,7 +75,15 @@
 								))");
 		$result1 = mysql_fetch_assoc($result);
 		extract($result1);
-		$pnlcontent->add("monto",$costoPasaje*100);	
+		
+		$montoCalcu=$costoPasaje*100;
+		
+		$result = mysql_query("select count(p.cedulaPersona) as count from avance a, persona p where a.cedulaPersona=p.cedulaPersona and p.estatusPersona is NULL;");
+		$result1 = mysql_fetch_assoc($result);
+		extract($result1);
+		
+		$montoCalcu=$montoCalcu*$count;
+		$pnlcontent->add("monto",$montoCalcu);	
 	}
 	
 	if($flagInsertar==11){

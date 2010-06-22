@@ -11,6 +11,9 @@
 	$pnlmenu->add("opcion2",'<a href="avance.php">Avance</a>');
 	$pnlmenu->add("opcion3",'<a href="beneficiario.php">Beneficiario</a>');
 	$pnlmenu->add("opcion4",'<a href="retiro.php">Retirar Socio/Avance</a>');
+	$pnlmenu->add("opcion5",'<a href="Inscripcion.php">Inscripcion</a>');
+	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
+	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 
 	$pnlcontent = new Panel ("../html/eliminarSocio.html");	
 	
@@ -29,8 +32,7 @@
 		$idVehiculo = $result1['idVehiculo'];
 		mysql_query("delete from traspaso where cedulaPersona = '$eliminarId' AND idVehiculo='$idVehiculo' AND listaTraspaso = '0'");
 		mysql_query("delete from Vehiculo where idVehiculo = '$idVehiculo'");
-		
-		
+		mysql_query("delete from inscripcion where cedulaPersona = '$eliminarId'");
 		}
 	}
 	if($cedula!=NULL)

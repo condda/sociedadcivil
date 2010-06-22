@@ -53,8 +53,10 @@
 		nombreProducto='$nombre',
 		descripcionProducto='$descripcion' where idProducto='$codigo'");
 		mysql_query("update Producto_Prov set
-		precioProductoProv='$precio',
-		cantidadProductoProv='$cantidad' where idProducto='$codigo' and idProveedor='$codigoProv'");
+		precioProductoProv='$precio' where idProducto='$codigo' and idProveedor='$codigoProv'");
+		mysql_query("update compra_venta set
+		montoCompraVenta='$precio' where idProducto='$codigo' and idProveedor='$codigoProv'");
+		
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo",'id="active"');
 		$pnlmain = new Panel("../html/main.html");

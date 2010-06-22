@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validarHTMLPersona.js"></script>
+<script type="text/javascript" src="../js/dhtmlgoodies_calendar.js"></script>
+<link href="../css/dhtmlgoodies_calendar.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+h1 {
+	color: #6C0;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="../php/buscarInscripcion2.php">
+  <h1>Consultar Inscripcion en un	rango de fechas</h1>
+  <p>&nbsp;</p>
+  <table width="796" border="0">
+    <tr>
+      <td align="center" valign="middle" class="aaal">Introduzca la fecha de inicio:</td>
+      <td align="center" valign="middle"><p>
+        <input name="fechaIni" type="text" id="fechaIni" value="{fechaIni}" readonly="readonly">
+      <a href="#" onClick="displayCalendar(document.forms[0].fechaIni,'yyyy-mm-dd',this)">Calendario</a> </p></td>
+      <td width="388" align="center" valign="middle">{mensaje}</td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle" class="aaal">Introduzca la fecha tope:</td>
+      <td align="center" valign="middle"><p>
+        <input name="fechaFin" type="text" id="fechaFin" value="{fechaFin}" readonly="readonly">
+      <a href="#" onClick="displayCalendar(document.forms[0].fechaFin,'yyyy-mm-dd',this)">Calendario</a> </p></td>
+      <td align="center" valign="middle">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle">&nbsp;</td>
+      <td align="center" valign="middle"><input type="submit" name="consultar" id="consultar" value="Consultar" /></td>
+      <td width="388" align="center" valign="middle">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="795" border="0">
+    <tr>
+      <td width="89" align="center"><h3>Fecha</h3></td>
+      <td width="99" align="center"><h3>Codigo</h3></td>
+      <td width="87" align="center"><h3>Tipo</h3></td>
+      <td width="168" align="center"><h3>Nombre y Apellido</h3></td>
+      <td width="116" align="center"><h3>Estado</h3></td>
+      <td width="123" align="center"><h3>Fecha Admision</h3></td>
+      <td width="83" align="center"><h3>Monto</h3></td>
+    </tr>
+    {listaInscripcion}
+  </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

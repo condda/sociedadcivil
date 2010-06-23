@@ -45,8 +45,16 @@
 	
 	while($vehiculo)
 	{
+		       $idA=$vehiculo['idVehiculo'];
+				
+				$avanceBD = mysql_query("SELECT * FROM persona p, vehiculo_avance va
+									  WHERE va.idVehiculo = '$idA' AND va.cedulaPersona = p.cedulaPersona");
+				
+				$avance = mysql_fetch_assoc($avanceBD);
+				
 		$listaDEVEHICULOS = $listaDEVEHICULOS.'<tr>
 		<td>'.$vehiculo['nombrePersona'].' '.$vehiculo['apellidoPersona'].'</td>
+		<td>'.$avance['nombrePersona'].' '.$avance['apellidoPersona'].'</td>
 		<td>'.$vehiculo['placaVehiculo'].'</td>
 		<td>'.$vehiculo['anoVehiculo'].'</td>
 		<td>'.$vehiculo['polizaVehiculo'].'</td>

@@ -41,8 +41,8 @@
 							   							 ('1',
 														  '$precio',
 														  '$cantidadProducto',
-														  '$proveedor',
-														  '$producto')");
+														  '$producto',
+														  '$proveedor')");
 		$ultimoId = mysql_insert_id(); 
 		mysql_query ("insert into egreso (tipoEgreso,
 										 idCompraVenta) values
@@ -56,7 +56,7 @@
 		$pnlmain->add("mensaje","Fue registrada exitosamente!");
 		$pnlcontent = new Panel("../html/contentPrincipal.html");
 		
-		$result = mysql_query ("select * from proveedor where idProveedor='$proveedor'");
+		/*$result = mysql_query ("select * from proveedor where idProveedor='$proveedor'");
 		$result1 = mysql_fetch_assoc($result);
 		$result2 = mysql_query ("select * from producto where idProducto='$producto'");
 		$result3 = mysql_fetch_assoc($result2);
@@ -81,7 +81,7 @@
 		$pdf->Cell(40,10,'Precio Unitario: '.$precio.' Bsf.');
 		$pdf->Ln();
 		$pdf->Cell(40,10,'Total: '.$cantidadProducto*$precio.' Bsf.');
-		$pdf->Output();
+		$pdf->Output();*/
 	}
 	
 	$pnlcontent->add("proveedor",$listaProveedor);

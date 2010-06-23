@@ -20,7 +20,7 @@
 							where 
 							cp.tipoCompraVenta = '1' and
 							cp.idProveedor = pr.idProveedor and
-							cp.idProducto = p.idProducto;");
+							cp.idProducto = p.idProducto order by cp.idCompraVenta asc");
 	while ($result1 = mysql_fetch_assoc($result)){
 		extract($result1);
 		$listaCompra = $listaCompra.

@@ -37,7 +37,7 @@
 	}
 	
 	$cuentaVehiculo = $_REQUEST['cuentaVehiculo'];
-	echo $cuentaVehiculo;
+//	echo $cuentaVehiculo;
 	$placa = $_REQUEST['placa'];
 	$ano = $_REQUEST['ano'];
 	$estado = $_REQUEST['estado'];
@@ -86,6 +86,7 @@
 												  '$date1',
 												  '0'
 												  )");
+			$pnlcontent->add("finalizar",'<a href="../classes/Site.php">Finalizar</a>');
 			
 		
 		

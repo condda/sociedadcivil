@@ -17,52 +17,85 @@
 	$pnlmenu->add("opcion6",'<a href="vehiculo.php">Vehiculo</a>');
 	$pnlmenu->add("opcion7",'<a href="pasaje.php">Pasaje</a>');
 	
-	$placa = $_REQUEST['lista'];
+	//Consulta BD
 	
-		/**********BASE DE DATOS***********/
+	$vehiculoBDS = mysql_query("SELECT * FROM vehiculo, traspaso
+							  WHERE traspaso.idVehiculo = vehiculo.idVehiculo");
+	
+	//Traduccion de Datos
+	
+	$vehiculoS = mysql_fetch_assoc($vehiculoBDS);
+	
+			while($vehiculoS)
+			{
+						$datos = $datos.'<option value="'.$vehiculoS['placaVehiculo'].'">'.$vehiculoS['placaVehiculo'].'</option>';						
+						
+						$vehiculoS = mysql_fetch_assoc($vehiculoBDS);
+			}
+	
+	//Consulta BD
+	
+	$vehiculoBD = mysql_query("SELECT * FROM vehiculo, persona, traspaso
+							   WHERE persona.cedulaPersona = traspaso.cedulaPersona AND
+							   traspaso.idVehiculo = vehiculo.idVehiculo");
+	
+	//Traduccion de Datos
+	
+	$vehiculo = mysql_fetch_assoc($vehiculoBD);
+	
+	while($vehiculo)
+	{
+		$listaDEVEHICULOS = $listaDEVEHICULOS.'<tr>
+		<td>'.$vehiculo['nombrePersona'].' '.$vehiculo['apellidoPersona'].'</td>
+		<td>'.$vehiculo['placaVehiculo'].'</td>
+		<td>'.$vehiculo['anoVehiculo'].'</td>
+		<td>'.$vehiculo['polizaVehiculo'].'</td>
+		<td>'.$vehiculo['estadoVehiculo'].'</td>
+		</tr>';
+		$vehiculo = mysql_fetch_assoc($vehiculoBD);
 		
-		$result =  mysql_query ("SELECT * FROM vehiculo");
+	}
+			
+			
 		
-		if ($result1 = mysql_fetch_assoc($result))
+		$placaXXX = $_REQUEST['lista'];
+		
+		if($placaXXX)
 		{
-			while($result1)
-			{
-						$datos = $datos.'<option value="'.$result1['placaVehiculo'].'">'.$result1['placaVehiculo'].'</option>';						
-						$result1= mysql_fetch_assoc($result);
-			}
 			
-			$result2 =  mysql_query ("SELECT * FROM vehiculo V, traspaso T, persona P WHERE V.placaVehiculo = '$placa'
-									 and V.idVehiculo = T.idVehiculo and T.cedulaPersona = P.cedulaPersona");
+				//Consulta BD
+								
+				
+				$usuarioBD = mysql_query("SELECT *
+												FROM vehiculo v, traspaso t, persona p
+												WHERE v.idVehiculo = t.idVehiculo
+												AND v.placaVehiculo ='$placaXXX'
+												AND p.cedulaPersona = t.cedulaPersona
+												AND t.listaTraspaso = 0
+										   ");
+				
+				//Traduccion de Datos
+				
+				$usuario = mysql_fetch_assoc($usuarioBD);
+				
+				
+					$lista2 = $lista2.'<tr>
+					<td>'.$usuario['nombrePersona'].' '.$usuario['apellidoPersona'].'</td>
+					<td>'.$usuario['placaVehiculo'].'</td>
+					<td>'.$usuario['anoVehiculo'].'</td>
+					<td>'.$usuario['polizaVehiculo'].'</td>
+					<td>'.$usuario['estadoVehiculo'].'</td>
+					</tr>';
 			
-			
-			
-			
-			
-			/*************************************/
-
-			if($result3 = mysql_fetch_assoc($result2))
-			{
-				$listar = $listar.'<tr>
-				<td>'.$result3['nombrePersona'].' '.$result3['apellidoPersona'].'</td>
-				<td>'.$result3['anoVehiculo'].'</td>
-				<td>'.$result3['estadoVehiculo'].'</td>
-				<td>'.$result3['polizaVehiculo'].'</td>
-				</tr>';
-			}
-			else
-			{
-				//$pnlcontent->add("mensaje","NOOOOOOOOOOOO");
-			}
-		}
-		else
-		{
+					
+				$pnlcontent->add("lista2",$lista2);
+	
 			
 		}
-		
 		
 	/************FINAL*****************/	
 	$pnlcontent->add("listaVehiculos",$datos);
-	$pnlcontent->add("lista",$listar);
+	$pnlcontent->add("listaDEVEHICULOS",$listaDEVEHICULOS);
 	$pnlmain->add("menu",$pnlmenu);
 	$pnlmain->add("content",$pnlcontent);
 

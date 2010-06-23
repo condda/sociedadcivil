@@ -67,27 +67,49 @@
 								
 				
 				$usuarioBD = mysql_query("SELECT *
-												FROM vehiculo v, traspaso t, persona p
+												FROM vehiculo v, traspaso t, persona p 
 												WHERE v.idVehiculo = t.idVehiculo
 												AND v.placaVehiculo ='$placaXXX'
 												AND p.cedulaPersona = t.cedulaPersona
 												AND t.listaTraspaso = 0
+												
 										   ");
+		
 				
 				//Traduccion de Datos
 				
 				$usuario = mysql_fetch_assoc($usuarioBD);
 				
+				$id=$usuario['idVehiculo'];
+				
+				$avanceBD = mysql_query("SELECT * FROM persona p, vehiculo_avance va
+									  WHERE va.idVehiculo = '$id' AND va.cedulaPersona = p.cedulaPersona");
+				
+				$avance = mysql_fetch_assoc($avanceBD);
+				
 				
 					$lista2 = $lista2.'<tr>
 					<td>'.$usuario['nombrePersona'].' '.$usuario['apellidoPersona'].'</td>
+					<td>'.$avance['nombrePersona'].' '.$avance['apellidoPersona'].'</td>
 					<td>'.$usuario['placaVehiculo'].'</td>
 					<td>'.$usuario['anoVehiculo'].'</td>
 					<td>'.$usuario['polizaVehiculo'].'</td>
 					<td>'.$usuario['estadoVehiculo'].'</td>
 					</tr>';
 			
-					
+				$tabla = '<table width="913" border="0">
+							<tr>
+							  <td width="186"><strong>Socio</strong></td>
+							  <td width="186"><strong>Avance</strong></td>
+							  <td width="126"><strong>Vehiculo - Placa</strong></td>
+							  <td width="60"><strong>Anio</strong></td>
+							  <td width="104"><strong>Poliza</strong></td>
+							  <td width="415"><strong>Estado</strong></td>
+							</tr>
+							{lista2}
+						  </table>';
+				
+				$pnlcontent->add("yujulu",$tabla);
 				$pnlcontent->add("lista2",$lista2);
 	
 			

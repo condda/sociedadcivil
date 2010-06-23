@@ -42,9 +42,68 @@ persona.cedulaPersona = prestamo_persona.cedulaPersona  ;");
 			$solicitante = mysql_fetch_assoc($solicitanteBD);
 		}
 		
+		//Lista de Consulta
 		
+			//Consulta la BD
 		
+		$solicitanteBD2 = mysql_query("Select * from persona, prestamo_persona, prestamo where prestamo_persona.estadoPrestamo = 1 AND
+										prestamo.idPrestamo = prestamo_persona.idPrestamo AND
+										persona.cedulaPersona = prestamo_persona.cedulaPersona  ;");
 		
+		//Traduccion de Datos
+		
+		$solicitante2 = mysql_fetch_assoc($solicitanteBD2);
+		
+			while($solicitante2)
+			{
+						$datos = $datos.'<option value="'.$solicitante2['cedulaPersona'].'">'.$solicitante2['nombrePersona'].
+						' '.$solicitante2['apellidoPersona'].'</option>';						
+						
+						$solicitante2 = mysql_fetch_assoc($solicitanteBD2);
+			}
+			
+			$listaSSS = $_REQUEST['listaXXX'];
+			
+			if($listaSSS)
+			{
+				
+				$solicitanteBD3 = mysql_query("Select * from persona, prestamo_persona, prestamo 
+											  where prestamo_persona.estadoPrestamo = 1 AND
+										prestamo.idPrestamo = prestamo_persona.idPrestamo AND
+										persona.cedulaPersona = prestamo_persona.cedulaPersona and
+										persona.cedulaPersona ='$listaSSS'");
+				
+				$solicitante3 = mysql_fetch_assoc($solicitanteBD3);
+				
+			
+				
+				$tabla = '<table width="100%" border="0">
+							<tr>
+							  <td class="negra">Cedula</td>
+							  <td class="negra">Nombre</td>
+							  <td class="negra">Apellido</td>
+							  <td class="negra">Monto Solicitado</td>
+							  <td class="negra">Cuotas</td>
+							  <td>&nbsp;</td>
+							</tr>
+							{listota}
+						  </table>';
+						  
+			$lista2 = $lista2.'<tr>
+			<td>'.$solicitante3['cedulaPersona'].'</td>
+			<td>'.$solicitante3['nombrePersona'].'</td>
+			<td>'.$solicitante3['apellidoPersona'].'</td>
+			<td>'.$solicitante3['montoPrestamo'].'</td>
+			<td>'.$solicitante3['cuotaPrestamo'].'</td>
+			<td><a href="../php/facturaPrestamo.php?idPrestamo='.$solicitante3['idPrestamo'].'">Ver Factura</a></td>
+			</tr>';
+			
+			$pnlcontent->add("tabla",$tabla);
+			$pnlcontent->add("listota",$lista2);
+			
+			}
+		
+		$pnlcontent->add("solicitantes",$datos);
 		$pnlcontent->add("listaSolicitantes",$lista);
 		$pnlmain->add("content",$pnlcontent);
 		$pnlmain->add("menu",$pnlmenu);

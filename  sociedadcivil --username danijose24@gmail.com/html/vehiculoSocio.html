@@ -30,16 +30,12 @@ function MM_validateForm() { //v4.0
     } if (errors) alert('Han ocurrido los siguientes errores:\n'+errors);
     document.MM_returnValue = (errors == '');
 } }
-function MM_goToURL() { //v3.0
-  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-}
 //-->
 </script>
 </head>
 
 <body>
-<form name="form1" method="post" onSubmit="return ValidarCamposVehiculo(this)" action="..\php\vehiculoSocio.php">
+<form name="form1" method="post" onSubmit="return ValidarCamposVehiculo(this)" action = "vehiculoSocio.php" >
   <table width="399" border="0">
     <tr>
       <td width="212">Placa del Vehiculo</td>
@@ -72,9 +68,8 @@ function MM_goToURL() { //v3.0
     </tr>
     <tr>
       <td colspan="2" class="aa"><label>
-        <input name="registrar" type="submit" id="registrar" onClick="MM_validateForm('placa','','RisNum','año','','R','estado','','R','poliza','','RisNum');return document.MM_returnValue" value="Registrar Siguiente Vehiculo">
-        <input name="home" type="button" id="home" onClick="return VerificarInsertoVehiculo(this)" value="Finalizar Inscripcion">
-      </label></td>
+        <input name="registrar" type="submit" id="registrar" onClick="MM_validateForm('placa','','R','ano','','R','estado','','R','poliza','','RisNum');return document.MM_returnValue" value="Registrar Vehiculo">
+        {finalizar}</label></td>
     </tr>
   </table>
   <p>

@@ -23,7 +23,8 @@
 		
 		$id = $solicitante['idPrestamo'];
 		
-		$prestamoBD = mysql_query("SELECT * FROM prestamo WHERE idPrestamo = '$id'");
+		$prestamoBD = mysql_query("SELECT * FROM prestamo p, prestamo_persona pp WHERE p.idPrestamo = '$id' and
+								  pp.idPrestamo = '$id'");
 		
 		$prestamo = mysql_fetch_assoc($prestamoBD);
 		
@@ -33,15 +34,32 @@
 		$pnlcontent->add("solicitante",$solicitante['nombrePersona'].' '.$solicitante['apellidoPersona']);
 		$pnlcontent->add("cuota",$prestamo['cuotaPrestamo']);
 		$pnlcontent->add("montoMaximo",$prestamo['montoPrestamo']);
+		
+		$numeroCuota = $prestamo['cuotaPrestamo'];
+		
 		//REQUEST
 		
 		$montoSolicitado = $_REQUEST['montoSolicitado'];
 		
 		if($montoSolicitado && ($montoSolicitado <= $prestamo['montoPrestamo']) )
 		{
-			mysql_query ("UPDATE prestamo SET montoPrestamo = '$montoSolicitado' WHERE idPrestamo='$id'");
-			mysql_query ("UPDATE prestamo_persona SET estadoPrestamo = 1 WHERE idPrestamo='$id'");
-					
+			if($prestamo['estadoPrestamo']==1)
+			{
+				$pnlcontent->add("mensaje","El prestamo ya ha sido otorgado.");
+			}
+			else
+			{
+				$montoCuota = $montoSolicitado/$numeroCuota;
+				
+				mysql_query ("UPDATE prestamo SET montoPrestamo = '$montoSolicitado' WHERE idPrestamo='$id'");
+				mysql_query ("UPDATE prestamo_persona SET estadoPrestamo = 1, montoCuotaPrestamo = '$montoCuota'
+							 WHERE idPrestamo='$id'");
+				
+				//Registro del egreso
+				
+				mysql_query("INSERT into egreso (idPrestamo)
+							VALUES ('$id')");
+			}
 	
 						
 		}

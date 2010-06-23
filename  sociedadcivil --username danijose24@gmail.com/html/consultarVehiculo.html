@@ -11,34 +11,54 @@
 .centrado {
 	text-align: center;
 }
+.negrita {
+	font-weight: bold;
+}
+.oscura {
+	font-weight: bold;
+}
 -->
 </style>
 </head>
 
 <body>
-<form name="form1" method="post" action="">
+<form name="form1" method="post" action="../php/consultarVehiculo.php">
   <p class="negrita">Consultar Vehiculo</p>
   <table width="400" border="0">
     <tr>
-      <td>Placa de Vehiculo</td>
+      <td><strong>Placa de Vehiculo</strong></td>
       <td><select name="lista" id="lista">
         <option value="0">Seleccione</option>
         {listaVehiculos}
       </select></td>
     </tr>
     <tr>
-      <td colspan="2" class="centrado"><input type="submit" name="consultar" id="consultar" value="consultar"></td>
+      <td colspan="2" class="centrado"><label>
+        <input type="submit" name="consultar" id="consultar" value="consultar">
+      </label></td>
     </tr>
   </table>
-  <p>{mensaje}</p>
-  <table width="400" border="0">
-    <tr>
-      <td>Socio</td>
-      <td>Anio</td>
-      <td>Estado</td>
-      <td>Poliza</td>
+  <p>&nbsp;</p>
+  <table width="913" border="0">
+    <tr class="oscura">
+      <td width="186">Socio</td>
+      <td width="126">Vehiculo - Placa</td>
+      <td width="60">Anio</td>
+      <td width="104">Poliza</td>
+      <td width="415">Estado</td>
     </tr>
-    {lista}
+    {lista2}
+  </table>
+  <p>&nbsp;</p>
+  <table width="913" border="0">
+    <tr class="oscura">
+      <td width="186">Socio</td>
+      <td width="126">Vehiculo - Placa</td>
+      <td width="60">Anio</td>
+      <td width="104">Poliza</td>
+      <td width="415">Estado</td>
+    </tr>
+    {listaDEVEHICULOS}
   </table>
   <p class="negrita">&nbsp;</p>
   <p class="negrita">&nbsp;</p>

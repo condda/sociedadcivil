@@ -27,6 +27,10 @@
 													   '$date1',
 													   '$montoPago')");
 		
+		$result = mysql_query ("select idCuotaSocio from cuota_socio where cedulaPersona = '$cedulaPersona' order by idCuotaSocio desc limit 1");
+		$result1 = mysql_fetch_assoc($result);
+		
+		$idCuotaSocio = $result1['idCuotaSocio'];
 
 		
 		mysql_query ("INSERT INTO ingreso (	
@@ -49,12 +53,12 @@
 			mysql_query ("insert into multa (montoMulta,
 											 fechaMulta,
 											 idNorma,
-											 cedulaPersonaS) 
+											 idCuotaSocio) 
 											 values (
 													 '$montoNorma',
 													 '$date1',
 													 '$idNorma',
-													 '$cedulaPersona'
+													 '$idCuotaSocio'
 													 )");
 											
 			$result = mysql_query ("select * from multa where idNorma = '$idNorma' AND cedulaPersonaS = '$cedulaPersona' order by idMulta desc limit 1");
@@ -91,6 +95,12 @@
 													   '$cedulaPersona')");
 		
 		
+		$result = mysql_query ("select idCuotaAvance from cuota_avance where cedulaPersona = '$cedulaPersona' order by idCuotaAvance desc limit 1");
+		$result1 = mysql_fetch_assoc($result);
+		
+		$idCuotaAvance = $result1['idCuotaAvance'];
+		
+		
 		if ($idNorma){
 		
 			$result = mysql_query ("select * from norma where idNorma = '$idNorma'");
@@ -101,12 +111,12 @@
 			mysql_query ("insert into multa (montoMulta,
 											 fechaMulta,
 											 idNorma,
-											 cedulaPersonaA) 
+											 idCuotaAvance) 
 											 values (
 													 '$montoNorma',
 													 '$date1',
 													 '$idNorma',
-													 '$cedulaPersona'
+													 '$idCuotaAvance'
 													 )");
 											
 			$result = mysql_query ("select * from multa where idNorma = '$idNorma' AND cedulaPersonaA = '$cedulaPersona' order by idMulta desc limit 1");

@@ -10,6 +10,11 @@
 $nombre = "Pago de Cuotas";
 $pnlcontent = new Panel("../html/plantillaCuota.html");
 	$pnlcontent->add("nombre",$nombre);	
+	
+	$pnlmenu->add("opcion1",'<a href="pagoCuota.php">Pago de cuotas</a>');	
+	$pnlmenu->add("opcion2",'<a href="consultarCuota.php">Administrar cuotas</a>');	
+
+
 	$pnlcontent->add("crear",'<a href="cuotaOrdinaria.php">Crear pago de cuota</a>');	
 	$pnlcontent->add("consultar",'<a href="consultarCuota.php">Consulta cuota</a>');	
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/JuntaDirectiva.js"></script>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<div id="mensajeVal">
+  <table width="422" border="0">
+    <tr>
+    <div id="mensajeVal">  </div>
+      <td width="94" align="center">Socios</td>
+      <td width="215" align="left"><label>
+         <select name="listaSocio" id="listaSocio" onchange="agregarBoton()">
+          <option value="0">Seleccione</option>
+          {ListaSocio}
+        </select>
+      </label></td>
+      <td width="99">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center">Cargos</td>
+      <td align="left"><label>
+        <select name="listaCargo" id="listaCargo" onchange="agregarBoton()">
+          <option value="0">Seleccione</option>
+          {ListaCargo}
+        </select>
+      </label></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><div id="boton"></div></td>
+      <td>&nbsp;</td>
+     
+    </tr>
+  </table>
+  </div>
+</form>
+
+</body>
+</html>

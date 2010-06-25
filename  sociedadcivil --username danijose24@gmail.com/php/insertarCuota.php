@@ -8,8 +8,33 @@
 	 $montoPago = $_REQUEST['phpMontoPago'];
 	 $idCuota = $_REQUEST['phpIdCuota'];
 	 $idNorma = $_REQUEST['phpIdNorma'];
-	
+	 
 
+	 
+	 $result = mysql_query ("select numeroMesCuota, tipoCuota from cuota where idCuota = '$idCuota'");
+	 $result1 = mysql_fetch_assoc($result);
+	 
+	$mesCuota = $result1['numeroMesCuota'];
+	
+	$tipoCuota = $result1['tipoCuota'];
+	 if ($mesCuota<10)
+	 $fechaCuota = $ano."-0".$mesCuota."-01";
+	 else
+	 $fechaCuota = $ano."-".$mesCuota."-01";
+	$diasTranscurridos = floor(abs(strtotime($date1) - strtotime($fechaCuota))/86400);
+	 
+	 if (($diasTranscurridos>60)&&($tipoCuota == 1)){
+		 
+		 $result = mysql_query ("select nombrePersona, apellidoPersona from persona where cedulaPersona = '$cedulaPersona'");
+		 $result1 = mysql_fetch_assoc($result);
+		 $nombrePersona = $result1['nombrePersona'];
+		 $apellidoPersona = $result1['apellidoPersona'];
+		 
+		 echo 'Importante<br>';
+		 echo $nombrePersona." ".$apellidoPersona.' debe ser sancionado por no pagar la cuota ordinaria al mes subsiguiente<br>';
+		 
+	 }
+	 
 	$result = mysql_query ("select * from socio where cedulaPersona = '$cedulaPersona'");
 	
 	if (!$result1 = mysql_fetch_assoc($result)){
@@ -61,7 +86,7 @@
 													 '$idCuotaSocio'
 													 )");
 											
-			$result = mysql_query ("select * from multa where idNorma = '$idNorma' AND cedulaPersonaS = '$cedulaPersona' order by idMulta desc limit 1");
+			$result = mysql_query ("select * from multa where idNorma = '$idNorma' AND idCuotaSocio = '$idCuotaSocio' order by idMulta desc limit 1");
 			$result1 = mysql_fetch_assoc($result);
 			
 			$idMulta = $result1['idMulta'];					
@@ -119,7 +144,7 @@
 													 '$idCuotaAvance'
 													 )");
 											
-			$result = mysql_query ("select * from multa where idNorma = '$idNorma' AND cedulaPersonaA = '$cedulaPersona' order by idMulta desc limit 1");
+			$result = mysql_query ("select * from multa where idNorma = '$idNorma' AND idCuotaAvance = '$idCuotaAvance' order by idMulta desc limit 1");
 			$result1 = mysql_fetch_assoc($result);
 			
 			$idMulta = $result1['idMulta'];					
@@ -136,7 +161,7 @@
 	
 	}
 	
-	
+	echo "Se ha registrado su pago con existo.";
 	include "../db/cerrar_conexion.php";
 ?>
 	

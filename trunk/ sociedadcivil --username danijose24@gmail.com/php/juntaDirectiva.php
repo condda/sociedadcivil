@@ -6,7 +6,7 @@
 	$pnlmenu = new Panel("../html/menu.html");
 	$pnlmain = new Panel("../html/main.html");
 	
-	$pnlmenu->add("activo7",'id="active"');
+	$pnlmenu->add("activo3",'id="active"');
 	$pnlmenu->add("opcion1",'<a href="juntaDirectiva.php">Junta Directiva</a>');
 	$pnlmenu->add("opcion2",'<a href="tribunalDisciplinario.php">Tribunal Disciplinario</a>');
 	$pnlmenu->add("opcion3",'<a href="asamblea.php">Asamblea</a>');

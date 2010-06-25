@@ -29,7 +29,7 @@
 		$pnlcontent->add("opcion",$listaPasaje);
 		
 	if(($costo) && ($listaRuta!=0)){
-		$result = mysql_query("INSERT INTO pasaje (
+		/*$result = mysql_query("INSERT INTO pasaje (
 					`idPasaje` ,
 					`costoPasaje` ,
 					`idRuta`
@@ -46,11 +46,27 @@
 					)
 					VALUES (
 					'$ultimoId', '1', '$date1'
+					)");*/
+		
+		$result = mysql_query("INSERT INTO pasaje (
+					`idPasaje` ,
+					`idRuta`
+					)
+					VALUES (
+					NULL , '$listaRuta')");
+		
+		$ultimoId = mysql_insert_id(); 
+		mysql_query("INSERT INTO hist_pasaje (
+					`idPasaje` ,
+					`idSucursal` ,
+					`costoHistPasaje`
+					)
+					VALUES (
+					'$ultimoId', '1', '$costo'
 					)");
 							
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlmenu->add("activo",'id="active"');
-		$pnlmenu->add("opcion1",'<a href="../php/pasaje.php">Pasaje</a>');
 		$pnlmain = new Panel("../html/main.html");
 		$pnlmain->add("nombre","Pasaje");
 		$pnlmain->add("mensaje","Fue registrado exitosamente!");

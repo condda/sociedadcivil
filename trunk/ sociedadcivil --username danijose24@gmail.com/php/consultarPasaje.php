@@ -21,14 +21,32 @@
 	
 	extract ($_POST);
 	
-	$result = mysql_query("select hp.fechaHistPasaje, p.costoPasaje from hist_pasaje hp, pasaje p where p.idPasaje=hp.idPasaje order by hp.fechaHistPasaje asc");
+	/*$result = mysql_query("select hp.fechaHistPasaje, p.costoPasaje from hist_pasaje hp, pasaje p where p.idPasaje=hp.idPasaje order by hp.fechaHistPasaje asc");
 	while($result1 = mysql_fetch_assoc($result)){
 		extract($result1);
 		$listaPasaje = $listaPasaje.'<tr>
 									  <td align="center">'.$fechaHistPasaje.'</td>
 									  <td align="center">'.$costoPasaje.' Bsf.</td>
 									</tr>';
+	}*/
+	
+	$result = mysql_query("select hp.idPasaje, hp.costoHistPasaje, r.vigenteRuta, r.idRuta, r.descripcionRuta from hist_pasaje hp, pasaje p, ruta r where 			p.idPasaje=hp.idPasaje and
+p.idRuta = r.idRuta order by p.idPasaje asc");
+	while($result1 = mysql_fetch_assoc($result)){
+		extract($result1);
+		if($vigenteRuta)
+			$x='Si';
+		else
+			$x='No';
+		$listaPasaje = $listaPasaje.'<tr>
+									  <td align="center">'.$idPasaje.'</td>
+									  <td align="center">'.$costoHistPasaje.' Bsf.</td>
+									  <td align="center">'.$idRuta.'</td>
+									  <td align="center">'.$descripcionRuta.'</td>
+									  <td align="center">'.$x.'</td>
+									</tr>';
 	}
+
 	$pnlcontent->add("listaPasaje",$listaPasaje);
 			
 	$pnlmain->add("menu",$pnlmenu);

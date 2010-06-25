@@ -30,15 +30,20 @@
 		}
 		$pnlcontent->add("opcion",$listaPersonas);	
 		
-		$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
+		/*$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
 								SELECT h1.idPasaje
 								FROM hist_pasaje h1
 								WHERE h1.fechaHistPasaje
-								IN (
-								
-								SELECT MAX( h2.fechaHistPasaje ) 
-								FROM hist_pasaje h2
-								))");
+								IN (SELECT MAX( h2.fechaHistPasaje ) 
+								FROM hist_pasaje h2))");*/
+		
+		$result = mysql_query("select min(hp.costoHistPasaje) as costoPasaje from ruta r, pasaje p, hist_pasaje hp where
+								r.idRuta=p.idRuta
+								and
+								p.idPasaje=hp.idPasaje
+								and
+								r.vigenteRuta='1'");
+
 		$result1 = mysql_fetch_assoc($result);
 		extract($result1);
 		
@@ -64,15 +69,20 @@
 		}
 		$pnlcontent->add("opcion",$listaPersonas);	
 		
-		$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
+		/*$result = mysql_query("SELECT p.costoPasaje FROM pasaje p WHERE p.idPasaje = (
 								SELECT h1.idPasaje
 								FROM hist_pasaje h1
 								WHERE h1.fechaHistPasaje
-								IN (
-								
-								SELECT MAX( h2.fechaHistPasaje ) 
-								FROM hist_pasaje h2
-								))");
+								IN (SELECT MAX( h2.fechaHistPasaje ) 
+								FROM hist_pasaje h2))");*/
+		
+		$result = mysql_query("select min(hp.costoHistPasaje) as costoPasaje from ruta r, pasaje p, hist_pasaje hp where
+								r.idRuta=p.idRuta
+								and
+								p.idPasaje=hp.idPasaje
+								and
+								r.vigenteRuta='1'");
+		
 		$result1 = mysql_fetch_assoc($result);
 		extract($result1);
 		

@@ -47,12 +47,9 @@ function insertarCuota(){
 	if (montoPago){ 
 		$('mensajeVal').update("Cargando...");
 		if (idNorma != 0)
-			new Ajax.Updater('mensajeVal','../php/insertarCuota.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpMontoPago:montoPago,phpIdCuota:idCuota,phpIdNorma:idNorma}})	
+			new Ajax.Updater('contenidoDatos','../php/insertarCuota.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpMontoPago:montoPago,phpIdCuota:idCuota,phpIdNorma:idNorma}})	
 		else
-			new Ajax.Updater('mensajeVal','../php/insertarCuota.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpMontoPago:montoPago,phpIdCuota:idCuota}})	
-			
-  	$('mensajeVal').update("");
-	$('contenidoDatos').update("Se ha registrado su pago con existo.");
+			new Ajax.Updater('contenidoDatos','../php/insertarCuota.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpMontoPago:montoPago,phpIdCuota:idCuota}})	
 	
 	}
 	else
@@ -93,5 +90,114 @@ function montoMesCuota(){
 	}
 	else
 	$('mensajeVal').update("");
+	
+}
+
+
+
+
+
+
+function consultaCuota(){
+	var idCuota = $F('listaCuota');
+	var tipoCuota= $F('tipoCuota');
+	
+	if ((idCuota!=0)&&(tipoCuota != 0)){
+		$('detalleCuota').update("Cargando...");
+		new Ajax.Updater('detalleCuota','../php/detalleCuota.php',{method: 'post',parameters: {phpTipoCuota:tipoCuota,phpIdCuota:idCuota}})	
+	}
+	else 
+	$('detalleCuota').update("");
+	
+}
+
+
+function llenarCuota(){
+	var tipoCuota= $F('tipoCuota');
+	
+	if (tipoCuota != 0){
+		$('listaCuotas').update("Cargando...");
+		$('detalleCuota').update("");
+		new Ajax.Updater('listaCuotas','../php/detalleCuota.php',{method: 'post',parameters: {phpTipoCuota:tipoCuota}})	
+	}
+	else{
+	$('listaCuotas').update("");
+	$('detalleCuota').update("");
+	}
+}
+
+
+
+
+function modificarCuota(idCuota){
+	
+	if(idCuota != 0)
+		new Ajax.Updater('detalleCuota','../php/modificarCuota.php',{method: 'post',parameters: {phpIdCuota:idCuota}})	
+	else
+	$('detalleCuota').update("");
+	
+	
+}
+
+
+
+function actualizarMonto(idCuota){
+	
+	var montoCuota = $F('montoCuota');
+		
+		if (!montoCuota){
+		alert('Debe introducir un monto');
+		form.montoCuota.focus();
+		
+		}
+		else if (!/^([0-9])*$/.test(montoCuota)){
+
+			alert("El valor (" + montoCuota + ") no es un número");
+			form.montoCuota.focus();
+			return (false);			
+
+		}
+		else{
+			$('detalleCuota').update("Cargando...");
+			new Ajax.Updater('detalleCuota','../php/modificarCuota.php',{method: 'post',parameters: {phpIdCuota:idCuota,phpFlag:1,phpMontoCuota:montoCuota}})	
+		}
+	
+}
+
+
+
+
+
+
+
+function buscarCuotasPersona(){
+	var cedulaPersona = $F('cedulaPersona');
+	var tipoCuota =  $F('tipoCuota');
+	
+	
+	if (!cedulaPersona){
+		$('listaCuotas').update("");
+		alert('Debe introducir una cedula');
+		
+		
+		
+		}
+		else if (!/^([0-9])*$/.test(cedulaPersona)){
+			$('listaCuotas').update("");
+			alert("El valor (" + cedulaPersona + ") no es un número");
+			
+			
+
+
+		}
+		else{
+			if (tipoCuota != 0){
+				$('listaCuotas').update("Cargando...");
+				new Ajax.Updater('listaCuotas','../php/consultaCuota.php',{method: 'post',parameters: {phpCedulaPersona:cedulaPersona, phpTipoCuota:tipoCuota}})	
+			}
+			else
+			$('listaCuotas').update("");
+		}
+	
 	
 }

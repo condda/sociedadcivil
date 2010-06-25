@@ -14,7 +14,8 @@
 	$result = mysql_query ("select * from cuota where idCuota = '$idCuota'");
 	$result1 = mysql_fetch_assoc($result);
 
-	
+
+
 	if ($result1['numeroMesCuota']<10)
  	$fechaC = "2010-0".$result1['numeroMesCuota']."-01";
 	else
@@ -23,7 +24,7 @@
 	
 	$numDias = floor((strtotime($date1) - strtotime($fechaC))/86400);
 	echo 'Monto a cancelar <input type="text" name="montoPago" id="montoPago" value="'.$result1['montoCuota'].'" disabled/><br>';
-	
+if ($tipoCuota == 1){	
 	 if (($numDias > 20) && ($numDias <= 30)){
 		
 		$result2 = mysql_query("select * from norma where montoNorma != '0'");
@@ -31,6 +32,8 @@
 		
 		echo "<strong>Adicionalmente tiene un recargo de ".$result3['montoNorma']." BsF.".'</strong><br>';
 	}
+	
+
 	else if ($numDias >30){
 		
 		$result2 = mysql_query("select * from norma where montoNorma != '0'");
@@ -38,7 +41,7 @@
 		$result3 = mysql_fetch_assoc($result2);
 		echo "<strong>Adicionalmente tiene un recargo de ".$result3['montoNorma']." BsF.".'</strong><br>';
 	}
-	
+}
 	
 	if (!$result3['idNorma'])
 	$idNorma = 0;

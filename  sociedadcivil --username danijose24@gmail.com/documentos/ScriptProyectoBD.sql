@@ -763,12 +763,13 @@ DROP TABLE IF EXISTS `sociedadCivil`.`HIST_CARGO` ;
 
 
 CREATE  TABLE IF NOT EXISTS `sociedadCivil`.`HIST_CARGO` (
+  `idHistCargo` INT NOT NULL AUTO_INCREMENT ,
   `cedulaPersona` INT NOT NULL ,
   `fechaCargo` DATE NOT NULL ,
-  `idTribunald` INT NOT NULL ,
-  `idJuntadirectiva` INT NOT NULL ,
-  `idJuntadirectivaOpcional` INT NULL ,
-  PRIMARY KEY (`cedulaPersona`, `idJuntadirectiva`, `idTribunald`) ,
+  `idTribunald` INT ,
+  `idJuntadirectiva` INT ,
+  `idJuntadirectivaOpcional` INT ,
+  PRIMARY KEY (`idHistCargo`) ,
   CONSTRAINT `fk_JUNTADIRECTIVA_has_SOCIO_SOCIO`
     FOREIGN KEY (`cedulaPersona` )
     REFERENCES `sociedadCivil`.`SOCIO` (`cedulaPersona` )

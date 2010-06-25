@@ -147,6 +147,23 @@
 			$apellidoPersona = $result1['apellidoPersona'];
 			
 			echo '<strong>Nombre: </strong>'.$nombrePersona.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<strong>Apellido: </strong>'.$apellidoPersona.'<br>';
+			
+			$result = mysql_query("select CS.fechaCuota as fechaCuotaS, CS.montoCuotaSocio, CS.idCuota as idCuota, CS.idCuotaSocio as idCuotaSocio FROM  persona P,socio S, cuota C, cuota_socio CS where P.cedulaPersona = '$cedulaPersona' AND P.cedulaPersona = S.cedulaPersona AND S.cedulaPersona = CS.cedulaPersona AND CS.idCuota = C.idCuota and C.tipoCuota = '$tipoCuota' order by CS.fechaCuota desc limit 1");
+			if ($result1 = mysql_fetch_assoc($result)){
+				$fechaCuota = $result1['fechaCuotaS'];
+				$montoCuota = $result1['montoCuotaSocio'];
+				$idCuota = $result1['idCuota'];
+				$idCuotaSocio = $result1['idCuotaSocio'];
+				
+				echo '<strong>Fecha del ultimo pago ordinario: </strong>'.$fechaCuota.'<br>
+	<strong>Dias transcurridos: </strong>'.floor(abs(strtotime($date1) - strtotime($fechaCuota))/86400).'<br>
+	<strong>Monto: </strong>'.$montoCuota.'<br>';
+			}
+			else
+			echo "No se encuentra registrada ninguna cuota".'<br>';
+			
+			echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="button" id="button" value="Continuar" align="middle" onclick="datosCuota()" />';
+			
 		}
 		else
 			echo "No se encuentra la persona en nuestra base de datos como avance";
@@ -167,6 +184,23 @@
 			$apellidoPersona = $result1['apellidoPersona'];
 			
 			echo '<strong>Nombre: </strong>'.$nombrePersona.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<strong>Apellido: </strong>'.$apellidoPersona.'<br>';
+			
+			$result = mysql_query("select CA.fechaCuota as fechaCuotaA, CA.montoCuotaAvance, CA.idCuota, CA.idCuotaAvance  FROM  persona P,avance A, cuota C, cuota_avance CA where P.cedulaPersona = '$cedulaPersona' AND P.cedulaPersona = A.cedulaPersona AND A.cedulaPersona = CA.cedulaPersona AND CA.idCuota = C.idCuota and C.tipoCuota = '$tipoCuota' order by CA.fechaCuota desc limit 1");
+			
+			if ($result1 = mysql_fetch_assoc($result)){
+				$fechaCuota = $result1['fechaCuotaA'];
+				$montoCuota = $result1['montoCuotaAvance'];
+				$idCuotaAvance = $result1['idCuotaAvance'];
+				$idCuota = $result1['idCuota'];
+				
+				echo '<strong>Fecha del ultimo pago ordinario: </strong>'.$fechaCuota.'<br>
+	<strong>Dias transcurridos: </strong>'.floor(abs(strtotime($date1) - strtotime($fechaCuota))/86400).'<br>
+	<strong>Monto: </strong>'.$montoCuota.'<br>';
+			}
+			else
+			echo "No se encuentra registrada ninguna cuota".'<br>';
+			
+			echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="button" id="button" value="Continuar" align="middle" onclick="datosCuota()" />';
 		}
 		else
 			echo "No se encuentra la persona en nuestra base de datos como avance";

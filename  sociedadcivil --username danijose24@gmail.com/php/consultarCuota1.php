@@ -13,7 +13,7 @@
 	$pnlmenu->add("opcion1",'<a href="pagoCuota.php">Pago de cuotas</a>');	
 	$pnlmenu->add("opcion2",'<a href="administrarCuota.php">Administrar cuotas</a>');
 	
-	$pnlcontent = new Panel("../html/consultarCuota.html");
+	$pnlcontent = new Panel("../html/consultarCuota1.html");
 	
 
 

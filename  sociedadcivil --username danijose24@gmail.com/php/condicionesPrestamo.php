@@ -2,6 +2,7 @@
 
 		require_once("../classes/Panel.php");
 		include "../db/conexion.php";
+		include "date.php";
 		
 		$pnlmain = new Panel("../html/main.html");
 		$pnlmenu = new Panel("../html/menu.html");
@@ -11,7 +12,7 @@
 		$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
 		$pnlmenu->add("opcion2",'<a href="condicionesPrestamo.php">Junta Directiva - Condiciones de Prestamo</a>');
 		$pnlmenu->add("opcion3",'<a href="listaFactura.php">Consultar Factura de Prestamos</a>');
-		//Consulta a la BD
+		$pnlmenu->add("opcion4",'<a href="cancelarPrestamo.php">Cancelar Cuota de Prestamo</a>');//Consulta a la BD
 		
 		$personaBD = mysql_query("SELECT * FROM persona");
 		
@@ -50,7 +51,8 @@
 				
 				mysql_query("UPDATE prestamo SET 
 														cuotaPrestamo = '$cuota',
-														montoPrestamo = '$montoMaximo'
+														montoPrestamo = '$montoMaximo',
+														fechaPrestamo = '$date1'
 													
 							WHERE idPrestamo = '$idDebil'");						
 				
@@ -63,11 +65,13 @@
 					
 					mysql_query("INSERT INTO prestamo (
 													   montoPrestamo,
-													   cuotaPrestamo
+													   cuotaPrestamo,
+													   fechaPrestamo
 													   )
 								VALUES				  (
 													   '$montoMaximo',
-													   '$cuota'
+													   '$cuota',
+													   '$date1'
 													   )");	
 					
 					mysql_query("INSERT INTO prestamo_persona(

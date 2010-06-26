@@ -10,11 +10,10 @@
 		$pnlmenu->add("activo6",'id="active"');		//Coloca en Verde el link de Prestamo
 			
 		//Colocar Links
-		
-		$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
+$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
 		$pnlmenu->add("opcion2",'<a href="condicionesPrestamo.php">Junta Directiva - Condiciones de Prestamo</a>');
 		$pnlmenu->add("opcion3",'<a href="listaFactura.php">Consultar Factura de Prestamos</a>');
-		
+		$pnlmenu->add("opcion4",'<a href="cancelarPrestamo.php">Cancelar Cuota de Prestamo</a>');
 		//Consulta la BD
 		
 		$solicitanteBD = mysql_query("Select * from persona, prestamo_persona, prestamo where prestamo_persona.estadoPrestamo = 1 AND

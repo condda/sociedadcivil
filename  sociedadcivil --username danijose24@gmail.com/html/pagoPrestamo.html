@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 strong {
+	color: #6f0;
+}
+jhf {
+	text-align: center;
+}
+#form1 table tr td {
+	text-align: left;
+}
+.aaa {
+	text-align: left;
+}
+#aaa {
+	text-align: left;
+}
+#form1 table {
+	text-align: left;
+}
+#form1 table {
+	text-align: left;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <h1><strong>Pago de Cuotas</strong></h1>
+  <p>&nbsp;</p>
+  <table width="400" border="0">
+    <tr>
+      <td ><strong>Cedula</strong></td>
+      <td>{cedula}</td>
+    </tr>
+    <tr>
+      <td ><strong>Nombre</strong></td>
+      <td>{nombre}</td>
+    </tr>
+    <tr>
+      <td ><strong>Apellido</strong></td>
+      <td>{apellido}</td>
+    </tr>
+    <tr>
+      <td ><strong>Fecha Prestamo</strong></td>
+      <td>{fecha}</td>
+    </tr>
+    <tr>
+      <td ><strong>Monto Solicitado</strong></td>
+      <td>{monto}</td>
+    </tr>
+    <tr>
+      <td ><strong>Cuotas Establecidas</strong></td>
+      <td>{nCuotas}</td>
+    </tr>
+    <tr>
+      <td ><strong>Monto de Cuota</strong></td>
+      <td>{montoCuota}</td>
+    </tr>
+    <tr>
+      <td ><strong>Cuotas a pagar</strong></td>
+      <td><select name="cuota" id="cuota">
+        <option value="0">Seleccione</option>
+        {lista}
+      </select></td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle">&nbsp;</td>
+      <td align="center" valign="middle"><input type="submit" name="enviar" id="enviar" value="Pagar" /></td>
+    </tr>
+  </table>
+  <p>{mensaje}</p>
+  <p>&nbsp;</p>
+</form>
+</body>
+</html>

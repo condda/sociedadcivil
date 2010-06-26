@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+#form1 h1 strong {
+	color: #6f0;
+}
+#form1 table tr td {
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <p>&nbsp;</p>
+  <h1><strong>Pago de Prestamo</strong></h1>
+  <p>&nbsp;</p>
+  <table width="400" border="0">
+    <tr>
+      <td><strong>Solicitante</strong></td>
+      <td><select name="listaS" id="listaS">
+        <option value="0">Seleccione</option>
+        {listaPer}
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="enviar" id="enviar" value="Listo" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>{tabla}</p>
+  <p>&nbsp;</p>
+  <table width="100%" border="0">
+    <tr>
+      <td><strong>Cedula</strong></td>
+      <td><strong>Nombre</strong></td>
+      <td><strong>Apellido</strong></td>
+      <td><strong>Monto Solicitado</strong></td>
+      <td>&nbsp;</td>
+    </tr>
+    {solicitantes}
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
+</body>
+</html>

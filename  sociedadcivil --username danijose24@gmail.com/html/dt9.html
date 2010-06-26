@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+.negrita {
+	font-weight: bold;
+	font-size: 36px;
+	color: #6F0;
+}
+.centrado {
+	text-align: center;
+}
+.negrita {
+	font-weight: bold;
+}
+.oscura {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<form name="form1" method="post" action="../php/dt9.php">
+  <p class="negrita">DT9</p>
+  <table width="400" border="0">
+    <tr>
+      <td><strong>Vehiculo</strong></td>
+      <td><select name="lista" id="lista">
+        <option value="0">Seleccione</option>
+        {listaVehiculos}
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="centrado"><label>
+        <input type="submit" name="consultar" id="consultar" value="consultar">
+      </label></td>
+    </tr>
+  </table>
+  <p>{yujulu}</p>
+  <table width="950" border="0">
+    <tr class="oscura">
+      <td width="120">Socio</td>
+      <td width="110">Cedula Socio</td>
+      <td width="96">Avance</td>
+      <td width="107">Cedula Avance</td>
+      <td width="112">Vehiculo - Placa</td>
+      <td width="34">Anio</td>
+      <td width="63">Poliza</td>
+      <td width="274">Estado</td>
+    </tr>
+    {listaDEVEHICULOS}
+  </table>
+  <p class="negrita">&nbsp;</p>
+  <p class="negrita">&nbsp;</p>
+<p>&nbsp;</p>
+</form>
+</body>
+</html>

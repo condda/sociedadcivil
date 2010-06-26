@@ -8,11 +8,13 @@
 	$pnlmain = new Panel("../html/main.html");
 	
 	$pnlmenu->add("activo3",'id="active"');
-$pnlmenu->add("opcion1",'<a href="juntaDirectiva.php">Junta Directiva</a>');
+	
+	$pnlmenu->add("opcion1",'<a href="juntaDirectiva.php">Junta Directiva</a>');
 	$pnlmenu->add("opcion2",'<a href="tribunalDisciplinario.php">Tribunal Disciplinario</a>');
 	$pnlmenu->add("opcion3",'<a href="asamblea.php">Asamblea</a>');
-	$pnlmenu->add("opcion4",'<a href="cagosJuntaDirectiva.php">Cargos Junta Directiva</a>');
-	$pnlmenu->add("opcion5",'<a href="cagosTribunalDisciplinario.php">Cargos Tribunal Disciplinario</a>');
+	$pnlmenu->add("opcion4",'<a href="cargosJuntaDirectiva.php">Cargos Junta Directiva</a>');
+	$pnlmenu->add("opcion5",'<a href="cargosTribunalDisciplinario.php">Cargos Tribunal Disciplinario</a>');
+	$pnlmenu->add("opcion6",'<a href="Sanciones.php">Sanciones</a>');
 	
 	$pnlcontent = new Panel("../html/crearTD.html");
 	$pnlcontent->add("nombre","Junta Directiva");

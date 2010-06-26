@@ -91,7 +91,7 @@ function eliminarHistCargoTD(idHistCargo){
 
 function finalizarCrearCargoJD(){
 	var nombreCargo = $F('nombreCargo');
-	var descripcionCargo = $F('descripcionCargo');
+	
 	var tipoCargo = $F('tipoCargo');
 	
 	if (!nombreCargo){
@@ -100,7 +100,15 @@ function finalizarCrearCargoJD(){
 		form.montoCuota.focus();
 	}else{
 		
+		if (tipoCargo == 1){
+			var descripcionCargo = $F('descripcionCargo');
 		new Ajax.Updater('mensajeVal','../php/crearCargoJDTD.php',{method: 'post',parameters: {phpNombreCargo:nombreCargo, phpDescripcionCargo:descripcionCargo, phpTipoCargo:tipoCargo}})	
+		}
+		if (tipoCargo == 2){
+			
+		new Ajax.Updater('mensajeVal','../php/crearCargoJDTD.php',{method: 'post',parameters: {phpNombreCargo:nombreCargo, phpTipoCargo:tipoCargo}})	
+		}
+		
 	}	
 	
 	
@@ -114,7 +122,6 @@ function modificarCargoJD(idJuntadirectiva){
 
 
 
-
 function eliminarCargoJD(idJuntadirectiva){
 	var flag = 2;
 	new Ajax.Updater('mensajeVal','../php/modEliminarCargoJDTD.php',{method: 'post',parameters: {phpIdJuntaDirectiva:idJuntadirectiva, phpFlag:flag}})	
@@ -123,9 +130,32 @@ function eliminarCargoJD(idJuntadirectiva){
 
 
 
-function finalizarModJDTD(idJuntadirectiva,flag){
+function modificarCargoTD(idTribunald){
+	flag = 1;
+	new Ajax.Updater('mensajeVal','../php/cargarModCargoJDTD.php',{method: 'post',parameters: {phpIdTribunald:idTribunald, phpFlag:flag}})	
+	
+}
+
+function eliminarCargoTD(idTribunald){
+	var flag = 2;
+	new Ajax.Updater('mensajeVal','../php/modEliminarCargoJDTD.php',{method: 'post',parameters: {phpIdTribunald:idTribunald, phpFlag:flag}})	
+	
+}
+
+
+
+function finalizarModJD(idJuntadirectiva,flag){
 	var nombreCargo = $F('nombreCargo');
 	var descripcionCargo = $F('descripcionCargo');	
 	new Ajax.Updater('mensajeVal','../php/modEliminarCargoJDTD.php',{method: 'post',parameters: {phpIdJuntaDirectiva:idJuntadirectiva, phpFlag:flag,phpNombreCargo:nombreCargo, phpDescripcionCargo:descripcionCargo}})	
+		
+}
+
+
+
+
+function finalizarModTD(idTribunald,flag){
+	var nombreCargo = $F('nombreCargo');
+	new Ajax.Updater('mensajeVal','../php/modEliminarCargoJDTD.php',{method: 'post',parameters: {phpIdTribunald:idTribunald, phpFlag:flag,phpNombreCargo:nombreCargo}})	
 		
 }

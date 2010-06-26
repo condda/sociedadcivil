@@ -19,29 +19,32 @@
 	$tipoAsamblea = $_REQUEST['tipoAsamblea'];
 	$descripcion = $_REQUEST['descripcion'];
 	
-	$ultimoId = $_REQUEST['id'];
-	$tipo = $_REQUEST['tipo'];
-	
-	if($tipo)
-	$tipoAsamblea=$tipo;
+
+
+if($tipoAsamblea)
+{
+	$juntaBD = mysql_query("SELECT MAX(idJuntadirectiva) from juntadirectiva");
+	$junta = mysql_fetch_assoc($juntaBD);
+	$numero = $junta;
 	
 
-if($tipoAsamblea  || $ultimoId)
-{
-		
+	
+		mysql_query("INSERT into asamblea (tipoAsamblea,descripcionAsamblea, fechaAsamblea, idJuntadirectiva)
+											VALUES ('$tipoAsamblea','$descripcion','$date1',7)");
+											
+											$ultimoId = mysql_insert_id(); 
+										
 	
 						if($tipoAsamblea==1)
 						{
-							
-							$ultimoId=1;
-							
+											
+													
 							$tabla ='<table width="100%" border="0">
 										<tr>
 										  <td><strong>Cedula</strong></td>
 										  <td><strong>Nombre</strong></td>
 										  <td><strong>Apellido</strong></td>
 										  <td><strong>Telefono</strong></td>
-										  <td><strong>Status</strong></td>
 										  <td>&nbsp;</td>
 										</tr>
 										{miembros}
@@ -56,22 +59,24 @@ if($tipoAsamblea  || $ultimoId)
 									
 									  $socio = mysql_fetch_assoc($socioBD);
 									  
-									  $i=0;
+								//	  $i=0;
 									 									  
 									  while($socio)
 									  {
-										  $i++;
+									//	  $i++;
 										  
 											  $listaMiembros = $listaMiembros.'<tr>
 											  <td>'.$socio['cedulaPersona'].'</td>
 											  <td>'.$socio['nombrePersona'].'</td>
 											  <td>'.$socio['apellidoPersona'].'</td>
 											  <td>'.$socio['telefonoPersona'].'</td>
-									<td><input type=checkbox name="p'.$i.'" id="p'.$i.'" value="'.$socio['cedulaPersona'].'"</td>
-											  </tr>';
+											  </tr>';								  
 											  
+											  $cedula = $socio['cedulaPersona'];
 											  
-																																									
+											  mysql_query("INSERT into asamblea_socio (idAsamblea, cedulaPersona)
+																					   VALUES ('$ultimoId','$cedula')");
+											  																														
 										  $socio = mysql_fetch_assoc($socioBD);
 									  }
 			 
@@ -80,12 +85,12 @@ if($tipoAsamblea  || $ultimoId)
 									  //Mostrar Tabla
 									  
 									  $pnlcontent->add("cont",$i);
-									  $pnlcontent->add("titulo","Seleccione Miembros de la Asamblea");
+									  $pnlcontent->add("titulo","Miembros convocados a la Asamblea");
 									  $pnlcontent->add("tabla",$tabla);
 									  $pnlcontent->add("miembros",$listaMiembros);
-			$pnlcontent->add("Finalizar",'<a href="../php/crearAsamblea.php?id='.$ultimoId.'&tipo='.$tipoAsamblea.'">Finalizar</a>');
+			$pnlcontent->add("Finalizar",'<a href="../php/Asamblea.php">Finalizar</a>');
 									  
-									  extract ($_POST);
+							/*		  extract ($_POST);
 									  
 									for ($i=1;$i<=$cont;$i=$i+1)
 									{
@@ -99,11 +104,61 @@ if($tipoAsamblea  || $ultimoId)
 																'${'p'.$i}'");
 										}
 										
-									}
+									}*/
 									  
 						} 
 						else
 						{
+							$tabla ='<table width="100%" border="0">
+										<tr>
+										  <td><strong>Cedula</strong></td>
+										  <td><strong>Nombre</strong></td>
+										  <td><strong>Apellido</strong></td>
+										  <td><strong>Telefono</strong></td>
+										  <td>&nbsp;</td>
+										</tr>
+										{miembros}
+									  </table>';
+									  
+									  //Consulta BD
+									  
+									  $avanceBD = mysql_query("SELECT * FROM persona p, avance s 
+												  WHERE p.cedulaPersona = s.cedulaPersona");
+									  
+									//Traduccion de Datps
+									
+									  $avance = mysql_fetch_assoc($avanceBD);
+									  
+								//	  $i=0;
+									 									  
+									  while($avance)
+									  {
+									//	  $i++;
+										  
+											  $listaMiembros = $listaMiembros.'<tr>
+											  <td>'.$avance['cedulaPersona'].'</td>
+											  <td>'.$avance['nombrePersona'].'</td>
+											  <td>'.$avance['apellidoPersona'].'</td>
+											  <td>'.$avance['telefonoPersona'].'</td>
+											  </tr>';								  
+											  
+											  $cedula = $avance['cedulaPersona'];
+											  
+											  mysql_query("INSERT into asamblea_avance (idAsamblea, cedulaPersona)
+																					   VALUES ('$ultimoId','$cedula')");
+											  																														
+										  $avance = mysql_fetch_assoc($avanceBD);
+									  }
+			 
+									  
+									  
+									  //Mostrar Tabla
+									  
+									  $pnlcontent->add("cont",$i);
+									  $pnlcontent->add("titulo","Miembros convocados a la Asamblea");
+									  $pnlcontent->add("tabla",$tabla);
+									  $pnlcontent->add("miembros",$listaMiembros);
+			$pnlcontent->add("Finalizar",'<a href="../php/Asamblea.php">Finalizar</a>');
 							
 							
 						}

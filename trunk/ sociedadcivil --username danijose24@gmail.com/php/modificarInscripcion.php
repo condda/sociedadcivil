@@ -55,6 +55,8 @@
 				$estatusInscripcion = "Periodo de Prueba";
 			else if ($result1['estatusInscripcion'] == '5')
 				$estatusInscripcion = "Expulsado";
+				else if ($result1['estatusInscripcion'] == '6')
+				$estatusInscripcion = "Suspendido";
 			
 			
 				$consultaInscripcion = $consultaInscripcion.'<tr>

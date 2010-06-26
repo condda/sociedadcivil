@@ -23,10 +23,17 @@
 	$idInscripcion =  $_REQUEST['codigo'];
 	$fechaInscripcion = $_REQUEST['fecha'];
 	$nombrePersona = $_REQUEST['nombre'];
-	$estatusInscripcion =  $_REQUEST['estatusInscripcion'];
-	$tipoInscripcion =  $_REQUEST['tipoInscripcion'];
-	echo $fechaAInscripcion =  $_REQUEST['fechaAInscripcion'];
+	 $estatusInscripcion =  $_REQUEST['estatusInscripcion'];
+	 $tipoInscripcion =  $_REQUEST['tipoInscripcion'];
+	$fechaAInscripcion =  $_REQUEST['fechaAInscripcion'];
 	$montoInscripcion =  $_REQUEST['monto'];
+	
+	
+	if ($tipoInscripcion == "Socio")
+	$tipoInscripcion = 1;
+	if ($tipoInscripcion == "Avance")
+	$tipoInscripcion = 2;
+	
 	
 	
 	if ($_REQUEST['idInscripcion']){
@@ -38,8 +45,9 @@
 		$pnlcontent->add("codigo",$result1['idInscripcion']);					
 		$pnlcontent->add("fecha",$result1['fechaInscripcion']);					
 		$pnlcontent->add("nombre",$result1['nombrePersona']);
-		
+	
 		if ($result1['fechaAInscripcion'] != '0000-00-00'){
+			
 				$pnlcontent->add("fechaAdmision1",'<input name="fechaAInscripcion" type="text" id="fechaAInscripcion" value="'.$result1['fechaAInscripcion'].'" />');			
 			$pnlcontent->add("fechaAdmision","Fecha Admision");	
 			
@@ -50,10 +58,21 @@
 			
 			$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
 			<option value="1"  selected="selected">Aprobado</option>
-			<option value="5" {estatus5}>Expulsado</option>');	
+			<option value="6"  {estatus6}>Suspendido</option>
+			<option value="5" {estatus5}>Expulsado</option></select>');	
 			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
 			}
+			else if ($result1['estatusInscripcion'] == '6'){
+				
+				$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
+			<option value="1" >Aprobado</option>
+			<option value="6"  selected="selected">Suspendido</option>
+			<option value="5" {estatus5}>Expulsado</option></select>');	
+			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
+			
 		
+
+			}
 		}
 		else{
 
@@ -63,54 +82,67 @@
 			
 			
 			else if ($result1['estatusInscripcion'] == '3'){
+
 			$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
         <option value="1" >Aprobado</option>
         <option value="2" {estatus2}>Rechazado</option>
         <option value="3" selected="selected">En Espera</option>
         <option value="4" {estatus4}>Prueba</option>
-        <option value="5" {estatus5}>Expulsado</option>');	
+        <option value="5" {estatus5}>Expulsado</option> 
+		</select>');
+			
 			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
 			}
 			
 			
 			else if ($result1['estatusInscripcion'] == '4'){
+
 			$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
         <option value="1"  >Aprobado</option>
         <option value="2" {estatus2}>Rechazado</option>
         <option value="3" {estatus3}>En Espera</option>
         <option value="4" selected="selected">Prueba</option>
-        <option value="5" {estatus5}>Expulsado</option>');		
+        <option value="5" {estatus5}>Expulsado</option>
+		</select>');		
 			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
 			}
 			
 			else if ($result1['estatusInscripcion'] == '5')
-			$pnlcontent->add("estatus","Expulsado");			
+			$pnlcontent->add("estatus","Expulsado");	
+			
+			
+	
 			
 			
 		}
 		
-		if (($result1['estatusInscripcion'] == '5') || ($result1['estatusInscripcion'] == '2')){
+		
+		if (($result1['estatusInscripcion'] == '5') || ($result1['estatusInscripcion'] == '2') || ($result1['estatusInscripcion'] == '6')){
+			
 			if ($result1['tipoInscripcion'] == '1')
 			
-				$pnlcontent->add("selectTipo","Socio");	
+				$pnlcontent->add("selectTipo",'<input name="tipoInscripcion" type="text" id="tipoInscripcion"  value="Socio" readonly="readonly"/>');	
 				
 			else if ($result1['tipoInscripcion'] == '2')
 			
-				$pnlcontent->add("selectTipo","Avance");	
-			}
+				$pnlcontent->add("selectTipo",'<input name="tipoInscripcion" type="text" id="tipoInscripcion"  value="Avance" readonly="readonly"/>');	
+		}
 		else{
-			
-			if ($result1['tipoInscripcion'] == '1')
+
+			if ($result1['tipoInscripcion'] == '1'){
+
 				$pnlcontent->add("selectTipo",'<select name="tipoInscripcion" id="tipoInscripcion">
           <option value="1" selected="selected">Socio</option>
           <option value="2"{selectTipo1}>Avance</option>
         </select>');
-				
-			else if ($result1['tipoInscripcion'] == '2')
+			}
+			else if ($result1['tipoInscripcion'] == '2'){
+			
 				$pnlcontent->add("selectTipo",'<select name="tipoInscripcion" id="tipoInscripcion">
           <option value="1" {selectTipo}>Socio</option>
           <option value="2" selected="selected">Avance</option>
         </select>');	
+			}
 		}
 
 		
@@ -142,9 +174,21 @@
 			else if ($result1['estatusInscripcion'] == '1'){
 				$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
 				<option value="1"  selected="selected">Aprobado</option>
-				<option value="5" {estatus5}>Expulsado</option>');	
+				<option value="6" {estatus6} >Suspendido</option>
+				<option value="5" {estatus5}>Expulsado</option></select>');	
 				$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
 			}
+			else if ($result1['estatusInscripcion'] == '6'){
+				
+				$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
+			<option value="1" >Aprobado</option>
+			<option value="6"  selected="selected">Suspendido</option>
+			<option value="5" {estatus5}>Expulsado</option></select>');	
+			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
+				
+			}
+			
+		
 		
 		}
 		else{
@@ -160,34 +204,39 @@
         <option value="2" {estatus2}>Rechazado</option>
         <option value="3" selected="selected">En Espera</option>
         <option value="4" {estatus4}>Prueba</option>
-        <option value="5" {estatus5}>Expulsado</option>');	
+        <option value="5" {estatus5}>Expulsado</option>
+		</select>');	
 			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
 			}
 			else if ($result1['estatusInscripcion'] == '4'){
+
 			$pnlcontent->add("estatus",'<select name="estatusInscripcion" id="estatusInscripcion">
         <option value="1"  >Aprobado</option>
         <option value="2" {estatus2}>Rechazado</option>
         <option value="3" {estatus3}>En Espera</option>
         <option value="4" selected="selected">Prueba</option>
-        <option value="5" {estatus5}>Expulsado</option>');		
+        <option value="5" {estatus5}>Expulsado</option>
+		</select>');		
 			$pnlcontent->add("botonModificar",'<input type="submit" name="button" id="button" value="Modificar" />');
 			}
 			
 			
 			else if ($result1['estatusInscripcion'] == '5')
-			$pnlcontent->add("estatus","Expulsado");			
+			$pnlcontent->add("estatus","Expulsado");	
+			
+			
 			
 			
 		}
 		
-		if (($result1['estatusInscripcion'] == '5') || ($result1['estatusInscripcion'] == '2')){
+		if (($result1['estatusInscripcion'] == '5') || ($result1['estatusInscripcion'] == '2') || ($result1['estatusInscripcion'] == '6')){
 			if ($result1['tipoInscripcion'] == '1')
 			
-				$pnlcontent->add("selectTipo","Socio");	
+				$pnlcontent->add("selectTipo",'<input name="tipoInscripcion" type="text" id="tipoInscripcion"  value="Socio" readonly="readonly"/>');	
 				
 			else if ($result1['tipoInscripcion'] == '2')
 			
-				$pnlcontent->add("selectTipo","Avance");	
+				$pnlcontent->add("selectTipo",'<input name="tipoInscripcion" type="text" id="tipoInscripcion"  value="Avance" readonly="readonly"/>');	
 			}
 		else{
 			
@@ -218,7 +267,7 @@
 	else if (($estatusInscripcion) && ($tipoInscripcion)){
 		
 		
-		if ((!$fechaAInscripcion) && ($estatusInscripcion == '1')){
+		if (($fechaAInscripcion == '0000-00-00') && ($estatusInscripcion == '1')){
 			$fechaAInscripcion = $date1;
 			
 		}		

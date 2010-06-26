@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/Sancion.js"></script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<div id="mensajeVal">
+  <table width="775" border="0">
+    <tr>
+      <td width="379" align="right">Cedula Persona</td>
+      <td><input name="cedulaPersona" type="text" id="cedulaPersona"  onchange="consultarPersona()"/></td>
+    </tr>
+    <tr>
+     <td width="379" align="right">Tipo Persona</td>
+      <td><label>
+        <select name="tipoPersona" id="tipoPersona"  onchange="consultarPersona()">
+          <option value="0" selected="selected">Seleccione</option>
+          <option value="1">Socio</option>
+          <option value="2">Avance</option>
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td width="379" align="right">Tribunal Disciplinario</td>
+      <td><select name="listaTribunal" id="listaTribunal" onchange="agregarBoton()">
+        <option value="0">Seleccione</option>
+        
+        
+        
+          {ListaTribunal}
+        
+      
+      
+      </select></td>
+    
+    </tr>
+    <tr>
+      <td align="right">Normas</td>
+      <td><select name="listaNorma" id="listaNorma" onchange="agregarBoton()">
+        <option value="0">Seleccione</option>
+        
+        
+          {ListaNorma}
+        
+      
+      </select>
+        </td>
+    </tr>   
+  </table>
+  <table width="775" height="27" border="0">
+   <div id="detallePersona"></div>
+  </table>
+  <table width="775" height="27" border="0">
+   <tr><td align="center"><div id="boton"></div></tr></tr>
+  </table>
+</div>
+</form>
+</body>
+</html>

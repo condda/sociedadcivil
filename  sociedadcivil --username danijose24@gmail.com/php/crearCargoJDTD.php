@@ -16,6 +16,9 @@
 	if ($tipoCargo == 2){
 		
 		
+		mysql_query("insert into tribunald (nombre) values ('$nombreCargo')");		
+		echo "El cargo se ha creado con exito";
+		
 	}
 	include "../db/cerrar_conexion.php";
 ?>

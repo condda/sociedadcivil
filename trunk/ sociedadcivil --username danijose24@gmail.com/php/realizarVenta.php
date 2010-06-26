@@ -69,14 +69,16 @@
 											   montoCompraVenta,
 											   cantidadCompraVenta,
 											   idProducto,
-											   cedulaPersona
+											   cedulaPersona,
+											   fechaCompraVenta
 											   )
 					VALUES						(
 												 2,
 												 '$montoVenta',
 												 '$pedido',
 												 '$idProducto',
-												 '$cedula'							 												 
+												 '$cedula',
+												 '$date1'
 												 )");
 		$ultimoID = mysql_insert_id();
 		

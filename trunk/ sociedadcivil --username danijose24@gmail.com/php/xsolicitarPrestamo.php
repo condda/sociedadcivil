@@ -8,6 +8,10 @@
 		$pnlcontent = new Panel("../html/xsolicitarPrestamo.html");
 		$pnlmenu->add("activo6",'id="active"');		//Coloca en Verde el link de Prestamo
 		
+		$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
+		$pnlmenu->add("opcion2",'<a href="condicionesPrestamo.php">Junta Directiva - Condiciones de Prestamo</a>');
+		$pnlmenu->add("opcion3",'<a href="listaFactura.php">Consultar Factura de Prestamos</a>');
+		$pnlmenu->add("opcion4",'<a href="cancelarPrestamo.php">Cancelar Cuota de Prestamo</a>');
 		//Variable del otro Php
 		
 		$cedula = $_REQUEST['cedula'];
@@ -57,8 +61,9 @@
 				
 				//Registro del egreso
 				
-				mysql_query("INSERT into egreso (idPrestamo)
-							VALUES ('$id')");
+				mysql_query("INSERT into egreso (idPrestamo, tipoEgreso)
+							VALUES ('$id',
+									6)");
 			}
 	
 						

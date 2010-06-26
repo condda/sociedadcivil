@@ -7,13 +7,15 @@
 		$pnlmenu = new Panel("../html/menu.html");
 		$pnlcontent = new Panel("../html/solicitarPrestamo.html");
 		$pnlmenu->add("activo6",'id="active"');		//Coloca en Verde el link de Prestamo
-		$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
+	$pnlmenu->add("opcion1",'<a href="solicitarPrestamo.php">Solicitar Prestamo</a>');
 		$pnlmenu->add("opcion2",'<a href="condicionesPrestamo.php">Junta Directiva - Condiciones de Prestamo</a>');
 		$pnlmenu->add("opcion3",'<a href="listaFactura.php">Consultar Factura de Prestamos</a>');
+		$pnlmenu->add("opcion4",'<a href="cancelarPrestamo.php">Cancelar Cuota de Prestamo</a>');
 		//Consulta a Base de datos
 		
 		$personasBD = mysql_query("SELECT * FROM persona, prestamo_persona, prestamo 
-								  WHERE persona.cedulaPersona =	prestamo_persona.cedulaPersona AND 
+								  WHERE prestamo_persona.estadoPrestamo = 0 and 
+								  persona.cedulaPersona =	prestamo_persona.cedulaPersona AND 
 								  prestamo_persona.idPrestamo = prestamo.idPrestamo");
 		
 		//Traduccion de Datos

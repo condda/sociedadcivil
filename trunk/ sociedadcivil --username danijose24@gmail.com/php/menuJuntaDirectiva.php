@@ -11,6 +11,7 @@
 	$pnlmenu->add("opcion3",'<a href="asamblea.php">Asamblea</a>');
 	$pnlmenu->add("opcion4",'<a href="cargosJuntaDirectiva.php">Cargos Junta Directiva</a>');
 	$pnlmenu->add("opcion5",'<a href="cargosTribunalDisciplinario.php">Cargos Tribunal Disciplinario</a>');
+	$pnlmenu->add("opcion6",'<a href="Sanciones.php">Sanciones</a>');
 	
 	
 

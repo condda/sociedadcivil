@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/Cuotas.js"></script>
+
+<script type="text/javascript" src="../js/dhtmlgoodies_calendar.js"></script>
+
+<link href="../css/dhtmlgoodies_calendar.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form name="form1" method="post" action="#">
+  <table width="823" border="0">
+    <tr>
+      <td width="360" align="right">Tipo Cuota</td>
+      <td width="453"><label>
+        <select name="tipoCuota" id="tipoCuota" onchange="consultarCuotaTodos()">
+          <option value="0" selected="selected">Seleccione</option>
+          <option value="1">Ordinaria</option>
+          <option value="2">Extraordinaria</option>
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td align="right">Desde
+        <label>
+          <input type="text" name="fechaI" id="fechaI"  readonly="readonly" onchange="consultarCuotaTodos()"/> 
+        <a href="#" onclick="displayCalendar(document.forms[0].fechaI,'yyyy-mm-dd',this)">Calendario</a> </label></td>
+      <td>Hasta
+        <label>
+          <input type="text" name="fechaF" id="fechaF" readonly="readonly" onchange="consultarCuotaTodos()" />
+        <a href="#" onclick="displayCalendar(document.forms[0].fechaF,'yyyy-mm-dd',this)">Calendario</a></label></td>
+    </tr>
+  </table>
+  <table width="823" border="0">
+   <div id="listaCuotas"></div>
+  </table>
+</form>
+</body>
+</html>

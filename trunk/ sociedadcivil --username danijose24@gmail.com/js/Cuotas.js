@@ -201,3 +201,22 @@ function buscarCuotasPersona(){
 	
 	
 }
+
+
+
+
+
+function consultarCuotaTodos(){
+	var tipoCuota =  $F('tipoCuota');
+	var fechaI =  $F('fechaI');	
+	var fechaF =  $F('fechaF');
+	
+	if ((tipoCuota != 0) &&(fechaI) && (fechaF)){
+		$('listaCuotas').update("Cargando...");
+	new Ajax.Updater('listaCuotas','../php/consultaCuotaTodos.php',{method: 'post',parameters: {phpTipoCuota:tipoCuota,phpFechaI:fechaI,phpFechaF:fechaF}})	
+	}
+	else
+	$('listaCuotas').update("");
+	
+	
+}

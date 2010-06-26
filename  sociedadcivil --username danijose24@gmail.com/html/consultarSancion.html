@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/Sancion.js"></script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="875" border="0">
+    <tr>
+      <td width="279" align="right">Tipo de Persona</td>
+      <td width="106"><label>
+        <select name="tipoPersona" id="tipoPersona" onchange="consultaSancion()">
+          <option value="0" selected="selected">Seleccione</option>
+          <option value="1">Socio</option>
+          <option value="2">Avance</option>
+        </select>
+      </label></td>
+      <td width="143" align="right">Cedula Persona</td>
+      <td width="329"><input type="text" name="cedulaPersona" id="cedulaPersona"  onchange="consultaSancion()"/></td>
+    </tr>
+  </table>
+  <table width="738" border="0">
+    <div id="listaSancion"></div>
+  </table>
+</form>
+</body>
+</html>

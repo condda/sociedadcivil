@@ -51,6 +51,8 @@ if($consultarCodigo!=NULL)
 				$estatusInscripcion = "Periodo de Prueba";
 			else if ($result2['estatusInscripcion'] == '5')
 				$estatusInscripcion = "Expulsado";
+				else if ($result2['estatusInscripcion'] == '6')
+				$estatusInscripcion = "Suspendido";
 			
 			
 				$consultaInscripcion = $consultaInscripcion.'<tr>
@@ -97,6 +99,8 @@ if($consultarCodigo!=NULL)
 				$estatusInscripcion = "Periodo de Prueba";
 			else if ($result1['estatusInscripcion'] == '5')
 				$estatusInscripcion = "Expulsado";
+				else if ($result1['estatusInscripcion'] == '6')
+				$estatusInscripcion = "Suspendido";
 			
 			
 				$listaInscripcion = $listaInscripcion.'<tr>

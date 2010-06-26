@@ -33,12 +33,13 @@
 							   idProveedor='$proveedor' and
 							   precioProductoProv='$precio'");
 		$multi=$cantidadProducto*$precio;
-		$result = mysql_query ("insert into compra_venta (tipoCompraVenta,
+		$result = mysql_query ("insert into compra_venta (fechaCompraVenta,
+														  tipoCompraVenta,
 														  montoCompraVenta,
 														  cantidadCompraVenta,
 														  idProducto,
 														  idProveedor) values
-							   							 ('1',
+							   							 ('$date1','1',
 														  '$precio',
 														  '$cantidadProducto',
 														  '$producto',

@@ -25,12 +25,12 @@ if($tipoAsamblea)
 {
 	$juntaBD = mysql_query("SELECT MAX(idJuntadirectiva) from juntadirectiva");
 	$junta = mysql_fetch_assoc($juntaBD);
-	$numero = $junta;
+	$n= $junta['MAX(idJuntadirectiva)'];
 	
 
-	
+	echo $n;
 		mysql_query("INSERT into asamblea (tipoAsamblea,descripcionAsamblea, fechaAsamblea, idJuntadirectiva)
-											VALUES ('$tipoAsamblea','$descripcion','$date1',7)");
+											VALUES ('$tipoAsamblea','$descripcion','$date1','$n')");
 											
 											$ultimoId = mysql_insert_id(); 
 										
